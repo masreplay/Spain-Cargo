@@ -1,11 +1,11 @@
 
-ksquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŒÍâ‚üÿÿÿÿ
-ksquid:S001007"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯ûêõÿÿÿÿÿ
-ksquid:S00100 "NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ùñ©Õüÿÿÿÿ
-fsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(î¬ü
-ysquid:S41440"bUpdate this method so that its implementation is not identical to "CategoriesToString" on line 43.(˜‡ÑË
-fsquid:S00100%"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œ­¹Œ
-fsquid:S001000"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜‡ÑË
-ksquid:S00100="NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­ìÏÊÿÿÿÿÿ
-Vsquid:S1118":Add a private constructor to hide the implicit public one.(ÂÁÔûÿÿÿÿ
-ksquid:S00100+"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó€ˆĞıÿÿÿÿ
+\
+java:S1118":Add a private constructor to hide the implicit public one.(ÂÁÔûÿÿÿÿ8­ù¦ûŒ.
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(î¬ü8­ù¦ûŒ.
+o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŒÍâ‚üÿÿÿÿ8­ù¦ûŒ.
+o	java:S100 "NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ùñ©Õüÿÿÿÿ8­ù¦ûŒ.
+j	java:S100%"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œ­¹Œ8­ù¦ûŒ.
+o	java:S100+"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ó€ˆĞıÿÿÿÿ8­ù¦ûŒ.
+j	java:S1000"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(˜‡ÑË8­ù¦ûŒ.
+o	java:S1007"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯ûêõÿÿÿÿÿ8­ù¦ûŒ.
+o	java:S100="NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­ìÏÊÿÿÿÿÿ8­ù¦ûŒ.
