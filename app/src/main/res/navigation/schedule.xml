@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/schedule"
+    app:startDestination="@id/schedule_fragment">
+
+    <fragment
+        android:id="@+id/schedule_fragment"
+        android:name="com.enjaz.university.ui.schedual.ScheduleFragment"
+        android:label="Schedule" />
+</navigation>

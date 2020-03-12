@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">University</string>
+    <string name="tokens_key_prefrences">tokens_key</string>
+</resources>
