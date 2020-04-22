@@ -2,7 +2,6 @@ package com.enjaz.university.di.module
 
 import android.app.Application
 import android.content.Context
-import android.util.Log
 import androidx.room.Room
 import com.enjaz.university.BuildConfig
 import com.enjaz.university.data.Webservices
@@ -11,6 +10,7 @@ import com.squareup.inject.assisted.dagger2.AssistedModule
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -23,6 +23,12 @@ import javax.inject.Singleton
 
 class AppModule {
 
+    private val interceptor = run {
+        val httpLoggingInterceptor = HttpLoggingInterceptor()
+        httpLoggingInterceptor.apply {
+            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+        }
+    }
     @Provides
     @Singleton
     internal fun provideRetrofit(): Webservices {
@@ -32,10 +38,17 @@ class AppModule {
                     .build()
                 return@addInterceptor chain.proceed(newRequest)
             }
+
+
+            .addInterceptor(interceptor)
+
             .readTimeout(60, TimeUnit.SECONDS)
             .connectTimeout(60, TimeUnit.SECONDS)
             .writeTimeout(60, TimeUnit.SECONDS)
             .build()
+
+
+
 
         return Retrofit.Builder()
             .baseUrl(BuildConfig.API_BASE_URL)

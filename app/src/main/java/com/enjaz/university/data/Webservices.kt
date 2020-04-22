@@ -1,7 +1,9 @@
 package com.enjaz.university.data
 
-import com.enjaz.university.data.model.BaseResource
 import com.enjaz.university.data.model.BaseResponse
+import com.enjaz.university.data.model.announcements.AnnouncementResponse
+import com.enjaz.university.data.model.grades.GradesResponse
+import com.enjaz.university.data.model.schedule.ScheduleResponse
 import com.enjaz.university.data.model.token.TokenResult
 import com.enjaz.university.data.model.video.Category
 import com.enjaz.university.data.model.video.VidModel
@@ -32,5 +34,27 @@ interface Webservices {
     fun login(
         @Body jsonElement: JsonElement
     ): Single<Response<BaseResponse<TokenResult>>>
+
+
+    @GET("/api/services/app/Schedules/GetAll")
+    fun getScheddule(
+        @Query("DayFilter") filter: String,
+        @Header("Authorization") token: String
+    ): Single<Response<BaseResponse<ScheduleResponse>>>
+
+
+    @GET("/api/services/app/UniversityEvents/GetAll")
+    fun getAnnouncements(
+        @Query("NameFilter") filter: String,
+        @Header("Authorization") token: String
+    ): Single<Response<BaseResponse<AnnouncementResponse>>>
+
+
+    @GET("/api/services/app/Grades/GetAllOfUser")
+    fun getGrades(
+        @Query("status") filter: Int,
+        @Header("Authorization") token: String
+    ): Single<Response<BaseResponse<MutableList<GradesResponse>>>>
+
 
 }

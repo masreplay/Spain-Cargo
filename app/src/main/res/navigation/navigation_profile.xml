@@ -2,10 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main_nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/profileFragment">
 
     <fragment
-        android:id="@+id/loginFragment"
+        android:id="@+id/profileFragment"
         android:name="com.enjaz.university.ui.home.HomeFragment"
         android:label="LoginFragment" />
 </navigation>

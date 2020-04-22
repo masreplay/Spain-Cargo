@@ -7,13 +7,15 @@ import com.enjaz.university.databinding.ActivityLoginBinding
 import com.enjaz.university.ui.base.BaseActivity
 import com.enjaz.university.ui.base.BaseNavigator
 
-class LoginActivity : BaseActivity<ActivityLoginBinding, ILoginInteractionListener, LoginViewModel>(),ILoginInteractionListener {
+class LoginActivity :
+    BaseActivity<ActivityLoginBinding, ILoginInteractionListener, LoginViewModel>(),
+    ILoginInteractionListener {
     override fun getLayoutId(): Int {
         return R.layout.activity_login
     }
 
     override fun getViewModelClass(): Class<LoginViewModel> {
-    return LoginViewModel::class.java
+        return LoginViewModel::class.java
     }
 
     override fun getNavigator(): ILoginInteractionListener {
@@ -21,7 +23,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, ILoginInteractionListen
     }
 
     override fun login() {
-         val intent =Intent(this,MainActivity::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
     }

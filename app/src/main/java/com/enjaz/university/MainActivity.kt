@@ -1,7 +1,7 @@
 package com.enjaz.university
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
@@ -29,7 +29,13 @@ class MainActivity : AppCompatActivity() {
     private fun setupBottomNavigationBar() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
 
-        val navGraphIds = listOf(R.navigation.home, R.navigation.schedule, R.navigation.navigation_announcements,R.navigation.navigation_profile)
+        val navGraphIds = listOf(
+            R.navigation.final_grades,
+            R.navigation.schedule,
+            R.navigation.navigation_announcements,
+            R.navigation.navigation_profile,
+            R.navigation.grades
+        )
 
         val controller = bottomNavigationView.setupWithNavController(
             navGraphIds = navGraphIds,

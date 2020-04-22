@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/final_grades"
+    app:startDestination="@id/final_grades_fragment">
+
+    <fragment
+        android:id="@+id/final_grades_fragment"
+        android:name="com.enjaz.university.ui.finalGrades.FinalGradesFragment"
+        android:label="Grades" />
+</navigation>

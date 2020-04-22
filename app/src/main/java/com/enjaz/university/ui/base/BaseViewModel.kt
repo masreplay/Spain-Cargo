@@ -5,7 +5,6 @@ import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.enjaz.university.data.AppDataManager
-import com.enjaz.university.data.db.MovieDB
 import com.enjaz.university.data.model.BaseResource
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -16,7 +15,9 @@ import io.reactivex.schedulers.Schedulers
 import java.lang.ref.WeakReference
 import kotlin.reflect.KFunction1
 
-abstract class BaseViewModel<N : BaseNavigator>(val dataManager: AppDataManager) : ViewModel() {
+abstract class BaseViewModel<N : BaseNavigator>(
+    val dataManager: AppDataManager
+) : ViewModel() {
     val isLoading = ObservableBoolean(false)
 
     // Architecture elements

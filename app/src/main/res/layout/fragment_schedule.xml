@@ -1,27 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout><data>
-    <variable
-        name="viewModel"
-        type="com.enjaz.university.ui.schedual.ScheduleViewModel" />
-</data>
+<layout>
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:id="@+id/schedule"
-    android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".MainActivity">
-    <TextView
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="schedule fragment"
-        android:textColor="@color/carbon_blue_900"
-        android:textSize="26sp"
-        android:layout_marginTop="80dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <data>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <variable
+            name="viewModel"
+            type="com.enjaz.university.ui.schedual.ScheduleViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/schedule"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <RelativeLayout
+            android:id="@+id/lyt"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:background="#f2f2f2"
+            app:layout_constraintBottom_toTopOf="@id/calendarView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent"
+
+            >
+
+
+            <ImageView
+                android:id="@+id/iv_calendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_calendar"
+
+
+                />
+
+            <TextView
+                android:id="@+id/tv_month"
+                monthFormat='@{"MMM"}'
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:layout_toEndOf="@+id/iv_calendar"
+                android:textColor="#343e88"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_year"
+                yearFormat='@{"YYY"}'
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="6dp"
+                android:layout_toEndOf="@+id/tv_month"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+
+                android:layout_marginEnd="16dp"
+                android:text="Today"
+                android:textColor="#343e88"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:background="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lyt" />
+
+        <com.enjaz.university.util.calendar.HorizontalCalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lyt"
+
+            app:selectedDateBackground="@drawable/bg_rounded_textview"
+
+            app:selectorColor="@android:color/transparent"
+
+
+            app:textColorNormal="#000000"
+            app:textColorSelected="#fff" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            app:items='@{viewModel.getScheduleResponse.data.result.items}'
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/calendarView"
+            tools:listitem="@layout/item_schedule"
+
+
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
+

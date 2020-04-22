@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.enjaz.university.data.model.schedule.Item" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
+
+
+        <View
+            android:id="@+id/v_timeIndicator"
+            android:layout_width="18dp"
+            android:layout_height="8dp"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/bg_rounded_edge_view"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+
+            />
+
+        <TextView
+            android:id="@+id/tv_time"
+            timeFormat='@{item.schedule.formTime}'
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/v_timeIndicator"
+            app:layout_constraintTop_toTopOf="parent"
+
+
+            />
+
+        <TextView
+            android:id="@+id/tv_am"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="16dp"
+            android:text="AM"
+            app:layout_constraintStart_toEndOf="@+id/tv_time"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tv_lectureDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="35dp"
+            android:text='@{String.valueOf(item.lectureDuration)}'
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="16dp"
+            android:text=" h"
+
+            app:layout_constraintStart_toEndOf="@id/tv_lectureDuration"
+            app:layout_constraintTop_toTopOf="parent"
+
+
+            />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_time"
+            app:strokeColor="@color/carbon_grey_200"
+
+
+            app:strokeWidth="1dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/tv_subjectName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text='@{item.subLectureName}'
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_subjectDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="5dp"
+                    android:text="The basic of typography"
+                    android:textSize="12dp"
+                    app:layout_constraintStart_toStartOf="parent"
+
+
+                    app:layout_constraintTop_toBottomOf="@+id/tv_subjectName"
+
+
+                    />
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/iv_lecturerPhoto"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/profile_pic"
+                    app:layout_constraintStart_toStartOf="parent"
+
+                    app:layout_constraintTop_toBottomOf="@id/tv_subjectDescription" />
+
+
+                <TextView
+                    android:id="@+id/tv_lecturerName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="16dp"
+                    android:text='@{item.profName}'
+                    android:textColor="@android:color/black"
+                    app:layout_constraintStart_toEndOf="@+id/iv_lecturerPhoto"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_subjectDescription"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_lecturerPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text='@{item.profPhoneNumber}'
+                    android:textSize="12dp"
+                    app:layout_constraintStart_toStartOf="@id/tv_lecturerName"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_lecturerName"
+
+
+                    />
+
+
+                <carbon.widget.ImageView
+                    android:id="@+id/iv_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:src="@drawable/ic_place_grey_24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+
+
+                    app:layout_constraintTop_toBottomOf="@id/tv_lecturerPhone"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_departmentName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="16dp"
+                    android:text='@{item.roomName}'
+                    android:textColor="@android:color/black"
+                    app:layout_constraintStart_toEndOf="@+id/iv_location"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_lecturerPhone"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_roomLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text='@{item.schedule.roomId}'
+                    android:textSize="12dp"
+                    app:layout_constraintStart_toStartOf="@+id/tv_departmentName"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_departmentName"
+
+
+                    />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

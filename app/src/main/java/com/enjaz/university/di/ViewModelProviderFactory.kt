@@ -5,6 +5,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.enjaz.university.data.AppDataManager
 import com.enjaz.university.data.db.MovieDB
+import com.enjaz.university.ui.announcements.AnnouncementsViewModel
+import com.enjaz.university.ui.announcements.allEvents.AllEventsViewModel
+
+import com.enjaz.university.ui.finalGrades.FinalGradesViewModel
+import com.enjaz.university.ui.grades.GradesViewModel
 import com.enjaz.university.ui.home.HomeViewModel
 import com.enjaz.university.ui.login.LoginViewModel
 import com.enjaz.university.ui.schedual.ScheduleViewModel
@@ -16,19 +21,36 @@ import javax.inject.Singleton
 @Suppress("UNCHECKED_CAST")
 @Singleton
 class ViewModelProviderFactory @Inject
-constructor(private val dataManager: AppDataManager, private val dataBase: MovieDB) : ViewModelProvider.NewInstanceFactory() {
+constructor(private val dataManager: AppDataManager, private val dataBase: MovieDB) :
+    ViewModelProvider.NewInstanceFactory() {
     private val viewArguments = mutableMapOf<Class<*>, Map<String, Any?>>()
-//
+    //
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return when {
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> LoginViewModel(dataManager) as T
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> HomeViewModel(dataManager) as T
-            modelClass.isAssignableFrom(ScheduleViewModel::class.java) -> ScheduleViewModel(dataManager) as T
+            modelClass.isAssignableFrom(ScheduleViewModel::class.java) -> ScheduleViewModel(
+                dataManager
+            ) as T
+            modelClass.isAssignableFrom(AllEventsViewModel::class.java) -> AllEventsViewModel(
+                dataManager
+            ) as T
+            modelClass.isAssignableFrom(AnnouncementsViewModel::class.java) -> AnnouncementsViewModel(
+                dataManager
+            ) as T
+            modelClass.isAssignableFrom(FinalGradesViewModel::class.java) -> FinalGradesViewModel(
+                dataManager
+            ) as T
+            modelClass.isAssignableFrom(GradesViewModel::class.java) -> GradesViewModel(
+                dataManager
+            ) as T
+
 //            modelClass.isAssignableFrom(VerticalViewModel::class.java) -> VerticalViewModel(dataManager,dataBase,viewArguments[modelClass] as Map<String, Any>?) as T
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }
-//
+
+    //
     fun <V> seedArguments(viewModelClass: Class<V>, arguments: Bundle?) {
         viewArguments[viewModelClass] = bundleToMap(arguments)
     }

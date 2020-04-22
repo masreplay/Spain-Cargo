@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">University</string>
     <string name="tokens_key_prefrences">tokens_key</string>
+
+    <string name="home_fragment">Home Fragment</string>
+    <string name="sport_fragment">Sport Fragment</string>
+    <string name="movie_fragment">Movie Fragment</string>
+    <string name="mark">Mark :</string>
 </resources>

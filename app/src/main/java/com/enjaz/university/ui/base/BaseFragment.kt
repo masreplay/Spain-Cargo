@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.enjaz.university.BR
 import com.enjaz.university.di.ViewModelProviderFactory
 import dagger.android.support.AndroidSupportInjection
-
 import javax.inject.Inject
 
 abstract class BaseFragment<T : ViewDataBinding, N : BaseNavigator, V : BaseViewModel<N>> : Fragment() {
