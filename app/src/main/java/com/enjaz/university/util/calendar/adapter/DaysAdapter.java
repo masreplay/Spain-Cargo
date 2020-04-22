@@ -14,14 +14,7 @@ import com.enjaz.university.util.calendar.utils.Utils;
 import java.util.Calendar;
 import java.util.List;
 
-/**
- * custom adapter for {@link HorizontalCalendarView HorizontalCalendarView}
- *
- * @author Mulham-Raee
- * @since v1.0.0
- * <p>
- * See {devs.mulham.horizontalcalendar.R.layout#hc_item_calendar} Calendar CustomItem Layout
- */
+
 public class DaysAdapter extends HorizontalCalendarBaseAdapter<DateViewHolder, Calendar> {
 
     public DaysAdapter(HorizontalCalendar horizontalCalendar, Calendar startDate, Calendar endDate, HorizontalCalendarPredicate disablePredicate, CalendarEventsPredicate eventsPredicate) {
