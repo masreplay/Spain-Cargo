@@ -8,6 +8,6 @@ data class BaseResponse<T> (
 	@SerializedName("result") val result : T,
 	@SerializedName("targetUrl") val targetUrl : String,
 	@SerializedName("success") val success : Boolean,
-	@SerializedName("error") val error : String,
+	@SerializedName("error") val error : Error,
 	@SerializedName("unAuthorizedRequest") val unAuthorizedRequest : Boolean
 )

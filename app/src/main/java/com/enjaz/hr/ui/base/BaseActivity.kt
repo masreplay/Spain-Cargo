@@ -12,7 +12,6 @@ abstract class BaseActivity<T : ViewDataBinding, N : BaseNavigator, V : BaseView
 
 
     private lateinit var viewDataBinding: T
-    private lateinit var viewModel: V
 
 
     // Instances that should be provided by successor of this class
@@ -29,10 +28,8 @@ abstract class BaseActivity<T : ViewDataBinding, N : BaseNavigator, V : BaseView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel = getViewModel()
 
-
-        viewModel.navigator = getNavigator()
+        getViewModel().navigator = getNavigator()
 
         viewDataBinding = DataBindingUtil.setContentView(this, getLayoutId())
         viewDataBinding.lifecycleOwner = this

@@ -13,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener, HomeViewModel>(),
     IHomeInteractionListener {
 
-    val homeviewModel: HomeViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by viewModels()
 
 
     override fun getLayoutId(): Int {
@@ -21,7 +21,7 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
     }
 
     override fun getViewModel(): HomeViewModel {
-        return homeviewModel
+        return homeViewModel
     }
 
     override fun getViewModelClass(): Class<HomeViewModel> {

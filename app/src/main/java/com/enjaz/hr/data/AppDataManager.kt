@@ -2,11 +2,9 @@ package com.enjaz.hr.data
 
 import com.enjaz.hr.data.model.BaseResource
 import com.enjaz.hr.data.model.BaseResponse
-import com.enjaz.hr.data.model.announcements.AnnouncementResponse
-import com.enjaz.hr.data.model.grades.GradesResponse
-import com.enjaz.hr.data.model.schedule.ScheduleResponse
 import com.enjaz.hr.data.model.token.TokenResult
 import com.enjaz.hr.data.model.video.VidModel
+import com.google.gson.Gson
 import com.google.gson.JsonObject
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -46,48 +44,21 @@ class AppDataManager @Inject constructor(
     }
 
 
-    fun getSchedule(filter: String): Single<BaseResource<BaseResponse<ScheduleResponse>>> {
-
-        return wrapWithResourceObject(
-            webservices.getScheddule(filter, token)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-        )
-
-    }
-
-    fun getAnnouncements(filter: String): Single<BaseResource<BaseResponse<AnnouncementResponse>>> {
-
-        return wrapWithResourceObject(
-            webservices.getAnnouncements(filter, token)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-        )
-
-    }
-
-    fun getGrades(): Single<BaseResource<BaseResponse<MutableList<GradesResponse>>>> {
-
-        return wrapWithResourceObject(
-            webservices.getGrades(2, token)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-        )
-
-    }
-
-
-
-
-
 
     private fun <T> wrapWithResourceObject(response: Single<Response<T>>): Single<BaseResource<T>> {
         return response.map {
-            if (it.code() != 200) BaseResource.error(it.errorBody()?.string()?:"", it.body())
+            if (it.code() != 200) {
+                val gson = Gson()
+
+                val errorResponse = gson.fromJson(it.errorBody()?.string(), BaseResponse::class.java)
+
+                BaseResource.error(errorResponse.error.message, it.body())
+            }
             else {
                 BaseResource.success(it.body())
             }
         }
     }
+
 
 }

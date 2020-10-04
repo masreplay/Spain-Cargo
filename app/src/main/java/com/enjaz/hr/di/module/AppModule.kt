@@ -5,6 +5,8 @@ import androidx.room.Room
 import com.enjaz.hr.BuildConfig
 import com.enjaz.hr.data.Webservices
 import com.enjaz.hr.data.db.MovieDB
+import com.enjaz.hr.util.PrefsManager
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,16 +25,17 @@ import javax.inject.Singleton
 @InstallIn(ApplicationComponent::class)
 object AppModule {
 
-    private val interceptor = run {
-        val httpLoggingInterceptor = HttpLoggingInterceptor()
-        httpLoggingInterceptor.apply {
-            httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-        }
-    }
 
     @Provides
     @Singleton
     internal fun provideRetrofit(): Webservices {
+
+        val logging = HttpLoggingInterceptor()
+        logging.level = HttpLoggingInterceptor.Level.BODY
+
+        val gson = GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create()
+
+
         val client = OkHttpClient.Builder()
             .addInterceptor { chain ->
                 val newRequest = chain.request().newBuilder()
@@ -40,8 +43,20 @@ object AppModule {
                 return@addInterceptor chain.proceed(newRequest)
             }
 
+            .addInterceptor { chain ->
+                val token = PrefsManager.instance?.getAccessToken()
+                var request = chain.request()
+                if (chain.request().header("No-Auth") == null) {
+                    request = request.newBuilder()
+                        .addHeader("Authorization", "Bearer $token")
+                        .build()
 
-            .addInterceptor(interceptor)
+                }
+                return@addInterceptor chain.proceed(request)
+            }
+
+
+            .addInterceptor(logging)
 
             .readTimeout(60, TimeUnit.SECONDS)
             .connectTimeout(60, TimeUnit.SECONDS)
@@ -53,7 +68,7 @@ object AppModule {
 
         return Retrofit.Builder()
             .baseUrl(BuildConfig.API_BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(client)
             .build().create(Webservices::class.java)
@@ -63,7 +78,7 @@ object AppModule {
     @Provides
     @Singleton
     fun providesRoomDatabase(@ApplicationContext context: Context): MovieDB {
-        return Room.databaseBuilder(context, MovieDB::class.java, "movie_database").build()
+        return Room.databaseBuilder(context, MovieDB::class.java, "hr_database").build()
 
     }
 }

@@ -17,7 +17,7 @@ class PrefsManager  constructor(private var context: Context) {
         return context.getString(id)
     }
     
-    fun getTokens(): TokenResult? {
+    fun getAccessToken(): TokenResult? {
         val data = sharedPref.getString(context.getString(R.string.tokens_key_prefrences), null)
         if (data != null) {
             val gson = Gson()
