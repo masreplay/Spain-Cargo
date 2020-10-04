@@ -2,6 +2,7 @@ package com.enjaz.university.ui.home
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
 import com.enjaz.university.R
 import com.enjaz.university.databinding.FramgnetHomeBinding
 import com.enjaz.university.ui.base.BaseFragment
@@ -11,8 +12,16 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener, HomeViewModel>(),
     IHomeInteractionListener {
+
+    val homeviewModel: HomeViewModel by viewModels()
+
+
     override fun getLayoutId(): Int {
         return R.layout.framgnet_home
+    }
+
+    override fun getViewModel(): HomeViewModel {
+        return homeviewModel
     }
 
     override fun getViewModelClass(): Class<HomeViewModel> {
@@ -25,6 +34,7 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         getViewModel().mylog()
     }
 
@@ -37,6 +47,9 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
         // navigate to tasks view ==> findNavController().navigate(R.id.classesFragment)
 
     }
+
+
+
 
 }
 

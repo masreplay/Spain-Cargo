@@ -8,19 +8,13 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.view.ActionMode
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import com.enjaz.university.BR
-import com.enjaz.university.di.ViewModelProviderFactory
-import javax.inject.Inject
 
-abstract class BaseFragment<T : ViewDataBinding, N : BaseNavigator, V : BaseViewModel<N>> : Fragment() {
-    @set:Inject
-    var factory: ViewModelProviderFactory? = null
+abstract class BaseFragment<T : ViewDataBinding, N : BaseNavigator, V : BaseViewModel<N>> :
+    Fragment() {
 
     private lateinit var viewDataBinding: T
-    private lateinit var viewModel: V
 
     private var actionMode: ActionMode? = null
 
@@ -33,22 +27,26 @@ abstract class BaseFragment<T : ViewDataBinding, N : BaseNavigator, V : BaseView
 
     abstract fun getNavigator(): N
 
+    abstract fun getViewModel(): V
+
+
     protected fun getBindingVariable(): Int = BR.viewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (!::viewModel.isInitialized) {
-            factory?.seedArguments(getViewModelClass(), arguments)
-            viewModel = ViewModelProviders.of(this, factory).get(getViewModelClass())
-        }
-        viewModel.navigator = getNavigator()
+
+        getViewModel().navigator = getNavigator()
 
 
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         viewDataBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         return viewDataBinding.root
 
@@ -56,13 +54,13 @@ abstract class BaseFragment<T : ViewDataBinding, N : BaseNavigator, V : BaseView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewDataBinding.setVariable(getBindingVariable(), viewModel)
+        viewDataBinding.setVariable(getBindingVariable(), getViewModel())
         viewDataBinding.lifecycleOwner = viewLifecycleOwner
         viewDataBinding.executePendingBindings()
     }
 
     protected fun invalidateBinding() {
-        viewDataBinding.setVariable(getBindingVariable(), viewModel)
+        viewDataBinding.setVariable(getBindingVariable(), getViewModel())
     }
 
     fun setActionMode(mode: ActionMode?) {
@@ -80,7 +78,5 @@ abstract class BaseFragment<T : ViewDataBinding, N : BaseNavigator, V : BaseView
 
     // Getters
     protected fun getViewDataBinding(): T = viewDataBinding
-
-    protected fun getViewModel(): V = viewModel
 
 }
