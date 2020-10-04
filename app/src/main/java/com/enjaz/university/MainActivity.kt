@@ -8,7 +8,9 @@ import androidx.navigation.NavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.enjaz.university.util.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private var currentNavController: LiveData<NavController>? = null
@@ -30,11 +32,7 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
 
         val navGraphIds = listOf(
-            R.navigation.final_grades,
-            R.navigation.schedule,
-            R.navigation.navigation_announcements,
-            R.navigation.navigation_profile,
-            R.navigation.grades
+            R.navigation.mobile_navigation
         )
 
         val controller = bottomNavigationView.setupWithNavController(

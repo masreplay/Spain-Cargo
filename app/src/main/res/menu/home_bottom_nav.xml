@@ -2,26 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/final_grades"
+        android:id="@+id/mobile_navigation"
           android:icon="@drawable/home"
         android:title="Home"/>
-
-    <item
-        android:id="@+id/announcement"
-        android:icon="@drawable/announcemet"
-        android:title="Notifications" />
-
-    <item android:id="@+id/schedule"
-          android:icon="@drawable/calendar_exam"
-          android:title="Schedule"/>
-
-    <item android:id="@+id/profileFragment"
-        android:icon="@drawable/services"
-          android:title="Profile"/>
-
-    <item
-        android:id="@+id/grades"
-        android:icon="@drawable/services"
-        android:title="Grades" />
 
 </menu>

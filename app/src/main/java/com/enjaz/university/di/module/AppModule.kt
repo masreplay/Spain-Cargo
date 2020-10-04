@@ -6,9 +6,11 @@ import androidx.room.Room
 import com.enjaz.university.BuildConfig
 import com.enjaz.university.data.Webservices
 import com.enjaz.university.data.db.MovieDB
-import com.squareup.inject.assisted.dagger2.AssistedModule
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -18,10 +20,9 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 
-@Module(includes = [AssistedInject_AppModule::class])
-@AssistedModule
-
-class AppModule {
+@Module
+@InstallIn(ApplicationComponent::class)
+object AppModule {
 
     private val interceptor = run {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
@@ -29,6 +30,7 @@ class AppModule {
             httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         }
     }
+
     @Provides
     @Singleton
     internal fun provideRetrofit(): Webservices {
@@ -57,14 +59,12 @@ class AppModule {
             .client(client)
             .build().create(Webservices::class.java)
     }
-    @Provides
-    @Singleton
-    fun providesContext(app: Application): Context = app
+
 
     @Provides
     @Singleton
-    fun providesRoomDatabase(  context: Context): MovieDB {
-        return  Room.databaseBuilder(context, MovieDB::class.java, "movie_database").build()
+    fun providesRoomDatabase(@ApplicationContext context: Context): MovieDB {
+        return Room.databaseBuilder(context, MovieDB::class.java, "movie_database").build()
 
     }
 }

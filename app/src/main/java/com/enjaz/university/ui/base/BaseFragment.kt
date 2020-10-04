@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.enjaz.university.BR
 import com.enjaz.university.di.ViewModelProviderFactory
-import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 abstract class BaseFragment<T : ViewDataBinding, N : BaseNavigator, V : BaseViewModel<N>> : Fragment() {
@@ -38,7 +37,6 @@ abstract class BaseFragment<T : ViewDataBinding, N : BaseNavigator, V : BaseView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidSupportInjection.inject(this)
         super.onCreate(savedInstanceState)
 
         if (!::viewModel.isInitialized) {
@@ -79,55 +77,6 @@ abstract class BaseFragment<T : ViewDataBinding, N : BaseNavigator, V : BaseView
         }
     }
 
-
-    // Getters
-    protected fun getViewDataBinding(): T = viewDataBinding
-
-    protected fun getViewModel(): V = viewModel
-
-}
-
-abstract class BaseDialogFragment<T : ViewDataBinding, N : BaseNavigator, V : BaseViewModel<N>> : DialogFragment() {
-    @set:Inject
-    var factory: ViewModelProviderFactory? = null
-
-    private lateinit var viewDataBinding: T
-    private lateinit var viewModel: V
-
-    // Instances that should be provided by successor of this class
-    @LayoutRes
-    abstract fun getLayoutId(): Int
-
-    abstract fun getViewModelClass(): Class<V>
-
-    protected open fun getBindingVariable(): Int = BR.viewModel
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidSupportInjection.inject(this)
-        super.onCreate(savedInstanceState)
-
-        if (!::viewModel.isInitialized) {
-            factory?.seedArguments(getViewModelClass(), arguments)
-            viewModel = ViewModelProviders.of(this, factory).get(getViewModelClass())
-        }
-        viewModel.navigator = this as N
-
-
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        viewDataBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
-        return viewDataBinding.root
-
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewDataBinding.setVariable(getBindingVariable(), viewModel)
-        viewDataBinding.lifecycleOwner = viewLifecycleOwner
-        viewDataBinding.executePendingBindings()
-    }
 
     // Getters
     protected fun getViewDataBinding(): T = viewDataBinding

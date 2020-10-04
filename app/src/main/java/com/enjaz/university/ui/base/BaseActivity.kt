@@ -9,7 +9,6 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import com.enjaz.university.BR
 import com.enjaz.university.di.ViewModelProviderFactory
-import dagger.android.AndroidInjection
 import javax.inject.Inject
 
 abstract class BaseActivity<T : ViewDataBinding, N : BaseNavigator, V : BaseViewModel<N>> : AppCompatActivity() {
@@ -32,7 +31,6 @@ abstract class BaseActivity<T : ViewDataBinding, N : BaseNavigator, V : BaseView
 
     // Init
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
 
         if (!::viewModel.isInitialized) {
