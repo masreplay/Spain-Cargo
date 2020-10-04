@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">University</string>
+    <string name="app_name">HRM</string>
     <string name="tokens_key_prefrences">tokens_key</string>
 
     <string name="home_fragment">Home Fragment</string>
