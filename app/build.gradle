@@ -29,7 +29,7 @@ android {
     buildTypes {
         debug {
             debuggable true
-            buildConfigField("String", "API_BASE_URL", "\"http://95.179.184.238:9004/api/\"")
+            buildConfigField("String", "API_BASE_URL", "\"http://109.224.53.157:9004/api/\"")
 
         }
         release {

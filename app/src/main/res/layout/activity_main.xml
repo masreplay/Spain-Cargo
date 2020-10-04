@@ -2,13 +2,13 @@
 <layout><data>
     <variable
         name="item"
-        type="com.enjaz.university.data.model.video.VidModel" />
+        type="com.enjaz.hr.data.model.video.VidModel" />
     <variable
         name="viewModel"
         type="androidx.lifecycle.ViewModel" />
     <variable
         name="clickListener"
-        type="com.enjaz.university.ui.base.BaseDataItemInteractionListener" />
+        type="com.enjaz.hr.ui.base.BaseDataItemInteractionListener" />
 </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
