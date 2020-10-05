@@ -6,4 +6,5 @@
     <string name="sport_fragment">Sport Fragment</string>
     <string name="movie_fragment">Movie Fragment</string>
     <string name="mark">Mark :</string>
+    <string name="home">Home</string>
 </resources>

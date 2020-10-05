@@ -1,6 +1,8 @@
-package com.enjaz.hr.di.module
+package com.enjaz.hr.di
 
 import android.content.Context
+import android.content.SharedPreferences
+import androidx.preference.PreferenceManager
 import androidx.room.Room
 import com.enjaz.hr.BuildConfig
 import com.enjaz.hr.data.Webservices
@@ -28,7 +30,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    internal fun provideRetrofit(): Webservices {
+    internal fun provideRetrofit(shredPref: SharedPreferences,@ApplicationContext context: Context): Webservices {
 
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
@@ -44,7 +46,7 @@ object AppModule {
             }
 
             .addInterceptor { chain ->
-                val token = PrefsManager.instance?.getAccessToken()
+                val token = PrefsManager(shredPref, context).getAccessToken()
                 var request = chain.request()
                 if (chain.request().header("No-Auth") == null) {
                     request = request.newBuilder()
@@ -80,5 +82,11 @@ object AppModule {
     fun providesRoomDatabase(@ApplicationContext context: Context): MovieDB {
         return Room.databaseBuilder(context, MovieDB::class.java, "hr_database").build()
 
+    }
+
+    @Singleton
+    @Provides
+    fun getAppPreferences(@ApplicationContext context: Context): SharedPreferences {
+        return PreferenceManager.getDefaultSharedPreferences(context)
     }
 }

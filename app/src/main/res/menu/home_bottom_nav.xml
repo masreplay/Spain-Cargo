@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/mobile_navigation"
-          android:icon="@drawable/home"
-        android:title="Home"/>
+        android:icon="@drawable/ic_round_home_24"
+        android:title="@string/home" />
 
 </menu>

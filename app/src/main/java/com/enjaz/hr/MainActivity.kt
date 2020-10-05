@@ -23,10 +23,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
-        super.onRestoreInstanceState(savedInstanceState)
-        setupBottomNavigationBar()
-    }
 
     private fun setupBottomNavigationBar() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
