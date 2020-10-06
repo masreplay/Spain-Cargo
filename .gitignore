@@ -101,4 +101,6 @@ lint/tmp/
 
 # Android Profiling
 *.hprof
+.idea/codeStyles
+.idea/sonarlint
 

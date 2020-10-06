@@ -8,6 +8,7 @@ import com.enjaz.hr.BuildConfig
 import com.enjaz.hr.data.Webservices
 import com.enjaz.hr.data.db.MovieDB
 import com.enjaz.hr.util.PrefsManager
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides

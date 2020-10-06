@@ -9,6 +9,7 @@ import com.enjaz.hr.data.model.video.Category
 
 @Dao
 interface CategoryDao {
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(category: Category?)
 

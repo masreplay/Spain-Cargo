@@ -31,7 +31,6 @@ android {
             debuggable true
             minifyEnabled false
             applicationIdSuffix ".debug"
-            buildConfigField("String", "API_BASE_URL", "\"http://109.224.53.157:9004/api/\"")
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         release {

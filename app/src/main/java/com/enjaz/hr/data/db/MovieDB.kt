@@ -1,5 +1,6 @@
 package com.enjaz.hr.data.db
 
+import android.content.Context
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
@@ -15,9 +16,10 @@ import com.enjaz.hr.data.model.video.Movie
 @TypeConverters(
     Converters::class
 )
-abstract class MovieDB : RoomDatabase() {
+abstract class MovieDB: RoomDatabase() {
 
     abstract fun listsDao(): ListsDao?
     abstract fun categoryDao(): CategoryDao?
+
 
 }

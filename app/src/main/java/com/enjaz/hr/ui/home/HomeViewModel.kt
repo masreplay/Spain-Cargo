@@ -13,7 +13,6 @@ import com.enjaz.hr.ui.base.BaseViewModel
 class HomeViewModel @ViewModelInject constructor(
     dataManager: AppDataManager,
     var pref: PrefsManager
-
 ) : BaseViewModel<IHomeInteractionListener>(
     dataManager
 ) {
