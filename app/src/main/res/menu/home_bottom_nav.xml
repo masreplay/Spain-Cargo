@@ -6,4 +6,9 @@
         android:icon="@drawable/ic_round_home_24"
         android:title="@string/home" />
 
+    <item
+        android:id="@+id/attendance"
+        android:icon="@drawable/ic_round_event_note_24"
+        android:title="@string/attendance" />
+
 </menu>
