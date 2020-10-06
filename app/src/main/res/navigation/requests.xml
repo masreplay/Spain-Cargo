@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/requests"
+    app:startDestination="@id/requestsFragment">
+
+    <fragment
+        android:id="@+id/requestsFragment"
+        android:name="com.enjaz.hr.ui.requests.RequestsFragment"
+        android:label="RequestsFragment" />
+    <fragment
+        android:id="@+id/receivedRequestsFragment"
+        android:name="com.enjaz.hr.ui.requests.ReceivedRequestsFragment"
+        android:label="ReceivedRequestsFragment" />
+    <fragment
+        android:id="@+id/sentRequestsFragment"
+        android:name="com.enjaz.hr.ui.requests.SentRequestsFragment"
+        android:label="SentRequestsFragment" />
+</navigation>

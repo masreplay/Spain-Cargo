@@ -7,4 +7,7 @@
     <string name="movie_fragment">Movie Fragment</string>
     <string name="mark">Mark :</string>
     <string name="home">Home</string>
+    <string name="received">received</string>
+    <string name="sent">Sent</string>
+    <string name="requests">Requests</string>
 </resources>

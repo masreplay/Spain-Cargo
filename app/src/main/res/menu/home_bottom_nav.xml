@@ -2,8 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/mobile_navigation"
+        android:id="@+id/home"
         android:icon="@drawable/ic_round_home_24"
         android:title="@string/home" />
 
+    <item
+        android:id="@+id/requests"
+        android:icon="@drawable/ic_round_swap_horiz_24"
+        android:title="@string/requests" />
 </menu>
