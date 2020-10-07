@@ -1,6 +1,7 @@
 package com.enjaz.hr.ui.requests
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.enjaz.hr.R
@@ -14,6 +15,8 @@ class SentRequestsFragment :
     IRequestsInteractionListener {
 
     private val requestsViewModel: RequestsViewModel by viewModels()
+
+    lateinit var sentRequestsAdapter: SentRequestsAdapter
 
 
     override fun getLayoutId(): Int {
@@ -34,8 +37,19 @@ class SentRequestsFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.i("abdalla19988", "abdalla19988")
 
-        getViewModel().mylog()
+        getViewModel().getdata()
+        getViewDataBinding().rv.apply {
+            adapter = sentRequestsAdapter
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.i("abdalla19988", "abdalla19988")
+
+        sentRequestsAdapter = SentRequestsAdapter(requireContext(), mutableListOf())
     }
 
 

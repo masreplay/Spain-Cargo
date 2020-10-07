@@ -1,6 +1,7 @@
 package com.enjaz.hr.ui.requests
 
 import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.MutableLiveData
 import com.enjaz.hr.data.AppDataManager
 import com.enjaz.hr.data.model.BaseResource
 import com.enjaz.hr.data.model.BaseResponse
@@ -13,12 +14,12 @@ class RequestsViewModel @ViewModelInject constructor(
     dataManager
 ) {
 
-    /*var loginResponse: MutableLiveData<BaseResource<BaseResponse<TokenResult>>> =
-        MutableLiveData()*/
+    var strings: MutableLiveData<MutableList<String>> =
+        MutableLiveData()
 
 
-    fun mylog() {
-
+    fun getdata() {
+        strings.value = mutableListOf("ali", "hussein", "Abbas", "Omar", "hassanein")
     }
 
     private fun onLoginSuccess(result: BaseResource<BaseResponse<TokenResult>>) {
