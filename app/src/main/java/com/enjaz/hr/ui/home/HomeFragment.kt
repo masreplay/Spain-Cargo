@@ -1,6 +1,7 @@
 package com.enjaz.hr.ui.home
 
 import android.os.Bundle
+import android.text.Html
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
@@ -12,6 +13,7 @@ import com.enjaz.hr.ui.base.BaseNavigator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.framgnet_home.*
 
+
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener, HomeViewModel>(),
     IHomeInteractionListener {
@@ -21,6 +23,7 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
 
     override fun getLayoutId(): Int {
         return R.layout.framgnet_home
+
     }
 
     override fun getViewModel(): HomeViewModel {
@@ -39,6 +42,12 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
         super.onViewCreated(view, savedInstanceState)
 
         getViewModel().mylog()
+
+        // TODO: 10/7/2020 replace deprecated
+        val text =
+            "<font color=#1575ff>20-</font><font color=#f6ae3f>5</font><font color=#1575ff>-</font><font color=#f64a3f>3</font>"
+        tv_attendance_value.text = Html.fromHtml(text)
+
 
         val section1 = DonutSection(
             name = "section_1",

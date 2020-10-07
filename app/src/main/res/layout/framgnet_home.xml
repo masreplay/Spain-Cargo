@@ -9,250 +9,366 @@
             type="com.enjaz.hr.ui.home.HomeViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/parent"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/grey_100">
 
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/parent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="160dp"
-                android:layout_height="175dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/bg_round_ripple_24dp"
-                android:clickable="true">
-
-                <TextView
-                    android:id="@+id/tv_count"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/bg_circle"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:gravity="center"
-                    android:text="2"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tv_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/new_employee"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tv_message"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Abdalla Atheer\njoined your team\nwelcome him"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_title" />
-
-                <TextView
-                    android:id="@+id/tv_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="@string/notification"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_message" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="160dp"
-                android:layout_height="175dp"
-                android:background="@drawable/bg_round_ripple_24dp"
-                android:clickable="true">
-
-                <TextView
-                    android:id="@+id/tv_count_req"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/bg_circle"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:gravity="center"
-                    android:text="2"
-                    android:textColor="@android:color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tv_title_req"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@string/new_request"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tv_message_req"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Will be on leave\nfrom 27th Aug to\n29th Aug"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_title_req" />
-
-                <TextView
-                    android:id="@+id/tv_type_req"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="@string/requests"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_message_req" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
+            android:layout_height="match_parent">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="160dp"
-                android:layout_height="175dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/bg_round_ripple_24dp"
-                android:clickable="true">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="160dp"
+                    android:layout_height="175dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_round_ripple_24dp"
+                    android:clickable="true">
 
-                <app.futured.donut.DonutProgressView
-                    android:id="@+id/donut_leave"
-                    android:layout_width="110dp"
-                    android:layout_height="110dp"
-                    android:layout_marginTop="8dp"
-                    app:donut_bgLineColor="@color/blue_100"
-                    app:donut_gapAngle="270"
-                    app:donut_gapWidth="0"
-                    app:donut_strokeWidth="24dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/tv_count"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/bg_circle"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:gravity="center"
+                        android:text="2"
+                        android:textColor="@android:color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tv_leave_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10/24"
-                    android:textColor="@color/colorPrimary"
-                    app:layout_constraintBottom_toBottomOf="@+id/donut_leave"
-                    app:layout_constraintEnd_toEndOf="@+id/donut_leave"
-                    app:layout_constraintStart_toStartOf="@+id/donut_leave"
-                    app:layout_constraintTop_toTopOf="@+id/donut_leave" />
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/new_employee"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tv_type_le"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="@string/leaves"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/donut_leave" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/tv_message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Abdalla Atheer\njoined your team\nwelcome him"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+                    <TextView
+                        android:id="@+id/tv_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="@string/notification"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_message" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="160dp"
+                    android:layout_height="175dp"
+                    android:background="@drawable/bg_round_ripple_24dp"
+                    android:clickable="true">
+
+                    <TextView
+                        android:id="@+id/tv_count_req"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/bg_circle"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:gravity="center"
+                        android:text="2"
+                        android:textColor="@android:color/white"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_title_req"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/new_request"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_message_req"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Will be on leave\nfrom 27th Aug to\n29th Aug"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_title_req" />
+
+                    <TextView
+                        android:id="@+id/tv_type_req"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="@string/requests"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_message_req" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="160dp"
-                android:layout_height="175dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/bg_round_ripple_24dp"
-                android:clickable="true">
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-                <app.futured.donut.DonutProgressView
-                    android:id="@+id/donut_attendance"
-                    android:layout_width="110dp"
-                    android:layout_height="110dp"
-                    android:layout_marginTop="8dp"
-                    app:donut_bgLineColor="@color/blue_100"
-                    app:donut_gapAngle="270"
-                    app:donut_gapWidth="0"
-                    app:donut_strokeWidth="24dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="160dp"
+                    android:layout_height="175dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_round_ripple_24dp"
+                    android:clickable="true">
 
-                <TextView
-                    android:id="@+id/tv_attendance_value"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="20-5-3"
-                    android:textColor="@color/colorPrimary"
-                    app:layout_constraintBottom_toBottomOf="@+id/donut_attendance"
-                    app:layout_constraintEnd_toEndOf="@+id/donut_attendance"
-                    app:layout_constraintStart_toStartOf="@+id/donut_attendance"
-                    app:layout_constraintTop_toTopOf="@+id/donut_attendance" />
+                    <app.futured.donut.DonutProgressView
+                        android:id="@+id/donut_leave"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_marginTop="8dp"
+                        app:donut_bgLineColor="@color/blue_100"
+                        app:donut_gapAngle="270"
+                        app:donut_gapWidth="0"
+                        app:donut_strokeWidth="24dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tv_type_atte"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:text="@string/attendance"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/donut_attendance" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/tv_leave_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10/24"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintBottom_toBottomOf="@+id/donut_leave"
+                        app:layout_constraintEnd_toEndOf="@+id/donut_leave"
+                        app:layout_constraintStart_toStartOf="@+id/donut_leave"
+                        app:layout_constraintTop_toTopOf="@+id/donut_leave" />
 
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/tv_type_le"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="@string/leaves"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/donut_leave" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="160dp"
+                    android:layout_height="175dp"
+                    android:background="@drawable/bg_round_ripple_24dp"
+                    android:clickable="true">
+
+                    <app.futured.donut.DonutProgressView
+                        android:id="@+id/donut_attendance"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        android:layout_marginTop="8dp"
+                        app:donut_bgLineColor="@color/blue_100"
+                        app:donut_gapAngle="270"
+                        app:donut_gapWidth="0"
+                        app:donut_strokeWidth="24dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_attendance_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20-5-3"
+                        android:textColor="@color/colorPrimary"
+                        app:layout_constraintBottom_toBottomOf="@+id/donut_attendance"
+                        app:layout_constraintEnd_toEndOf="@+id/donut_attendance"
+                        app:layout_constraintStart_toStartOf="@+id/donut_attendance"
+                        app:layout_constraintTop_toTopOf="@+id/donut_attendance" />
+
+                    <TextView
+                        android:id="@+id/tv_type_atte"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="@string/attendance"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/donut_attendance" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="160dp"
+                    android:layout_height="175dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_round_ripple_24dp"
+                    android:clickable="true">
+
+
+                    <TextView
+                        android:id="@+id/tv_title_pay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/new_employee"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_date"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="20dp"
+                        android:text="Aug 27,2018"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_type_pay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:text="@string/payslip"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_date" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="160dp"
+                    android:layout_height="175dp"
+                    android:background="@drawable/bg_round_ripple_24dp"
+                    android:clickable="true">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/circleImageView"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/p1"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_type_team"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/circleImageView2"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="4dp"
+                        android:src="@drawable/p2"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_type_team"
+                        app:layout_constraintStart_toEndOf="@+id/circleImageView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/circleImageView3"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="4dp"
+                        android:src="@drawable/p3"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_type_team"
+                        app:layout_constraintEnd_toStartOf="@+id/circleImageView"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_type_team"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="24dp"
+                        android:text="@string/team"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 </layout>
