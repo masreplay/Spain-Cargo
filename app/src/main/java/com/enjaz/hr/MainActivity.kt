@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
 
         val navGraphIds = listOf(
-            R.navigation.mobile_navigation
+            R.navigation.home
         )
 
         val controller = bottomNavigationView.setupWithNavController(
