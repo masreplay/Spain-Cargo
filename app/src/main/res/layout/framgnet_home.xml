@@ -322,36 +322,16 @@
                     android:background="@drawable/bg_round_ripple_24dp"
                     android:clickable="true">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:id="@+id/circleImageView"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/p1"
+                        android:src="@drawable/ic_round_group_24"
                         app:layout_constraintBottom_toTopOf="@+id/tv_type_team"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/circleImageView2"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="4dp"
-                        android:src="@drawable/p2"
-                        app:layout_constraintBottom_toTopOf="@+id/tv_type_team"
-                        app:layout_constraintStart_toEndOf="@+id/circleImageView"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/circleImageView3"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_marginEnd="4dp"
-                        android:src="@drawable/p3"
-                        app:layout_constraintBottom_toTopOf="@+id/tv_type_team"
-                        app:layout_constraintEnd_toStartOf="@+id/circleImageView"
-                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/tv_type_team"
