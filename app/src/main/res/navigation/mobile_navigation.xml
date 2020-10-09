@@ -8,4 +8,8 @@
         android:id="@+id/homeFragment"
         android:name="com.enjaz.hr.ui.home.HomeFragment"
         android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/sendRequestFragment"
+        android:name="com.enjaz.hr.ui.sentRequest.SendRequestFragment"
+        android:label="SendRequestFragment" />
 </navigation>

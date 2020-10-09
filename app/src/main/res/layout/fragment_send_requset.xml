@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="16dp"
+            android:text="Leave date"
+            android:textColor="@color/carbon_grey_500"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_leaveDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="20dp"
+            android:text="24 April 2020"
+            android:textColor="@color/carbon_grey_800"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_peopleLeft"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/carbon_grey_200"
+            android:gravity="center"
+            android:text="6 people on leave on same day"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_leaveDate"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_LeaveType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="16dp"
+            android:text="Leave type"
+            android:textColor="@color/carbon_grey_500"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_peopleLeft" />
+
+        <LinearLayout
+            android:id="@+id/lyt_toggle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_LeaveType"
+            android:orientation="horizontal"
+            android:weightSum="4"
+
+
+            >
+
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggleButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:gravity="center"
+
+            android:orientation="horizontal"
+            android:visibility="visible"
+            app:checkedButton="@+id/button3"
+
+            app:singleSelection="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button1"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textAllCaps="false"
+                android:text="Annual" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button2"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:textAllCaps="false"
+
+                android:layout_height="wrap_content"
+                android:text="Sick" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button3"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:textAllCaps="false"
+
+                android:layout_height="wrap_content"
+                android:text="Business" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/button4"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:textAllCaps="false"
+
+                android:layout_height="wrap_content"
+                android:text="Other" />
+
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+        </LinearLayout>
+
+
+        <View
+            android:id="@+id/seperator1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toBottomOf="@id/lyt_toggle"
+            android:layout_marginTop="20dp"
+            android:background="@color/carbon_grey_200"
+            />
+
+        <TextView
+            android:id="@+id/tv_option1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/seperator1"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/carbon_grey_500"
+            android:textSize="16sp"
+            android:text="Option 1"
+
+            />
+        <com.kyleduo.switchbutton.SwitchButton
+            android:id="@+id/switchOption1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toTopOf="@id/tv_option1"
+            app:layout_constraintBottom_toBottomOf="@id/tv_option1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:kswThumbColor="@color/switch_color_thumb_states"
+            app:kswTextAdjust="-2dp"
+            app:kswTextExtra="8dp"
+            app:kswTextOn="Yes"
+            app:kswTextOff="No"
+            app:kswBackColor="@color/switch_color_states"
+            android:textColor="@color/switch_text_color_states"
+
+            android:checked="true"
+
+            />
+
+        <View
+            android:id="@+id/seperator2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_option1"
+            android:layout_marginTop="25dp"
+            android:background="@color/carbon_grey_200"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_option2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/seperator2"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/carbon_grey_500"
+            android:textSize="16sp"
+            android:text="Option 2"
+
+            />
+        <com.kyleduo.switchbutton.SwitchButton
+            android:id="@+id/switchOption2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toTopOf="@id/tv_option2"
+            app:layout_constraintBottom_toBottomOf="@id/tv_option2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:kswThumbColor="@color/switch_color_thumb_states"
+            app:kswTextAdjust="-2dp"
+            app:kswTextExtra="8dp"
+            app:kswTextOn="Yes"
+            app:kswTextOff="No"
+            app:kswBackColor="@color/switch_color_states"
+            android:textColor="@color/switch_text_color_states"
+
+            android:checked="true"
+
+            />
+
+        <View
+            android:id="@+id/seperator3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_option2"
+            android:layout_marginTop="25dp"
+            android:background="@color/carbon_grey_200"
+            />
+
+        <TextView
+            android:id="@+id/tv_option3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/seperator3"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/carbon_grey_500"
+            android:textSize="16sp"
+            android:text="Option 2"
+
+            />
+
+        <com.kyleduo.switchbutton.SwitchButton
+            android:id="@+id/switchOption3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toTopOf="@id/tv_option3"
+            app:layout_constraintBottom_toBottomOf="@id/tv_option3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:kswThumbColor="@color/switch_color_thumb_states"
+            app:kswTextAdjust="-2dp"
+            app:kswTextExtra="8dp"
+            app:kswTextOn="Yes"
+            app:kswTextOff="No"
+            app:kswBackColor="@color/switch_color_states"
+            android:textColor="@color/switch_text_color_states"
+
+            android:checked="true"
+
+            />
+        <View
+            android:id="@+id/seperator4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_option3"
+            android:layout_marginTop="25dp"
+            android:background="@color/carbon_grey_200"
+            />
+        <TextView
+            android:id="@+id/tv_option4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/seperator4"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="25dp"
+            android:textColor="@color/carbon_grey_500"
+            android:textSize="16sp"
+            android:text="Option 2"
+
+            />
+        <com.kyleduo.switchbutton.SwitchButton
+            android:id="@+id/switchOption4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toTopOf="@id/tv_option4"
+            app:layout_constraintBottom_toBottomOf="@id/tv_option4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:kswThumbColor="@color/switch_color_thumb_states"
+            app:kswTextAdjust="-2dp"
+            app:kswTextExtra="8dp"
+            app:kswTextOn="Yes"
+            app:kswTextOff="No"
+            app:kswBackColor="@color/switch_color_states"
+            android:textColor="@color/switch_text_color_states"
+
+            android:checked="true"
+
+            />
+
+        <carbon.widget.Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:carbon_rippleColor="@color/carbon_white"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/carbon_white"
+            android:textAllCaps="false"
+            android:text="Confirm"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

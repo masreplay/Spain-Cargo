@@ -10,5 +10,8 @@
     <color name="green" type="color">#51c03e</color>
     <color name="blue_100" type="color">#d0e3ff</color>
     <color name="red_100" type="color">#f64a3f</color>
+    <color name="blue_light" type="color">#d6e6ff</color>
+
+
 
 </resources>
