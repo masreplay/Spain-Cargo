@@ -320,6 +320,7 @@
                     android:layout_width="160dp"
                     android:layout_height="175dp"
                     android:background="@drawable/bg_round_ripple_24dp"
+                    android:onClick="@{()->viewModel.navigator.showTeam()}"
                     android:clickable="true">
 
                     <ImageView

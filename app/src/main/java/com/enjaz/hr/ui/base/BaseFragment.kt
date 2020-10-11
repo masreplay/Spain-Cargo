@@ -22,9 +22,6 @@ abstract class BaseFragment<T : ViewDataBinding, N : BaseNavigator, V : BaseView
     @LayoutRes
     abstract fun getLayoutId(): Int
 
-    abstract fun getViewModelClass(): Class<V>
-
-
     abstract fun getNavigator(): N
 
     abstract fun getViewModel(): V

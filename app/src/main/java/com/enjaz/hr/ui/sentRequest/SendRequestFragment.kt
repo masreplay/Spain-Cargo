@@ -29,9 +29,6 @@ class SendRequestFragment :
         return sedRequestViewModel
     }
 
-    override fun getViewModelClass(): Class<SendRequestViewModel> {
-        return SendRequestViewModel::class.java
-    }
 
     override fun getNavigator(): ISendRequestInteractionListener {
         return this

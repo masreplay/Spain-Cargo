@@ -5,9 +5,9 @@ import android.text.Html
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import app.futured.donut.DonutSection
 import com.enjaz.hr.R
-import com.enjaz.hr.data.db.MovieDB
 import com.enjaz.hr.databinding.FramgnetHomeBinding
 import com.enjaz.hr.ui.base.BaseFragment
 import com.enjaz.hr.ui.base.BaseNavigator
@@ -31,9 +31,6 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
         return homeViewModel
     }
 
-    override fun getViewModelClass(): Class<HomeViewModel> {
-        return HomeViewModel::class.java
-    }
 
     override fun getNavigator(): IHomeInteractionListener {
         return this
@@ -81,19 +78,13 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
     }
 
 
-    override fun showAllClasses() {
-        // navigate to classes view ==> findNavController().navigate(R.id.classesFragment)
-    }
-
-    override fun showAllTasks() {
-        // navigate to tasks view ==> findNavController().navigate(R.id.classesFragment)
-
+    override fun showTeam() {
+        findNavController().navigate(R.id.teamFragment)
     }
 
 
 }
 
 interface IHomeInteractionListener : BaseNavigator {
-    fun showAllClasses()
-    fun showAllTasks()
+    fun showTeam()
 }
