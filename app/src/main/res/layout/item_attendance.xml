@@ -7,12 +7,19 @@
         <variable
             name="item"
             type="String" />
+        <variable
+            name="clickListener"
+            type="com.enjaz.hr.ui.attendance.AttendanceFragment" />
+
     </data>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
+        android:onClick="@{()->clickListener.onAttendanceClick(item)}"
+
 
 
         >

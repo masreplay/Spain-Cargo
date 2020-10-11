@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.enjaz.hr.R
@@ -25,7 +26,7 @@ import java.util.*
 @AndroidEntryPoint
 class AttendanceFragment :
     BaseFragment<FragmentAttendanceBinding, IAttendanceInteractionListener, AttendanceViewModel>(),
-    IAttendanceInteractionListener {
+    IAttendanceInteractionListener, IAttendanceItemActionListener {
 
     private val attendanceViewModel: AttendanceViewModel by viewModels()
 
@@ -58,6 +59,8 @@ class AttendanceFragment :
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        attendanceAdapter.setOnItemClickListener(this)
 
         tvDate.text = "${DateUtils.getMonthName(Date.from(Instant.now()))} ${DateUtils.getYear(
             Date.from(Instant.now())
@@ -201,6 +204,10 @@ class AttendanceFragment :
         }
         calendar.add(Calendar.DATE, -1)
         return list
+    }
+
+     override fun onAttendanceClick(string: String) {
+        findNavController().navigate(R.id.sendRequestFragment)
     }
 
 

@@ -6,6 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.afollestad.vvalidator.util.hide
+import com.afollestad.vvalidator.util.show
 import com.enjaz.hr.util.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,7 +42,21 @@ class MainActivity : AppCompatActivity() {
         )
 
         controller.observe(this, Observer { navController ->
-            setupActionBarWithNavController(navController)
+
+            navController.addOnDestinationChangedListener { controller, destination, arguments ->
+
+                setupActionBarWithNavController(controller)
+
+                when (destination.id) {
+                    R.id.sendRequestFragment -> {
+                        bottomNavigationView.hide()
+                    }
+                    else -> bottomNavigationView.show()
+
+
+                }
+
+            }
 
         })
         currentNavController = controller
