@@ -135,6 +135,7 @@ dependencies {
     implementation 'jp.wasabeef:recyclerview-animators:4.0.1'
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'com.afollestad:vvalidator:0.5.2'
+    implementation 'com.kyleduo.switchbutton:library:2.0.2'
     implementation 'com.michalsvec:single-row-calednar:1.0.0'
 
 
