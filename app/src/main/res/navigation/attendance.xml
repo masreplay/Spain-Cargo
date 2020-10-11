@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/attendance"
+    app:startDestination="@id/attendanceFragment">
+
+    <fragment
+        android:id="@+id/attendanceFragment"
+        android:name="com.enjaz.hr.ui.attendance.AttendanceFragment"
+        android:label="Attendance" />
+</navigation>

@@ -2,8 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/mobile_navigation"
+        android:id="@+id/home"
         android:icon="@drawable/ic_round_home_24"
         android:title="@string/home" />
+
+    <item
+        android:id="@+id/attendance"
+        android:icon="@drawable/ic_round_event_note_24"
+        android:title="@string/attendance" />
+
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_round_person_24"
+        android:title="@string/profile" />
+
 
 </menu>
