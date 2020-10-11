@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">HRM</string>
-    <string name="tokens_key_prefrences">tokens_key</string>
+    <string name="tokens_key_prefrences" translatable="false">tokens_key</string>
 
     <string name="home_fragment">Home Fragment</string>
     <string name="sport_fragment">Sport Fragment</string>
@@ -9,5 +9,12 @@
     <string name="home">Home</string>
     <string name="received">received</string>
     <string name="sent">Sent</string>
+    <string name="new_employee">New Employee</string>
+    <string name="new_request">New Request</string>
+    <string name="attendance">Attendance</string>
     <string name="requests">Requests</string>
+    <string name="notification">Notification</string>
+    <string name="leaves">Leaves</string>
+    <string name="payslip">Payslip</string>
+    <string name="team">Team</string>
 </resources>

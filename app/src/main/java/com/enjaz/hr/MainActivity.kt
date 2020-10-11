@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         val navGraphIds = listOf(
             R.navigation.home,
             R.navigation.requests
-
         )
 
         val controller = bottomNavigationView.setupWithNavController(
