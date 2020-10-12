@@ -1,9 +1,11 @@
 package com.enjaz.hr.util
 
 import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -11,6 +13,7 @@ import com.enjaz.hr.ui.base.BaseDataItemsAdapter
 import com.facebook.drawee.view.SimpleDraweeView
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 
 @BindingAdapter("bind:overlayResource")
@@ -29,6 +32,8 @@ fun loadImage(view: SimpleDraweeView, imageUrl: String?) {
 fun setTime(view: TextView, time: Int) {
     view.text = "$time:00"
 }
+
+
 
 
 @BindingAdapter("monthFormat")

@@ -1,35 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout><data>
-    <variable
-        name="item"
-        type="com.enjaz.hr.data.model.video.VidModel" />
-    <variable
-        name="viewModel"
-        type="androidx.lifecycle.ViewModel" />
-    <variable
-        name="clickListener"
-        type="com.enjaz.hr.ui.base.BaseDataItemInteractionListener" />
-</data>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    android:orientation="vertical"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    <data>
 
+        <variable
+            name="item"
+            type="com.enjaz.hr.data.model.video.VidModel" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/nav_host_container"
+        <variable
+            name="viewModel"
+            type="androidx.lifecycle.ViewModel" />
+
+        <variable
+            name="clickListener"
+            type="com.enjaz.hr.ui.base.BaseDataItemInteractionListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:menu="@menu/home_bottom_nav"/>
-</LinearLayout>
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:id="@+id/parent_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/nav_host_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/home_bottom_nav" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

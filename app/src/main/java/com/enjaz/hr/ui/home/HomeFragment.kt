@@ -7,7 +7,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import app.futured.donut.DonutSection
 import com.enjaz.hr.R
-import com.enjaz.hr.data.db.MovieDB
 import com.enjaz.hr.databinding.FramgnetHomeBinding
 import com.enjaz.hr.ui.base.BaseFragment
 import com.enjaz.hr.ui.base.BaseNavigator
@@ -49,7 +48,6 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
         val text =
             "<font color=#1575ff>20-</font><font color=#f6ae3f>5</font><font color=#1575ff>-</font><font color=#f64a3f>3</font>"
         tv_attendance_value.text = Html.fromHtml(text)
-
 
         val section1 = DonutSection(
             name = "section_1",

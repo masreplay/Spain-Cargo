@@ -7,8 +7,8 @@ import com.enjaz.hr.data.AppDataManager
 import com.enjaz.hr.data.model.BaseResource
 import com.enjaz.hr.data.model.BaseResponse
 import com.enjaz.hr.data.model.token.TokenResult
-import com.enjaz.hr.util.PrefsManager
 import com.enjaz.hr.ui.base.BaseViewModel
+import com.enjaz.hr.util.PrefsManager
 
 class HomeViewModel @ViewModelInject constructor(
     dataManager: AppDataManager,
@@ -26,20 +26,17 @@ class HomeViewModel @ViewModelInject constructor(
             dataManager.login("email.value!!.trim()", "pass.value!!.trim()"),
             ::onLoginSuccess,
             { e ->
-                //error handling
-                run {
 
-                    pref.getAccessToken()
-
-                    Log.d("Abdalla19977", e.message!!)
-                }
+                loginResponse.postValue(BaseResource.empty())
 
             })
+
+
     }
 
     private fun onLoginSuccess(result: BaseResource<BaseResponse<TokenResult>>) {
 
-        loginResponse.postValue(result)
+        loginResponse.postValue(BaseResource.empty())
     }
 
 }

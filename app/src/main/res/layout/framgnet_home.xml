@@ -348,6 +348,17 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
 
+            <include
+                android:id="@+id/status"
+                layout="@layout/view_status"
+                app:emptydrawable='@{@drawable/ic_baseline_not_interested_24}'
+                app:emptytext='@{@string/app_name}'
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:viewStatus="@{viewModel.loginResponse.status}" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
