@@ -1,35 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout><data>
-    <variable
-        name="item"
-        type="com.enjaz.hr.data.model.video.VidModel" />
-    <variable
-        name="viewModel"
-        type="androidx.lifecycle.ViewModel" />
-    <variable
-        name="clickListener"
-        type="com.enjaz.hr.ui.base.BaseDataItemInteractionListener" />
-</data>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<layout>
 
-    android:orientation="vertical"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    <data>
 
+        <variable
+            name="item"
+            type="com.enjaz.hr.data.model.video.VidModel" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/nav_host_container"
+        <variable
+            name="viewModel"
+            type="androidx.lifecycle.ViewModel" />
+
+        <variable
+            name="clickListener"
+            type="com.enjaz.hr.ui.base.BaseDataItemInteractionListener" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:menu="@menu/home_bottom_nav"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+        <androidx.appcompat.widget.Toolbar
+
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/actionbar_size"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme"
+            app:theme="@style/ToolbarColoredBackArrow"
+            app:title="HRM"
+            app:titleTextColor="@color/carbon_white"
+
+            />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:menu="@menu/home_bottom_nav" />
+    </LinearLayout>
 </layout>

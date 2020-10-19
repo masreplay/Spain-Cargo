@@ -206,8 +206,8 @@ class AttendanceFragment :
         return list
     }
 
-     override fun onAttendanceClick(string: String) {
-        findNavController().navigate(R.id.sendRequestFragment)
+     override fun onRequestClick(string: String,position:Int) {
+        findNavController().navigate(R.id.requestTypeFragment)
     }
 
 

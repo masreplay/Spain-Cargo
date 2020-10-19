@@ -40,6 +40,8 @@ abstract class BaseDataItemsAdapter<T>(
         if (holder is ItemViewHolder) {
             holder.viewBinding.setVariable(BR.item, items[itemIndex])
             holder.viewBinding.setVariable(BR.clickListener, itemInteractionListener)
+            holder.viewBinding.setVariable(BR.position, position)
+
         }
     }
 

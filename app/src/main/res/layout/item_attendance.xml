@@ -8,6 +8,9 @@
             name="item"
             type="String" />
         <variable
+            name="position"
+            type="Integer" />
+        <variable
             name="clickListener"
             type="com.enjaz.hr.ui.attendance.AttendanceFragment" />
 
@@ -18,21 +21,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:onClick="@{()->clickListener.onAttendanceClick(item)}"
 
 
 
         >
+
         <TextView
             android:id="@+id/tv_exceptionType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:text="Delayed"
             android:textColor="@color/red_100"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_requestStatus"
+            app:layout_constraintStart_toStartOf="@id/tv_requestStatus"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
 
 
             />
@@ -45,8 +50,11 @@
             android:textColor="@color/carbon_grey_800"
             android:layout_marginTop="2dp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/tv_exceptionType"
-app:layout_constraintTop_toBottomOf="@id/tv_exceptionType"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="10dp"
+
+
 
             />
 
@@ -66,6 +74,7 @@ app:layout_constraintTop_toBottomOf="@id/tv_exceptionType"
 
 
         <TextView
+            android:id="@+id/tv_requestStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
@@ -73,8 +82,6 @@ app:layout_constraintTop_toBottomOf="@id/tv_exceptionType"
             android:textColor="@color/carbon_grey_600"
             app:layout_constraintStart_toStartOf="@id/tv_time"
             app:layout_constraintTop_toBottomOf="@id/tv_date"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="10dp"
 
             />
 
@@ -84,9 +91,11 @@ app:layout_constraintTop_toBottomOf="@id/tv_exceptionType"
             android:layout_height="35dp"
             android:layout_marginEnd="16dp"
             android:background="@color/colorPrimary"
+            android:onClick="@{()->clickListener.onRequestClick(item,position)}"
             android:text="Request"
             android:textAllCaps="false"
             android:textColor="@color/carbon_white"
+            app:carbon_rippleColor="@color/blue_light"
             app:carbon_cornerRadius="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

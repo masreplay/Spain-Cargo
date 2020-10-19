@@ -351,12 +351,13 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv"
-                    items="@{viewModel.attendanceResponse}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginTop="4dp"
                     tools:listitem="@layout/item_attendance"
+                    items="@{viewModel.attendanceResponse}"
+
 
 
                     />

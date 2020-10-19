@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 
 android {
@@ -136,6 +137,7 @@ dependencies {
     implementation 'com.kyleduo.switchbutton:library:2.0.2'
     implementation 'com.michalsvec:single-row-calednar:1.0.0'
 
+    implementation 'com.zagori:bottomnavbar:1.0.2'
 
 
     implementation("app.futured.donut:library:2.0.0")
