@@ -37,6 +37,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
+
+
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -46,5 +48,7 @@
             android:layout_gravity="bottom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:menu="@menu/home_bottom_nav" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

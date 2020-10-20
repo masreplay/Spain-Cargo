@@ -20,4 +20,8 @@
         <item name="android:textColor">@color/switch_color_thumb_states</item>
         <item name="android:textSize">12sp</item>
     </style>
+
+    <style name="CustomChipChoice" parent="@style/Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/bg_chip_state_list</item>
+    </style>
 </resources>

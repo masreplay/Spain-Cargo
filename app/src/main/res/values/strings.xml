@@ -19,6 +19,10 @@
     <string name="attendance">Attendance</string>
     <string name="profile">Profile</string>
     <string name="press_the_above_button_to_retry">press the above button to retry</string>
+    <string name="job_type">Job type</string>
+    <string name="experience_level">Experience level</string>
+    <string name="show_result">Show result</string>
+    <string name="clear">Clear</string>
 
 
     <string-array name="hours_of_day">

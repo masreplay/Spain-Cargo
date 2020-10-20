@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.enjaz.hr.R
 import com.enjaz.hr.databinding.FramgnetRequestsBinding
 import com.enjaz.hr.ui.base.BaseFragment
@@ -40,6 +41,9 @@ class RequestsFragment :
         super.onViewCreated(view, savedInstanceState)
 
         getViewModel().getdata()
+
+        findNavController().navigate(R.id.filterSheet)
+
 
         fragment_sent = SentRequestsFragment()
         fragment_received = ReceivedRequestsFragment()

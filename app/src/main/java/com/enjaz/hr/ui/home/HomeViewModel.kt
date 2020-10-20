@@ -1,6 +1,5 @@
 package com.enjaz.hr.ui.home
 
-import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import com.enjaz.hr.data.AppDataManager
