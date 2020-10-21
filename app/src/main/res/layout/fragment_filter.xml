@@ -18,7 +18,6 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textField"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
@@ -27,7 +26,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@android:color/white" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,57 +48,70 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            app:checkedChip="@id/ch2"
             app:layout_constraintTop_toBottomOf="@+id/tv_job"
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/ch1"
-                style="@style/Widget.MaterialComponents.Chip.Filter"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:text="Full-time"
+                android:textColor="@color/chip_text_color"
+                app:chipBackgroundColor="@color/bg_chip_state_list"
                 app:chipCornerRadius="8dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/ch2"
-                style="@style/Widget.MaterialComponents.Chip.Filter"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Part-time"
+                android:textColor="@color/chip_text_color"
+                app:chipBackgroundColor="@color/bg_chip_state_list"
                 app:chipCornerRadius="8dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/ch3"
-                style="@style/Widget.MaterialComponents.Chip.Filter"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Remote/Contract"
+                android:textColor="@color/chip_text_color"
+                app:chipBackgroundColor="@color/bg_chip_state_list"
                 app:chipCornerRadius="8dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/ch4"
-                style="@style/Widget.MaterialComponents.Chip.Filter"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Freelance"
+                android:textColor="@color/chip_text_color"
+                app:chipBackgroundColor="@color/bg_chip_state_list"
                 app:chipCornerRadius="8dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/ch5"
-                style="@style/Widget.MaterialComponents.Chip.Filter"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Internship"
+                android:textColor="@color/chip_text_color"
+                app:chipBackgroundColor="@color/bg_chip_state_list"
                 app:chipCornerRadius="8dp" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/ch6"
-                style="@style/Widget.MaterialComponents.Chip.Filter"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Commission"
+                android:textColor="@color/chip_text_color"
+                app:chipBackgroundColor="@color/bg_chip_state_list"
                 app:chipCornerRadius="8dp" />
+
         </com.google.android.material.chip.ChipGroup>
 
         <TextView
@@ -123,38 +136,48 @@
             tools:layout_editor_absoluteX="16dp">
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Filter"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Entry level"
+                android:textColor="@color/chip_text_color"
+                app:chipBackgroundColor="@color/bg_chip_state_list"
                 app:chipCornerRadius="8dp" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Filter"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mid level"
+                android:textColor="@color/chip_text_color"
+                app:chipBackgroundColor="@color/bg_chip_state_list"
                 app:chipCornerRadius="8dp" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Filter"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Senior level"
+                android:textColor="@color/chip_text_color"
+                app:chipBackgroundColor="@color/bg_chip_state_list"
                 app:chipCornerRadius="8dp" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Filter"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Manager"
+                android:textColor="@color/chip_text_color"
+                app:chipBackgroundColor="@color/bg_chip_state_list"
                 app:chipCornerRadius="8dp" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Filter"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Sr.Manager level"
+                android:textColor="@color/chip_text_color"
+                app:chipBackgroundColor="@color/bg_chip_state_list"
                 app:chipCornerRadius="8dp" />
 
         </com.google.android.material.chip.ChipGroup>
@@ -205,7 +228,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="2020-11-11"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorPrimary"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/tv_from_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_date" />
@@ -229,20 +252,21 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="2020-11-14"
-            android:textColor="@android:color/black"
+            android:textColor="@color/colorPrimary"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/tv_to_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_date" />
 
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_filter"
+            android:id="@+id/btn_Choice"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:text="@string/show_result"
+            android:textAllCaps="false"
             app:cornerRadius="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/guideline"
@@ -250,18 +274,20 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_from_title" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_clear"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             android:text="@string/clear"
+            android:textAllCaps="false"
             android:textColor="@color/colorAccent"
             app:cornerRadius="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toTopOf="@+id/btn_filter" />
+            app:layout_constraintTop_toTopOf="@+id/btn_Choice" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -51,13 +51,17 @@ class FilterSheet :
         tv_to.setOnClickListener {
             newFragment.show(childFragmentManager, "datePicker")
         }
+
+        btn_clear.setOnClickListener {
+            for (x in 0 until g1.childCount) {
+            }
+
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.i("abdalla19988", "abdalla19988")
-
-
 
     }
 
