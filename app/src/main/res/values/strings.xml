@@ -19,6 +19,7 @@
     <string name="attendance">Attendance</string>
     <string name="profile">Profile</string>
     <string name="press_the_above_button_to_retry">press the above button to retry</string>
+    <string name="notifications">Notifications</string>
 
 
     <string-array name="hours_of_day">
