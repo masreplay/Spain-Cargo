@@ -2,13 +2,18 @@ package com.enjaz.hr
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.afollestad.vvalidator.util.hide
+import com.afollestad.vvalidator.util.show
 import com.enjaz.hr.util.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -20,6 +25,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         if (savedInstanceState == null) {
             setupBottomNavigationBar()
+            val toolbar = findViewById<Toolbar>(R.id.toolbar)
+
+
+            setSupportActionBar(toolbar)
         }
     }
 
@@ -40,7 +49,21 @@ class MainActivity : AppCompatActivity() {
         )
 
         controller.observe(this, Observer { navController ->
-            setupActionBarWithNavController(navController)
+
+            navController.addOnDestinationChangedListener { controller, destination, arguments ->
+
+                when (destination.id) {
+                    R.id.profileFragment -> {
+                        toolbar.hide()
+                    }
+                    else -> toolbar.show()
+                }
+
+
+
+
+
+            }
 
         })
         currentNavController = controller
