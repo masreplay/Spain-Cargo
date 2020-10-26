@@ -1,7 +1,7 @@
 package com.enjaz.hr.ui.home
 
 import android.os.Bundle
-import android.text.Html
+import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
@@ -19,6 +19,8 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
     IHomeInteractionListener {
 
     private val homeViewModel: HomeViewModel by viewModels()
+    lateinit var usersAdapter: UsersAdapter
+    lateinit var calenderAdapter: CalenderAdapter
 
 
     override fun getLayoutId(): Int {
@@ -41,41 +43,44 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getViewModel().mylog()
+        getViewModel().getdata()
 
-        // TODO: 10/7/2020 replace deprecated
-        val text =
-            "<font color=#1575ff>20-</font><font color=#f6ae3f>5</font><font color=#1575ff>-</font><font color=#f64a3f>3</font>"
-        tv_attendance_value.text = Html.fromHtml(text)
+        getViewDataBinding().rv.apply {
+            adapter = usersAdapter
+        }
+
+        getViewDataBinding().rvDate.apply {
+            adapter = calenderAdapter
+        }
 
 
         val section1 = DonutSection(
             name = "section_1",
-            color = ContextCompat.getColor(requireActivity(), R.color.colorPrimary),
+            color = ContextCompat.getColor(requireActivity(), R.color.green_400),
             amount = 25f
         )
-
-        donut_leave.cap = 100f
-        donut_leave.submitData(listOf(section1))
 
         val section2 = DonutSection(
             name = "section_2",
             color = ContextCompat.getColor(requireActivity(), R.color.colorPrimary),
-            amount = 65f
+            amount = 45f
         )
 
         val section3 = DonutSection(
             name = "section_3",
-            color = ContextCompat.getColor(requireActivity(), R.color.orange),
-            amount = 15f
+            color = ContextCompat.getColor(requireActivity(), R.color.red_100),
+            amount = 10f
         )
         val section4 = DonutSection(
             name = "section_4",
-            color = ContextCompat.getColor(requireActivity(), R.color.red_100),
+
+            color = ContextCompat.getColor(requireActivity(), R.color.orange),
             amount = 20f
         )
         donut_attendance.cap = 100f
-        donut_attendance.submitData(listOf(section2, section3, section4))
+        donut_attendance.submitData(listOf(section1, section2, section3, section4))
+
+
     }
 
 
@@ -86,6 +91,15 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
     override fun showAllTasks() {
         // navigate to tasks view ==> findNavController().navigate(R.id.classesFragment)
 
+    }
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.i("abdalla19988", "abdalla19988")
+
+        usersAdapter = UsersAdapter(requireContext(), mutableListOf())
+        calenderAdapter = CalenderAdapter(requireContext(), mutableListOf())
     }
 
 
