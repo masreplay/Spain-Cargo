@@ -23,7 +23,7 @@ abstract class BaseDataItemsAdapter<T>(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         return ItemViewHolder(
-            createViewDataBinding(getLayoutInflater(parent), parent,viewType)
+            createViewDataBinding(getLayoutInflater(parent), parent, viewType)
         )
     }
 
@@ -40,6 +40,8 @@ abstract class BaseDataItemsAdapter<T>(
         if (holder is ItemViewHolder) {
             holder.viewBinding.setVariable(BR.item, items[itemIndex])
             holder.viewBinding.setVariable(BR.clickListener, itemInteractionListener)
+            holder.viewBinding.setVariable(BR.position, itemIndex)
+
         }
     }
 

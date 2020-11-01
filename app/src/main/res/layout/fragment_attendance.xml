@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,18 +10,17 @@
             type="com.enjaz.hr.ui.attendance.AttendanceViewModel" />
     </data>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
-        >
+        android:background="@android:color/white">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/collapsing_toolbar"
@@ -28,85 +29,62 @@
                 android:background="@color/carbon_white"
                 app:contentScrim="?attr/colorPrimary"
                 app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Title"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                >
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-                <LinearLayout
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/grey_100"
                     android:gravity="center"
                     android:orientation="vertical">
-                    <androidx.constraintlayout.widget.ConstraintLayout
+
+                    <com.github.florent37.shapeofview.shapes.ArcView
+                        android:id="@+id/arcView"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:shape_arc_height="30dp"
+                        app:shape_arc_position="bottom">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorPrimary" />
+                    </com.github.florent37.shapeofview.shapes.ArcView>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_date"
+                        items="@{viewModel.dates}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        >
-                        <com.michalsvec.singlerowcalendar.calendar.SingleRowCalendar
-                            android:id="@+id/main_single_row_calendar"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            app:deselection="false"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tvDate"
-                            app:longPress="false"
-                            app:multiSelection="false" />
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:itemCount="10"
+                        tools:listitem="@layout/item_date" />
 
-                        <TextView
-                            android:id="@+id/tvDate"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:fontFamily="sans-serif-medium"
-                            android:text="SELECT A DATE"
-                            android:textColor="@color/carbon_grey_600"
-                            android:textSize="14sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-
-                        <ImageButton
-                            android:id="@+id/btnRight"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_marginEnd="16dp"
-                            android:background="@drawable/ic_arrow_right_24dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/tvDate"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/tvDate" />
-
-                        <ImageButton
-                            android:id="@+id/btnLeft"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:background="@drawable/ic_arrow_left_24dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/btnRight"
-                            android:layout_marginStart="16dp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/btnRight" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="4dp"
-                        android:background="@color/carbon_grey_200" />
 
                     <LinearLayout
+                        android:id="@+id/linear"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-
-                        android:orientation="horizontal">
+                        android:layout_height="130dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toBottomOf="@+id/rv_date">
 
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_margin="8dp"
                             android:layout_weight="1"
-                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:background="@drawable/bg_round_ripple_16dp"
                             android:clickable="true"
                             android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="10dp">
+                            android:orientation="vertical">
 
 
                             <TextView
@@ -114,34 +92,28 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="73:39"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                android:textColor="@color/colorPrimary"
-                                android:textStyle="bold" />
+                                android:textColor="@color/colorPrimary" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/spacing_medium"
                                 android:text="Working hours"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                                android:textColor="@color/carbon_grey_600" />
+                                android:textColor="@color/home_text" />
 
                         </LinearLayout>
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/carbon_grey_200" />
 
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_margin="8dp"
                             android:layout_weight="1"
-                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:background="@drawable/bg_round_ripple_16dp"
                             android:clickable="true"
                             android:gravity="center"
                             android:orientation="vertical"
                             android:padding="10dp">
+
+
 
                             <TextView
                                 android:id="@+id/tv_delays"
@@ -149,33 +121,28 @@
                                 android:layout_height="wrap_content"
                                 android:text="5:00"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                android:textColor="@color/red_100"
-                                android:textStyle="bold" />
+                                android:textColor="@color/red_100" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/spacing_medium"
                                 android:text="Delays"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                                android:textColor="@color/carbon_grey_600" />
+                                android:textColor="@color/home_text" />
 
                         </LinearLayout>
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/carbon_grey_200" />
 
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_margin="8dp"
                             android:layout_weight="1"
-                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:background="@drawable/bg_round_ripple_16dp"
                             android:clickable="true"
                             android:gravity="center"
                             android:orientation="vertical"
-                            android:padding="10dp">
+                            android:padding="10dp"
+                            android:textAlignment="center">
 
                             <TextView
                                 android:id="@+id/tv_excuseDelays"
@@ -183,44 +150,35 @@
                                 android:layout_height="wrap_content"
                                 android:text="12:00"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                android:textColor="@color/orange"
-
-                                android:textStyle="bold" />
+                                android:textColor="@color/orange" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/spacing_medium"
-                                android:text="Excuse delays"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                                android:textColor="@color/carbon_grey_600" />
+                                android:text="Excuse\ndelays"
+                                android:textColor="@color/home_text" />
 
                         </LinearLayout>
 
 
                     </LinearLayout>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/carbon_grey_200" />
-
-
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_height="130dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toBottomOf="@+id/linear">
 
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_margin="8dp"
                             android:layout_weight="1"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-
+                            android:background="@drawable/bg_round_ripple_16dp"
                             android:clickable="true"
                             android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="10dp">
+                            android:orientation="vertical">
 
                             <TextView
                                 android:id="@+id/tv_extraHours"
@@ -228,34 +186,26 @@
                                 android:layout_height="wrap_content"
                                 android:text="8:00"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                android:textColor="@color/colorPrimary"
-                                android:textStyle="bold" />
+                                android:textColor="@color/colorPrimary" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/spacing_medium"
                                 android:text="Extra hours"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                                android:textColor="@color/carbon_grey_600" />
+                                android:textColor="@color/home_text" />
 
                         </LinearLayout>
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/carbon_grey_200" />
 
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_margin="8dp"
                             android:layout_weight="1"
-
-                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:background="@drawable/bg_round_ripple_16dp"
                             android:clickable="true"
                             android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="10dp">
+                            android:orientation="vertical">
 
                             <TextView
                                 android:id="@+id/tv_overTime"
@@ -263,34 +213,26 @@
                                 android:layout_height="wrap_content"
                                 android:text="5:00"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                android:textColor="@color/colorPrimary"
-                                android:textStyle="bold" />
+                                android:textColor="@color/colorPrimary" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/spacing_medium"
                                 android:text="Over time"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                                android:textColor="@color/carbon_grey_600" />
+                                android:textColor="@color/home_text" />
 
                         </LinearLayout>
-
-                        <View
-                            android:layout_width="1dp"
-                            android:layout_height="match_parent"
-                            android:background="@color/carbon_grey_200" />
 
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
+                            android:layout_margin="8dp"
                             android:layout_weight="1"
-
-                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:background="@drawable/bg_round_ripple_16dp"
                             android:clickable="true"
                             android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="10dp">
+                            android:orientation="vertical">
 
                             <TextView
                                 android:id="@+id/tv_missingPunch"
@@ -298,40 +240,23 @@
                                 android:layout_height="wrap_content"
                                 android:text="6:00"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                android:textColor="@color/red_100"
-                                android:textStyle="bold" />
+                                android:textColor="@color/red_100" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/spacing_medium"
                                 android:text="Missing punch"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                                android:textColor="@color/carbon_grey_600" />
+                                android:textColor="@color/home_text" />
 
                         </LinearLayout>
 
                     </LinearLayout>
 
-                </LinearLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
-            <TextView
-                android:id="@+id/tv_attendanceSummary"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/carbon_grey_100"
-                android:gravity="center"
-                android:text="Attendance Summary"
-                android:textColor="@color/carbon_grey_800"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-
-                />
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
@@ -341,25 +266,26 @@
             android:clipToPadding="false"
             android:scrollbars="none"
             android:scrollingCache="true"
+            android:background="@color/grey_100"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:backgroundTint="@color/grey_100"
+                android:background="@drawable/bg_round_ripple_16dp">
 
 
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv"
-                    items="@{viewModel.attendanceResponse}"
+                    items="@{viewModel.strings}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="4dp"
-                    tools:listitem="@layout/item_attendance"
-
-
-                    />
+                    tools:itemCount="7"
+                    tools:listitem="@layout/item_attendance" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

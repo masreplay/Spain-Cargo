@@ -133,14 +133,11 @@ dependencies {
     implementation 'jp.wasabeef:recyclerview-animators:4.0.1'
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'com.afollestad:vvalidator:0.5.2'
-    implementation 'com.kyleduo.switchbutton:library:2.0.2'
     implementation 'com.michalsvec:single-row-calednar:1.0.0'
-
-    implementation 'com.github.pwittchen:reactivenetwork-rx2:3.0.8'
-
+    implementation 'com.github.florent37:shapeofview:1.4.7'
 
 
-    implementation("app.futured.donut:library:2.0.0")
+
 
 }
 kapt {

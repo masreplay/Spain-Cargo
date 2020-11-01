@@ -11,6 +11,7 @@
         android:icon="@drawable/ic_round_event_note_24"
         android:title="@string/attendance" />
 
+
     <item
         android:id="@+id/profile"
         android:icon="@drawable/ic_round_person_24"
