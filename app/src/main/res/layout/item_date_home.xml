@@ -10,7 +10,7 @@
 
         <variable
             name="clickListener"
-            type="com.enjaz.hr.ui.attendance.AttendanceFragment" />
+            type="com.enjaz.hr.ui.home.HomeFragment" />
 
         <variable
             name="item"

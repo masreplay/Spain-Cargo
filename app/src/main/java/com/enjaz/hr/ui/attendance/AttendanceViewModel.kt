@@ -1,9 +1,6 @@
 package com.enjaz.hr.ui.attendance
 
-<<<<<<< HEAD
-import android.util.Log
-=======
->>>>>>> feat/attendance
+
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import com.enjaz.hr.data.AppDataManager

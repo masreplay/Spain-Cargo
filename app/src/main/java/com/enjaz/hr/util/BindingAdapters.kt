@@ -65,39 +65,7 @@ fun setBackgroundColors(view: View, colors: IntArray) {
 
 }
 
-@BindingAdapter("progress_max")
-fun setProgressMax(circularProgressBar: CircularProgressBar, value: Int) {
 
-    circularProgressBar.apply {
-        progressMax = value.toFloat()
-
-
-
-        if (progress > value / 2) {
-            progressBarColor = Color.parseColor("#10c830")
-
-
-        } else if (progress < value / 2) {
-            progressBarColor = Color.parseColor("#f10e0b")
-
-        } else progressBarColor = Color.parseColor("#ec7521")
-
-
-    }
-}
-
-@BindingAdapter("progress")
-fun setProgress(circularProgressBar: CircularProgressBar, value: Int) {
-
-
-    circularProgressBar.apply {
-        progress = value.toFloat()
-
-
-    }
-
-
-}
 
 @BindingAdapter("bind:total", "bind:value")
 fun setPercentage(view: TextView, total: Int, value: Int) {
@@ -134,21 +102,6 @@ fun setMarkBackground(view: TextView, degreeFrom: Int, degree: Int) {
 
 }
 
-@BindingAdapter("bind:degreeFrom", "bind:degree")
-fun setCardStroke(view: MaterialCardView, degreeFrom: Int, degree: Int) {
-
-
-    val diff: Int = degreeFrom - degree
-
-    if (diff < degreeFrom / 2) {
-        view.setStrokeColor(Color.parseColor("#10c830"))
-    } else if (diff > degreeFrom / 2) {
-        view.setStrokeColor(Color.parseColor("#f10e0b"))
-
-    } else view.setStrokeColor(Color.parseColor("#ec7521"))
-
-
-}
 
 @BindingAdapter("android:layout_width")
 fun setLayoutWidth(view: View, width: Float) {

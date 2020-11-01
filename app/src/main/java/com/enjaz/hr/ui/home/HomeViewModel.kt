@@ -1,11 +1,11 @@
 package com.enjaz.hr.ui.home
 
-import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import com.enjaz.hr.data.AppDataManager
 import com.enjaz.hr.data.model.BaseResource
 import com.enjaz.hr.data.model.BaseResponse
+import com.enjaz.hr.data.model.DateItem
 import com.enjaz.hr.data.model.token.TokenResult
 import com.enjaz.hr.ui.base.BaseViewModel
 import com.enjaz.hr.util.PrefsManager
@@ -17,9 +17,11 @@ class HomeViewModel @ViewModelInject constructor(
     dataManager
 ) {
 
-    var loginResponse: MutableLiveData<BaseResource<BaseResponse<TokenResult>>> =
+    var strings: MutableLiveData<MutableList<String>> =
         MutableLiveData()
 
+    var dates: MutableLiveData<MutableList<DateItem>> =
+        MutableLiveData()
 
     fun mylog() {
         dispose(
@@ -27,16 +29,31 @@ class HomeViewModel @ViewModelInject constructor(
             ::onLoginSuccess,
             { e ->
 
-                loginResponse.postValue(BaseResource.empty())
-
             })
-
-
     }
 
-    private fun onLoginSuccess(result: BaseResource<BaseResponse<TokenResult>>) {
-
-        loginResponse.postValue(BaseResource.empty())
+    fun getdata() {
+        strings.value = mutableListOf("abd", "hussein")
+        dates.value = mutableListOf(
+            DateItem("Jan"),
+            DateItem("Feb"),
+            DateItem("Mar"),
+            DateItem("Apr"),
+            DateItem("May"),
+            DateItem("Jun"),
+            DateItem("Jul"),
+            DateItem("Aug"),
+            DateItem("Sept"),
+            DateItem("Oct"),
+            DateItem("Nov",true),
+            DateItem("Dec")
+        )
     }
+
+     fun onLoginSuccess(result: BaseResource<BaseResponse<TokenResult>>) {
+
+        //loginResponse.postValue(result)
+    }
+
 
 }

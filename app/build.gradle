@@ -137,6 +137,10 @@ dependencies {
     implementation 'com.github.florent37:shapeofview:1.4.7'
 
 
+    implementation("app.futured.donut:library:2.0.0")
+    implementation 'com.github.florent37:shapeofview:1.4.7'
+    implementation 'com.michalsvec:single-row-calednar:1.0.0'
+    implementation 'com.kyleduo.switchbutton:library:2.0.2'
 
 
 }

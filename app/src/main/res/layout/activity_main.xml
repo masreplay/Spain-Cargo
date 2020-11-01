@@ -1,50 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-
-        <variable
-            name="item"
-            type="com.enjaz.hr.data.model.video.VidModel" />
-
-        <variable
-            name="viewModel"
-            type="androidx.lifecycle.ViewModel" />
-
-        <variable
-            name="clickListener"
-            type="com.enjaz.hr.ui.base.BaseDataItemInteractionListener" />
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+<layout><data>
+    <variable
+        name="item"
+        type="com.enjaz.hr.data.model.video.VidModel" />
+    <variable
+        name="viewModel"
+        type="androidx.lifecycle.ViewModel" />
+    <variable
+        name="clickListener"
+        type="com.enjaz.hr.ui.base.BaseDataItemInteractionListener" />
+</data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:orientation="vertical"
+        android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
-            android:id="@+id/parent_view"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:title="@string/app_name"
+            app:titleTextColor="@android:color/white"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_host_container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/nav_host_container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            android:layout_weight="1" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_nav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:menu="@menu/home_bottom_nav" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:menu="@menu/home_bottom_nav"/>
+    </LinearLayout>
 </layout>

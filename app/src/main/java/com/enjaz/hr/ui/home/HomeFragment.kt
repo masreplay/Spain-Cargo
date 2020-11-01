@@ -1,24 +1,24 @@
 package com.enjaz.hr.ui.home
 
 import android.os.Bundle
-import android.text.Html
+import android.util.Log
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
-import app.futured.donut.DonutSection
 import com.enjaz.hr.R
 import com.enjaz.hr.databinding.FramgnetHomeBinding
+import com.enjaz.hr.ui.attendance.ICalenderListener
 import com.enjaz.hr.ui.base.BaseFragment
 import com.enjaz.hr.ui.base.BaseNavigator
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.framgnet_home.*
 
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener, HomeViewModel>(),
-    IHomeInteractionListener {
+    IHomeInteractionListener, ICalenderListener {
 
     private val homeViewModel: HomeViewModel by viewModels()
+    lateinit var usersAdapter: UsersAdapter
+    lateinit var calenderAdapter: CalenderAdapter
 
 
     override fun getLayoutId(): Int {
@@ -42,40 +42,18 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
         super.onViewCreated(view, savedInstanceState)
 
 
-        getViewModel().mylog()
+        getViewModel().getdata()
 
-        // TODO: 10/7/2020 replace deprecated
-        val text =
-            "<font color=#1575ff>20-</font><font color=#f6ae3f>5</font><font color=#1575ff>-</font><font color=#f64a3f>3</font>"
-        tv_attendance_value.text = Html.fromHtml(text)
+        getViewDataBinding().rv.apply {
+            adapter = usersAdapter
+        }
 
-        val section1 = DonutSection(
-            name = "section_1",
-            color = ContextCompat.getColor(requireActivity(), R.color.colorPrimary),
-            amount = 25f
-        )
+        getViewDataBinding().rvDate.apply {
+            adapter = calenderAdapter
+        }
 
-        donut_leave.cap = 100f
-        donut_leave.submitData(listOf(section1))
 
-        val section2 = DonutSection(
-            name = "section_2",
-            color = ContextCompat.getColor(requireActivity(), R.color.colorPrimary),
-            amount = 65f
-        )
 
-        val section3 = DonutSection(
-            name = "section_3",
-            color = ContextCompat.getColor(requireActivity(), R.color.orange),
-            amount = 15f
-        )
-        val section4 = DonutSection(
-            name = "section_4",
-            color = ContextCompat.getColor(requireActivity(), R.color.red_100),
-            amount = 20f
-        )
-        donut_attendance.cap = 100f
-        donut_attendance.submitData(listOf(section2, section3, section4))
     }
 
 
@@ -85,6 +63,30 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
 
     override fun showAllTasks() {
         // navigate to tasks view ==> findNavController().navigate(R.id.classesFragment)
+
+    }
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.i("abdalla19988", "abdalla19988")
+
+        usersAdapter = UsersAdapter(requireContext(), mutableListOf())
+        calenderAdapter = CalenderAdapter(requireContext(), mutableListOf())
+        calenderAdapter.setOnItemClickListener(this)
+
+    }
+    override fun onMyItemClick(position: Int) {
+        var oldPosition = 0
+        for (x in 0 until homeViewModel.dates.value!!.size) {
+            if (homeViewModel.dates.value!![x].is_selected) {
+                oldPosition = x
+            }
+            homeViewModel.dates.value!![x].is_selected = false
+        }
+        homeViewModel.dates.value!![position].is_selected = true
+        calenderAdapter.notifyItemChanged(position)
+        calenderAdapter.notifyItemChanged(oldPosition)
 
     }
 

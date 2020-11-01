@@ -6,11 +6,12 @@
 
     <color name="white">@android:color/white</color>
     <color name="black">@android:color/black</color>
-    <color name="home_text">#c4c7cd</color>
-    <color name="orange" type="color">#f6ae3f</color>
+    <color name="orange" type="color">#ff9b00</color>
+    <item name="home_text_100" type="color">#a6abb5</item>
     <color name="grey_100" type="color">#f1f3f5</color>
     <color name="grey_200" type="color">#f3f8ff</color>
-    <color name="green" type="color">#51c03e</color>
+    <color name="green_400" type="color">#51c03e</color>
+    <color name="green_100" type="color">#00c290</color>
     <color name="blue_100" type="color">#d0e3ff</color>
     <color name="red_100" type="color">#f64a3f</color>
     <color name="hours_bg_checked">#1A89CACF</color>
@@ -18,8 +19,9 @@
     <color name="divider">#666666</color>
     <color name="invalidate_day">#666666</color>
     <color name="blue_light" type="color">#d6e6ff</color>
-    <color name="hours_bg_checked">#1A89CACF</color>
-    <color name="hours_bg_pressed">#EFEFEF</color>
-    <color name="divider">#666666</color>
-    <color name="invalidate_day">#666666</color>
+    <item name="home_text" type="color">#c4c7cd</item>
+
+
+
+
 </resources>
