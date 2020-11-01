@@ -7,92 +7,121 @@
         <variable
             name="item"
             type="String" />
+
+        <import type="android.view.View" />
     </data>
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-
-        >
-        <TextView
-            android:id="@+id/tv_exceptionType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="Delayed"
-            android:textColor="@color/red_100"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-
-
-            />
-
-        <TextView
-            android:id="@+id/tv_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="in 08:00 , out 12:00"
-            android:textColor="@color/carbon_grey_800"
-            android:layout_marginTop="2dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/tv_exceptionType"
-app:layout_constraintTop_toBottomOf="@id/tv_exceptionType"
-
-            />
-
-
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="4dp"
+        android:background="@drawable/bg_round_ripple_16dp"
+        android:clickable="true"
+        android:paddingBottom="16dp">
 
         <TextView
             android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="5 September 2020"
-            android:textColor="@color/carbon_grey_600"
-            app:layout_constraintStart_toStartOf="@id/tv_time"
-            app:layout_constraintTop_toBottomOf="@id/tv_time"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Sun 22-10-2020"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            />
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:drawableStart="@drawable/ic_outline_watch_later_24"
+            android:drawablePadding="16dp"
+            android:text="08:30 AM - 04:30 PM"
+            app:layout_constraintStart_toStartOf="@+id/tv_date"
+            app:layout_constraintTop_toBottomOf="@+id/tv_date" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_fingerprint"
+            android:tint="@color/green"
+            app:layout_constraintStart_toStartOf="@+id/tv_date"
+            app:layout_constraintTop_toBottomOf="@+id/tv_time" />
+
+        <TextView
+            android:id="@+id/tv_check_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Check in 09:00 AM (Late)"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_fingerprint"
+            android:tint="@color/red_100"
+            app:layout_constraintStart_toStartOf="@+id/tv_date"
+            app:layout_constraintTop_toBottomOf="@id/imageView" />
+
+        <TextView
+            android:id="@+id/tv_check_out"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Check out 04:00PM"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginVertical="2dp"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintBottom_toTopOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 
         <TextView
+            android:id="@+id/tv_reason"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="Pending approval"
-            android:textColor="@color/carbon_grey_600"
-            app:layout_constraintStart_toStartOf="@id/tv_time"
-            app:layout_constraintTop_toBottomOf="@id/tv_date"
+            android:layout_marginTop="8dp"
+            android:drawableStart="@drawable/ic_exclamation_mark"
+            android:drawablePadding="16dp"
+            android:text="Delayed response"
+            android:visibility='@{item.equals("hussein")?View.VISIBLE:View.GONE}'
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="10dp"
+            app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/tv_check_out" />
 
-            />
-
-
-        <carbon.widget.Button
+        <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="16dp"
-            android:background="@color/colorPrimary"
             android:text="Request"
             android:textAllCaps="false"
-            android:textColor="@color/carbon_white"
-            app:carbon_cornerRadius="10dp"
+            android:textSize="12sp"
+            android:visibility='@{item.equals("hussein")?View.VISIBLE:View.GONE}'
+            app:cornerRadius="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/carbon_grey_200"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

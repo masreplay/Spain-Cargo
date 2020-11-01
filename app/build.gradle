@@ -136,6 +136,8 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'com.afollestad:vvalidator:0.5.2'
     implementation 'com.michalsvec:single-row-calednar:1.0.0'
+    implementation 'com.github.florent37:shapeofview:1.4.7'
+
 
 
 

@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#1675ff</color>
     <color name="colorAccent">#909090</color>
 
+    <color name="white">@android:color/white</color>
+    <color name="black">@android:color/black</color>
+    <color name="home_text">#c4c7cd</color>
     <color name="orange" type="color">#f6ae3f</color>
     <color name="grey_100" type="color">#f1f3f5</color>
     <color name="grey_200" type="color">#f3f8ff</color>
