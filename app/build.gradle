@@ -135,6 +135,9 @@ dependencies {
     implementation 'jp.wasabeef:recyclerview-animators:4.0.1'
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'com.afollestad:vvalidator:0.5.2'
+    implementation 'com.github.florent37:shapeofview:1.4.7'
+    implementation 'com.balysv:material-ripple:1.0.2'                  // ripple effect
+
 
 }
 kapt {

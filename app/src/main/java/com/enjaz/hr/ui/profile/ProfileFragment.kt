@@ -3,6 +3,7 @@ package com.enjaz.hr.ui.profile
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.afollestad.vvalidator.util.hide
 import com.afollestad.vvalidator.util.show
 import com.enjaz.hr.R
@@ -39,32 +40,19 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, IProfileInteraction
         super.onViewCreated(view, savedInstanceState)
 
         getViewModel().mylog()
-        var isShow = true
-        var scrollRange = -1
-        getViewDataBinding().appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { barLayout, verticalOffset ->
-            if (scrollRange == -1) {
-                scrollRange = barLayout?.totalScrollRange!!
-            }
-            if (scrollRange + verticalOffset <= 56) {
-                getViewDataBinding().image.hide()
-                isShow = true
-            } else if (isShow) {
-
-                getViewDataBinding().image.show()
 
 
-                isShow = false
-            }
-        })
+
     }
 
-
-
-
+    override fun onPersonalDetailsClick() {
+        findNavController().navigate(R.id.userInfoFragment)
+    }
 
 
 }
 
 interface IProfileInteractionListener : BaseNavigator {
+    fun onPersonalDetailsClick()
 
 }

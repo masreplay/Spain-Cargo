@@ -50,14 +50,17 @@ class MainActivity : AppCompatActivity() {
 
         controller.observe(this, Observer { navController ->
 
+
             navController.addOnDestinationChangedListener { controller, destination, arguments ->
 
-                when (destination.id) {
-                    R.id.profileFragment -> {
-                        toolbar.hide()
-                    }
-                    else -> toolbar.show()
-                }
+                setupActionBarWithNavController(controller)
+
+//                when (destination.id) {
+//                    R.id.profileFragment ,R.id.personalDetailsFragment ,R.id.workDetailsFragment ->{
+//                        toolbar.hide()
+//                    }
+//                    else -> toolbar.show()
+//                }
 
 
 

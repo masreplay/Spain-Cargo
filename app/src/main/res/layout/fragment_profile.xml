@@ -10,69 +10,43 @@
 
     </data>
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/grey_200"
-        android:fitsSystemWindows="true">
+        >
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:fitsSystemWindows="true"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/collapsing_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fitsSystemWindows="true"
-                app:contentScrim="?attr/colorPrimary"
-                app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Title"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:titleEnabled="false">
-
-                <ImageView
-                    android:id="@+id/image_header"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fitsSystemWindows="true"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/enjaz"
-                    app:layout_collapseMode="parallax" />
-
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar2"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/actionBarSize"
-                    app:contentInsetStartWithNavigation="0dp"
-                    app:layout_collapseMode="pin"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/nested_content"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:scrollbars="none"
-            android:scrollingCache="true"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:orientation="vertical"
+
+                >
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/image"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="50dp"
+                    android:src="@drawable/photo_male_8"
+                    app:civ_border="true"
+                    app:civ_border_width="2dp"
+                    app:civ_border_color="@color/carbon_black"
+                    app:civ_shadow="true"
+                    app:civ_shadow_radius="0" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="30dp"
                     android:text="Hassanein sabah"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
                     android:textColor="@color/carbon_grey_800" />
@@ -86,601 +60,267 @@
                     android:gravity="center"
                     android:text="Android Developer"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                    android:textColor="@color/carbon_grey_500" />
+                    android:textColor="@color/carbon_grey_600" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="@dimen/spacing_large" />
+            </LinearLayout>
 
+
+            <carbon.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/carbon_white"
+                app:carbon_cornerRadiusTopEnd="40dp"
+                app:carbon_cornerRadiusTopStart="40dp"
+
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:clickable="true"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="1000 $"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                android:textColor="@color/carbon_grey_800"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/spacing_medium"
-                                android:text="Basic salary"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                                android:textColor="@color/carbon_grey_500" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:clickable="true"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="200 $"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                android:textColor="@color/carbon_grey_800"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/spacing_medium"
-                                android:text="Bonuses"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                                android:textColor="@color/carbon_grey_500" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:clickable="true"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="36 $"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                android:textColor="@color/carbon_grey_800"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/spacing_medium"
-                                android:text="Deductions"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                                android:textColor="@color/carbon_grey_500" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="@dimen/spacing_xlarge" />
+                    >
 
 
                     <carbon.widget.LinearLayout
+                        android:id="@+id/lyt_personalDetails"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:carbon_cornerRadius="10dp"
-                        android:background="@color/carbon_white"
-                        app:carbon_elevation="2dp"
-                        android:layout_margin="20dp"
-                        android:orientation="vertical"
+                        android:layout_height="@dimen/spacing_xxlarge"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="20dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:onClick="@{()->viewModel.navigator.onPersonalDetailsClick()}"
+                        app:carbon_rippleColor="@color/colorPrimaryLight"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/spacing_large"
+                        android:paddingRight="@dimen/spacing_large"
                         >
-
-                        <TextView
+                        <carbon.widget.ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="16dp"
-                            android:text="Basic Info."
-                            android:textStyle="bold"
-                            android:textSize="16sp"
-                            android:fontFamily="sans-serif"
-                            android:textColor="@color/carbon_grey_800"
-                            />
-                        <carbon.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="16dp"
-                            android:layout_marginBottom="16dp"
-                            >
-                            <TextView
-                                android:id="@+id/tv_emailLabel"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Email address"
-                                android:textColor="@color/carbon_grey_800"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
+                            android:background="#deeeff"
+                            android:padding="6dp"
+                            app:carbon_cornerRadius="6dp"
+                            app:srcCompat="@drawable/ic_person_outline"
+                            app:carbon_tint="#298aec"/>
 
-
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_email"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="H@enjaz.tech"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                android:singleLine="true"
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_employeeIdLabel"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Employee ID"
-                                android:layout_marginTop="10dp"
-                                android:textColor="@color/carbon_grey_800"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-
-                                app:layout_constraintTop_toBottomOf="@id/tv_emailLabel"
-                                app:layout_constraintStart_toStartOf="@id/tv_emailLabel"
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_employeeId"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="#14214"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="14sp"
-                                android:layout_marginTop="10dp"
-                                android:fontFamily="sans-serif"
-                                android:singleLine="true"
-                                app:layout_constraintTop_toBottomOf="@id/tv_email"
-                                app:layout_constraintStart_toStartOf="@id/tv_email"
-                                app:layout_constraintEnd_toEndOf="parent"
-
-                                />
-
-
-                            <TextView
-                                android:id="@+id/tv_mobileLabel"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Mobile phone"
-                                android:textColor="@color/carbon_grey_800"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_employeeIdLabel"
-                                app:layout_constraintStart_toStartOf="@id/tv_employeeIdLabel"
-
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_mobile"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="07713355238"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:singleLine="true"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_employeeId"
-                                app:layout_constraintStart_toStartOf="@id/tv_employeeId"
-                                app:layout_constraintEnd_toEndOf="parent"
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_birthDateLabel"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Birth date"
-                                android:textColor="@color/carbon_grey_800"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_mobileLabel"
-                                app:layout_constraintStart_toStartOf="@id/tv_mobileLabel"
-
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_birthDate"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="23/06/1996"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:singleLine="true"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_mobile"
-                                app:layout_constraintStart_toStartOf="@id/tv_mobile"
-                                app:layout_constraintEnd_toEndOf="parent"
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_ageLabel"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Age"
-                                android:textColor="@color/carbon_grey_800"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_birthDateLabel"
-                                app:layout_constraintStart_toStartOf="@id/tv_birthDateLabel"
-
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_age"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="25 years"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:singleLine="true"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_birthDate"
-                                app:layout_constraintStart_toStartOf="@id/tv_birthDate"
-                                app:layout_constraintEnd_toEndOf="parent"
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_addressLabel"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Address"
-                                android:textColor="@color/carbon_grey_800"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_ageLabel"
-                                app:layout_constraintStart_toStartOf="@id/tv_ageLabel"
-
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_address"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="Alghadeer"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:singleLine="true"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_age"
-                                app:layout_constraintStart_toStartOf="@id/tv_age"
-                                app:layout_constraintEnd_toEndOf="parent"
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_maritalStatusLabel"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Marital status"
-                                android:textColor="@color/carbon_grey_800"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_addressLabel"
-                                app:layout_constraintStart_toStartOf="@id/tv_addressLabel"
-
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_maritalStatus"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="Single"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:singleLine="true"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_address"
-                                app:layout_constraintStart_toStartOf="@id/tv_address"
-                                app:layout_constraintEnd_toEndOf="parent"
-
-                                />
-
-                        </carbon.widget.ConstraintLayout>
-                    </carbon.widget.LinearLayout>
-                    <carbon.widget.LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:carbon_cornerRadius="10dp"
-                        android:background="@color/carbon_white"
-                        app:carbon_elevation="2dp"
-                        android:layout_marginVertical="10dp"
-                        android:layout_marginHorizontal="20dp"
-                        android:orientation="vertical"
-                        >
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_margin="16dp"
-                            android:text="Work"
-                            android:textStyle="bold"
-                            android:textSize="16sp"
-                            android:fontFamily="sans-serif"
+                            android:layout_marginLeft="@dimen/spacing_large"
+                            android:layout_marginRight="@dimen/spacing_large"
+                            android:layout_weight="1"
+                            android:text="User information"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                             android:textColor="@color/carbon_grey_800"
-                            />
-                        <carbon.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginHorizontal="16dp"
-                            android:layout_marginBottom="16dp"
-                            >
-                            <TextView
-                                android:id="@+id/tv_departmentLabel"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Department"
-                                android:textColor="@color/carbon_grey_800"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
+                            app:fontFamily="sans-serif-medium" />
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:tint="@color/carbon_grey_500"
+                            app:srcCompat="@drawable/ic_arrow_right" />
 
 
-                                />
-                            <TextView
-                                android:id="@+id/tv_department"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Muamalaty"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                app:layout_constraintTop_toTopOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                android:layout_marginEnd="20dp"
-                                android:singleLine="true"
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_reportingLabel"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Reporting To"
-                                android:textColor="@color/carbon_grey_800"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_departmentLabel"
-                                app:layout_constraintStart_toStartOf="@id/tv_departmentLabel"
-
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_reporting"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="Muamalaty"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="14sp"
-                                android:singleLine="true"
-                                android:fontFamily="sans-serif"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_department"
-                                app:layout_constraintStart_toStartOf="@id/tv_department"
-                                app:layout_constraintEnd_toEndOf="parent"
-
-                                />
-
-                            <TextView
-                                android:id="@+id/tv_dateJoinedLabel"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Date of joining"
-                                android:textColor="@color/carbon_grey_800"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_reportingLabel"
-                                app:layout_constraintStart_toStartOf="@id/tv_reportingLabel"
-
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_dateJoined"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="12/12/2020"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:singleLine="true"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_reporting"
-                                app:layout_constraintStart_toStartOf="@id/tv_reporting"
-                                app:layout_constraintEnd_toEndOf="parent"
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_employeeStatusLabel"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Employee status"
-                                android:textColor="@color/carbon_grey_800"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_dateJoinedLabel"
-                                app:layout_constraintStart_toStartOf="@id/tv_dateJoinedLabel"
-
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_employeeStatus"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="Active"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:singleLine="true"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_dateJoined"
-                                app:layout_constraintStart_toStartOf="@id/tv_dateJoined"
-                                app:layout_constraintEnd_toEndOf="parent"
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_roleLabel"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Role"
-                                android:textColor="@color/carbon_grey_800"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_employeeStatusLabel"
-                                app:layout_constraintStart_toStartOf="@id/tv_employeeStatusLabel"
-
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_role"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="Admin"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:singleLine="true"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_employeeStatus"
-                                app:layout_constraintStart_toStartOf="@id/tv_employeeStatus"
-                                app:layout_constraintEnd_toEndOf="parent"
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_workPhoneLabel"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Work phone"
-                                android:textColor="@color/carbon_grey_800"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_roleLabel"
-                                app:layout_constraintStart_toStartOf="@id/tv_roleLabel"
-
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_workPhone"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="07713355238"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:singleLine="true"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_role"
-                                app:layout_constraintStart_toStartOf="@id/tv_role"
-                                app:layout_constraintEnd_toEndOf="parent"
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_experienceLabel"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="Experience"
-                                android:textColor="@color/carbon_grey_800"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_workPhoneLabel"
-                                app:layout_constraintStart_toStartOf="@id/tv_workPhoneLabel"
-
-
-                                />
-                            <TextView
-                                android:id="@+id/tv_experience"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="Mid-Level"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="14sp"
-                                android:fontFamily="sans-serif"
-                                android:singleLine="true"
-                                android:layout_marginTop="10dp"
-                                app:layout_constraintTop_toBottomOf="@id/tv_workPhone"
-                                app:layout_constraintStart_toStartOf="@id/tv_workPhone"
-                                app:layout_constraintEnd_toEndOf="parent"
-
-                                />
-
-                        </carbon.widget.ConstraintLayout>
                     </carbon.widget.LinearLayout>
 
 
 
 
+
+
+
+                    <carbon.widget.LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_xxlarge"
+                        android:gravity="center_vertical"
+                        app:carbon_rippleColor="@color/colorPrimaryLight"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:layout_marginTop="10dp"
+
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/spacing_large"
+                        android:paddingRight="@dimen/spacing_large">
+
+                        <carbon.widget.ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/greenLight"
+                            android:padding="6dp"
+                            app:carbon_cornerRadius="6dp"
+                            app:carbon_tint="#00c290"
+                            app:srcCompat="@drawable/ic_money_outline" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/spacing_large"
+                            android:layout_marginRight="@dimen/spacing_large"
+                            android:layout_weight="1"
+                            android:text="Salary Details"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                            android:textColor="@color/carbon_grey_800"
+                            app:fontFamily="sans-serif-medium" />
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:tint="@color/carbon_grey_500"
+                            app:srcCompat="@drawable/ic_arrow_right" />
+
+
+                    </carbon.widget.LinearLayout>
+
+
+                    <carbon.widget.LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_xxlarge"
+                        android:gravity="center_vertical"
+                        app:carbon_rippleColor="@color/colorPrimaryLight"
+                        android:layout_marginTop="10dp"
+
+                        android:orientation="horizontal"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:paddingLeft="@dimen/spacing_large"
+                        android:paddingRight="@dimen/spacing_large">
+
+                        <carbon.widget.ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/orangeLight"
+                            android:padding="6dp"
+                            app:carbon_cornerRadius="6dp"
+                            app:carbon_tint="#ff9b00"
+                            app:srcCompat="@drawable/ic_outline_settings_24" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/spacing_large"
+                            android:layout_marginRight="@dimen/spacing_large"
+                            android:layout_weight="1"
+                            android:text="Settings"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                            android:textColor="@color/carbon_grey_800"
+                            app:fontFamily="sans-serif-medium" />
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:tint="@color/carbon_grey_500"
+                            app:srcCompat="@drawable/ic_arrow_right" />
+
+
+                    </carbon.widget.LinearLayout>
+
+
+
+                    <carbon.widget.LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_xxlarge"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        app:carbon_rippleColor="@color/colorPrimaryLight"
+                        android:clickable="true"
+                        android:layout_marginTop="10dp"
+
+                        android:focusable="true"
+                        android:paddingLeft="@dimen/spacing_large"
+                        android:paddingRight="@dimen/spacing_large">
+
+                        <carbon.widget.ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#fbfcb6"
+                            android:padding="6dp"
+                            app:carbon_cornerRadius="6dp"
+                            app:carbon_tint="@color/carbon_yellow_800"
+                            app:srcCompat="@drawable/ic_outline_info_24" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/spacing_large"
+                            android:layout_marginRight="@dimen/spacing_large"
+                            android:layout_weight="1"
+                            android:text="About"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                            android:textColor="@color/carbon_grey_800"
+                            app:fontFamily="sans-serif-medium" />
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:tint="@color/carbon_grey_500"
+                            app:srcCompat="@drawable/ic_arrow_right" />
+
+
+                    </carbon.widget.LinearLayout>
+                    <carbon.widget.LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_xxlarge"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        app:carbon_rippleColor="@color/colorPrimaryLight"
+                        android:clickable="true"
+                        android:layout_marginTop="10dp"
+
+                        android:focusable="true"
+                        android:paddingLeft="@dimen/spacing_large"
+                        android:paddingRight="@dimen/spacing_large">
+
+                        <carbon.widget.ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#fce8e8"
+                            android:padding="6dp"
+                            app:carbon_cornerRadius="6dp"
+                            app:carbon_tint="#ff4a4a"
+                            app:srcCompat="@drawable/ic_power_outline" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/spacing_large"
+                            android:layout_marginRight="@dimen/spacing_large"
+                            android:layout_weight="1"
+                            android:text="Logout"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                            android:textColor="@color/carbon_grey_800"
+                            app:fontFamily="sans-serif-medium" />
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:tint="@color/carbon_grey_500"
+                            app:srcCompat="@drawable/ic_arrow_right" />
+
+
+                    </carbon.widget.LinearLayout>
                 </LinearLayout>
 
+            </carbon.widget.ConstraintLayout>
 
 
-            </LinearLayout>
 
-        </androidx.core.widget.NestedScrollView>
+        </LinearLayout>
 
-
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/ic_avatar"
-            app:civ_border="true"
-            app:civ_border_width="2dp"
-            app:civ_shadow="true"
-            app:civ_shadow_radius="0"
-            app:layout_anchor="@id/app_bar_layout"
-            app:layout_anchorGravity="bottom|center" />
+    </LinearLayout>
 
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
