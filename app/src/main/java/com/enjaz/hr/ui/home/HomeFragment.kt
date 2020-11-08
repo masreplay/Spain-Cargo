@@ -3,6 +3,7 @@ package com.enjaz.hr.ui.home
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import app.futured.donut.DonutSection
@@ -12,6 +13,7 @@ import com.enjaz.hr.ui.attendance.ICalenderListener
 import com.enjaz.hr.ui.base.BaseFragment
 import com.enjaz.hr.ui.base.BaseNavigator
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.framgnet_home.*
 
 
 @AndroidEntryPoint
@@ -56,9 +58,6 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
             color = ContextCompat.getColor(requireActivity(), R.color.colorPrimary),
             amount = 25f
         )
-
-        donut_leave.cap = 100f
-        donut_leave.submitData(listOf(section1))
 
         val section2 = DonutSection(
             name = "section_2",

@@ -31,9 +31,7 @@ class NotificationsFragment :
         return notificationsViewModel
     }
 
-    override fun getViewModelClass(): Class<NotificationsViewModel> {
-        return NotificationsViewModel::class.java
-    }
+
 
     override fun getNavigator(): INotificationsInteractionListener {
         return this

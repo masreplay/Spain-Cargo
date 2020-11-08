@@ -77,6 +77,3 @@ class RequestTypeFragment :
 
 }
 
-interface ISendRequestInteractionListener : BaseNavigator {
-
-}
