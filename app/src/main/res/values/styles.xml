@@ -8,6 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style name="ToolbarColoredBackArrow" parent="AppTheme">
+        <item name="android:textColorSecondary">@color/carbon_white</item>
+    </style>
+
     <style name="SwitchButtonStyle">
         <item name="android:paddingLeft">10dp</item>
         <item name="android:paddingRight">10dp</item>
@@ -19,8 +24,5 @@
 
         <item name="android:textColor">@color/switch_color_thumb_states</item>
         <item name="android:textSize">12sp</item>
-    </style>
-    <style name="ToolbarColoredBackArrow" parent="AppTheme">
-        <item name="android:textColorSecondary">@color/carbon_white</item>
     </style>
 </resources>

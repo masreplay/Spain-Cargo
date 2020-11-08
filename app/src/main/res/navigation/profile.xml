@@ -9,5 +9,10 @@
         android:id="@+id/profileFragment"
         android:name="com.enjaz.hr.ui.profile.ProfileFragment"
         android:label="Profile" />
+    <fragment
+        android:id="@+id/userInfoFragment"
+        android:name="com.enjaz.hr.ui.profile.UserInfoFragment"
+        android:label="User information" />
+
 
 </navigation>

@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_100"
+        android:orientation="vertical">
+
+
+        <carbon.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:carbon_cornerRadius="15dp"
+            app:carbon_elevation="0dp"
+            android:background="@color/carbon_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/bg_circle_transparent"
+                android:backgroundTint="@color/colorPrimary"
+                android:padding="4dp"
+                android:src="@drawable/ic_baseline_fiber_manual_record_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Basic Information"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+                app:layout_constraintStart_toEndOf="@+id/imageView5"
+                app:layout_constraintTop_toTopOf="@+id/imageView5" />
+
+
+            <View
+                android:id="@+id/view_line"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_margin="16dp"
+                android:background="@color/grey_200"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+            <carbon.widget.LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@id/view_line">
+
+
+                <carbon.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:id="@+id/tv_emailLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text="Email address"
+                        android:textColor="@color/carbon_grey_700"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_email"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:singleLine="true"
+                        android:text="H@enjaz.tech"
+                        android:textColor="@color/carbon_black"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_employeeIdLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif"
+                        android:text="Employee ID"
+                        android:textColor="@color/carbon_grey_700"
+                        android:textSize="14sp"
+
+                        app:layout_constraintStart_toStartOf="@id/tv_emailLabel"
+                        app:layout_constraintTop_toBottomOf="@id/tv_emailLabel"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_employeeId"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:singleLine="true"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:text="#14214"
+                        android:textColor="@color/carbon_black"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_email"
+                        app:layout_constraintTop_toTopOf="@id/tv_employeeIdLabel"
+
+                        />
+
+
+                    <TextView
+                        android:id="@+id/tv_mobileLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif"
+                        android:text="Mobile phone"
+                        android:textColor="@color/carbon_grey_700"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_employeeIdLabel"
+                        app:layout_constraintTop_toBottomOf="@id/tv_employeeIdLabel"
+
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_mobile"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:singleLine="true"
+                        android:text="07713355238"
+                        android:textColor="@color/carbon_black"
+                        android:textSize="15sp"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_employeeId"
+                        app:layout_constraintTop_toTopOf="@id/tv_mobileLabel"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_birthDateLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif"
+                        android:text="Birth date"
+                        android:textColor="@color/carbon_grey_700"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_mobileLabel"
+                        app:layout_constraintTop_toBottomOf="@id/tv_mobileLabel"
+
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_birthDate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:singleLine="true"
+                        android:text="23/06/1996"
+                        android:textColor="@color/carbon_black"
+                        android:textSize="15sp"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_mobile"
+                        app:layout_constraintTop_toTopOf="@id/tv_birthDateLabel"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_ageLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif"
+                        android:text="Age"
+                        android:textColor="@color/carbon_grey_700"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_birthDateLabel"
+                        app:layout_constraintTop_toBottomOf="@id/tv_birthDateLabel"
+
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_age"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:singleLine="true"
+                        android:text="25 years"
+                        android:textColor="@color/carbon_black"
+                        android:textSize="15sp"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_birthDate"
+                        app:layout_constraintTop_toTopOf="@id/tv_ageLabel"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_addressLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif"
+                        android:text="Address"
+                        android:textColor="@color/carbon_grey_700"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_ageLabel"
+                        app:layout_constraintTop_toBottomOf="@id/tv_ageLabel"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_address"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:singleLine="true"
+                        android:text="Alghadeer"
+                        android:textColor="@color/carbon_black"
+                        android:textSize="15sp"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_age"
+                        app:layout_constraintTop_toTopOf="@id/tv_addressLabel"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_maritalStatusLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif"
+                        android:text="Marital status"
+                        android:textColor="@color/carbon_grey_700"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_addressLabel"
+                        app:layout_constraintTop_toBottomOf="@id/tv_addressLabel"
+
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_maritalStatus"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:singleLine="true"
+                        android:text="Single"
+                        android:textColor="@color/carbon_black"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_address"
+                        app:layout_constraintTop_toTopOf="@id/tv_maritalStatusLabel"
+
+                        />
+
+                </carbon.widget.ConstraintLayout>
+            </carbon.widget.LinearLayout>
+
+
+        </carbon.widget.ConstraintLayout>
+
+
+        <carbon.widget.ConstraintLayout
+            android:id="@+id/constraintLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:carbon_cornerRadius="15dp"
+            android:layout_margin="16dp"
+            app:carbon_elevation="0dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/carbon_white">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/bg_circle_transparent"
+                android:backgroundTint="@color/colorPrimary"
+                android:padding="4dp"
+                android:src="@drawable/ic_baseline_fiber_manual_record_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Work Information"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+
+            <View
+                android:id="@+id/view_line2"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_margin="16dp"
+                android:background="@color/grey_200"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+            <carbon.widget.LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toBottomOf="@id/view_line2">
+
+
+                <carbon.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp">
+
+                    <TextView
+                        android:id="@+id/tv_departmentLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:text="Department"
+                        android:textColor="@color/carbon_grey_700"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_department"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:singleLine="true"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:text="Muamalaty"
+                        android:textColor="@color/carbon_black"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_reportToLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif"
+                        android:text="Reporting to"
+                        android:textColor="@color/carbon_grey_700"
+                        android:textSize="14sp"
+
+                        app:layout_constraintStart_toStartOf="@id/tv_departmentLabel"
+                        app:layout_constraintTop_toBottomOf="@id/tv_departmentLabel"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_reportTo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:singleLine="true"
+                        android:text="Muamalaty"
+                        android:textColor="@color/carbon_black"
+                        android:textSize="15sp"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_department"
+                        app:layout_constraintTop_toTopOf="@id/tv_reportToLabel"
+
+                        />
+
+
+                    <TextView
+                        android:id="@+id/tv_datOfJoinLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif"
+                        android:text="Date on jpoining"
+                        android:textColor="@color/carbon_grey_700"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_reportToLabel"
+                        app:layout_constraintTop_toBottomOf="@id/tv_reportToLabel"
+
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_datOfJoin"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:singleLine="true"
+                        android:text="12/12/2020"
+                        android:textColor="@color/carbon_black"
+                        android:textSize="15sp"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_department"
+                        app:layout_constraintTop_toTopOf="@id/tv_datOfJoinLabel"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_employeeStatusLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif"
+                        android:text="Employee status"
+                        android:textColor="@color/carbon_grey_700"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_datOfJoinLabel"
+                        app:layout_constraintTop_toBottomOf="@id/tv_datOfJoinLabel"
+
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_employeeStatus"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:singleLine="true"
+                        android:text="Active"
+                        android:textColor="@color/carbon_black"
+                        android:textSize="15sp"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_department"
+                        app:layout_constraintTop_toTopOf="@id/tv_employeeStatusLabel"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_roleLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif"
+                        android:text="Role"
+                        android:textColor="@color/carbon_grey_700"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_employeeStatusLabel"
+                        app:layout_constraintTop_toBottomOf="@id/tv_employeeStatusLabel"
+
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_role"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:singleLine="true"
+                        android:text="Admin"
+                        android:textColor="@color/carbon_black"
+                        android:textSize="15sp"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_department"
+                        app:layout_constraintTop_toTopOf="@id/tv_roleLabel"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_workPhoneLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif"
+                        android:text="Work phone"
+                        android:textColor="@color/carbon_grey_700"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_roleLabel"
+                        app:layout_constraintTop_toBottomOf="@id/tv_roleLabel"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_workPhone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:singleLine="true"
+                        android:text="07713355238"
+                        android:textColor="@color/carbon_black"
+                        android:textSize="15sp"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_department"
+                        app:layout_constraintTop_toTopOf="@id/tv_workPhoneLabel"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_experienceLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif"
+                        android:text="Experience"
+                        android:textColor="@color/carbon_grey_700"
+                        android:textSize="14sp"
+                        app:layout_constraintStart_toStartOf="@id/tv_workPhoneLabel"
+                        app:layout_constraintTop_toBottomOf="@id/tv_workPhoneLabel"
+
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_experience"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                        android:singleLine="true"
+                        android:text="Mid-Level"
+                        android:textColor="@color/carbon_black"
+                        android:ellipsize="marquee"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:scrollHorizontally="true"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/tv_department"
+                        app:layout_constraintTop_toTopOf="@id/tv_experienceLabel"
+
+                        />
+
+                </carbon.widget.ConstraintLayout>
+            </carbon.widget.LinearLayout>
+
+
+        </carbon.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+
+
+</layout>
