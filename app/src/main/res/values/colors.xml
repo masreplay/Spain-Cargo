@@ -4,9 +4,6 @@
     <color name="colorPrimaryDark">#2b85ff</color>
     <color name="colorPrimaryLight">#e3eeff</color>
     <color name="colorAccent">#909090</color>
-    <color name="colorSecondaryDark">#0CF2E2</color>
-    <color name="colorSecondary">#16EFF2</color>
-    <color name="colorSecondaryLight">#d9ffff</color>
     <color name="orange" type="color">#fb9a07</color>
     <color name="orangeLight" type="color">#fdf9d4</color>
     <color name="blue_light" type="color">#d6e6ff</color>
@@ -17,9 +14,7 @@
     <item name="home_text_100" type="color">#a6abb5</item>
     <color name="grey_100" type="color">#f1f3f5</color>
     <color name="grey_200" type="color">#f3f8ff</color>
-    <color name="green" type="color">#51c03e</color>
 
-    <color name="green2" type="color">#21c48f</color>
     <color name="greenLight" type="color">#e3f6ee</color>
 
     <color name="green_400" type="color">#51c03e</color>
