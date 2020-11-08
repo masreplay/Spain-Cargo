@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import app.futured.donut.DonutSection
 import com.enjaz.hr.R
 import com.enjaz.hr.databinding.FramgnetHomeBinding
 import com.enjaz.hr.ui.attendance.ICalenderListener
@@ -30,9 +32,6 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
         return homeViewModel
     }
 
-    override fun getViewModelClass(): Class<HomeViewModel> {
-        return HomeViewModel::class.java
-    }
 
     override fun getNavigator(): IHomeInteractionListener {
         return this
@@ -52,18 +51,38 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
             adapter = calenderAdapter
         }
 
+        val section1 = DonutSection(
+            name = "section_1",
+            color = ContextCompat.getColor(requireActivity(), R.color.colorPrimary),
+            amount = 25f
+        )
 
+        donut_leave.cap = 100f
+        donut_leave.submitData(listOf(section1))
 
+        val section2 = DonutSection(
+            name = "section_2",
+            color = ContextCompat.getColor(requireActivity(), R.color.colorPrimary),
+            amount = 65f
+        )
+
+        val section3 = DonutSection(
+            name = "section_3",
+            color = ContextCompat.getColor(requireActivity(), R.color.orange),
+            amount = 15f
+        )
+        val section4 = DonutSection(
+            name = "section_4",
+            color = ContextCompat.getColor(requireActivity(), R.color.red_100),
+            amount = 20f
+        )
+        donut_attendance.cap = 100f
+        donut_attendance.submitData(listOf(section2, section3, section4))
     }
 
 
-    override fun showAllClasses() {
-        // navigate to classes view ==> findNavController().navigate(R.id.classesFragment)
-    }
-
-    override fun showAllTasks() {
-        // navigate to tasks view ==> findNavController().navigate(R.id.classesFragment)
-
+    override fun showTeam() {
+        findNavController().navigate(R.id.teamFragment)
     }
 
 
@@ -94,6 +113,5 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
 }
 
 interface IHomeInteractionListener : BaseNavigator {
-    fun showAllClasses()
-    fun showAllTasks()
+    fun showTeam()
 }

@@ -27,9 +27,6 @@ class SentRequestsFragment :
         return requestsViewModel
     }
 
-    override fun getViewModelClass(): Class<RequestsViewModel> {
-        return RequestsViewModel::class.java
-    }
 
     override fun getNavigator(): IRequestsInteractionListener {
         return this

@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home"
     app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.enjaz.hr.ui.home.HomeFragment"
-        android:label="Home" />
+        android:label="Home"
+        tools:layout="@layout/framgnet_home">
+        <action
+            android:id="@+id/next_action"
+            app:destination="@id/teamFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/teamFragment"
+        android:name="com.enjaz.hr.ui.team.TeamFragment"
+        tools:layout="@layout/framgnet_team"
+        android:label="TeamFragment" />
+
 </navigation>

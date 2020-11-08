@@ -35,9 +35,6 @@ class AttendanceFragment :
         return attendanceViewModel
     }
 
-    override fun getViewModelClass(): Class<AttendanceViewModel> {
-        return AttendanceViewModel::class.java
-    }
 
     override fun getNavigator(): IAttendanceInteractionListener {
         return this

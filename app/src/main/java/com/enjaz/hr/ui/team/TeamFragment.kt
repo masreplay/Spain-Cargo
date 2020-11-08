@@ -1,54 +1,60 @@
-package com.enjaz.hr.ui.requests
+package com.enjaz.hr.ui.team
 
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.enjaz.hr.R
-import com.enjaz.hr.databinding.FramgnetReceivedRequestsBinding
+import com.enjaz.hr.databinding.FramgnetTeamBinding
 import com.enjaz.hr.ui.base.BaseFragment
+import com.enjaz.hr.ui.base.BaseNavigator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ReceivedRequestsFragment :
-    BaseFragment<FramgnetReceivedRequestsBinding, IRequestsInteractionListener, RequestsViewModel>(),
-    IRequestsInteractionListener {
+class TeamFragment :
+    BaseFragment<FramgnetTeamBinding, ITeamInteractionListener, TeamViewModel>(),
+    ITeamInteractionListener {
 
-    private val requestsViewModel: RequestsViewModel by viewModels()
+    private val teamViewModel: TeamViewModel by viewModels()
 
-    lateinit var receiveRequestsAdapter: ReceivedRequestsAdapter
+    lateinit var teamAdapter: TeamAdapter
 
 
     override fun getLayoutId(): Int {
-        return R.layout.framgnet_received_requests
+        return R.layout.framgnet_team
     }
 
-    override fun getViewModel(): RequestsViewModel {
-        return requestsViewModel
+    override fun getViewModel(): TeamViewModel {
+        return teamViewModel
     }
 
 
-    override fun getNavigator(): IRequestsInteractionListener {
+    override fun getNavigator(): ITeamInteractionListener {
         return this
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.i("abdalla19988", "abdalla19988")
+
         getViewModel().getdata()
         getViewDataBinding().rv.apply {
-            adapter = receiveRequestsAdapter
+            adapter = teamAdapter
         }
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.i("abdalla19988", "abdalla19988")
 
-        receiveRequestsAdapter = ReceivedRequestsAdapter(requireContext(), mutableListOf())
+        teamAdapter = TeamAdapter(requireContext(), mutableListOf())
     }
 
 
 }
+
+interface ITeamInteractionListener : BaseNavigator {
+
+}
+
 
