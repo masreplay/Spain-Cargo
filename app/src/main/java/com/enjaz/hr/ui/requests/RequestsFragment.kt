@@ -1,10 +1,15 @@
 package com.enjaz.hr.ui.requests
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.enjaz.hr.R
 import com.enjaz.hr.databinding.FramgnetRequestsBinding
 import com.enjaz.hr.ui.base.BaseFragment
@@ -19,8 +24,8 @@ class RequestsFragment :
     IRequestsInteractionListener {
 
     private val requestsViewModel: RequestsViewModel by viewModels()
-    lateinit var fragment_sent: Fragment
-    lateinit var fragment_received: Fragment
+    lateinit var fragmentSent: Fragment
+    lateinit var fragmentReceived: Fragment
     override fun getLayoutId(): Int {
         return R.layout.framgnet_requests
     }
@@ -36,16 +41,16 @@ class RequestsFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setHasOptionsMenu(true)
+
         getViewModel().getdata()
 
-        findNavController().navigate(R.id.filterSheet)
 
-
-        fragment_sent = SentRequestsFragment()
-        fragment_received = ReceivedRequestsFragment()
+        fragmentSent = SentRequestsFragment()
+        fragmentReceived = ReceivedRequestsFragment()
 
         childFragmentManager.beginTransaction()
-            .replace(R.id.container, fragment_received).commit()
+            .replace(R.id.container, fragmentReceived).commit()
 
         tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
 
@@ -56,10 +61,10 @@ class RequestsFragment :
             override fun onTabUnselected(tab: TabLayout.Tab?) {
                 if (tab!!.position == 0) {
                     childFragmentManager.beginTransaction()
-                        .replace(R.id.container, fragment_sent).commit()
+                        .replace(R.id.container, fragmentSent).commit()
                 } else {
                     childFragmentManager.beginTransaction()
-                        .replace(R.id.container, fragment_received).commit()
+                        .replace(R.id.container, fragmentReceived).commit()
                 }
             }
 
@@ -68,7 +73,19 @@ class RequestsFragment :
         })
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.clear()
+        inflater.inflate(R.menu.filter, menu)
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(
+            item,
+            requireView().findNavController()
+        )
+                || super.onOptionsItemSelected(item)
+    }
 }
 
 interface IRequestsInteractionListener : BaseNavigator {

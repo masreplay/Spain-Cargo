@@ -34,5 +34,5 @@ open class AttendanceAdapter(
 }
 
 interface IAttendanceItemActionListener : BaseDataItemInteractionListener {
-    fun onRequestClick(string: String,position:Int)
+    fun onRequestClick()
 }

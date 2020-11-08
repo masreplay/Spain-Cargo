@@ -1,20 +1,21 @@
 package com.enjaz.hr.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.afollestad.vvalidator.field.FieldError
 import com.afollestad.vvalidator.form
+import com.enjaz.hr.MainActivity
 import com.enjaz.hr.R
 import com.enjaz.hr.databinding.ActivityLoginBinding
 import com.enjaz.hr.ui.base.BaseActivity
 import com.enjaz.hr.ui.base.BaseNavigator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_login.*
-import java.util.regex.Pattern.matches
 
 @AndroidEntryPoint
 class LoginActivity :
-    BaseActivity<ActivityLoginBinding, ILoginInteractionListener,LoginViewModel>(),
+    BaseActivity<ActivityLoginBinding, ILoginInteractionListener, LoginViewModel>(),
     ILoginInteractionListener {
     private val loginViewModel: LoginViewModel by viewModels()
 
@@ -46,7 +47,7 @@ class LoginActivity :
             }
             submitWith(R.id.btn_login) {
 
-//                getViewModel().login()
+                login()
             }
         }
     }
@@ -56,9 +57,9 @@ class LoginActivity :
     }
 
     override fun login() {
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//            finish()
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
 
 
     }

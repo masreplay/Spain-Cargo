@@ -18,10 +18,7 @@
             android:id="@+id/rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/item_notification"
-
-
-            />
+            tools:listitem="@layout/item_notification" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

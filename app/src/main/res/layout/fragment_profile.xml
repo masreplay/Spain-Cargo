@@ -278,7 +278,7 @@
                         app:carbon_rippleColor="@color/colorPrimaryLight"
                         android:clickable="true"
                         android:layout_marginTop="10dp"
-
+                        android:onClick="@{()->viewModel.navigator.onLogoutClick()}"
                         android:focusable="true"
                         android:paddingLeft="@dimen/spacing_large"
                         android:paddingRight="@dimen/spacing_large">

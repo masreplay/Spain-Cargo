@@ -53,7 +53,10 @@ class UserInfoFragment :
         getViewDataBinding().tvWorkPhone.isSelected=true
     }
     override fun onPersonalDetailsClick() {
-        TODO("Not yet implemented")
+    }
+
+    override fun onLogoutClick() {
+
     }
 
 

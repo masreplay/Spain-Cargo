@@ -8,13 +8,12 @@
     <fragment
         android:id="@+id/attendanceFragment"
         android:name="com.enjaz.hr.ui.attendance.AttendanceFragment"
-        tools:layout="@layout/fragment_attendance"
-        android:label="Attendance" />
+        android:label="Attendance"
+        tools:layout="@layout/fragment_attendance" />
     <fragment
         android:id="@+id/sendRequestFragment"
         android:name="com.enjaz.hr.ui.sentRequest.SendRequestFragment"
-        tools:layout="@layout/fragment_send_request"
-        >
+        tools:layout="@layout/fragment_send_request">
         <argument
             android:name="leaveType"
             android:defaultValue=" "
@@ -25,8 +24,8 @@
     <dialog
         android:id="@+id/requestTypeFragment"
         android:name="com.enjaz.hr.ui.sentRequest.RequestTypeFragment"
-        tools:layout="@layout/fragment_requset_type"
-        android:label="RequestTypeFragment" >
+        android:label="Request Type"
+        tools:layout="@layout/fragment_requset_type">
         <action
             android:id="@+id/nextAction"
             app:destination="@id/sendRequestFragment" />

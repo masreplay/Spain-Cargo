@@ -1,12 +1,9 @@
 package com.enjaz.hr.ui.requests
 
 import android.app.DatePickerDialog
-import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.DatePicker
-import androidx.fragment.app.DialogFragment
+import android.widget.TextView
 import androidx.fragment.app.viewModels
 import com.enjaz.hr.R
 import com.enjaz.hr.databinding.FragmentFilterBinding
@@ -43,13 +40,11 @@ class FilterSheet :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val newFragment = DatePickerFragment()
-
         tv_from.setOnClickListener {
-            newFragment.show(childFragmentManager, "datePicker")
+            setDate(tv_from)
         }
         tv_to.setOnClickListener {
-            newFragment.show(childFragmentManager, "datePicker")
+            setDate(tv_to)
         }
 
         btn_clear.setOnClickListener {
@@ -59,29 +54,23 @@ class FilterSheet :
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Log.i("abdalla19988", "abdalla19988")
-
-    }
-
-}
-
-class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
-
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-
+    fun setDate(tv: TextView) {
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         val month = c.get(Calendar.MONTH)
         val day = c.get(Calendar.DAY_OF_MONTH)
 
-        return DatePickerDialog(requireActivity(), this, year, month, day)
 
+        val dpd = DatePickerDialog(
+            requireContext(),
+            DatePickerDialog.OnDateSetListener { view, pickedyear, monthOfYear, dayOfMonth ->
+                tv.text = dayOfMonth.toString() + "/" + (monthOfYear + 1) + "/" + pickedyear
+            }, year, month, day
+        )
+
+        dpd.show()
     }
 
-    override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
-        // Do something with the date chosen by the user
-    }
+
 }
+

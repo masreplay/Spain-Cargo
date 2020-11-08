@@ -62,14 +62,8 @@ class SendRequestFragment :
         val dpd = DatePickerDialog(
             requireContext(),
             DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
-
-                // Display Selected date in textbox
-                tv.setText(dayOfMonth.toString() + "/" + monthOfYear.toString() + "/" + year.toString())
-
-            },
-            year,
-            month,
-            day
+                tv.text = dayOfMonth.toString() + "/" + monthOfYear + "/" + year
+            }, year, month, day
         )
 
         dpd.show()

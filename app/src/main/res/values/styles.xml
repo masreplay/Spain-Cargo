@@ -19,7 +19,7 @@
 
     <style name="StyleTitleText">
 
-        <item name="android:textColor">@color/switch_color_thumb_states</item>
+        <!--        <item name="android:textColor">@color/switch_color_thumb_states</item>-->
         <item name="android:textSize">12sp</item>
     </style>
 
@@ -37,6 +37,11 @@
         <item name="android:yearListSelectorColor">@color/orange</item>
         <item name="android:datePickerMode">calendar</item>
         <item name="android:minDate">01/01/2019</item>
+    </style>
+
+    <style name="TabLayoutTextStyle">
+        <item name="textAllCaps">false</item>
+        <item name="android:textSize">14sp</item>
     </style>
 
 </resources>

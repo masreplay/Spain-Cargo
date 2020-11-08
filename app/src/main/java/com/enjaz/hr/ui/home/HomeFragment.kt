@@ -55,28 +55,28 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
 
         val section1 = DonutSection(
             name = "section_1",
-            color = ContextCompat.getColor(requireActivity(), R.color.colorPrimary),
-            amount = 25f
+            color = ContextCompat.getColor(requireActivity(), R.color.green),
+            amount = 31f
         )
 
         val section2 = DonutSection(
             name = "section_2",
             color = ContextCompat.getColor(requireActivity(), R.color.colorPrimary),
-            amount = 65f
+            amount = 45f
         )
 
         val section3 = DonutSection(
             name = "section_3",
             color = ContextCompat.getColor(requireActivity(), R.color.orange),
-            amount = 15f
+            amount = 17f
         )
         val section4 = DonutSection(
             name = "section_4",
             color = ContextCompat.getColor(requireActivity(), R.color.red_100),
-            amount = 20f
+            amount = 7f
         )
         donut_attendance.cap = 100f
-        donut_attendance.submitData(listOf(section2, section3, section4))
+        donut_attendance.submitData(listOf(section1,section2, section3, section4))
     }
 
 
@@ -87,13 +87,12 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.i("abdalla19988", "abdalla19988")
-
         usersAdapter = UsersAdapter(requireContext(), mutableListOf())
         calenderAdapter = CalenderAdapter(requireContext(), mutableListOf())
         calenderAdapter.setOnItemClickListener(this)
 
     }
+
     override fun onMyItemClick(position: Int) {
         var oldPosition = 0
         for (x in 0 until homeViewModel.dates.value!!.size) {

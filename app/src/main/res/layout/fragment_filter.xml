@@ -56,7 +56,6 @@
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
                 android:text="Full-time"
                 android:textColor="@color/chip_text_color"
                 app:chipBackgroundColor="@color/bg_chip_state_list"
@@ -224,38 +223,46 @@
 
         <TextView
             android:id="@+id/tv_from"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="2020-11-11"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Pick a start date"
+            android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/tv_from_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_date" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_from_title" />
 
         <TextView
             android:id="@+id/tv_to_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_marginTop="16dp"
             android:text="To"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/guideline_center"
-            app:layout_constraintTop_toBottomOf="@+id/tv_date" />
+            app:layout_constraintStart_toStartOf="@+id/tv_from_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_from" />
 
 
         <TextView
             android:id="@+id/tv_to"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="2020-11-14"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Pick an end date"
+            android:textAlignment="center"
             android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/tv_to_title"
-            app:layout_constraintTop_toBottomOf="@+id/tv_date" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_to_title" />
 
 
         <com.google.android.material.button.MaterialButton
@@ -271,7 +278,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/guideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_from_title" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_to" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_clear"

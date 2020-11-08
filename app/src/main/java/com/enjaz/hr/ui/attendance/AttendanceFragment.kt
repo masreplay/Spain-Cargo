@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.enjaz.hr.R
@@ -15,16 +16,15 @@ import com.enjaz.hr.ui.base.BaseNavigator
 import dagger.hilt.android.AndroidEntryPoint
 
 
-
 @AndroidEntryPoint
 class AttendanceFragment :
     BaseFragment<FragmentAttendanceBinding, IAttendanceInteractionListener, AttendanceViewModel>(),
-    IAttendanceInteractionListener, ICalenderListener {
+    IAttendanceInteractionListener, ICalenderListener, IAttendanceItemActionListener {
 
     private val attendanceViewModel: AttendanceViewModel by viewModels()
 
-    lateinit var attendanceAdapter: AttendanceAdapter
-    lateinit var calenderAdapter: CalenderAdapter
+    private lateinit var attendanceAdapter: AttendanceAdapter
+    private lateinit var calenderAdapter: CalenderAdapter
 
 
     override fun getLayoutId(): Int {
@@ -45,6 +45,7 @@ class AttendanceFragment :
         attendanceAdapter = AttendanceAdapter(requireContext(), mutableListOf())
         calenderAdapter = CalenderAdapter(requireContext(), mutableListOf())
         calenderAdapter.setOnItemClickListener(this)
+        attendanceAdapter.setOnItemClickListener(this)
 
     }
 
@@ -81,6 +82,10 @@ class AttendanceFragment :
         calenderAdapter.notifyItemChanged(position)
         calenderAdapter.notifyItemChanged(oldPosition)
 
+    }
+
+    override fun onRequestClick() {
+        findNavController().navigate(R.id.requestTypeFragment)
     }
 }
 
