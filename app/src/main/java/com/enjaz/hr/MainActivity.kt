@@ -36,6 +36,8 @@ class MainActivity : AppCompatActivity() {
 
         val navGraphIds = listOf(
             R.navigation.home,
+            R.navigation.requests,
+            R.navigation.notifications,
             R.navigation.attendance,
             R.navigation.profile,
             R.navigation.requests
@@ -59,7 +61,6 @@ class MainActivity : AppCompatActivity() {
                         bottomNavigationView.hide()
                     }
                     else -> bottomNavigationView.show()
-
 
                 }
 

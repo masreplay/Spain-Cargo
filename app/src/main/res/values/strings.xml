@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">HRM</string>
-    <string name="tokens_key_prefrences">tokens_key</string>
+    <string name="tokens_key_prefrences" translatable="false">tokens_key</string>
 
     <string name="home_fragment">Home Fragment</string>
     <string name="sport_fragment">Sport Fragment</string>
@@ -30,5 +30,6 @@
     <string name="team">Team</string>
     <string name="profile">Profile</string>
     <string name="press_the_above_button_to_retry">press the above button to retry</string>
+    <string name="notifications">Notifications</string>
 
 </resources>

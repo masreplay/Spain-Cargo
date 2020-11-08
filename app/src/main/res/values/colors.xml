@@ -24,6 +24,8 @@
 
     <color name="green_400" type="color">#51c03e</color>
     <color name="green_100" type="color">#00c290</color>
+
+
     <color name="blue_100" type="color">#d0e3ff</color>
     <color name="red_100" type="color">#f64a3f</color>
     <item name="home_text" type="color">#c4c7cd</item>
