@@ -9,6 +9,8 @@
     <color name="colorSecondaryLight">#d9ffff</color>
     <color name="orange" type="color">#fb9a07</color>
     <color name="orangeLight" type="color">#fdf9d4</color>
+    <color name="blue_light" type="color">#d6e6ff</color>
+
 
     <color name="white">@android:color/white</color>
     <color name="black">@android:color/black</color>

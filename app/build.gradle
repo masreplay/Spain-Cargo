@@ -147,6 +147,7 @@ dependencies {
     implementation 'com.kyleduo.switchbutton:library:2.0.2'
 
     implementation 'com.balysv:material-ripple:1.0.2'                  // ripple effect
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
 
 }

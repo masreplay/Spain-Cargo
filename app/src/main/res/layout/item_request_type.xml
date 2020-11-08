@@ -27,7 +27,6 @@
             android:clickable="true"
             android:focusable="true"
             android:onClick="@{()->clickListener.onTypeClick(item)}"
-
             android:gravity="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
