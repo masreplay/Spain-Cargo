@@ -11,15 +11,13 @@
         android:icon="@drawable/ic_round_event_note_24"
         android:title="@string/attendance" />
 
+    <item
+        android:id="@+id/requests"
+        android:icon="@drawable/ic_round_swap_horiz_24"
+        android:title="@string/requests" />
 
     <item
         android:id="@+id/profile"
         android:icon="@drawable/ic_round_person_24"
         android:title="@string/profile" />
-
-
-    <item
-        android:id="@+id/requests"
-        android:icon="@drawable/ic_round_swap_horiz_24"
-        android:title="@string/requests" />
 </menu>
