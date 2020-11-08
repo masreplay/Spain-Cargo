@@ -52,7 +52,6 @@ class MainActivity : AppCompatActivity() {
 
             navController.addOnDestinationChangedListener { controller, destination, arguments ->
 
-
                 setupActionBarWithNavController(controller)
 
                 when (destination.id) {
@@ -60,6 +59,7 @@ class MainActivity : AppCompatActivity() {
                         bottomNavigationView.hide()
                     }
                     else -> bottomNavigationView.show()
+
 
                 }
 

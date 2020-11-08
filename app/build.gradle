@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 
 android {
@@ -134,7 +135,8 @@ dependencies {
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'com.afollestad:vvalidator:0.5.2'
     implementation 'com.michalsvec:single-row-calednar:1.0.0'
-    implementation 'com.github.florent37:shapeofview:1.4.7'
+
+    implementation 'com.zagori:bottomnavbar:1.0.2'
 
 
     implementation("app.futured.donut:library:2.0.0")

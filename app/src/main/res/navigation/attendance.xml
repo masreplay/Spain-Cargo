@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/attendance"
     app:startDestination="@id/attendanceFragment">
 
     <fragment
         android:id="@+id/attendanceFragment"
         android:name="com.enjaz.hr.ui.attendance.AttendanceFragment"
+        tools:layout="@layout/fragment_attendance"
         android:label="Attendance" />
     <fragment
         android:id="@+id/sendRequestFragment"
         android:name="com.enjaz.hr.ui.sentRequest.SendRequestFragment"
-        android:label="Request" />
+        tools:layout="@layout/fragment_send_request"
+        >
+        <argument
+            android:name="leaveType"
+            android:defaultValue=" "
+            app:argType="string" />
+
+
+    </fragment>
+    <dialog
+        android:id="@+id/requestTypeFragment"
+        android:name="com.enjaz.hr.ui.sentRequest.RequestTypeFragment"
+        tools:layout="@layout/fragment_requset_type"
+        android:label="RequestTypeFragment" >
+        <action
+            android:id="@+id/nextAction"
+            app:destination="@id/sendRequestFragment" />
+    </dialog>
+
 </navigation>

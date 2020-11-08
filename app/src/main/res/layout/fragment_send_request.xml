@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/tv_specifyPeriod"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Specify Leave Info."
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/carbon_grey_700"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tv_LeaveType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Leave type"
+            android:textSize="16sp"
+            android:textColor="@color/carbon_grey_700"
+            app:layout_constraintStart_toStartOf="@id/tv_specifyPeriod"
+            app:layout_constraintTop_toBottomOf="@id/tv_specifyPeriod"
+            android:layout_marginTop="12dp"
+
+            />
+
+
+        <org.angmarch.views.NiceSpinner
+            android:id="@+id/selector"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text="Select Type"
+            android:textSize="14sp"
+            app:textTint="@color/colorPrimary"
+            app:arrowTint="@color/colorPrimary"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="@id/tv_LeaveType"
+            app:layout_constraintBottom_toBottomOf="@id/tv_LeaveType"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="10dp"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_startDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First day of leave"
+            android:textSize="16sp"
+            android:textColor="@color/carbon_grey_700"
+            app:layout_constraintStart_toStartOf="@id/tv_specifyPeriod"
+            app:layout_constraintTop_toBottomOf="@id/tv_LeaveType"
+            android:layout_marginTop="16dp"
+
+            />
+
+
+        <TextView
+            android:id="@+id/dp_startDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select start date"
+            android:textSize="14sp"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="@id/tv_startDate"
+            app:layout_constraintBottom_toBottomOf="@id/tv_startDate"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tv_endDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last day of leave"
+            android:textSize="16sp"
+            android:textColor="@color/carbon_grey_700"
+            app:layout_constraintStart_toStartOf="@id/tv_startDate"
+            app:layout_constraintTop_toBottomOf="@id/tv_startDate"
+            android:layout_marginTop="16dp"
+
+            />
+        <TextView
+            android:id="@+id/dp_endDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select end date"
+            android:textSize="14sp"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="@id/tv_endDate"
+            app:layout_constraintBottom_toBottomOf="@id/tv_endDate"
+            app:layout_constraintStart_toStartOf="@id/dp_startDate"
+            android:layout_marginEnd="16dp"
+
+            />
+
+
+
+        <TextView
+            android:id="@+id/tv_totalDaysL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Total days"
+            android:textSize="16sp"
+            android:textColor="@color/carbon_grey_700"
+            app:layout_constraintStart_toStartOf="@id/tv_endDate"
+            app:layout_constraintTop_toBottomOf="@id/tv_endDate"
+            android:layout_marginTop="16dp"
+            android:visibility="visible"
+            />
+        <TextView
+            android:id="@+id/tv_totalDays"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4 Days"
+            android:textSize="14sp"
+            android:visibility="visible"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintTop_toTopOf="@id/tv_totalDaysL"
+            app:layout_constraintBottom_toBottomOf="@id/tv_totalDaysL"
+            app:layout_constraintStart_toStartOf="@id/dp_endDate"
+            android:layout_marginEnd="16dp"
+
+            />
+
+
+        <carbon.widget.TextView
+            android:id="@+id/tv_certificate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Add a certificate"
+            android:textSize="18sp"
+            android:drawableEnd="@drawable/ic_outline_photo_camera_24"
+            android:layout_marginEnd="16dp"
+            android:textStyle="bold"
+            android:drawableTint="@color/colorPrimary"
+            android:textColor="@color/carbon_grey_700"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:carbon_rippleColor="@color/colorPrimary"
+
+            app:layout_constraintStart_toStartOf="@id/tv_startDate"
+            app:layout_constraintTop_toBottomOf="@id/tv_totalDays"
+            android:layout_marginTop="20dp"
+            />
+
+
+
+        <TextView
+            android:id="@+id/tv_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Comment"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/carbon_grey_700"
+            app:layout_constraintStart_toStartOf="@id/tv_startDate"
+            app:layout_constraintTop_toBottomOf="@id/tv_certificate"
+            android:layout_marginTop="16dp"
+            />
+
+        <carbon.widget.EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_comment"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:hint="type something here"
+            android:textSize="14sp"
+
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
