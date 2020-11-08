@@ -45,7 +45,6 @@ class ProfileFragment :
     }
 
     override fun onLogoutClick() {
-        startActivity(Intent(requireActivity(), LoginActivity::class.java))
     }
 
 

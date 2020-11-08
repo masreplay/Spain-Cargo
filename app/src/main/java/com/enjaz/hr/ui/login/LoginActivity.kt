@@ -57,26 +57,16 @@ class LoginActivity :
     }
 
     override fun login() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-        finish()
-
 
     }
 
     override fun showSnack(string: String, color: String, drawable: Int?) {
-
-//        snackBar(string, drawable, color, getViewDataBinding().parentView, this)
-
 
     }
 
     override fun getViewModel(): LoginViewModel {
         return loginViewModel
     }
-
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }
 
