@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.enjaz.hr.R
 import com.enjaz.hr.databinding.FramgnetReceivedRequestsBinding
 import com.enjaz.hr.ui.base.BaseFragment
@@ -39,6 +40,7 @@ class ReceivedRequestsFragment :
         getViewDataBinding().rv.apply {
             adapter = receiveRequestsAdapter
         }
+
     }
 
 

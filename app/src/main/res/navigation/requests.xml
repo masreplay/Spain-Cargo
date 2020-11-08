@@ -20,4 +20,9 @@
         android:name="com.enjaz.hr.ui.requests.SentRequestsFragment"
         tools:layout="@layout/framgnet_sent_requests"
         android:label="SentRequestsFragment" />
+    <dialog
+        android:id="@+id/filterSheet"
+        android:name="com.enjaz.hr.ui.requests.FilterSheet"
+        tools:layout="@layout/fragment_filter"
+        android:label="FilterSheet" />
 </navigation>

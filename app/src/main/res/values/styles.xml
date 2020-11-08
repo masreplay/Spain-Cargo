@@ -6,7 +6,37 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:datePickerStyle">@style/DatePicker</item>
+        <item name="android:datePickerDialogTheme">@style/DatePicker</item>
     </style>
 
+    <style name="SwitchButtonStyle">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+    </style>
+
+    <style name="StyleTitleText">
+
+        <item name="android:textColor">@color/switch_color_thumb_states</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="CustomChipChoice" parent="@style/Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/bg_chip_state_list</item>
+    </style>
+
+    <style name="DatePicker" parent="ThemeOverlay.MaterialComponents.Dialog">
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:datePickerStyle">@style/DatePickerStyle</item>
+    </style>
+
+    <style name="DatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
+        <item name="android:headerBackground">@color/colorPrimary</item>
+        <item name="android:yearListSelectorColor">@color/orange</item>
+        <item name="android:datePickerMode">calendar</item>
+        <item name="android:minDate">01/01/2019</item>
+    </style>
 
 </resources>
