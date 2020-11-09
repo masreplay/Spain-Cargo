@@ -117,10 +117,11 @@
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/btn_login"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="50dp"
                             app:cornerRadius="@dimen/carbon_grid8"
                             android:layout_marginTop="@dimen/spacing_xlarge"
-                            android:text="LOGIN"
+                            android:textAllCaps="false"
+                            android:text="Login"
                             android:textColor="@android:color/white" />
 
                     </LinearLayout>
