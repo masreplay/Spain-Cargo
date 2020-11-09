@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#2b85ff</color>
     <color name="colorPrimaryLight">#e3eeff</color>
     <color name="colorAccent">#909090</color>
+    <color name="colorSecondary">#16EFF2</color>
+    <color name="colorSecondaryLight">#d9ffff</color>
     <color name="orange" type="color">#fb9a07</color>
     <color name="orangeLight" type="color">#fdf9d4</color>
 
