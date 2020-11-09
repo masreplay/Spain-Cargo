@@ -49,10 +49,15 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, IProfileInteraction
         findNavController().navigate(R.id.userInfoFragment)
     }
 
+    override fun onSalaryDetailsClick() {
+        findNavController().navigate(R.id.salaryDetailsFragment)
+    }
+
 
 }
 
 interface IProfileInteractionListener : BaseNavigator {
     fun onPersonalDetailsClick()
 
+    fun onSalaryDetailsClick()
 }

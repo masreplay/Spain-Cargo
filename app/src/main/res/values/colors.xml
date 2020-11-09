@@ -13,11 +13,11 @@
     <color name="grey_200" type="color">#f3f8ff</color>
     <color name="green" type="color">#51c03e</color>
 
-    <color name="green2" type="color">#21c48f</color>
+    <color name="green2" type="color">#00c290</color>
     <color name="greenLight" type="color">#e3f6ee</color>
 
     <color name="blue_100" type="color">#d0e3ff</color>
-    <color name="red_100" type="color">#f64a3f</color>
+    <color name="red" type="color">#ff4a4a</color>
     <color name="blue_light" type="color">#d6e6ff</color>
     <color name="hours_bg_checked">#1A89CACF</color>
     <color name="hours_bg_pressed">#EFEFEF</color>

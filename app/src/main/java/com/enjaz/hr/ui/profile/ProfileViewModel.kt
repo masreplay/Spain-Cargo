@@ -17,24 +17,13 @@ class ProfileViewModel @ViewModelInject constructor(
     dataManager
 ) {
 
-    var loginResponse: MutableLiveData<BaseResource<BaseResponse<TokenResult>>> =
-        MutableLiveData()
+    lateinit var loginResponse: ArrayList<String>
 
 
     fun mylog() {
-//        dispose(
-//            dataManager.login("email.value!!.trim()", "pass.value!!.trim()"),
-//            ::onLoginSuccess,
-//            { e ->
-//                //error handling
-//                run {
-//
-//                    pref.getAccessToken()
-//
-//                    Log.d("Abdalla19977", e.message!!)
-//                }
-//
-//            })
+
+        loginResponse= arrayListOf("ahmed","ali","yousif","jjjj")
+
     }
 
     private fun onLoginSuccess(result: BaseResource<BaseResponse<TokenResult>>) {

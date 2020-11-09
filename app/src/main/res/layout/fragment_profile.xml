@@ -147,6 +147,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:layout_marginTop="10dp"
+                        android:onClick="@{()->viewModel.navigator.onSalaryDetailsClick()}"
 
                         android:orientation="horizontal"
                         android:paddingLeft="@dimen/spacing_large"
