@@ -59,6 +59,10 @@ class UserInfoFragment :
 
     }
 
+    override fun onSalaryDetailsClick() {
+        TODO("Not yet implemented")
+    }
+
 
 }
 

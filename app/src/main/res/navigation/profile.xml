@@ -13,6 +13,14 @@
         android:id="@+id/userInfoFragment"
         android:name="com.enjaz.hr.ui.profile.UserInfoFragment"
         android:label="User information" />
+    <fragment
+        android:id="@+id/salaryDetailsFragment"
+        android:name="com.enjaz.hr.ui.profile.SalaryDetailsFragment"
+        android:label="Salary details" />
+    <fragment
+        android:id="@+id/deductionDetailsFragment"
+        android:name="com.enjaz.hr.ui.profile.DeductionDetailsFragment"
+        android:label="Deduction details" />
 
 
 </navigation>
