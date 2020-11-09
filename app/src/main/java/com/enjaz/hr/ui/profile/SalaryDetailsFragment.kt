@@ -31,9 +31,7 @@ class SalaryDetailsFragment :
         return profileViewModel
     }
 
-    override fun getViewModelClass(): Class<ProfileViewModel> {
-        return ProfileViewModel::class.java
-    }
+
 
     override fun getNavigator(): IProfileInteractionListener {
         return this

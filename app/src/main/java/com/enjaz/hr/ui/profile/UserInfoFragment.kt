@@ -55,9 +55,6 @@ class UserInfoFragment :
     override fun onPersonalDetailsClick() {
     }
 
-    override fun onLogoutClick() {
-
-    }
 
     override fun onSalaryDetailsClick() {
         TODO("Not yet implemented")

@@ -72,7 +72,7 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
         )
         val section4 = DonutSection(
             name = "section_4",
-            color = ContextCompat.getColor(requireActivity(), R.color.red_100),
+            color = ContextCompat.getColor(requireActivity(), R.color.red),
             amount = 7f
         )
         donut_attendance.cap = 100f

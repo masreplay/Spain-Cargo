@@ -121,7 +121,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="5:00"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                android:textColor="@color/red_100" />
+                                android:textColor="@color/red" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -240,7 +240,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="6:00"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                android:textColor="@color/red_100" />
+                                android:textColor="@color/red" />
 
                             <TextView
                                 android:layout_width="wrap_content"

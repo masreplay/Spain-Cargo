@@ -48,9 +48,6 @@ class ProfileFragment :
         findNavController().navigate(R.id.salaryDetailsFragment)
     }
 
-    override fun getViewModelClass(): Class<ProfileViewModel> {
-        return ProfileViewModel::class.java
-    }
 
 
 }
