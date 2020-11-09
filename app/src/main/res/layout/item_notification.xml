@@ -68,7 +68,7 @@
                 android:layout_marginTop="@dimen/carbon_grid8"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                android:text="Your monthly doctor visit has been updated successfully !"
+                android:text="Your monthly doctor visit has been updated successfully  !"
                 android:textColor="@color/carbon_grey_700"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
