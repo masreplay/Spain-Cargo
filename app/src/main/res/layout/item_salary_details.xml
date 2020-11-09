@@ -100,7 +100,7 @@
             app:layout_constraintStart_toStartOf="@id/tv_total_salaryL"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="4dp"
-            android:text="1,000,000 IQD"
+            android:text="+ 1,000,000 IQD"
             android:textColor="@color/green"
             android:fontFamily="sans-serif-medium"
             android:layout_marginBottom="16dp"
@@ -126,7 +126,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_total_salaryL"
             app:layout_constraintStart_toStartOf="@id/tv_total_deductionL"
             android:layout_marginTop="4dp"
-            android:text="100,000 IQD"
+            android:text="- 100,000 IQD"
             android:textColor="@color/red"
             android:fontFamily="sans-serif-medium"
 
