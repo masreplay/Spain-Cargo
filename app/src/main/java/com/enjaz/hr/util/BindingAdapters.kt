@@ -5,9 +5,11 @@ import android.graphics.drawable.ColorDrawable
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.enjaz.hr.R
 import com.enjaz.hr.ui.base.BaseDataItemsAdapter
 import com.facebook.drawee.view.SimpleDraweeView
 import java.text.SimpleDateFormat
@@ -30,6 +32,23 @@ fun loadImage(view: SimpleDraweeView, imageUrl: String?) {
 fun setTime(view: TextView, time: Int) {
     view.text = "$time:00"
 }
+
+
+@BindingAdapter("ivType")
+fun setIv(view: ImageView, string: String) {
+
+
+    when (string) {
+
+        "Vacation" -> view.setImageResource(R.drawable.ic_vacation)
+        "Hourly" -> view.setImageResource(R.drawable.ic_time)
+        "Overtime" -> view.setImageResource(R.drawable.ic_overtime)
+        "Miss punch" -> view.setImageResource(R.drawable.ic_fingerprint)
+
+
+    }
+}
+
 
 @BindingAdapter("monthFormat")
 fun setMonth(view: TextView, pattern: String) {
@@ -64,7 +83,6 @@ fun setBackgroundColors(view: View, colors: IntArray) {
     view.setBackgroundColor(randomAndroidColor)
 
 }
-
 
 
 @BindingAdapter("bind:total", "bind:value")
