@@ -1,19 +1,18 @@
 package com.enjaz.hr.ui.requests
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.enjaz.hr.R
 import com.enjaz.hr.databinding.FramgnetReceivedRequestsBinding
 import com.enjaz.hr.ui.base.BaseFragment
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ReceivedRequestsFragment :
     BaseFragment<FramgnetReceivedRequestsBinding, IRequestsInteractionListener, RequestsViewModel>(),
-    IRequestsInteractionListener {
+    IRequestsInteractionListener, IRRequestsItemActionListener {
 
     private val requestsViewModel: RequestsViewModel by viewModels()
 
@@ -35,7 +34,9 @@ class ReceivedRequestsFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.i("abdalla19988", "abdalla19988")
+
+
+
         getViewModel().getdata()
         getViewDataBinding().rv.apply {
             adapter = receiveRequestsAdapter
@@ -46,9 +47,36 @@ class ReceivedRequestsFragment :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.i("abdalla19988", "abdalla19988")
 
         receiveRequestsAdapter = ReceivedRequestsAdapter(requireContext(), mutableListOf())
+        receiveRequestsAdapter.setOnItemClickListener(this)
+
+    }
+
+    override fun onAcceptClick() {
+        MaterialAlertDialogBuilder(context)
+            .setTitle("Accept Request")
+            .setMessage("Are you sure you want to accept this request")
+            .setNegativeButton("Cancel") { dialog, which ->
+                dialog.dismiss()
+            }
+            .setPositiveButton("Accept") { dialog, which ->
+                dialog.dismiss()
+            }
+            .show()
+    }
+
+    override fun onDeclinedClick() {
+        MaterialAlertDialogBuilder(context)
+            .setTitle("Decline Request")
+            .setMessage("Are you sure you want to decline this request")
+            .setNegativeButton("Cancel") { dialog, which ->
+                dialog.dismiss()
+            }
+            .setPositiveButton("Decline") { dialog, which ->
+                dialog.dismiss()
+            }
+            .show()
     }
 
 

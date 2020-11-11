@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.enjaz.hr.R
 import com.enjaz.hr.databinding.ItemSentBinding
+import com.enjaz.hr.ui.base.BaseDataItemInteractionListener
 import com.enjaz.hr.ui.base.BaseDataItemsAdapter
 
 open class SentRequestsAdapter(
@@ -29,4 +30,7 @@ open class SentRequestsAdapter(
     }
 
 
+}
+interface ISRequestsItemActionListener : BaseDataItemInteractionListener {
+    fun onCancelClick()
 }

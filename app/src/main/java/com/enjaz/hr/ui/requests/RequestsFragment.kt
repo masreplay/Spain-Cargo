@@ -1,20 +1,20 @@
 package com.enjaz.hr.ui.requests
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.enjaz.hr.R
 import com.enjaz.hr.databinding.FramgnetRequestsBinding
 import com.enjaz.hr.ui.base.BaseFragment
 import com.enjaz.hr.ui.base.BaseNavigator
-import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.framgnet_requests.*
 
@@ -52,25 +52,35 @@ class RequestsFragment :
         childFragmentManager.beginTransaction()
             .replace(R.id.container, fragmentReceived).commit()
 
-        tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+        tv_received.setOnClickListener {
+            tv_received.setTextColor(Color.BLACK)
+            tv_sent.setTextColor(Color.WHITE)
+            tv_sent.background =
+                ContextCompat.getDrawable(requireActivity(), R.drawable.bg_round_outline_ripple_16dp)
+            tv_received.background =
+                ContextCompat.getDrawable(
+                    requireActivity(),
+                    R.drawable.bg_round_ripple_16dp
+                )
+            childFragmentManager.beginTransaction()
+                .replace(R.id.container, fragmentReceived).commit()
 
-            override fun onTabReselected(tab: TabLayout.Tab) {
+        }
 
-            }
+        tv_sent.setOnClickListener {
+            tv_sent.setTextColor(Color.BLACK)
+            tv_received.setTextColor(Color.WHITE)
+            tv_sent.background =
+                ContextCompat.getDrawable(
+                    requireActivity(),
+                    R.drawable.bg_round_ripple_16dp
+                )
+            tv_received.background =
+                ContextCompat.getDrawable(requireActivity(), R.drawable.bg_round_outline_ripple_16dp)
+            childFragmentManager.beginTransaction()
+                .replace(R.id.container, fragmentSent).commit()
+        }
 
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-                if (tab!!.position == 0) {
-                    childFragmentManager.beginTransaction()
-                        .replace(R.id.container, fragmentSent).commit()
-                } else {
-                    childFragmentManager.beginTransaction()
-                        .replace(R.id.container, fragmentReceived).commit()
-                }
-            }
-
-            override fun onTabSelected(tab: TabLayout.Tab) {
-            }
-        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

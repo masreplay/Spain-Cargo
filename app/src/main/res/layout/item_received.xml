@@ -8,6 +8,10 @@
             name="item"
             type="String" />
 
+        <variable
+            name="clickListener"
+            type="com.enjaz.hr.ui.requests.ReceivedRequestsFragment" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -77,6 +81,7 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/bg_circle"
             android:backgroundTint="@color/colorAccent"
+            android:onClick="@{()->clickListener.onDeclinedClick()}"
             android:padding="6dp"
             android:src="@drawable/ic_round_close_24"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -91,6 +96,7 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/bg_circle"
             android:backgroundTint="@color/green_400"
+            android:onClick="@{()->clickListener.onAcceptClick()}"
             android:padding="6dp"
             android:src="@drawable/ic_baseline_check_24"
             app:layout_constraintBottom_toBottomOf="parent"

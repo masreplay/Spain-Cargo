@@ -8,6 +8,9 @@
             name="item"
             type="String" />
 
+        <variable
+            name="clickListener"
+            type="com.enjaz.hr.ui.requests.SentRequestsFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -88,10 +91,11 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_status_text" />
 
         <com.google.android.material.button.MaterialButton
-            android:layout_width="80dp"
+            android:layout_width="90dp"
             android:layout_height="40dp"
             android:layout_margin="16dp"
             android:backgroundTint="@color/colorAccent"
+            android:onClick="@{()->clickListener.onCancelClick()}"
             android:text="Cancel"
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
