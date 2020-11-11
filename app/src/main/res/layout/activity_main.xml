@@ -24,6 +24,8 @@
             android:layout_height="@dimen/actionBarSize"
             android:background="@color/colorPrimary"
             app:title="@string/app_name"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:titleTextColor="@android:color/white"
             app:layout_constraintTop_toTopOf="parent" />
 

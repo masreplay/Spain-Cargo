@@ -1,6 +1,5 @@
 package com.enjaz.hr.ui.profile
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -48,6 +47,9 @@ class ProfileFragment :
         findNavController().navigate(R.id.salaryDetailsFragment)
     }
 
+    override fun onSettingsClick() {
+        findNavController().navigate(R.id.settingsFragment)
+    }
 
 
 }
@@ -55,4 +57,5 @@ class ProfileFragment :
 interface IProfileInteractionListener : BaseNavigator {
     fun onPersonalDetailsClick()
     fun onSalaryDetailsClick()
+    fun onSettingsClick()
 }

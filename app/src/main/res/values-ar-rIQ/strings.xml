@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HRM</string>
+
+
+    <string name="mark">Mark :</string>
+    <string name="home">الرئيسية</string>
+
+
+    <string name="new_employee">موظف جديد</string>
+    <string name="new_request">طلب جديد</string>
+    <string name="requests">الطلبات</string>
+    <string name="notification">الاشعارات</string>
+    <string name="leaves">المغادرات</string>
+    <string name="payslip">Payslip</string>
+    <string name="team">الفريق</string>
+    <string name="profile">الحساب</string>
+    <string name="press_the_above_button_to_retry">press the above button to retry</string>
+    <string name="job_type">نوع العمل</string>
+    <string name="experience_level">مستوى الخبرة</string>
+    <string name="show_result">اظهار النتيجة</string>
+    <string name="clear">مسح</string>
+    <string name="notifications">الاشعارات</string>
+
+
+    <string-array name="hours_of_day">
+        <item>09:00</item>
+        <item>10:00</item>
+        <item>11:00</item>
+        <item>13:00</item>
+        <item>14:00</item>
+        <item>15:00</item>
+        <item>16:00</item>
+    </string-array>
+
+
+
+    <string name="welcome_back">مرحبا بك مجددا</string>
+    <string name="sign_in_to_continue">قم بالتسجيل للمتابعة</string>
+    <string name="email">الايميل</string>
+    <string name="password">كلمة السر</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="forgot_password">نسيت كلمة السر</string>
+    <string name="working_hours">ساعات العمل</string>
+    <string name="delays">التاخيرات</string>
+    <string name="excuse_ndelays">الاعذار</string>
+    <string name="extra_hours">ساعات اضافية</string>
+    <string name="over_time">وقت اضافي</string>
+    <string name="missing_punch">Missing punch</string>
+    <string name="basic_salary_and_additions">الراتب الاسمي والاضافات</string>
+    <string name="salary">راتب</string>
+    <string name="bonus">اضافة</string>
+    <string name="late">تاخير</string>
+    <string name="miss_punch">Miss punch</string>
+    <string name="enter_a_name_or_an_id">قم بادخال اسم او معرف</string>
+    <string name="from">من</string>
+    <string name="post_date">تاريخ المنشور</string>
+    <string name="to">الى</string>
+    <string name="pick_a_start_date">اختر تاريخ البداية</string>
+    <string name="pick_an_end_date">اختر تاريخ النهاية</string>
+    <string name="user_information">معلومات المستخدم</string>
+    <string name="salary_details">معلومات الراتب</string>
+    <string name="settings">الاعدادات</string>
+    <string name="about">حول</string>
+    <string name="logout">تسجيل الخروج</string>
+    <string name="basic_information">المعلومات الاساسية</string>
+    <string name="email_address">الايميل</string>
+    <string name="employee_id">معرف الموظف</string>
+    <string name="mobile_phone">رقم الهاتف</string>
+    <string name="birth_date">تاريخ الولادة</string>
+    <string name="age">العمر</string>
+    <string name="address">العنوان</string>
+    <string name="marital_status">الحالة الزوجية</string>
+    <string name="work_information">معلومات العمل</string>
+    <string name="department">الدائرة</string>
+    <string name="reporting_to">يبلغ الى</string>
+    <string name="date_on_joining">تاريخ الانظمام</string>
+    <string name="employee_status">حالة الموظف</string>
+    <string name="role">الدور</string>
+    <string name="work_phone">هاتف العمل</string>
+    <string name="experience">الخبرة</string>
+    <string name="base_salary">الراتب الاسمي</string>
+    <string name="deduction">الاستقطاع</string>
+    <string name="statistics">الاحصائيات</string>
+    <string name="attendance">الحضور</string>
+    <string name="present">حاضر</string>
+    <string name="vacation">عطلة</string>
+    <string name="absent">غائب</string>
+    <string name="delay">تأخير</string>
+    <string name="more">المزيد</string>
+    <string name="team_members">اعضاء الفريق</string>
+    <string name="received">مستلمة</string>
+    <string name="sent">مرسلة</string>
+    <string name="request">طلب</string>
+    <string name="deduction_details">معلومات الاستقطاع</string>
+    <string name="total_salary">الراتب الكلي</string>
+    <string name="total_deduction">الاستقطاعات الكلية</string>
+    <string name="language">اللغة</string>
+    <string name="cancel">الغاء</string>
+    <string name="pending">انتظار</string>
+
+</resources>

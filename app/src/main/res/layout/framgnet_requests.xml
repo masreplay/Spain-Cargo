@@ -49,7 +49,7 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="Received"
+                android:text="@string/received"
                 android:textColor="@android:color/black"
                 android:textStyle="bold" />
 
@@ -64,7 +64,7 @@
                 android:clickable="true"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="Sent"
+                android:text="@string/sent"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
 

@@ -8,6 +8,6 @@
     <fragment
         android:id="@+id/notificationsFragment"
         android:name="com.enjaz.hr.ui.notifications.NotificationsFragment"
-        android:label="notifications"
+        android:label="@string/notifications"
         tools:layout="@layout/fragment_notifications"/>
 </navigation>

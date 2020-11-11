@@ -13,8 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/grey_200"
-        >
+        android:background="@color/grey_200">
 
 
         <LinearLayout
@@ -27,9 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:orientation="vertical"
-
-                >
+                android:orientation="vertical">
 
                 <com.mikhaellopez.circularimageview.CircularImageView
                     android:id="@+id/image"
@@ -38,8 +35,8 @@
                     android:layout_marginTop="50dp"
                     android:src="@drawable/photo_male_8"
                     app:civ_border="true"
-                    app:civ_border_width="2dp"
                     app:civ_border_color="@color/carbon_black"
+                    app:civ_border_width="2dp"
                     app:civ_shadow="true"
                     app:civ_shadow_radius="0" />
 
@@ -81,36 +78,34 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-
-                    >
+                    app:layout_constraintTop_toTopOf="parent">
 
 
                     <carbon.widget.LinearLayout
                         android:id="@+id/lyt_personalDetails"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/spacing_xxlarge"
-                        android:gravity="center_vertical"
                         android:layout_marginTop="20dp"
                         android:clickable="true"
                         android:focusable="true"
+                        android:gravity="center_vertical"
                         android:onClick="@{()->viewModel.navigator.onPersonalDetailsClick()}"
-                        app:carbon_rippleColor="@color/colorPrimaryLight"
                         android:orientation="horizontal"
                         android:paddingLeft="@dimen/spacing_large"
                         android:paddingRight="@dimen/spacing_large"
-                        >
+                        app:carbon_rippleColor="@color/colorPrimaryLight">
+
                         <carbon.widget.ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="#deeeff"
                             android:padding="6dp"
                             app:carbon_cornerRadius="6dp"
-                            app:srcCompat="@drawable/ic_person_outline"
-                            app:carbon_tint="#298aec"/>
+                            app:carbon_tint="#298aec"
+                            app:srcCompat="@drawable/ic_person_outline" />
 
                         <TextView
                             android:layout_width="0dp"
@@ -118,7 +113,7 @@
                             android:layout_marginLeft="@dimen/spacing_large"
                             android:layout_marginRight="@dimen/spacing_large"
                             android:layout_weight="1"
-                            android:text="User information"
+                            android:text="@string/user_information"
                             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                             android:textColor="@color/carbon_grey_800"
                             app:fontFamily="sans-serif-medium" />
@@ -134,24 +129,18 @@
                     </carbon.widget.LinearLayout>
 
 
-
-
-
-
-
                     <carbon.widget.LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/spacing_xxlarge"
-                        android:gravity="center_vertical"
-                        app:carbon_rippleColor="@color/colorPrimaryLight"
+                        android:layout_marginTop="10dp"
                         android:clickable="true"
                         android:focusable="true"
-                        android:layout_marginTop="10dp"
+                        android:gravity="center_vertical"
                         android:onClick="@{()->viewModel.navigator.onSalaryDetailsClick()}"
-
                         android:orientation="horizontal"
                         android:paddingLeft="@dimen/spacing_large"
-                        android:paddingRight="@dimen/spacing_large">
+                        android:paddingRight="@dimen/spacing_large"
+                        app:carbon_rippleColor="@color/colorPrimaryLight">
 
                         <carbon.widget.ImageView
                             android:layout_width="wrap_content"
@@ -168,7 +157,7 @@
                             android:layout_marginLeft="@dimen/spacing_large"
                             android:layout_marginRight="@dimen/spacing_large"
                             android:layout_weight="1"
-                            android:text="Salary Details"
+                            android:text="@string/salary_details"
                             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                             android:textColor="@color/carbon_grey_800"
                             app:fontFamily="sans-serif-medium" />
@@ -187,15 +176,15 @@
                     <carbon.widget.LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/spacing_xxlarge"
-                        android:gravity="center_vertical"
-                        app:carbon_rippleColor="@color/colorPrimaryLight"
                         android:layout_marginTop="10dp"
-
-                        android:orientation="horizontal"
                         android:clickable="true"
                         android:focusable="true"
+                        android:onClick="@{()->viewModel.navigator.onSettingsClick()}"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
                         android:paddingLeft="@dimen/spacing_large"
-                        android:paddingRight="@dimen/spacing_large">
+                        android:paddingRight="@dimen/spacing_large"
+                        app:carbon_rippleColor="@color/colorPrimaryLight">
 
                         <carbon.widget.ImageView
                             android:layout_width="wrap_content"
@@ -212,7 +201,7 @@
                             android:layout_marginLeft="@dimen/spacing_large"
                             android:layout_marginRight="@dimen/spacing_large"
                             android:layout_weight="1"
-                            android:text="Settings"
+                            android:text="@string/settings"
                             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                             android:textColor="@color/carbon_grey_800"
                             app:fontFamily="sans-serif-medium" />
@@ -228,19 +217,18 @@
                     </carbon.widget.LinearLayout>
 
 
-
                     <carbon.widget.LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/spacing_xxlarge"
+                        android:layout_marginTop="10dp"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        app:carbon_rippleColor="@color/colorPrimaryLight"
-                        android:clickable="true"
-                        android:layout_marginTop="10dp"
 
-                        android:focusable="true"
                         android:paddingLeft="@dimen/spacing_large"
-                        android:paddingRight="@dimen/spacing_large">
+                        android:paddingRight="@dimen/spacing_large"
+                        app:carbon_rippleColor="@color/colorPrimaryLight">
 
                         <carbon.widget.ImageView
                             android:layout_width="wrap_content"
@@ -257,7 +245,7 @@
                             android:layout_marginLeft="@dimen/spacing_large"
                             android:layout_marginRight="@dimen/spacing_large"
                             android:layout_weight="1"
-                            android:text="About"
+                            android:text="@string/about"
                             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                             android:textColor="@color/carbon_grey_800"
                             app:fontFamily="sans-serif-medium" />
@@ -271,17 +259,18 @@
 
 
                     </carbon.widget.LinearLayout>
+
                     <carbon.widget.LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/spacing_xxlarge"
+                        android:layout_marginTop="10dp"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        app:carbon_rippleColor="@color/colorPrimaryLight"
-                        android:clickable="true"
-                        android:layout_marginTop="10dp"
-                        android:focusable="true"
                         android:paddingLeft="@dimen/spacing_large"
-                        android:paddingRight="@dimen/spacing_large">
+                        android:paddingRight="@dimen/spacing_large"
+                        app:carbon_rippleColor="@color/colorPrimaryLight">
 
                         <carbon.widget.ImageView
                             android:layout_width="wrap_content"
@@ -298,7 +287,7 @@
                             android:layout_marginLeft="@dimen/spacing_large"
                             android:layout_marginRight="@dimen/spacing_large"
                             android:layout_weight="1"
-                            android:text="Logout"
+                            android:text="@string/logout"
                             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                             android:textColor="@color/carbon_grey_800"
                             app:fontFamily="sans-serif-medium" />
@@ -315,7 +304,6 @@
                 </LinearLayout>
 
             </carbon.widget.ConstraintLayout>
-
 
 
         </LinearLayout>

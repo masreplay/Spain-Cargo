@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.enjaz.hr.ui.home.HomeFragment"
-        android:label="Home"
+        android:label="@string/home"
         tools:layout="@layout/framgnet_home">
         <action
             android:id="@+id/next_action"
@@ -19,6 +19,6 @@
         android:id="@+id/teamFragment"
         android:name="com.enjaz.hr.ui.team.TeamFragment"
         tools:layout="@layout/framgnet_team"
-        android:label="TeamFragment" />
+        android:label="@string/team" />
 
 </navigation>

@@ -97,7 +97,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Working hours"
+                                android:text="@string/working_hours"
                                 android:textColor="@color/home_text" />
 
                         </LinearLayout>
@@ -126,7 +126,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Delays"
+                                android:text="@string/delays"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
                                 android:textColor="@color/home_text" />
 
@@ -156,7 +156,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/spacing_medium"
-                                android:text="Excuse\ndelays"
+                                android:text="@string/excuse_ndelays"
                                 android:textColor="@color/home_text" />
 
                         </LinearLayout>
@@ -192,7 +192,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/spacing_medium"
-                                android:text="Extra hours"
+                                android:text="@string/extra_hours"
                                 android:textColor="@color/home_text" />
 
                         </LinearLayout>
@@ -219,7 +219,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/spacing_medium"
-                                android:text="Over time"
+                                android:text="@string/over_time"
                                 android:textColor="@color/home_text" />
 
                         </LinearLayout>
@@ -246,7 +246,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/spacing_medium"
-                                android:text="Missing punch"
+                                android:text="@string/missing_punch"
                                 android:textColor="@color/home_text" />
 
                         </LinearLayout>
