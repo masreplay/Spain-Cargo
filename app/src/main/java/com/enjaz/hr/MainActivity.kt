@@ -1,7 +1,9 @@
 package com.enjaz.hr
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.LiveData
@@ -32,6 +34,10 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
             val toolbar = findViewById<Toolbar>(R.id.toolbar)
             setSupportActionBar(toolbar)
         }
+
+        val sharedPreferences = getDefaultSharedPreferences(applicationContext);
+        sharedPreferences.registerOnSharedPreferenceChangeListener(this)
+
 
         Lingver.getInstance().setLocale(this,
             getDefaultSharedPreferences(applicationContext).getString("language", "en")!!
@@ -86,7 +92,11 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
 
     override fun onSharedPreferenceChanged(p0: SharedPreferences?, key: String?) {
         if (key.equals("language")) {
+            Log.i("taaaaaaaaaaag","taaaaaaaaaaag")
             Lingver.getInstance().setLocale(this, p0!!.getString(key, "en")!!)
+            val intent=Intent(this,MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
         }
 
     }
