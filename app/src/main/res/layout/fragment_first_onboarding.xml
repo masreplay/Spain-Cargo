@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/iv"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="50dp"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/ic_mobile"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/iv"
+            app:layout_constraintStart_toStartOf="@id/iv"
+            app:layout_constraintEnd_toEndOf="@id/iv"
+            android:fontFamily="serif"
+            android:textColor="@color/white"
+            android:text="User Friendly Experience"
+            style="@style/carbon_TextAppearance.Title"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            android:layout_marginHorizontal="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/white"
+            style="@style/carbon_TextAppearance.Subhead"
+            android:gravity="center"
+
+            android:text="Drive employee engagement and reduce administrative burden with a solution that is designed to look,work,And feel like a consumer application"
+
+
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
