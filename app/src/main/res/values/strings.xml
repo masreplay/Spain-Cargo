@@ -90,7 +90,6 @@
     <string name="base_salary">Base salary</string>
     <string name="deduction">Deduction</string>
     <string name="statistics">Statistics</string>
-    <string name="attendance">Attendance</string>
     <string name="present">Present</string>
     <string name="vacation">Vacation</string>
     <string name="absent">Absent</string>
@@ -101,8 +100,6 @@
     <string name="sent">Sent</string>
     <string name="request">Request</string>
     <string name="home">Home</string>
-    <string name="team">Team</string>
-    <string name="profile">Profile</string>
     <string name="user_information">User information</string>
     <string name="deduction_details">Deduction details</string>
     <string name="total_salary">Total salary</string>

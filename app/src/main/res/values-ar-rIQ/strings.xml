@@ -5,27 +5,7 @@
     <string name="home_fragment">Home Fragment</string>
     <string name="sport_fragment">Sport Fragment</string>
     <string name="movie_fragment">Movie Fragment</string>
-    <string name="mark">Mark :</string>
-    <string name="home">Home</string>
 
-
-    <string name="received">Received</string>
-    <string name="sent">Sent</string>
-    <string name="new_employee">New Employee</string>
-    <string name="new_request">New Request</string>
-    <string name="requests">Requests</string>
-    <string name="notification">Notification</string>
-    <string name="leaves">Leaves</string>
-    <string name="payslip">Payslip</string>
-    <string name="team">Team</string>
-    <string name="attendance">الحضور</string>
-    <string name="profile">Profile</string>
-    <string name="press_the_above_button_to_retry">press the above button to retry</string>
-    <string name="job_type">Job type</string>
-    <string name="experience_level">Experience level</string>
-    <string name="show_result">Show result</string>
-    <string name="clear">Clear</string>
-    <string name="notifications">Notifications</string>
     <string name="user_friendly_experience">تجربة سهلة الاستخدام</string>
     <string name="drive_employee_engagement_and_reduce_administrative_burden_with_a_solution_that_is_designed_to_look_work_and_feel_like_a_consumer_application">زيادة التفاعل مع الموظفين وتخفيض الأعباء الإدارية مع التطبيق الذي تم تصميمه من أجل المستهلك</string>
     <string name="mobile_accessibility">إمكانية الوصول عبر الهاتف</string>
