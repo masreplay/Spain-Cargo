@@ -9,7 +9,7 @@
         android:id="@+id/requestsFragment"
         android:name="com.enjaz.hr.ui.requests.RequestsFragment"
         tools:layout="@layout/framgnet_requests"
-        android:label="Requests" />
+        android:label="@string/requests" />
     <fragment
         android:id="@+id/receivedRequestsFragment"
         android:name="com.enjaz.hr.ui.requests.ReceivedRequestsFragment"

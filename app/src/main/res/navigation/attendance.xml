@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/attendanceFragment"
         android:name="com.enjaz.hr.ui.attendance.AttendanceFragment"
-        android:label="Attendance"
+        android:label="@string/attendance"
         tools:layout="@layout/fragment_attendance" />
     <fragment
         android:id="@+id/sendRequestFragment"

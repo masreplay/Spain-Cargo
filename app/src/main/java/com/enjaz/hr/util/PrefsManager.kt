@@ -13,7 +13,7 @@ import javax.inject.Singleton
 
 @Singleton
 class PrefsManager @Inject constructor(
-    private var sharedPref: SharedPreferences,
+    var sharedPref: SharedPreferences,
     @ApplicationContext var context: Context
 ) {
 
@@ -42,5 +42,7 @@ class PrefsManager @Inject constructor(
         sharedPrefsEditor.putString(getString(R.string.tokens_key_prefrences), json)
         sharedPrefsEditor.apply()
     }
+
+
 
 }

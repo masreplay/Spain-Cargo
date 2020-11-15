@@ -118,7 +118,7 @@
             android:layout_height="40dp"
             android:layout_marginEnd="16dp"
             android:onClick="@{()->clickListener.onRequestClick()}"
-            android:text="Request"
+            android:text="@string/request"
             android:textAllCaps="false"
             android:textSize="12sp"
             android:visibility='@{item.equals("hussein")?View.VISIBLE:View.GONE}'

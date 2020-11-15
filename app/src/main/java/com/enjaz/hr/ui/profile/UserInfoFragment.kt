@@ -60,6 +60,10 @@ class UserInfoFragment :
         TODO("Not yet implemented")
     }
 
+    override fun onSettingsClick() {
+        TODO("Not yet implemented")
+    }
+
 
 }
 

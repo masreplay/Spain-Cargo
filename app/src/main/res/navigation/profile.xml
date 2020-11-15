@@ -8,19 +8,23 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.enjaz.hr.ui.profile.ProfileFragment"
-        android:label="Profile" />
+        android:label="@string/profile" />
     <fragment
         android:id="@+id/userInfoFragment"
         android:name="com.enjaz.hr.ui.profile.UserInfoFragment"
-        android:label="User information" />
+        android:label="@string/user_information" />
     <fragment
         android:id="@+id/salaryDetailsFragment"
         android:name="com.enjaz.hr.ui.profile.SalaryDetailsFragment"
-        android:label="Salary details" />
+        android:label="@string/salary_details" />
     <fragment
         android:id="@+id/deductionDetailsFragment"
         android:name="com.enjaz.hr.ui.profile.DeductionDetailsFragment"
-        android:label="Deduction details" />
+        android:label="@string/deduction_details" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.enjaz.hr.ui.settings.SettingsFragment"
+        android:label="@string/settings" />
 
 
 </navigation>

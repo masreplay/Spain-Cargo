@@ -30,7 +30,7 @@
             android:backgroundTint="@color/orange"
             android:paddingHorizontal="16dp"
             android:paddingVertical="4dp"
-            android:text="PENDING"
+            android:text="@string/pending"
             android:textColor="@android:color/white"
             android:textSize="12sp"
             android:textStyle="bold"
@@ -96,7 +96,7 @@
             android:layout_margin="16dp"
             android:backgroundTint="@color/colorAccent"
             android:onClick="@{()->clickListener.onCancelClick()}"
-            android:text="Cancel"
+            android:text="@string/cancel"
             android:textAllCaps="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
