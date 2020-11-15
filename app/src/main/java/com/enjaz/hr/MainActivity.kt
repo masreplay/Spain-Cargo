@@ -10,10 +10,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.preference.PreferenceManager
 import androidx.preference.PreferenceManager.getDefaultSharedPreferences
 import com.afollestad.vvalidator.util.hide
 import com.afollestad.vvalidator.util.show
+import com.enjaz.hr.ui.login.LoginActivity
 import com.enjaz.hr.util.PrefsManager
 import com.enjaz.hr.util.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -29,11 +29,18 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        if (PrefsManager.instance?.getString("login")!="1"){
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         if (savedInstanceState == null) {
             setupBottomNavigationBar()
             val toolbar = findViewById<Toolbar>(R.id.toolbar)
             setSupportActionBar(toolbar)
         }
+
 
         val sharedPreferences = getDefaultSharedPreferences(applicationContext);
         sharedPreferences.registerOnSharedPreferenceChangeListener(this)

@@ -8,12 +8,9 @@ import com.enjaz.hr.data.model.BaseResponse
 import com.enjaz.hr.data.model.DateItem
 import com.enjaz.hr.data.model.token.TokenResult
 import com.enjaz.hr.ui.base.BaseViewModel
-import com.enjaz.hr.util.PrefsManager
 
 class HomeViewModel @ViewModelInject constructor(
-    dataManager: AppDataManager,
-    var pref: PrefsManager
-) : BaseViewModel<IHomeInteractionListener>(
+    dataManager: AppDataManager) : BaseViewModel<IHomeInteractionListener>(
     dataManager
 ) {
 

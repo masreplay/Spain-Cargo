@@ -7,12 +7,9 @@ import com.enjaz.hr.data.model.BaseResource
 import com.enjaz.hr.data.model.BaseResponse
 import com.enjaz.hr.data.model.token.TokenResult
 import com.enjaz.hr.ui.base.BaseViewModel
-import com.enjaz.hr.ui.home.IHomeInteractionListener
-import com.enjaz.hr.util.PrefsManager
 
 class LoginViewModel @ViewModelInject constructor(
-    dataManager: AppDataManager,
-    var pref: PrefsManager
+    dataManager: AppDataManager
 ) : BaseViewModel<ILoginInteractionListener>(
     dataManager
 ) {
@@ -52,7 +49,7 @@ class LoginViewModel @ViewModelInject constructor(
         result?.data?.let {
 
 
-            pref.saveTokens(result.data.result)
+//            pref.saveTokens(result.data.result)
 
 
 

@@ -4,11 +4,9 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 import androidx.room.Room
-import com.enjaz.hr.BuildConfig
 import com.enjaz.hr.data.Webservices
 import com.enjaz.hr.data.db.MovieDB
 import com.enjaz.hr.util.PrefsManager
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -47,7 +45,7 @@ object AppModule {
             }
 
             .addInterceptor { chain ->
-                val token = PrefsManager(shredPref, context).getAccessToken()
+                val token = PrefsManager.instance?.getAccessToken()
                 var request = chain.request()
                 if (chain.request().header("No-Auth") == null) {
                     request = request.newBuilder()

@@ -10,6 +10,7 @@ import com.enjaz.hr.R
 import com.enjaz.hr.databinding.ActivityLoginBinding
 import com.enjaz.hr.ui.base.BaseActivity
 import com.enjaz.hr.ui.base.BaseNavigator
+import com.enjaz.hr.util.PrefsManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -58,6 +59,10 @@ class LoginActivity :
 
     override fun login() {
 
+        PrefsManager.instance?.setString("login","1")
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     override fun showSnack(string: String, color: String, drawable: Int?) {

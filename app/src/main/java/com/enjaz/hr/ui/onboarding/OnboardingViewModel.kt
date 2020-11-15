@@ -7,8 +7,6 @@ import com.enjaz.hr.data.model.BaseResource
 import com.enjaz.hr.data.model.BaseResponse
 import com.enjaz.hr.data.model.token.TokenResult
 import com.enjaz.hr.ui.base.BaseViewModel
-import com.enjaz.hr.ui.home.IHomeInteractionListener
-import com.enjaz.hr.util.PrefsManager
 
 class OnboardingViewModel @ViewModelInject constructor(
     dataManager: AppDataManager

@@ -19,6 +19,8 @@ import com.enjaz.hr.R
 import com.enjaz.hr.databinding.ActivityOnboardingBinding
 import com.enjaz.hr.ui.base.BaseActivity
 import com.enjaz.hr.ui.base.BaseNavigator
+import com.enjaz.hr.ui.login.LoginActivity
+import com.enjaz.hr.util.PrefsManager
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -37,6 +39,15 @@ class OnboardingActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        if (PrefsManager.instance!!.getString("boarding")=="1") {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }else {
+            PrefsManager.instance!!.setString("boarding", "1")
+
+        }
 
         val window: Window = this.getWindow()
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
@@ -91,7 +102,7 @@ class OnboardingActivity :
             }
         })
         getViewDataBinding().btnDone.setOnClickListener(View.OnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
         })
