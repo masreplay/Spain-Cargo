@@ -18,7 +18,6 @@
     <string name="leaves">Leaves</string>
     <string name="payslip">Payslip</string>
     <string name="team">Team</string>
-    <string name="attendance">Attendance</string>
     <string name="profile">Profile</string>
     <string name="press_the_above_button_to_retry">press the above button to retry</string>
     <string name="job_type">Job type</string>
@@ -26,6 +25,17 @@
     <string name="show_result">Show result</string>
     <string name="clear">Clear</string>
     <string name="notifications">Notifications</string>
+    <string name="user_friendly_experience">User Friendly Experience</string>
+    <string name="drive_employee_engagement_and_reduce_administrative_burden_with_a_solution_that_is_designed_to_look_work_and_feel_like_a_consumer_application">Drive employee engagement and reduce administrative burden with a solution that is designed to look,work,and feel like a consumer application</string>
+    <string name="mobile_accessibility">Mobile Accessibility</string>
+    <string name="empower_employees_to_access_and_interact_with_their_core_hr_systems_like_payroll_benefits_and_time_management">Empower employees to access and interact with their core HR systems like payroll, benefits, and time management</string>
+    <string name="attendance">Attendance</string>
+    <string name="streamline_time_tracking_and_scheduling_so_you_can_decrease_payroll_errors_reduce_overtime_costs_and_improve_productivity">Streamline time tracking and scheduling so you can decrease payroll errors, reduce overtime costs, and improve productivity</string>
+    <string name="announcements">Announcements</string>
+    <string name="get_notified_when_event_take_a_place">Get notified when event take a place</string>
+    <string name="prev">Prev</string>
+    <string name="next">Next</string>
+    <string name="done">Done</string>
 
 
     <string-array name="hours_of_day">

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="50dp"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/ic_mobile_interact"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/iv"
+            app:layout_constraintStart_toStartOf="@id/iv"
+            app:layout_constraintEnd_toEndOf="@id/iv"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="@string/mobile_accessibility"
+android:textSize="18sp"            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            android:layout_marginHorizontal="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/carbon_grey_600"
+android:textSize="16sp"            android:gravity="center"
+
+            android:text="@string/empower_employees_to_access_and_interact_with_their_core_hr_systems_like_payroll_benefits_and_time_management"
+
+
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

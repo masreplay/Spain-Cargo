@@ -13,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MainActivity"
+        <activity android:name=".ui.login.LoginActivity" />
+        <activity android:name=".MainActivity" />
+
+        <activity android:name=".ui.onboarding.OnboardingActivity"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,4 +28,3 @@
     </application>
 
 </manifest>
-
