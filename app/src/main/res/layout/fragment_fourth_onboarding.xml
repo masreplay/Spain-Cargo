@@ -13,42 +13,43 @@
 
         <ImageView
             android:id="@+id/iv"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="50dp"
             android:layout_width="250dp"
             android:layout_height="250dp"
-            android:src="@drawable/ic_attendance"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/ic_announcement"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
 
             />
 
 
-        <TextView
+        <carbon.widget.TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/iv"
-            app:layout_constraintStart_toStartOf="@id/iv"
-            app:layout_constraintEnd_toEndOf="@id/iv"
+            android:layout_marginStart="16dp"
+            android:text="@string/announcements"
             android:textColor="@color/black"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:text="@string/attendance"
-android:textSize="18sp"            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tv_title"
             android:layout_marginHorizontal="30dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="8dp"
-            android:textColor="@color/carbon_grey_600"
             android:gravity="center"
+            android:text="@string/get_notified_when_event_take_a_place"
+            android:textColor="@color/carbon_grey_600"
             android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
 
-            android:text="@string/streamline_time_tracking_and_scheduling_so_you_can_decrease_payroll_errors_reduce_overtime_costs_and_improve_productivity"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
 
 
             />

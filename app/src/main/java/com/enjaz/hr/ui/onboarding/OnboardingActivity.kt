@@ -1,19 +1,26 @@
 package com.enjaz.hr.ui.onboarding
 
-import android.graphics.Color
+import android.content.Intent
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
+import android.view.WindowManager
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
 import androidx.viewpager.widget.ViewPager
+import com.afollestad.vvalidator.util.hide
+import com.afollestad.vvalidator.util.show
+import com.enjaz.hr.MainActivity
 import com.enjaz.hr.R
 import com.enjaz.hr.databinding.ActivityOnboardingBinding
 import com.enjaz.hr.ui.base.BaseActivity
 import com.enjaz.hr.ui.base.BaseNavigator
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class OnboardingActivity :
@@ -21,7 +28,7 @@ class OnboardingActivity :
     IOnboardingInteractionListener {
     private val onboardingViewModel: OnboardingViewModel by viewModels()
 
-    private val MAX_STEP = 3
+    private val MAX_STEP = 4
 
     override fun getLayoutId(): Int {
         return R.layout.activity_onboarding
@@ -30,13 +37,26 @@ class OnboardingActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val window: Window = this.getWindow()
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.white))
+
         getViewDataBinding().pager.adapter = ViewPagerAdapter(supportFragmentManager)
+
+        bottomProgressDots(0)
+        getViewDataBinding().btnPrev.hide()
+
+
+
+
+
+
 
         getViewDataBinding().pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrollStateChanged(state: Int) {
-
             }
-
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,
@@ -44,32 +64,42 @@ class OnboardingActivity :
             ) {
 
             }
-
             override fun onPageSelected(position: Int) {
-
                 bottomProgressDots(position)
-
-                if (position >= 2) {
-                    getViewDataBinding().btnNext.text = "Done"
-                    getViewDataBinding().btnNext.setBackgroundColor(Color.parseColor("#F4A937"))
-                    getViewDataBinding().btnNext.setTextColor(Color.WHITE)
+                if (position > 0) {
+                    getViewDataBinding().btnPrev.show()
+                } else getViewDataBinding().btnPrev.hide()
+                if (position >= 3) {
+                    getViewDataBinding().btnDone.show()
                 } else {
-                    getViewDataBinding().btnNext.text = "Next"
-                    getViewDataBinding().btnNext.setBackgroundColor(resources.getColor(R.color.white))
-                    getViewDataBinding().btnNext.setTextColor(resources.getColor(R.color.carbon_grey_800))
+                    getViewDataBinding().btnDone.hide()
                 }
-
 
             }
         })
 
 
-
-
         getViewDataBinding().btnNext.setOnClickListener(View.OnClickListener {
-            if (getViewDataBinding().pager.currentItem < 2) {
+            if (getViewDataBinding().pager.currentItem < 3) {
                 getViewDataBinding().pager.currentItem = getViewDataBinding().pager.currentItem + 1
             }
+        })
+
+        getViewDataBinding().btnPrev.setOnClickListener(View.OnClickListener {
+            if (getViewDataBinding().pager.currentItem > 0) {
+                getViewDataBinding().pager.currentItem = getViewDataBinding().pager.currentItem - 1
+            }
+        })
+        getViewDataBinding().btnDone.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        })
+
+        getViewDataBinding().btClose.setOnClickListener(View.OnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         })
     }
 
@@ -100,13 +130,13 @@ class OnboardingActivity :
             dots[i]!!.layoutParams = params
             dots[i]!!.setImageResource(R.drawable.shape_circle)
             dots[i]!!
-                .setColorFilter(resources.getColor(R.color.grey_200), PorterDuff.Mode.SRC_IN)
+                .setColorFilter(resources.getColor(R.color.blue_light), PorterDuff.Mode.SRC_IN)
             dotsLayout.addView(dots[i])
         }
         if (dots.size > 0) {
             dots[current_index]!!.setImageResource(R.drawable.shape_circle)
             dots[current_index]
-                ?.setColorFilter(resources.getColor(R.color.orange), PorterDuff.Mode.SRC_IN)
+                ?.setColorFilter(resources.getColor(R.color.colorPrimary), PorterDuff.Mode.SRC_IN)
         }
     }
 

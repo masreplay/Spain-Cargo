@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
+        android:background="@color/white">
 
         <ImageView
             android:id="@+id/iv"
@@ -31,10 +31,10 @@
             app:layout_constraintTop_toBottomOf="@id/iv"
             app:layout_constraintStart_toStartOf="@id/iv"
             app:layout_constraintEnd_toEndOf="@id/iv"
-            android:fontFamily="serif"
-            android:textColor="@color/white"
-            android:text="User Friendly Experience"
-            style="@style/carbon_TextAppearance.Title"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:text="@string/user_friendly_experience"
+            android:textSize="18sp"
             />
 
         <TextView
@@ -45,11 +45,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="8dp"
-            android:textColor="@color/white"
-            style="@style/carbon_TextAppearance.Subhead"
+            android:textSize="16sp"
+            android:textColor="@color/carbon_grey_600"
             android:gravity="center"
 
-            android:text="Drive employee engagement and reduce administrative burden with a solution that is designed to look,work,And feel like a consumer application"
+            android:text="@string/drive_employee_engagement_and_reduce_administrative_burden_with_a_solution_that_is_designed_to_look_work_and_feel_like_a_consumer_application"
 
 
             />
