@@ -53,12 +53,29 @@ class NotificationsFragment :
             notificationAdapter.setItems(it)
         }
 
-        val mLayoutManager = LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false)
-
         getViewDataBinding().rv.apply {
-            layoutManager = mLayoutManager
             adapter = notificationAdapter
         }
+
+        val lm = LinearLayoutManager(requireActivity())
+        getViewDataBinding().rv.layoutManager = lm
+
+
+
+        getViewDataBinding().rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+
+
+                if (lm.findLastVisibleItemPosition() == lm.itemCount - 1) {
+                    getViewModel().appenddata()
+                    notificationAdapter.notifyDataSetChanged()
+                }
+
+                super.onScrolled(recyclerView, dx, dy)
+            }
+        })
+
 }
 
 
