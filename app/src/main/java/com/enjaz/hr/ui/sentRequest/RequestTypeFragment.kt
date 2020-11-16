@@ -1,7 +1,6 @@
 package com.enjaz.hr.ui.sentRequest
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -10,8 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.enjaz.hr.R
 import com.enjaz.hr.data.model.Types
 import com.enjaz.hr.databinding.FragmentRequsetTypeBinding
-import com.enjaz.hr.ui.attendance.AttendanceAdapter
-import com.enjaz.hr.ui.base.BaseNavigator
 import com.enjaz.hr.ui.base.BaseSheetFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -72,6 +69,14 @@ class RequestTypeFragment :
                 type.type
             )
         findNavController().navigate(action)
+    }
+
+    override fun dialogTimePickerLightStart() {
+        TODO("Not yet implemented")
+    }
+
+    override fun dialogTimePickerLightEnd() {
+        TODO("Not yet implemented")
     }
 
 
