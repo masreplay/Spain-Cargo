@@ -6,14 +6,15 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.enjaz.hr.R
+import com.enjaz.hr.data.model.Request
 import com.enjaz.hr.databinding.ItemReceivedBinding
 import com.enjaz.hr.databinding.ItemSentBinding
 import com.enjaz.hr.ui.base.BaseDataItemInteractionListener
 import com.enjaz.hr.ui.base.BaseDataItemsAdapter
 
 open class ReceivedRequestsAdapter(
-    protected var context: Context, objects: MutableList<String>
-) : BaseDataItemsAdapter<String>(objects, null) {
+    protected var context: Context, objects: MutableList<Request>
+) : BaseDataItemsAdapter<Request>(objects, null) {
 
     protected lateinit var binding: ItemReceivedBinding
 

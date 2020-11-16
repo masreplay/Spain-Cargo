@@ -6,13 +6,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.enjaz.hr.R
+import com.enjaz.hr.data.model.Request
 import com.enjaz.hr.databinding.ItemSentBinding
 import com.enjaz.hr.ui.base.BaseDataItemInteractionListener
 import com.enjaz.hr.ui.base.BaseDataItemsAdapter
 
 open class SentRequestsAdapter(
-    protected var context: Context, objects: MutableList<String>
-) : BaseDataItemsAdapter<String>(objects, null) {
+    protected var context: Context, var objects: MutableList<Request>
+) : BaseDataItemsAdapter<Request>(objects, null) {
 
     protected lateinit var binding: ItemSentBinding
 
@@ -29,8 +30,8 @@ open class SentRequestsAdapter(
         )
     }
 
-
 }
+
 interface ISRequestsItemActionListener : BaseDataItemInteractionListener {
     fun onCancelClick()
 }

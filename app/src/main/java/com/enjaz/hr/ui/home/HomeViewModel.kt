@@ -30,7 +30,7 @@ class HomeViewModel @ViewModelInject constructor(
     }
 
     fun getdata() {
-        strings.value = mutableListOf("abd", "hussein")
+        strings.value = mutableListOf("Abdalla Atheer", "Mohammed jasim")
         dates.value = mutableListOf(
             DateItem("Jan"),
             DateItem("Feb"),

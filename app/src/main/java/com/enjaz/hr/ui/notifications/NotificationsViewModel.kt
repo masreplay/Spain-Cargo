@@ -6,6 +6,7 @@ import com.enjaz.hr.data.AppDataManager
 import com.enjaz.hr.data.model.BaseResource
 import com.enjaz.hr.data.model.BaseResponse
 import com.enjaz.hr.data.model.Data
+import com.enjaz.hr.data.model.Notification
 import com.enjaz.hr.ui.base.BaseViewModel
 
 class NotificationsViewModel @ViewModelInject constructor(
@@ -14,31 +15,40 @@ class NotificationsViewModel @ViewModelInject constructor(
     dataManager
 ) {
 
-    var notificationsResponse: MutableLiveData<MutableList<String>>  =
+    var notificationsResponse: MutableLiveData<MutableList<Notification>> =
         MutableLiveData()
 
 
+    fun getdata(page: Int) {
 
+        notificationsResponse.value = mutableListOf(
+            Notification(
+                "Balance addition",
+                "<b>1,000$</b> added to your balance , check your card balance",
+                1
+            ),
+            Notification(
+                "Balance deduction",
+                "<b>200$</b> deducted from your balance , check your card balance",
+                2
+            ),
+            Notification(
+                "Balance deduction",
+                "<b>100$</b> deducted from your balance , check your card balance",
+                2
+            ),
+            Notification(
+                "Balance addition",
+                "<b>1,000$</b> added to your balance , check your card balance",
+                1
+            ),
+            Notification(
+                "Balance addition",
+                "<b>1,000$</b> added to your balance , check your card balance",
+                1
+            )
+        )
 
-    fun getdata(page:Int) {
-
-    notificationsResponse.value= mutableListOf("ali","ahmed","ahmed","ahmed","ahmed","ahmed")
-
-//
-//
-//
-//        dispose(
-//            dataManager.getPassengers(page,size),
-//            ::onGetNotificationsSuccess,
-//            { e ->
-//                //error handling
-//                run {
-//
-//
-//                    Log.d("Abdalla19977", e.message!!)
-//                }
-//
-//            })
     }
 
     private fun onGetNotificationsSuccess(result: BaseResource<BaseResponse<Data>>) {
