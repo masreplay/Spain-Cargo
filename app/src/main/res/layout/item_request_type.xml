@@ -21,6 +21,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginStart="16dp"
         android:layout_margin="@dimen/carbon_grid8"
+        android:onClick="@{()->clickListener.onTypeClick(item)}"
+
         android:clickable="true"
         app:carbon_rippleColor="@color/blue_light"
         android:focusable="true">
@@ -44,7 +46,6 @@
             android:textColor="@color/carbon_grey_800"
             android:fontFamily="sans-serif-medium"
 
-            android:onClick="@{()->clickListener.onTypeClick(item)}"
             android:gravity="center"
             app:layout_constraintStart_toEndOf="@id/iv"
             app:layout_constraintTop_toTopOf="parent"
