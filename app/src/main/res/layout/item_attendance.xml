@@ -13,6 +13,7 @@
             type="com.enjaz.hr.ui.attendance.AttendanceFragment" />
 
         <import type="android.view.View" />
+
     </data>
 
 
@@ -26,7 +27,7 @@
         android:paddingBottom="16dp">
 
         <TextView
-            android:id="@+id/tv_date"
+            android:id="@+id/tv_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -46,8 +47,8 @@
             android:drawableStart="@drawable/ic_outline_watch_later_24"
             android:drawablePadding="16dp"
             android:text="08:30 AM - 04:30 PM"
-            app:layout_constraintStart_toStartOf="@+id/tv_date"
-            app:layout_constraintTop_toBottomOf="@+id/tv_date" />
+            app:layout_constraintStart_toStartOf="@+id/tv_type"
+            app:layout_constraintTop_toBottomOf="@+id/tv_type" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -56,7 +57,7 @@
             android:layout_marginTop="8dp"
             android:src="@drawable/ic_fingerprint"
             android:tint="@color/green_400"
-            app:layout_constraintStart_toStartOf="@+id/tv_date"
+            app:layout_constraintStart_toStartOf="@+id/tv_type"
             app:layout_constraintTop_toBottomOf="@+id/tv_time" />
 
         <TextView
@@ -76,7 +77,7 @@
             android:layout_marginTop="16dp"
             android:src="@drawable/ic_fingerprint"
             android:tint="@color/red"
-            app:layout_constraintStart_toStartOf="@+id/tv_date"
+            app:layout_constraintStart_toStartOf="@+id/tv_type"
             app:layout_constraintTop_toBottomOf="@id/imageView" />
 
         <TextView
@@ -107,7 +108,7 @@
             android:layout_marginTop="8dp"
             android:drawableStart="@drawable/ic_exclamation_mark"
             android:drawablePadding="16dp"
-            android:text="Delayed response"
+            android:text="Delay exception"
             android:visibility='@{item.equals("hussein")?View.VISIBLE:View.GONE}'
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
@@ -115,15 +116,18 @@
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="35dp"
             android:layout_marginEnd="16dp"
             android:onClick="@{()->clickListener.onRequestClick()}"
             android:text="@string/request"
+            android:insetBottom="0dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:strokeColor="@color/colorPrimary"
             android:textAllCaps="false"
             android:textSize="12sp"
             android:visibility='@{item.equals("hussein")?View.VISIBLE:View.GONE}'
             app:cornerRadius="16dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_reason"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
 

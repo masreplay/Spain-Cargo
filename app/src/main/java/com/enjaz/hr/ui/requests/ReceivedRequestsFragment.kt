@@ -3,6 +3,8 @@ package com.enjaz.hr.ui.requests
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.enjaz.hr.R
 import com.enjaz.hr.databinding.FramgnetReceivedRequestsBinding
 import com.enjaz.hr.ui.base.BaseFragment
@@ -16,7 +18,7 @@ class ReceivedRequestsFragment :
 
     private val requestsViewModel: RequestsViewModel by viewModels()
 
-    lateinit var receiveRequestsAdapter: ReceivedRequestsAdapter
+    private lateinit var receiveRequestsAdapter: ReceivedRequestsAdapter
 
 
     override fun getLayoutId(): Int {
@@ -41,6 +43,24 @@ class ReceivedRequestsFragment :
         getViewDataBinding().rv.apply {
             adapter = receiveRequestsAdapter
         }
+
+        val lm = LinearLayoutManager(requireActivity())
+        getViewDataBinding().rv.layoutManager = lm
+
+
+        getViewDataBinding().rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+
+
+                if (lm.findLastVisibleItemPosition() == lm.itemCount - 1) {
+                    getViewModel().appenddata()
+                    receiveRequestsAdapter.notifyDataSetChanged()
+                }
+
+                super.onScrolled(recyclerView, dx, dy)
+            }
+        })
 
     }
 
