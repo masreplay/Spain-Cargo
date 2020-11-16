@@ -183,9 +183,6 @@
                         android:layout_marginTop="10dp"
                         android:clickable="true"
                         android:focusable="true"
-
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
                         android:onClick="@{()->viewModel.navigator.onSettingsClick()}"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
