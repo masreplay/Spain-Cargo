@@ -93,7 +93,7 @@
                         android:id="@+id/lyt_personalDetails"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/spacing_xxlarge"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="30dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center_vertical"
@@ -110,7 +110,7 @@
                             android:padding="6dp"
                             app:carbon_cornerRadius="6dp"
                             app:carbon_tint="#298aec"
-                            app:srcCompat="@drawable/ic_profile" />
+                            app:srcCompat="@drawable/ic_person_outline" />
 
                         <TextView
                             android:layout_width="0dp"
@@ -137,7 +137,7 @@
                     <carbon.widget.LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/spacing_xxlarge"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="16dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center_vertical"
@@ -155,7 +155,7 @@
                             android:padding="6dp"
                             app:carbon_cornerRadius="6dp"
                             app:carbon_tint="#00c290"
-                            app:srcCompat="@drawable/ic_money" />
+                            app:srcCompat="@drawable/ic_coin" />
 
                         <TextView
                             android:layout_width="0dp"
@@ -182,7 +182,7 @@
                     <carbon.widget.LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/spacing_xxlarge"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="16dp"
                         android:clickable="true"
                         android:focusable="true"
 
@@ -199,7 +199,7 @@
                             android:padding="6dp"
                             app:carbon_cornerRadius="6dp"
                             app:carbon_tint="#ff9b00"
-                            app:srcCompat="@drawable/ic_settings" />
+                            app:srcCompat="@drawable/ic_outline_settings_24" />
 
                         <TextView
                             android:layout_width="0dp"
@@ -226,7 +226,7 @@
                     <carbon.widget.LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/spacing_xxlarge"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="16dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center_vertical"
@@ -243,7 +243,7 @@
                             android:padding="6dp"
                             app:carbon_cornerRadius="6dp"
                             app:carbon_tint="@color/carbon_yellow_800"
-                            app:srcCompat="@drawable/ic_about" />
+                            app:srcCompat="@drawable/ic_outline_info_24" />
 
                         <TextView
                             android:layout_width="0dp"
@@ -269,7 +269,7 @@
                     <carbon.widget.LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/spacing_xxlarge"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="16dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center_vertical"
@@ -286,7 +286,7 @@
                             android:padding="6dp"
                             app:carbon_cornerRadius="6dp"
                             app:carbon_tint="#ff4a4a"
-                            app:srcCompat="@drawable/ic_power" />
+                            app:srcCompat="@drawable/ic_power_settings" />
 
                         <TextView
                             android:layout_width="0dp"
