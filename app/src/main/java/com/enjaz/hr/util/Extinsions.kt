@@ -1,16 +1,19 @@
 package com.enjaz.hr.util
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.*
 import androidx.core.content.ContextCompat
+import com.enjaz.hr.R
 import com.google.android.material.snackbar.Snackbar
 import java.time.DayOfWeek
 import java.time.temporal.WeekFields
@@ -27,7 +30,38 @@ fun View.snackbar(snackbarText: String,@ColorInt colorInt: Int) {
     Snackbar.make(this, snackbarText, Snackbar.LENGTH_LONG).withColor(colorInt).show()
 
 }
+fun snackBar(s: String, drawable: Int?, color: String, view: View, context: Context) {
+    val snackbar =
 
+        Snackbar.make(
+            view,
+            "",
+            Snackbar.LENGTH_SHORT
+        )
+
+    var layoutInflater: LayoutInflater = LayoutInflater.from(context)
+    val custom_view: View =
+        layoutInflater.inflate(R.layout.snackbar_icon_text, null)
+    snackbar.view.setBackgroundColor(Color.TRANSPARENT)
+    val snackBarView: Snackbar.SnackbarLayout =
+        snackbar.view as Snackbar.SnackbarLayout
+    snackBarView.setPadding(0, 0, 0, 0)
+    (custom_view.findViewById<View>(R.id.message) as TextView).text = s
+
+    if (drawable != null) {
+        (custom_view.findViewById<View>(R.id.icon) as ImageView).setImageResource(
+            drawable
+        )
+    }
+
+    custom_view.findViewById<View>(R.id.parentview).setBackgroundColor(
+        Color.parseColor(
+            color
+        )
+    )
+    snackBarView.addView(custom_view, 0)
+    snackbar.show()
+}
     fun View.makeVisible() {
         visibility = View.VISIBLE
     }

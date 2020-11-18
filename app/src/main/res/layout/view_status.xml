@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.enjaz.hr.data.model.Status" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewStatus"
+            type="Status" />
+
+        <variable
+            name="retryListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <FrameLayout
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        android:background="@android:color/transparent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint_error"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="@{(viewStatus == Status.ERROR) ?View.VISIBLE:View.GONE,default=gone}">
+
+            <ImageView
+                android:id="@+id/image_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="@{(v)->retryListener.onClick(v)}"
+                android:src="@drawable/ic_refresh"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/tv_errorMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:text="@string/press_the_above_button_to_retry"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_error" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            android:id="@+id/constraint_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="@{(viewStatus == Status.LOADING) ?View.VISIBLE:View.GONE,default=gone}">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/loading" />
+        </FrameLayout>
+
+    </FrameLayout>
+</layout>

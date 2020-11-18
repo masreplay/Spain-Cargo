@@ -47,7 +47,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_user"
+            android:id="@+id/til_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="32dp"
@@ -63,6 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
+                android:text="@={viewModel.email}"
                 android:imeOptions="actionNext"
                 android:inputType="textPersonName"
                 android:maxLines="1"
@@ -79,9 +80,9 @@
             android:hint="@string/password"
             app:errorEnabled="true"
             app:hintAnimationEnabled="true"
-            app:layout_constraintEnd_toEndOf="@+id/til_user"
-            app:layout_constraintStart_toStartOf="@+id/til_user"
-            app:layout_constraintTop_toBottomOf="@+id/til_user"
+            app:layout_constraintEnd_toEndOf="@+id/til_email"
+            app:layout_constraintStart_toStartOf="@+id/til_email"
+            app:layout_constraintTop_toBottomOf="@+id/til_email"
             app:passwordToggleEnabled="true"
             app:passwordToggleTintMode="multiply">
 
@@ -92,6 +93,7 @@
                 android:background="@android:color/white"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
+                android:text="@={viewModel.pass}"
                 android:maxLength="20"
                 android:maxLines="1"
                 android:textAlignment="viewStart" />
@@ -127,6 +129,14 @@
             app:layout_constraintStart_toStartOf="@+id/btn_login"
             app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
+        <include
+            android:id="@+id/status"
+            layout="@layout/view_status"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:viewStatus="@{viewModel.tokenResponse.status}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

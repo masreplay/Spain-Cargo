@@ -87,5 +87,8 @@
     <string name="total_salary">الراتب الكلي</string>
     <string name="total_deduction">الاستقطاعات الكلية</string>
     <string name="language">اللغة</string>
+    <string name="login_success">تم تسجيل الدخول بنجاح</string>
+    <string name="press_the_above_button_to_retry">انقر لإعادة المحاولة</string>
+
 
 </resources>

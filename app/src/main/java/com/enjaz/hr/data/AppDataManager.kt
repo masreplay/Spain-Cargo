@@ -1,6 +1,5 @@
 package com.enjaz.hr.data
 
-import androidx.room.RoomDatabase
 import com.enjaz.hr.data.db.MovieDB
 import com.enjaz.hr.data.model.BaseResource
 import com.enjaz.hr.data.model.BaseResponse
@@ -40,6 +39,8 @@ class AppDataManager @Inject constructor(
         val params = JsonObject().apply {
             addProperty("userNameOrEmailAddress",username)
             addProperty("password",pass)
+            addProperty("tenancyName", "MUC")
+
         }
         return wrapWithResourceObject(webservices.login(jsonElement = params)
                 .subscribeOn(Schedulers.io())

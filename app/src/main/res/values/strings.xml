@@ -21,6 +21,7 @@
     <string name="prev">Prev</string>
     <string name="next">Next</string>
     <string name="done">Done</string>
+    <string name="press_the_above_button_to_retry">press the above button to retry</string>
 
 
     <string name="welcome_back">Welcome back</string>
@@ -84,4 +85,5 @@
     <string name="total_salary">Total salary</string>
     <string name="total_deduction">Total deduction</string>
     <string name="language">Language</string>
+    <string name="login_success">Logged in successfully</string>
 </resources>

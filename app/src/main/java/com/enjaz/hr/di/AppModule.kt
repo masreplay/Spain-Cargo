@@ -68,7 +68,7 @@ object AppModule {
 
 
         return Retrofit.Builder()
-            .baseUrl("https://jsonplaceholder.typicode.com/")
+            .baseUrl("http://109.224.53.157:9004/api/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(client)
