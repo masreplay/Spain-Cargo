@@ -4,20 +4,20 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.enjaz.hr.R
-import com.enjaz.hr.databinding.FragmentDeductionDetailsBinding
+import com.enjaz.hr.databinding.FragmentBalanceBinding
 import com.enjaz.hr.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class DeductionDetailsFragment :
-    BaseFragment<FragmentDeductionDetailsBinding, IProfileInteractionListener, ProfileViewModel>(),
+class BalanceFragment :
+    BaseFragment<FragmentBalanceBinding, IProfileInteractionListener, ProfileViewModel>(),
     IProfileInteractionListener {
 
     private val profileViewModel: ProfileViewModel by viewModels()
 
 
     override fun getLayoutId(): Int {
-        return R.layout.fragment_deduction_details
+        return R.layout.fragment_balance
 
     }
 
@@ -25,6 +25,9 @@ class DeductionDetailsFragment :
         return profileViewModel
     }
 
+    override fun getViewModelClass(): Class<ProfileViewModel> {
+        return ProfileViewModel::class.java
+    }
 
     override fun getNavigator(): IProfileInteractionListener {
         return this
@@ -51,10 +54,6 @@ class DeductionDetailsFragment :
     }
 
     override fun onSalaryDetailsClick() {
-        TODO("Not yet implemented")
-    }
-
-    override fun onSettingsClick() {
         TODO("Not yet implemented")
     }
 

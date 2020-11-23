@@ -42,6 +42,10 @@ class ProfileFragment :
         findNavController().navigate(R.id.userInfoFragment)
     }
 
+    override fun onBalanceClick() {
+        findNavController().navigate(R.id.balanceFragment)
+    }
+
 
     override fun onSalaryDetailsClick() {
         findNavController().navigate(R.id.salaryDetailsFragment)
@@ -56,6 +60,8 @@ class ProfileFragment :
 
 interface IProfileInteractionListener : BaseNavigator {
     fun onPersonalDetailsClick()
+
+    fun onBalanceClick()
     fun onSalaryDetailsClick()
     fun onSettingsClick()
 }

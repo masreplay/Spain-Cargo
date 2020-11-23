@@ -56,6 +56,10 @@ class UserInfoFragment :
     }
 
 
+    override fun onBalanceClick() {
+        TODO("Not yet implemented")
+    }
+
     override fun onSalaryDetailsClick() {
         TODO("Not yet implemented")
     }
