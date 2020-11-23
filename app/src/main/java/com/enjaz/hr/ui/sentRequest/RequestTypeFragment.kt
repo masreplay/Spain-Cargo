@@ -64,11 +64,13 @@ class RequestTypeFragment :
     }
 
     override fun onTypeClick(type: Types) {
-        val action =
-            RequestTypeFragmentDirections.nextAction(
-                type.type
-            )
-        findNavController().navigate(action)
+        if (type.type!=("Vacation (you have exceeded the limit)")) {
+            val action =
+                RequestTypeFragmentDirections.nextAction(
+                    type.type
+                )
+            findNavController().navigate(action)
+        }
     }
 
     override fun dialogTimePickerLightStart() {

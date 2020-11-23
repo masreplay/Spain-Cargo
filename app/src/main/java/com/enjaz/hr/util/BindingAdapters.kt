@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.afollestad.vvalidator.util.hide
 import com.enjaz.hr.R
 import com.enjaz.hr.ui.base.BaseDataItemsAdapter
 import com.facebook.drawee.view.SimpleDraweeView
@@ -31,6 +32,15 @@ fun loadImage(view: SimpleDraweeView, imageUrl: String?) {
 @BindingAdapter("timeFormat")
 fun setTime(view: TextView, time: Int) {
     view.text = "$time:00"
+}
+
+@BindingAdapter("balance")
+fun setClickableIf(view: TextView, string: String) {
+    when(string){
+        "Vacation" -> view.text="2 days left"
+        "Hourly" -> view.text="23 hours left"
+        else -> view.hide()
+    }
 }
 
 
