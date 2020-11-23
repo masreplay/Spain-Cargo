@@ -12,10 +12,14 @@
     <color name="grey_100" type="color">#f1f3f5</color>
     <color name="grey_200" type="color">#f3f8ff</color>
     <color name="green" type="color">#51c03e</color>
+    <color name="yellow">#f1b81d</color>
+
+    <color name="orangeQi">#f1951d</color>
+
 
     <color name="green2" type="color">#00c290</color>
     <color name="greenLight" type="color">#e3f6ee</color>
-
+    <color name="maroon">#92193a</color>
     <color name="blue_100" type="color">#d0e3ff</color>
     <color name="red" type="color">#ff4a4a</color>
     <color name="blue_light" type="color">#d6e6ff</color>

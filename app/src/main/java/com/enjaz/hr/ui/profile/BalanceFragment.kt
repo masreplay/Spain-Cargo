@@ -3,22 +3,22 @@ package com.enjaz.hr.ui.profile
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.enjaz.hr.R
-import com.enjaz.hr.databinding.FragmentProfileBinding
+import com.enjaz.hr.databinding.FragmentBalanceBinding
 import com.enjaz.hr.ui.base.BaseFragment
-import com.enjaz.hr.ui.base.BaseNavigator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProfileFragment : BaseFragment<FragmentProfileBinding, IProfileInteractionListener, ProfileViewModel>(),
+class BalanceFragment :
+    BaseFragment<FragmentBalanceBinding, IProfileInteractionListener, ProfileViewModel>(),
     IProfileInteractionListener {
 
     private val profileViewModel: ProfileViewModel by viewModels()
 
 
     override fun getLayoutId(): Int {
-        return R.layout.fragment_profile
+        return R.layout.fragment_balance
+
     }
 
     override fun getViewModel(): ProfileViewModel {
@@ -33,33 +33,31 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding, IProfileInteraction
         return this
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getViewModel().mylog()
-
-
 
     }
 
+
     override fun onPersonalDetailsClick() {
-        findNavController().navigate(R.id.userInfoFragment)
+        TODO("Not yet implemented")
     }
 
     override fun onBalanceClick() {
-        findNavController().navigate(R.id.balanceFragment)
+        TODO("Not yet implemented")
     }
 
     override fun onSalaryDetailsClick() {
-        findNavController().navigate(R.id.salaryDetailsFragment)
+        TODO("Not yet implemented")
     }
 
 
 }
 
-interface IProfileInteractionListener : BaseNavigator {
-    fun onPersonalDetailsClick()
 
-    fun onBalanceClick()
-    fun onSalaryDetailsClick()
-}

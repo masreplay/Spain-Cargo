@@ -60,6 +60,10 @@ class UserInfoFragment :
         TODO("Not yet implemented")
     }
 
+    override fun onBalanceClick() {
+        TODO("Not yet implemented")
+    }
+
     override fun onSalaryDetailsClick() {
         TODO("Not yet implemented")
     }

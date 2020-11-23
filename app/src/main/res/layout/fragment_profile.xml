@@ -10,12 +10,18 @@
 
     </data>
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/grey_200">
 
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
+            >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -137,7 +143,7 @@
                     <carbon.widget.LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/spacing_xxlarge"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="10dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center_vertical"
@@ -177,12 +183,54 @@
 
 
                     </carbon.widget.LinearLayout>
+                    <carbon.widget.LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spacing_xxlarge"
+                        android:layout_marginTop="10dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:onClick="@{()->viewModel.navigator.onBalanceClick()}"
+                        android:orientation="horizontal"
 
+                        android:paddingLeft="@dimen/spacing_large"
+                        android:paddingRight="@dimen/spacing_large"
+                        app:carbon_rippleColor="@color/colorPrimaryLight">
+
+                        <carbon.widget.ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#F1D4F8"
+                            android:padding="6dp"
+                            app:carbon_cornerRadius="6dp"
+                            app:carbon_tint="#CB1CEA"
+                            app:srcCompat="@drawable/ic_balance" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/spacing_large"
+                            android:layout_marginRight="@dimen/spacing_large"
+                            android:layout_weight="1"
+                            android:text="Balance"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                            android:textColor="@color/carbon_grey_800"
+                            app:fontFamily="sans-serif-medium" />
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@android:color/transparent"
+                            android:tint="@color/carbon_grey_500"
+                            app:srcCompat="@drawable/ic_arrow_right" />
+
+
+                    </carbon.widget.LinearLayout>
 
                     <carbon.widget.LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/spacing_xxlarge"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="10dp"
                         android:clickable="true"
                         android:focusable="true"
 
@@ -226,7 +274,7 @@
                     <carbon.widget.LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/spacing_xxlarge"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="10dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center_vertical"
@@ -269,7 +317,7 @@
                     <carbon.widget.LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/spacing_xxlarge"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="10dp"
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center_vertical"
@@ -314,7 +362,7 @@
 
 
         </LinearLayout>
-
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 
 

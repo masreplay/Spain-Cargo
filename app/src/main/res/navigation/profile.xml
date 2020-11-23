@@ -21,6 +21,10 @@
         android:id="@+id/deductionDetailsFragment"
         android:name="com.enjaz.hr.ui.profile.DeductionDetailsFragment"
         android:label="Deduction details" />
+    <fragment
+        android:id="@+id/balanceFragment"
+        android:name="com.enjaz.hr.ui.profile.BalanceFragment"
+        android:label="Balance" />
 
 
 </navigation>

@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_100">
+
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/qi_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="16dp"
+
+            app:cardBackgroundColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                >
+
+
+                <ImageView
+                    android:id="@+id/iv_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="24dp"
+                    android:paddingStart="10dp"
+                    android:src="@drawable/ic_more_horiz_black_24dp"
+                    android:tint="@color/carbon_white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <TextView
+                    android:id="@+id/tv_accountNumberL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="Account Number"
+                    android:textColor="@color/carbon_white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_accountNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="11903947382639"
+                    android:textColor="@color/carbon_white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@id/tv_accountNumberL"
+                    app:layout_constraintTop_toBottomOf="@id/tv_accountNumberL"
+
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/tv_productNameL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="Product Name"
+                    android:textColor="@color/carbon_white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_accountNumber"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_productName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Qi Prepaid Rafidain"
+                    android:textColor="@color/carbon_white"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@id/tv_productNameL"
+                    app:layout_constraintTop_toBottomOf="@id/tv_productNameL"
+
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/tv_availableBalanceL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:text="Available Balance"
+                    android:textColor="@color/carbon_white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_productName"
+
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_availableBalance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="1,434,000 IQD"
+                    android:textColor="@color/yellow"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_availableBalanceL"
+                    app:layout_constraintTop_toBottomOf="@id/tv_availableBalanceL"
+
+
+                    />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+<com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginTop="20dp"
+    app:cardBackgroundColor="@color/carbon_white"
+    app:cardElevation="0dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/qi_card"
+
+    >
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+  >
+
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/bg_circle_transparent"
+                android:backgroundTint="@color/colorPrimary"
+                android:padding="4dp"
+                android:src="@drawable/ic_baseline_fiber_manual_record_24"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Leaves Credit"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+                app:layout_constraintStart_toEndOf="@+id/imageView5"
+                app:layout_constraintTop_toTopOf="@+id/imageView5" />
+
+
+            <View
+                android:id="@+id/view_line"
+                android:layout_width="0dp"
+                android:layout_height="2dp"
+                android:layout_margin="16dp"
+                android:background="@color/grey_200"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+
+                <TextView
+                    android:id="@+id/tv_takenLeavesLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Remaining : 8 days"
+                    android:textColor="@color/carbon_grey_800"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view_line" />
+
+                <TextView
+                    android:id="@+id/tv_remainLeavesLabel"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:fontFamily="sans-serif-medium"
+
+                    android:text="12 Vacation"
+                    android:textColor="@color/carbon_grey_800"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view_line" />
+
+
+                <ProgressBar
+                    android:id="@+id/progress"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:max="12"
+                    android:progress="4"
+                    android:progressBackgroundTint="#a8d8ea"
+                    android:progressTint="#a8d8ea"
+                    app:layout_constraintEnd_toEndOf="@id/tv_remainLeavesLabel"
+                    app:layout_constraintStart_toStartOf="@id/tv_takenLeavesLabel"
+                    app:layout_constraintTop_toBottomOf="@id/tv_takenLeavesLabel"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/tv_takenLeavesLabel2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Remaining : 41 hour"
+                    android:textColor="@color/carbon_grey_800"
+
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/progress" />
+
+                <TextView
+                    android:id="@+id/tv_remainLeavesLabel2"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:fontFamily="sans-serif-medium"
+
+                    android:text="48 Hours"
+                    android:textColor="@color/carbon_grey_800"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/progress" />
+
+
+                <ProgressBar
+                    android:id="@+id/progress2"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:max="48"
+                    android:progress="7"
+                    android:progressBackgroundTint="#aa96da"
+                    android:progressTint="#aa96da"
+                    app:layout_constraintEnd_toEndOf="@id/tv_remainLeavesLabel2"
+                    app:layout_constraintStart_toStartOf="@id/tv_takenLeavesLabel2"
+                    app:layout_constraintTop_toBottomOf="@id/tv_takenLeavesLabel2"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_takenLeavesLabel3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Remaining : 2 days"
+                    android:textColor="@color/carbon_grey_800"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/progress2" />
+
+                <TextView
+                    android:id="@+id/tv_remainLeavesLabel3"
+                    android:layout_width="wrap_content"
+
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="10 Sick Leave"
+                    android:textColor="@color/carbon_grey_800"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/progress2" />
+
+
+                <ProgressBar
+                    android:id="@+id/progress3"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:max="10"
+                    android:progress="8"
+                    android:progressBackgroundTint="#fcbad3"
+                    android:progressTint="#fcbad3"
+                    app:layout_constraintEnd_toEndOf="@id/tv_remainLeavesLabel3"
+                    app:layout_constraintStart_toStartOf="@id/tv_takenLeavesLabel3"
+                    app:layout_constraintTop_toBottomOf="@id/tv_takenLeavesLabel3"
+
+                    />
+
+                <TextView
+                    android:id="@+id/tv_takenLeavesLabel4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Remaining : 3 days"
+                    android:textColor="@color/carbon_grey_800"
+
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/progress3" />
+
+                <TextView
+                    android:id="@+id/tv_remainLeavesLabel4"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="8 Unpaid Leave"
+                    android:textColor="@color/carbon_grey_800"
+
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/progress3" />
+
+
+                <ProgressBar
+                    android:id="@+id/progress5"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:max="8"
+                    android:progress="5"
+                    android:progressBackgroundTint="#EAC680"
+                    android:progressTint="#EAC680"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/tv_remainLeavesLabel4"
+                    app:layout_constraintStart_toStartOf="@id/tv_takenLeavesLabel4"
+                    app:layout_constraintTop_toBottomOf="@id/tv_takenLeavesLabel4"
+
+                    />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
