@@ -25,9 +25,6 @@ class BalanceFragment :
         return profileViewModel
     }
 
-    override fun getViewModelClass(): Class<ProfileViewModel> {
-        return ProfileViewModel::class.java
-    }
 
     override fun getNavigator(): IProfileInteractionListener {
         return this
@@ -54,6 +51,10 @@ class BalanceFragment :
     }
 
     override fun onSalaryDetailsClick() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onSettingsClick() {
         TODO("Not yet implemented")
     }
 
