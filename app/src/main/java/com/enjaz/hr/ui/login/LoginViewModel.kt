@@ -35,16 +35,16 @@ class LoginViewModel @ViewModelInject constructor(
             })
     }
 
-    private fun onLoginSuccess(result: BaseResource<LoginResponse>?) {
+    private fun onLoginSuccess(result: BaseResource<LoginResponse>) {
         tokenResponse.value = result
 
-        if (result?.message != null) {
+        if (result.message != null) {
 
             navigator.showSnack(result.message, "#ED213A", R.drawable.ic_round_close_24)
 
         }
 
-        result?.data?.let {
+        result.data?.let {
 
             navigator.showSnack(
                 HRMApp.applicationContext().getString(R.string.login_success),

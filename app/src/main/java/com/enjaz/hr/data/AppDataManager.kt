@@ -47,7 +47,7 @@ class AppDataManager @Inject constructor(
             if (it.code() != 200) {
                 val gson = Gson()
                 val errorResponse = gson.fromJson(it.errorBody()?.string(), Error::class.java)
-                BaseResource.error(errorResponse.message, it.body())
+                BaseResource.error(errorResponse.errorDescription, it.body())
             }
             else {
                 BaseResource.success(it.body())
