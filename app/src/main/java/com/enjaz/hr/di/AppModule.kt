@@ -49,7 +49,7 @@ object AppModule {
                 var request = chain.request()
                 if (chain.request().header("No-Auth") == null) {
                     request = request.newBuilder()
-                        .addHeader("Authorization", "Bearer $token")
+                        .addHeader("Authorization", "Bearer "+"eyJhbGciOiJSUzI1NiIsImtpZCI6IkhkSDdaeWRadjZjQjZVTUJUdUpJZVEiLCJ0eXAiOiJhdCtqd3QifQ.eyJuYmYiOjE2MDYxNzM2MzgsImV4cCI6MTYzNzcwOTYzOCwiaXNzIjoiaHR0cDovLzEwLjEwLjEuMTUyOjUwMDEiLCJhdWQiOiJFbmphekVSUCIsImNsaWVudF9pZCI6IkVuamF6RVJQX0FwcCIsInN1YiI6IjM5ZjhlMzVlLTg4ZjctNjQxOS0xMmNjLTI5NjNkMzBmNjU2YyIsImF1dGhfdGltZSI6MTYwNjE3MzYzNywiaWRwIjoibG9jYWwiLCJuYW1lIjoiaGFpdGhhbSIsImVtYWlsIjoiaC5iLmguaXJzQG91dGxvb2suY29tIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJzY29wZSI6WyJFbmphekVSUCJdLCJhbXIiOlsicHdkIl19.kiWERPBfjukvxbHGv2h0hnfL-Fd3cTTPfbJDwYR44P9I_MCiD7bzc8Mki-BmZfoNRD0c7IgTyEYzBSa3ZkInADvLgyP0lpwBxOzzbT_up2FvAIp5b5dj-29GygnePIE8ENxtVs0s9_Kl1QmuoVDRVzpSy7_V3NXBo8FJtkbcyBYkulV8UVzT7EimgpFsaENzdRmE3r56Jciycn8F1gwnKdDXmQsb1AabYgsydlxkTdJ8FwK9wBpCdDPw2EXDmXy0nZpeOIYiGNsaaa_9pIbOsdWc61yiuqTsE7E6Ss0RTsgu-4_rk48AcEIiFvsF-cDLud5P-ooR2f5Aar1vR4wPuQ")
                         .build()
 
                 }
@@ -68,7 +68,7 @@ object AppModule {
 
 
         return Retrofit.Builder()
-            .baseUrl("http://109.224.53.157:9004/api/")
+            .baseUrl("http://10.10.1.152:5001/api/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(client)

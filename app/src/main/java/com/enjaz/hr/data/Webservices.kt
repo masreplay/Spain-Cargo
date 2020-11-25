@@ -1,6 +1,6 @@
 package com.enjaz.hr.data
 
-import com.enjaz.hr.data.model.BaseResponse
+import com.enjaz.hr.data.model.home.HomeResponse
 import com.enjaz.hr.data.model.token.TokenResult
 import com.enjaz.hr.data.model.video.Category
 import com.enjaz.hr.data.model.video.VidModel
@@ -29,14 +29,14 @@ interface Webservices {
     @POST("TokenAuth/Authenticate")
     fun login(
         @Body jsonElement: JsonElement
-    ): Single<Response<BaseResponse<TokenResult>>>
+    ): Single<Response<TokenResult>>
 
 
-    /*@GET("/api/services/app/Schedules/GetAll")
-    fun getScheddule(
-        @Query("DayFilter") filter: String,
-        @Header("Authorization") token: String
-    ): Single<Response<BaseResponse<ScheduleResponse>>>*/
+    @POST("hr/Employee/GetMobileHomeStatistics")
+    fun getHomeResponse(@Body jsonElement: JsonElement): Single<Response<HomeResponse>>
+
+
+
 
 
 }

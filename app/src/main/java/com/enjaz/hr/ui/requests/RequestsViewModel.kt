@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import com.enjaz.hr.R
 import com.enjaz.hr.data.AppDataManager
 import com.enjaz.hr.data.model.BaseResource
-import com.enjaz.hr.data.model.BaseResponse
 import com.enjaz.hr.data.model.Request
 import com.enjaz.hr.data.model.token.TokenResult
 import com.enjaz.hr.ui.base.BaseViewModel
@@ -40,7 +39,7 @@ class RequestsViewModel @ViewModelInject constructor(
     }
 
 
-    private fun onLoginSuccess(result: BaseResource<BaseResponse<TokenResult>>) {
+    private fun onLoginSuccess(result: BaseResource<TokenResult>) {
 
         //loginResponse.postValue(result)
     }

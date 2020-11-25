@@ -2,32 +2,40 @@
 <resources>
 
     <declare-styleable name="HorizontalCalendarView">
-        <attr name="numOfPages" format="integer"/>
-        <attr name="nbOfMonths" format="integer"/>
-        <attr name="daysTextSize" format="dimension"/>
-        <attr name="daysTextColor" format="color"/>
-        <attr name="calendarBgColor" format="color"/>
-        <attr name="daysBackgroundColor" format="color"/>
-        <attr name="weekTextSize" format="dimension"/>
-        <attr name="weekTextColor" format="color"/>
-        <attr name="weekBackgroundColor" format="color"/>
-        <attr name="selectedBgColor" format="color"/>
-        <attr name="todaysDateBgColor" format="color"/>
-        <attr name="weekTypeFace" format="string"/>
-        <attr name="headerTypeFace" format="string"/>
-        <attr name="headerForwardIcon" format="reference"/>
-        <attr name="weekForwardIcon" format="reference"/>
-        <attr name="headerPreviousIcon" format="reference"/>
-        <attr name="weekPreviousIcon" format="reference"/>
-        <attr name="hoursTypeFace" format="string"/>
-        <attr name="dayNameLength">
-            <enum name="singleLetter" value="0"/>
-            <enum name="TwoLetters" value="1"/>
-            <enum name="threeLetters" value="2"/>
-        </attr>
-        <attr name="hideNames"  format="boolean"/>
+        <!-- Default text color for all texts -->
+        <attr name="textColorNormal" format="color" />
+        <!-- Default top text color -->
+        <attr name="colorTopText" format="color" />
+        <!-- Default Middle text color -->
+        <attr name="colorMiddleText" format="color" />
+        <!-- Default Bottom text color -->
+        <attr name="colorBottomText" format="color" />
 
-        <!-- danigarciaalva -->
-        <attr name="todaysDateTextColor" format="color"/>
+        <!-- Selected item's text color for all texts -->
+        <attr name="textColorSelected" format="color" />
+        <!-- Selected item's top text color -->
+        <attr name="colorTopTextSelected" format="color" />
+        <!-- Selected item's Middle text color -->
+        <attr name="colorMiddleTextSelected" format="color" />
+        <!-- Selected item's Bottom text color -->
+        <attr name="colorBottomTextSelected" format="color" />
+        <!-- Selected item's background drawable -->
+        <attr name="selectedDateBackground" format="reference" />
+
+        <attr name="unSelectedDateBackground" format="reference" />
+
+        <!-- Background color for selector bar. -->
+        <attr name="selectorColor" format="color" />
+
+
+
+
+        <!-- Top text size -->
+        <attr name="sizeTopText" format="dimension" />
+        <!-- Middle text size -->
+        <attr name="sizeMiddleText" format="dimension" />
+        <!-- Bottom text size -->
+        <attr name="sizeBottomText" format="dimension" />
+
     </declare-styleable>
 </resources>

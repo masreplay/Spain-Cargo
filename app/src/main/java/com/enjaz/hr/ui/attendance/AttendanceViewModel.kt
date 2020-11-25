@@ -5,7 +5,6 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import com.enjaz.hr.data.AppDataManager
 import com.enjaz.hr.data.model.BaseResource
-import com.enjaz.hr.data.model.BaseResponse
 import com.enjaz.hr.data.model.DateItem
 import com.enjaz.hr.data.model.token.TokenResult
 import com.enjaz.hr.ui.base.BaseViewModel
@@ -44,14 +43,14 @@ class AttendanceViewModel @ViewModelInject constructor(
             DateItem("Aug"),
             DateItem("Sept"),
             DateItem("Oct"),
-            DateItem("Nov",true),
+            DateItem("Nov", true),
             DateItem("Dec")
         )
 
     }
 
 
-    private fun onLoginSuccess(result: BaseResource<BaseResponse<TokenResult>>) {
+    private fun onLoginSuccess(result: BaseResource<TokenResult>) {
 
     }
 
