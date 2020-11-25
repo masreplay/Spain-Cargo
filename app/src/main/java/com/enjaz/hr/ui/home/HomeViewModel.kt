@@ -20,14 +20,14 @@ class HomeViewModel @ViewModelInject constructor(
     var dates: MutableLiveData<MutableList<DateItem>> =
         MutableLiveData()
 
-    fun mylog() {
-        dispose(
-            dataManager.login("email.value!!.trim()", "pass.value!!.trim()"),
-            ::onLoginSuccess,
-            { e ->
-
-            })
-    }
+//    fun mylog() {
+//        dispose(
+//            dataManager.login("email.value!!.trim()", "pass.value!!.trim()"),
+//            ::onLoginSuccess,
+//            { e ->
+//
+//            })
+//    }
 
     fun getdata() {
         strings.value = mutableListOf("Abdalla Atheer", "Mohammed jasim")

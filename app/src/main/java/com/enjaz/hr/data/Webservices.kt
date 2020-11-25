@@ -1,18 +1,13 @@
 package com.enjaz.hr.data
 
-import com.enjaz.hr.data.model.BaseResponse
-import com.enjaz.hr.data.model.token.TokenResult
+import com.enjaz.hr.data.model.login.LoginResponse
 import com.enjaz.hr.data.model.video.Category
 import com.enjaz.hr.data.model.video.VidModel
-import com.google.gson.JsonElement
 import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.http.*
 
 interface Webservices {
-
-
-
 
 
     @GET("movies/{type}")
@@ -25,12 +20,11 @@ interface Webservices {
     @GET("genres/movies")
     fun getCategory(): Single<Response<List<Category>>>
 
-
-    @POST("TokenAuth/Authenticate")
-    fun login(
-        @Body jsonElement: JsonElement
-    ): Single<Response<BaseResponse<TokenResult>>>
-
+    @FormUrlEncoded
+    @POST("connect/token")
+    fun login(@Field ("client_id")client_id:String,@Field ("grant_type")grant_type:String,
+              @Field ("username")username:String,@Field ("password")password:String,@Field ("Scope")Scope:String):
+            Single<Response<LoginResponse>>
 
     /*@GET("/api/services/app/Schedules/GetAll")
     fun getScheddule(

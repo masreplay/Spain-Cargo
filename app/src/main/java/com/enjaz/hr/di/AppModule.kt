@@ -68,7 +68,7 @@ object AppModule {
 
 
         return Retrofit.Builder()
-            .baseUrl("http://109.224.53.157:9004/api/")
+            .baseUrl("http://10.10.1.152:5001/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(client)

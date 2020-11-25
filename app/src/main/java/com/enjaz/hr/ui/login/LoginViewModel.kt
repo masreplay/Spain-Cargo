@@ -6,9 +6,9 @@ import com.enjaz.hr.HRMApp
 import com.enjaz.hr.R
 import com.enjaz.hr.data.AppDataManager
 import com.enjaz.hr.data.model.BaseResource
-import com.enjaz.hr.data.model.BaseResponse
-import com.enjaz.hr.data.model.token.TokenResult
+import com.enjaz.hr.data.model.login.LoginResponse
 import com.enjaz.hr.ui.base.BaseViewModel
+import com.enjaz.hr.util.PrefsManager
 
 class LoginViewModel @ViewModelInject constructor(
     dataManager: AppDataManager
@@ -20,24 +20,22 @@ class LoginViewModel @ViewModelInject constructor(
     val pass: MutableLiveData<String> = MutableLiveData()
     val tenancy: MutableLiveData<String> = MutableLiveData()
 
-    var tokenResponse: MutableLiveData<BaseResource<BaseResponse<TokenResult>>> = MutableLiveData()
+    var tokenResponse: MutableLiveData<BaseResource<LoginResponse>> = MutableLiveData()
 
 
     fun login() {
         tokenResponse.value = BaseResource.loading(tokenResponse.value?.data)
 
         dispose(
-            dataManager.login(
-                email.value?.trim().toString(), pass.value?.trim().toString()),
+            dataManager.login(email.value?.trim().toString(), pass.value?.trim().toString()),
             ::onLoginSuccess,
             { e ->
                 //error handling
-
                 e.message?.let { tokenResponse.postValue(BaseResource.error(it, null)) }
             })
     }
 
-    private fun onLoginSuccess(result: BaseResource<BaseResponse<TokenResult>>?) {
+    private fun onLoginSuccess(result: BaseResource<LoginResponse>?) {
         tokenResponse.value = result
 
         if (result?.message != null) {
@@ -48,9 +46,13 @@ class LoginViewModel @ViewModelInject constructor(
 
         result?.data?.let {
 
-            navigator.showSnack(HRMApp.applicationContext().getString(R.string.login_success), "#4CAF50", R.drawable.ic_done)
+            navigator.showSnack(
+                HRMApp.applicationContext().getString(R.string.login_success),
+                "#4CAF50",
+                R.drawable.ic_done
+            )
 
-//            pref.saveTokens(result.data.result)
+            PrefsManager.instance?.saveAccessToken(it.accessToken)
 
 
 

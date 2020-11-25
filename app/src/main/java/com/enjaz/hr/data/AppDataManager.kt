@@ -2,11 +2,10 @@ package com.enjaz.hr.data
 
 import com.enjaz.hr.data.db.MovieDB
 import com.enjaz.hr.data.model.BaseResource
-import com.enjaz.hr.data.model.BaseResponse
-import com.enjaz.hr.data.model.token.TokenResult
+import com.enjaz.hr.data.model.Error
+import com.enjaz.hr.data.model.login.LoginResponse
 import com.enjaz.hr.data.model.video.VidModel
 import com.google.gson.Gson
-import com.google.gson.JsonObject
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -34,15 +33,9 @@ class AppDataManager @Inject constructor(
             }
                 }
 
-    fun login(username:String , pass:String):Single<BaseResource<BaseResponse<TokenResult>>>{
+    fun login(username:String , pass:String):Single<BaseResource<LoginResponse>>{
 
-        val params = JsonObject().apply {
-            addProperty("userNameOrEmailAddress",username)
-            addProperty("password",pass)
-            addProperty("tenancyName", "MUC")
-
-        }
-        return wrapWithResourceObject(webservices.login(jsonElement = params)
+        return wrapWithResourceObject(webservices.login("EnjazERP_App","password",username,pass,"EnjazERP")
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()))
     }
@@ -53,10 +46,8 @@ class AppDataManager @Inject constructor(
         return response.map {
             if (it.code() != 200) {
                 val gson = Gson()
-
-                val errorResponse = gson.fromJson(it.errorBody()?.string(), BaseResponse::class.java)
-
-                BaseResource.error(errorResponse.error.message, it.body())
+                val errorResponse = gson.fromJson(it.errorBody()?.string(), Error::class.java)
+                BaseResource.error(errorResponse.message, it.body())
             }
             else {
                 BaseResource.success(it.body())
