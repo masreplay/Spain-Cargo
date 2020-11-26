@@ -3,11 +3,10 @@ package com.enjaz.hr.data
 import com.enjaz.hr.data.db.MovieDB
 import com.enjaz.hr.data.model.BaseResource
 import com.enjaz.hr.data.model.Error
-import com.enjaz.hr.data.model.login.LoginResponse
-import com.enjaz.hr.data.model.video.VidModel
-import com.enjaz.hr.data.model.error.ErrorResponse
 import com.enjaz.hr.data.model.home.HomeResponse
+import com.enjaz.hr.data.model.login.LoginResponse
 import com.google.gson.Gson
+import com.google.gson.JsonObject
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

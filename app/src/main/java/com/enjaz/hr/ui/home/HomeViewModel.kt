@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.View
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
+import com.enjaz.hr.R
 import com.enjaz.hr.data.AppDataManager
 import com.enjaz.hr.data.model.BaseResource
 import com.enjaz.hr.data.model.home.HomeResponse
@@ -33,7 +34,9 @@ class HomeViewModel @ViewModelInject constructor(
             ::onGetHomeSuccess,
             { e ->
                 //error handling
-                e.message?.let { homeResponse.postValue(BaseResource.error(it, null)) }
+                e.message?.let { homeResponse.postValue(BaseResource.error(it, null))
+                    Log.d("error",it)
+                }
 
 
             })
@@ -50,7 +53,7 @@ class HomeViewModel @ViewModelInject constructor(
         if (result.message !=null){
 
 
-            Log.d("HassaneinErrorMessage",result.message)
+            navigator.showSnack(result.message, "#ED213A", R.drawable.ic_round_close_24)
 
 
         }else result.data?.let {

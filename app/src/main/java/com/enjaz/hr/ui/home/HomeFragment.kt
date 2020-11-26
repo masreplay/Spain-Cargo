@@ -2,7 +2,6 @@ package com.enjaz.hr.ui.home
 
 import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
@@ -16,6 +15,7 @@ import com.enjaz.hr.ui.base.BaseFragment
 import com.enjaz.hr.ui.base.BaseNavigator
 import com.enjaz.hr.util.calendar.HorizontalCalendar
 import com.enjaz.hr.util.calendar.utils.HorizontalCalendarListener
+import com.enjaz.hr.util.snackBar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.framgnet_home.*
 import java.util.*
@@ -87,10 +87,8 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
         horizontalCalendar.calendarListener = object : HorizontalCalendarListener() {
             override fun onDateSelected(date: Calendar?, position: Int) { //do something
 
-                Handler().postDelayed({
                     getViewModel().getHomeData((horizontalCalendar.selectedDate.time.month + 1) , horizontalCalendar.selectedDate.get(Calendar.YEAR))
 
-                }, 400)
 
 
             }
@@ -146,6 +144,11 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
         findNavController().navigate(R.id.teamFragment)
     }
 
+    override fun showSnack(string: String, color: String, drawable: Int?) {
+        snackBar(string, drawable, color, getViewDataBinding().parent, requireContext())
+
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -174,4 +177,6 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
 
 interface IHomeInteractionListener : BaseNavigator {
     fun showTeam()
+    fun showSnack(string: String, color: String, drawable: Int?)
+
 }
