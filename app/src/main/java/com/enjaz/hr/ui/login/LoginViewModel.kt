@@ -46,11 +46,7 @@ class LoginViewModel @ViewModelInject constructor(
 
         result.data?.let {
 
-            navigator.showSnack(
-                HRMApp.applicationContext().getString(R.string.login_success),
-                "#4CAF50",
-                R.drawable.ic_done
-            )
+            navigator.showSnack(HRMApp.applicationContext().getString(R.string.login_success), "#4CAF50", R.drawable.ic_done)
 
             PrefsManager.instance?.saveAccessToken(it.accessToken)
 

@@ -4,19 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
+        <import type="android.widget.TextView"/>
 
         <variable
             name="viewModel"
             type="com.enjaz.hr.ui.home.HomeViewModel" />
     </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/parent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@color/grey_100">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lyt"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -35,30 +45,31 @@
                     android:background="@color/colorPrimary" />
             </com.github.florent37.shapeofview.shapes.ArcView>
 
-            <androidx.recyclerview.widget.RecyclerView
+            <com.enjaz.hr.util.calendar.HorizontalCalendarView
                 android:id="@+id/rv_date"
-                items="@{viewModel.dates}"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
                 android:layout_marginTop="16dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:itemCount="10"
-                tools:listitem="@layout/item_date" />
+                app:selectedDateBackground="@drawable/bg_round_rect_8dp"
+                app:selectorColor="@android:color/transparent"
+                app:textColorNormal="@color/white"
+                app:textColorSelected="@color/colorPrimary"
+                app:unSelectedDateBackground="@drawable/bg_rect_transparent" />
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/bg_round_ripple_16dp"
                 android:clickable="true"
                 app:layout_constraintEnd_toStartOf="@+id/constraintLayout2"
                 app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/arcView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rv_date">
 
@@ -69,8 +80,8 @@
                     android:background="@drawable/bg_circle_transparent"
                     android:backgroundTint="@color/green_100"
                     android:padding="10dp"
+                    android:layout_marginTop="16dp"
                     android:src="@drawable/ic_baseline_insert_chart_24"
-                    app:layout_constraintBottom_toTopOf="@+id/textView"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -81,8 +92,7 @@
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="1000$"
+                    android:text="@{String.valueOf(viewModel.homeResponse.data.basicSalary)+'$',default=3000}"
                     android:textColor="@color/colorPrimary"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toTopOf="@+id/textView2"
@@ -100,16 +110,15 @@
                     android:textColor="@color/home_text_100"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView"
-                    app:layout_constraintVertical_chainStyle="packed" />
+                    android:layout_marginBottom="16dp"
+                    />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout2"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:background="@drawable/bg_round_ripple_16dp"
                 android:clickable="true"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -121,11 +130,11 @@
                     android:id="@+id/imageView2"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_marginTop="16dp"
                     android:background="@drawable/bg_circle_transparent"
                     android:backgroundTint="@color/orange"
                     android:padding="10dp"
                     android:src="@drawable/ic_round_monetization_on_24"
-                    app:layout_constraintBottom_toTopOf="@+id/textView3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
@@ -136,10 +145,10 @@
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="-200$"
+                    android:text="@{viewModel.homeResponse.data.deduction ==0 ? @string/you_have_no_deductions : '-'+String.valueOf(viewModel.homeResponse.data.deduction),default=200}"
                     android:textColor="@color/red"
-                    android:textSize="24sp"
+                    android:textSize="@{viewModel.homeResponse.data.deduction==0 ? @dimen/text_10 : @dimen/text_24 ,default=@dimen/text_24}"
+
                     app:layout_constraintBottom_toTopOf="@+id/textView4"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -155,25 +164,36 @@
                     android:textColor="@color/home_text_100"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3"
-                    app:layout_constraintVertical_chainStyle="packed" />
+                    android:layout_marginBottom="16dp"
+         />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout3"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="310dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/bg_round_ripple_16dp"
                 android:clickable="true"
-                android:paddingBottom="16dp"
                 app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
                 app:layout_constraintStart_toStartOf="@+id/constraintLayout"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
+                <include
+                    android:id="@+id/status"
+                    layout="@layout/view_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="@id/constraintLayout3"
+                    app:layout_constraintEnd_toEndOf="@id/constraintLayout3"
+                    app:layout_constraintStart_toStartOf="@id/constraintLayout3"
+                    app:layout_constraintTop_toTopOf="@id/constraintLayout3"
+                    app:retryListener="@{viewModel.refreshListener}"
+                    app:viewStatus="@{viewModel.homeResponse.status}" />
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="15dp"
@@ -218,8 +238,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_baseline_arrow_upward_24"
-                    android:text="3.65%"
+                    android:text="@{String.valueOf(viewModel.homeResponse.data.pastMonthDiffPercentage)}"
                     android:textColor="@color/green_400"
+                    android:visibility="@{viewModel.homeResponse.data.pastMonthDiffPercentage==0 ? View.GONE :View.VISIBLE}"
                     app:layout_constraintBottom_toTopOf="@+id/textView8"
                     app:layout_constraintEnd_toEndOf="@+id/donut_attendance"
                     app:layout_constraintStart_toStartOf="@+id/donut_attendance" />
@@ -228,7 +249,7 @@
                     android:id="@+id/textView8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="30 D"
+                    android:text="@{String.valueOf(viewModel.homeResponse.data.totalWorkdays)+@string/day}"
                     android:textColor="@android:color/black"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="@+id/donut_attendance"
@@ -309,7 +330,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="45.02%"
+                    android:text="@{String.valueOf(viewModel.homeResponse.data.present)+'%',default=40}"
                     android:textColor="@android:color/black"
                     app:layout_constraintEnd_toEndOf="@+id/textView12"
                     app:layout_constraintStart_toStartOf="@+id/textView12"
@@ -320,7 +341,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="31.13%"
+                    android:text="@{String.valueOf(viewModel.homeResponse.data.vacation)+'%',default=40}"
                     android:textColor="@android:color/black"
                     app:layout_constraintEnd_toEndOf="@+id/textView13"
                     app:layout_constraintStart_toStartOf="@+id/textView13"
@@ -331,7 +352,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="6.24%"
+                    android:text="@{String.valueOf(viewModel.homeResponse.data.absent)+'%',default=40}"
                     android:textColor="@android:color/black"
                     app:layout_constraintEnd_toEndOf="@+id/textView14"
                     app:layout_constraintStart_toStartOf="@+id/textView14"
@@ -341,7 +362,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="17.61%"
+                    android:text="@{String.valueOf(viewModel.homeResponse.data.delay)+'%',default=40}"
                     android:textColor="@android:color/black"
                     app:layout_constraintEnd_toEndOf="@+id/textView15"
                     app:layout_constraintHorizontal_bias="0.727"
@@ -410,7 +431,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv"
-                    items="@{viewModel.strings}"
+                    items="@{viewModel.homeResponse.data.teammates}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -420,8 +441,50 @@
                     tools:itemCount="2"
                     tools:listitem="@layout/item_dashboard" />
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:background="@color/white"
+                    android:visibility="@{viewModel.homeResponse.data.teammates.size()==0 ? View.VISIBLE :View.GONE, default=gone}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view_line"
+
+                    >
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_team"
+                        app:layout_constraintBottom_toTopOf="@id/tv_empty"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+                    <TextView
+                        android:id="@+id/tv_empty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="There is no members in your team"
+                        android:textColor="@color/carbon_grey_600"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 </layout>

@@ -2,9 +2,10 @@ package com.enjaz.hr.ui.notifications
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
-import com.enjaz.hr.R
 import com.enjaz.hr.data.AppDataManager
-import com.enjaz.hr.data.model.*
+import com.enjaz.hr.data.model.BaseResource
+import com.enjaz.hr.data.model.Data
+import com.enjaz.hr.data.model.Notification
 import com.enjaz.hr.ui.base.BaseViewModel
 
 class NotificationsViewModel @ViewModelInject constructor(
@@ -69,7 +70,7 @@ class NotificationsViewModel @ViewModelInject constructor(
         notificationsResponse.value = notificationsResponse.value
     }
 
-    private fun onGetNotificationsSuccess(result: BaseResource<BaseResponse<Data>>) {
+    private fun onGetNotificationsSuccess(result: BaseResource<Data>) {
 
 
     }

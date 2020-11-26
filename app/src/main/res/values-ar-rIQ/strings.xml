@@ -89,6 +89,8 @@
     <string name="language">اللغة</string>
     <string name="login_success">تم تسجيل الدخول بنجاح</string>
     <string name="press_the_above_button_to_retry">انقر لإعادة المحاولة</string>
+    <string name="you_have_no_deductions">لا توجد لديك إستقطاعات</string>
+    <string name="day">" يوم" </string>
 
 
 </resources>

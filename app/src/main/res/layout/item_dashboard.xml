@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="item"
-            type="String" />
+            type="com.enjaz.hr.data.model.home.Teammate" />
 
     </data>
 
@@ -15,23 +16,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.makeramen.roundedimageview.RoundedImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/roundedImageView"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="16dp"
-            android:src="@drawable/person1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            bind:imageUrl="@{item.pictureUrl}"
             app:layout_constraintTop_toTopOf="parent"
-            app:riv_corner_radius="8dp" />
+            />
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="@{item}"
+            android:text="@{item.name,default=Hassanein}"
             android:textColor="@android:color/black"
             app:layout_constraintBottom_toTopOf="@+id/textView10"
             app:layout_constraintStart_toEndOf="@+id/roundedImageView"
@@ -43,13 +44,14 @@
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="IT Department"
             android:textColor="@color/home_text_100"
+            android:text="@{item.departmentName,default=HR}"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView9"
             app:layout_constraintTop_toBottomOf="@+id/textView9"
             app:layout_constraintVertical_chainStyle="packed" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

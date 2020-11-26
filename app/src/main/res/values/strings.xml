@@ -86,4 +86,8 @@
     <string name="total_deduction">Total deduction</string>
     <string name="language">Language</string>
     <string name="login_success">Logged in successfully</string>
+    <string name="you_have_no_deductions">You have no deductions</string>
+    <string name="day">" Day"</string>
+
+
 </resources>
