@@ -91,6 +91,10 @@
     <string name="press_the_above_button_to_retry">انقر لإعادة المحاولة</string>
     <string name="you_have_no_deductions">لا توجد لديك إستقطاعات</string>
     <string name="day">" يوم" </string>
+    <string name="check_in">Check in</string>
+    <string name="check_out">Check out</string>
+    <string name="am">AM</string>
+    <string name="pm">PM</string>
 
 
 </resources>

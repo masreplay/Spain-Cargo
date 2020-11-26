@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="String" />
+            type="com.enjaz.hr.data.model.attendance.Day" />
 
         <variable
             name="clickListener"
@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="Sun 22-10-2020"
+            android:text="@{item.date}"
             android:textColor="@android:color/black"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +46,7 @@
             android:layout_marginEnd="16dp"
             android:drawableStart="@drawable/ic_outline_watch_later_24"
             android:drawablePadding="16dp"
-            android:text="08:30 AM - 04:30 PM"
+            android:text="@{item.dayTimeChunks.get(0).time}"
             app:layout_constraintStart_toStartOf="@+id/tv_type"
             app:layout_constraintTop_toBottomOf="@+id/tv_type" />
 
@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Check in 09:00 AM (Late)"
+            android:text="@{item.checkInTime}"
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
@@ -85,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Check out 04:00PM"
+            android:text="@{item.checkOutTime}"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="@+id/imageView2" />

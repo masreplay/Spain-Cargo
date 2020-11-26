@@ -11,6 +11,7 @@
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white">
@@ -55,7 +56,6 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_date"
-                        items="@{viewModel.dates}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="16dp"
@@ -66,7 +66,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:itemCount="10"
-                        tools:listitem="@layout/item_date" />
+                        />
 
 
                     <LinearLayout
@@ -91,7 +91,7 @@
                                 android:id="@+id/tv_workingHours"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="73:39"
+                                android:text="@{String.valueOf(viewModel.attendanceResponse.data.totalWorkTime)}"
                                 android:textColor="@color/colorPrimary" />
 
                             <TextView
@@ -119,7 +119,7 @@
                                 android:id="@+id/tv_delays"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="5:00"
+                                android:text="@{String.valueOf(viewModel.attendanceResponse.data.totalDelay)}"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                                 android:textColor="@color/red" />
 
@@ -211,7 +211,7 @@
                                 android:id="@+id/tv_overTime"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="5:00"
+                                android:text="@{String.valueOf(viewModel.attendanceResponse.data.totalOvertime)}"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                                 android:textColor="@color/colorPrimary" />
 
@@ -280,7 +280,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv"
-                    items="@{viewModel.strings}"
+                    items="@{viewModel.attendanceResponse.data.days}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"

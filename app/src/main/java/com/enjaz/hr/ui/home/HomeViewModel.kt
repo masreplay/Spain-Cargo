@@ -18,8 +18,7 @@ class HomeViewModel @ViewModelInject constructor(
 
     var homeResponse: MutableLiveData<BaseResource<HomeResponse>> = MutableLiveData()
 
-    var dates: MutableLiveData<MutableList<String>> =
-        MutableLiveData()
+
 
     fun getHomeData(month:Int,year:Int){
 

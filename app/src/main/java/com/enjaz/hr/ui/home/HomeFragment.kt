@@ -10,7 +10,6 @@ import androidx.navigation.fragment.findNavController
 import app.futured.donut.DonutSection
 import com.enjaz.hr.R
 import com.enjaz.hr.databinding.FramgnetHomeBinding
-import com.enjaz.hr.ui.attendance.ICalenderListener
 import com.enjaz.hr.ui.base.BaseFragment
 import com.enjaz.hr.ui.base.BaseNavigator
 import com.enjaz.hr.util.calendar.HorizontalCalendar
@@ -23,11 +22,10 @@ import java.util.*
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener, HomeViewModel>(),
-    IHomeInteractionListener, ICalenderListener {
+    IHomeInteractionListener {
 
     private val homeViewModel: HomeViewModel by viewModels()
     lateinit var usersAdapter: UsersAdapter
-    lateinit var calenderAdapter: CalenderAdapter
 
 
     override fun getLayoutId(): Int {
@@ -153,24 +151,9 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         usersAdapter = UsersAdapter(requireContext(), mutableListOf())
-        calenderAdapter = CalenderAdapter(requireContext(), mutableListOf())
-        calenderAdapter.setOnItemClickListener(this)
 
     }
 
-    override fun onMyItemClick(position: Int) {
-//        var oldPosition = 0
-//        for (x in 0 until homeViewModel.dates.value!!.size) {
-//            if (homeViewModel.dates.value!![x].is_selected) {
-//                oldPosition = x
-//            }
-//            homeViewModel.dates.value!![x].is_selected = false
-//        }
-//        homeViewModel.dates.value!![position].is_selected = true
-//        calenderAdapter.notifyItemChanged(position)
-//        calenderAdapter.notifyItemChanged(oldPosition)
-
-    }
 
 
 }

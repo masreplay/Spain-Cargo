@@ -88,6 +88,10 @@
     <string name="login_success">Logged in successfully</string>
     <string name="you_have_no_deductions">You have no deductions</string>
     <string name="day">" Day"</string>
+    <string name="check_in">Check in</string>
 
+    <string name="check_out">Check out</string>
+    <string name="am">AM</string>
+    <string name="pm">PM</string>
 
 </resources>

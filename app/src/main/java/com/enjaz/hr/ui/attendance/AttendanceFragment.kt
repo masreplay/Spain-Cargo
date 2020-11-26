@@ -12,6 +12,7 @@ import com.enjaz.hr.R
 import com.enjaz.hr.databinding.FragmentAttendanceBinding
 import com.enjaz.hr.ui.base.BaseFragment
 import com.enjaz.hr.ui.base.BaseNavigator
+import com.enjaz.hr.util.snackBar
 
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -19,12 +20,11 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class AttendanceFragment :
     BaseFragment<FragmentAttendanceBinding, IAttendanceInteractionListener, AttendanceViewModel>(),
-    IAttendanceInteractionListener, ICalenderListener, IAttendanceItemActionListener {
+    IAttendanceInteractionListener, IAttendanceItemActionListener {
 
     private val attendanceViewModel: AttendanceViewModel by viewModels()
 
     private lateinit var attendanceAdapter: AttendanceAdapter
-    private lateinit var calenderAdapter: CalenderAdapter
 
 
     override fun getLayoutId(): Int {
@@ -43,8 +43,6 @@ class AttendanceFragment :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         attendanceAdapter = AttendanceAdapter(requireContext(), mutableListOf())
-        calenderAdapter = CalenderAdapter(requireContext(), mutableListOf())
-        calenderAdapter.setOnItemClickListener(this)
         attendanceAdapter.setOnItemClickListener(this)
 
     }
@@ -53,15 +51,8 @@ class AttendanceFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getViewModel().getdata()
+        getViewModel().getAttendanceData(11,2020)
 
-        getViewDataBinding().rvDate.apply {
-            adapter = calenderAdapter
-        }
-
-
-
-        getViewModel().getdata()
 
         getViewDataBinding().rv.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
@@ -70,26 +61,20 @@ class AttendanceFragment :
 
     }
 
-    override fun onMyItemClick(position: Int) {
-        var oldPosition = 0
-        for (x in 0 until attendanceViewModel.dates.value!!.size) {
-            if (attendanceViewModel.dates.value!![x].is_selected) {
-                oldPosition = x
-            }
-            attendanceViewModel.dates.value!![x].is_selected = false
-        }
-        attendanceViewModel.dates.value!![position].is_selected = true
-        calenderAdapter.notifyItemChanged(position)
-        calenderAdapter.notifyItemChanged(oldPosition)
 
-    }
 
     override fun onRequestClick() {
         findNavController().navigate(R.id.requestTypeFragment)
+    }
+
+    override fun showSnack(string: String, color: String, drawable: Int?) {
+            snackBar(string, drawable, color, getViewDataBinding().parent, requireContext())
+
     }
 }
 
 
 interface IAttendanceInteractionListener : BaseNavigator {
+    fun showSnack(string: String, color: String, drawable: Int?)
 
 }

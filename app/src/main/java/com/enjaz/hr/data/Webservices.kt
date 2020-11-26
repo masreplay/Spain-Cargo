@@ -1,5 +1,6 @@
 package com.enjaz.hr.data
 
+import com.enjaz.hr.data.model.attendance.AttendanceResponse
 import com.enjaz.hr.data.model.home.HomeResponse
 import com.enjaz.hr.data.model.login.LoginResponse
 import com.enjaz.hr.data.model.video.Category
@@ -22,6 +23,10 @@ interface Webservices {
     @GET("genres/movies")
     fun getCategory(): Single<Response<List<Category>>>
 
+
+
+    @POST("api/hr/Attendance/GetMobileAttendanceStatistics")
+    fun getAttendanceResponse(@Body jsonElement: JsonElement): Single<Response<AttendanceResponse>>
 
 
 

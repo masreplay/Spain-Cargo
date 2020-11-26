@@ -13,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.*
 import androidx.core.content.ContextCompat
+import com.enjaz.hr.HRMApp
 import com.enjaz.hr.R
 import com.google.android.material.snackbar.Snackbar
 import java.time.DayOfWeek
@@ -30,6 +31,17 @@ fun View.snackbar(snackbarText: String,@ColorInt colorInt: Int) {
     Snackbar.make(this, snackbarText, Snackbar.LENGTH_LONG).withColor(colorInt).show()
 
 }
+
+fun Int.amPm():String {
+
+    val time =this.toString()
+
+    if (time.substringBefore(":").toInt()>12){
+        return HRMApp.applicationContext().getString(R.string.am)
+    }else return HRMApp.applicationContext().getString(R.string.pm)
+}
+
+
 fun snackBar(s: String, drawable: Int?, color: String, view: View, context: Context) {
     val snackbar =
 

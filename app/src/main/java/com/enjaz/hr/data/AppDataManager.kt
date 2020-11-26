@@ -3,6 +3,7 @@ package com.enjaz.hr.data
 import com.enjaz.hr.data.db.MovieDB
 import com.enjaz.hr.data.model.BaseResource
 import com.enjaz.hr.data.model.Error
+import com.enjaz.hr.data.model.attendance.AttendanceResponse
 import com.enjaz.hr.data.model.home.HomeResponse
 import com.enjaz.hr.data.model.login.LoginResponse
 import com.google.gson.Gson
@@ -21,6 +22,16 @@ class AppDataManager @Inject constructor(
 ) {
 
 
+    fun getAttendance(month:Int? , year:Int?):Single<BaseResource<AttendanceResponse>>{
+
+        val params = JsonObject().apply {
+            addProperty("month",month)
+            addProperty("year",year)
+        }
+        return wrapWithResourceObject(webservices.getAttendanceResponse(jsonElement = params)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread()))
+    }
 
     fun getHome(month:Int? , year:Int?):Single<BaseResource<HomeResponse>>{
 
