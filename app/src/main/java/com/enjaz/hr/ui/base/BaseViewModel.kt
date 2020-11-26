@@ -1,6 +1,7 @@
 package com.enjaz.hr.ui.base
 
 import android.util.Log
+import android.view.View
 import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,6 +20,7 @@ abstract class BaseViewModel<N : BaseNavigator>(
     val dataManager: AppDataManager
 ) : ViewModel() {
     val isLoading = ObservableBoolean(false)
+    var refreshListener: MutableLiveData<View.OnClickListener> = MutableLiveData()
 
     // Architecture elements
     private val compositeDisposable: CompositeDisposable = CompositeDisposable()

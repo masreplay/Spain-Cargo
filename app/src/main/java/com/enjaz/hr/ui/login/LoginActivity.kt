@@ -40,10 +40,10 @@ class LoginActivity :
         getViewDataBinding().status.tvErrorMsg.hide()
         getViewDataBinding().status.imageError.hide()
 
-        val window: Window = this.getWindow()
+        val window: Window = this.window
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-        window.setStatusBarColor(ContextCompat.getColor(this, R.color.white))
+        window.statusBarColor = ContextCompat.getColor(this, R.color.white)
 
         form {
 

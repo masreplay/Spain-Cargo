@@ -11,6 +11,12 @@
             name="viewModel"
             type="com.enjaz.hr.ui.home.HomeViewModel" />
     </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/parent"
@@ -18,7 +24,9 @@
         android:layout_height="match_parent"
         android:background="@color/grey_100">
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/lyt"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -165,15 +173,27 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout3"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="310dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/bg_round_ripple_16dp"
                 android:clickable="true"
-                android:paddingBottom="16dp"
                 app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
                 app:layout_constraintStart_toStartOf="@+id/constraintLayout"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
+                <include
+                    android:id="@+id/status"
+                    layout="@layout/view_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="@id/constraintLayout3"
+                    app:layout_constraintEnd_toEndOf="@id/constraintLayout3"
+                    app:layout_constraintStart_toStartOf="@id/constraintLayout3"
+                    app:layout_constraintTop_toTopOf="@id/constraintLayout3"
+                    app:retryListener="@{viewModel.refreshListener}"
+                    app:viewStatus="@{viewModel.homeResponse.status}" />
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="15dp"
@@ -425,7 +445,7 @@
                     android:layout_width="0dp"
                     android:layout_height="200dp"
                     android:background="@color/white"
-                    android:visibility="@{viewModel.homeResponse.data.teammates.size()==0 ? View.VISIBLE : View.GONE, default=gone}"
+                    android:visibility="@{viewModel.homeResponse.data.teammates.size()==0 ? View.VISIBLE :View.GONE, default=gone}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -459,6 +479,12 @@
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
 </layout>

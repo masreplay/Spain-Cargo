@@ -1,6 +1,7 @@
 package com.enjaz.hr.ui.home
 
 import android.util.Log
+import android.view.View
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import com.enjaz.hr.data.AppDataManager
@@ -19,15 +20,16 @@ class HomeViewModel @ViewModelInject constructor(
     var dates: MutableLiveData<MutableList<String>> =
         MutableLiveData()
 
-    fun getHomeData(){
+    fun getHomeData(month:Int,year:Int){
 
+        Log.d("kkkkkk", homeResponse.value?.data?.teammates?.size.toString())
 
         homeResponse.value = BaseResource.loading(homeResponse.value?.data)
 
 
 
         dispose(
-            dataManager.getHome(11,2020),
+            dataManager.getHome(month,year),
             ::onGetHomeSuccess,
             { e ->
                 //error handling
@@ -35,6 +37,8 @@ class HomeViewModel @ViewModelInject constructor(
 
 
             })
+        refreshListener.postValue(View.OnClickListener { getHomeData(month,year) })
+
 
 
     }
@@ -51,6 +55,8 @@ class HomeViewModel @ViewModelInject constructor(
 
         }else result.data?.let {
             homeResponse.postValue(result)
+            Log.d("kkkkkk", homeResponse.value?.data?.teammates?.size.toString())
+
 
         }
 
