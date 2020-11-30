@@ -41,7 +41,7 @@
     <string name="basic_salary_and_additions">الراتب الاسمي والاضافات</string>
     <string name="salary">راتب</string>
     <string name="bonus">اضافة</string>
-    <string name="late">تاخير</string>
+    <string name="late">(تاخير)</string>
     <string name="miss_punch">Miss punch</string>
     <string name="enter_a_name_or_an_id">قم بادخال اسم او معرف</string>
     <string name="from">من</string>
@@ -95,6 +95,13 @@
     <string name="check_out">Check out</string>
     <string name="am">AM</string>
     <string name="pm">PM</string>
+    <string name="no_check_in_yet">Missed in punch</string>
+    <string name="no_check_out_yet">Missed in punch</string>
+    <string name="two_zeros">:00</string>
+    <string name="no_data">There is no data</string>
+    <string name="no_attendance">You have no attendance report this month</string>
+
+
 
 
 </resources>

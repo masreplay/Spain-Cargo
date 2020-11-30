@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
 
         <variable
             name="viewModel"
@@ -40,6 +41,7 @@
                     android:gravity="center"
                     android:orientation="vertical">
 
+
                     <com.github.florent37.shapeofview.shapes.ArcView
                         android:id="@+id/arcView"
                         android:layout_width="match_parent"
@@ -54,25 +56,71 @@
                             android:background="@color/colorPrimary" />
                     </com.github.florent37.shapeofview.shapes.ArcView>
 
-                    <androidx.recyclerview.widget.RecyclerView
+                    <com.enjaz.hr.util.calendar.HorizontalCalendarView
                         android:id="@+id/rv_date"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="16dp"
+                        android:layout_height="70dp"
                         android:layout_marginTop="16dp"
-                        android:orientation="horizontal"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        tools:itemCount="10"
-                        />
+                        app:selectedDateBackground="@drawable/bg_round_rect_8dp"
+                        app:selectorColor="@android:color/transparent"
+                        app:textColorNormal="@color/white"
+                        app:textColorSelected="@color/colorPrimary"
+                        app:unSelectedDateBackground="@drawable/bg_rect_transparent" />
+                    <LinearLayout
+                        android:id="@+id/lyt_no_data"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="50dp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:elevation="1dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
 
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/rv_date">
+
+                        <ImageView
+                            android:layout_width="250dp"
+                            android:layout_height="150dp"
+                            app:srcCompat="@drawable/ic_attend" />
+
+                        <TextView
+                            android:id="@+id/tv_noData"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_middle"
+                            android:gravity="center"
+                            android:text="@string/no_attendance"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                            android:textColor="@color/carbon_grey_700"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+                    <include
+                        android:id="@+id/status"
+                        layout="@layout/view_status"
+                        android:layout_width="300dp"
+                        android:layout_height="250dp"
+                        android:layout_margin="30dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/rv_date"
+                        app:retryListener="@{viewModel.refreshListener}"
+                        app:viewStatus="@{viewModel.attendanceResponse.status}"
+                        />
 
                     <LinearLayout
                         android:id="@+id/linear"
                         android:layout_width="match_parent"
                         android:layout_height="130dp"
+                        android:visibility="@{viewModel.attendanceResponse.data.days.size()==0 ? View.GONE : View.VISIBLE}"
                         android:orientation="horizontal"
                         app:layout_constraintTop_toBottomOf="@+id/rv_date">
 
@@ -91,7 +139,7 @@
                                 android:id="@+id/tv_workingHours"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@{String.valueOf(viewModel.attendanceResponse.data.totalWorkTime)}"
+                                android:text="@{String.valueOf(viewModel.attendanceResponse.data.totalWorkTime)+@string/two_zeros}"
                                 android:textColor="@color/colorPrimary" />
 
                             <TextView
@@ -119,7 +167,7 @@
                                 android:id="@+id/tv_delays"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@{String.valueOf(viewModel.attendanceResponse.data.totalDelay)}"
+                                android:text="@{String.valueOf(viewModel.attendanceResponse.data.totalDelay)+@string/two_zeros}"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                                 android:textColor="@color/red" />
 
@@ -167,6 +215,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="130dp"
+                        android:visibility="@{viewModel.attendanceResponse.data.days.size()==0 ? View.GONE : View.VISIBLE}"
                         android:orientation="horizontal"
                         app:layout_constraintTop_toBottomOf="@+id/linear">
 
@@ -211,7 +260,7 @@
                                 android:id="@+id/tv_overTime"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@{String.valueOf(viewModel.attendanceResponse.data.totalOvertime)}"
+                                android:text="@{String.valueOf(viewModel.attendanceResponse.data.totalOvertime)+@string/two_zeros}"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                                 android:textColor="@color/colorPrimary" />
 
@@ -286,6 +335,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:itemCount="7"
                     tools:listitem="@layout/item_attendance" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

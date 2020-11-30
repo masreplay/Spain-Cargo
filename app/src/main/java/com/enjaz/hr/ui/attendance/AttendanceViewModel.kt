@@ -54,7 +54,16 @@ class AttendanceViewModel @ViewModelInject constructor(
 
 
         }else result.data?.let {
+
+
             attendanceResponse.postValue(result)
+
+            if (it.days.isEmpty()){
+                navigator.noAttendance()
+            }else{
+                navigator.attendanceAvailable()
+
+            }
 
         }
 

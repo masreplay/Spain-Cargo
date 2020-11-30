@@ -23,5 +23,22 @@ data class HomeResponse(
     @SerializedName("pastMonthDiffPercentage")
     val pastMonthDiffPercentage: Int
 
+){
 
-)
+    fun getPresentPercentage():String{
+
+        return "${present/totalWorkdays*100}%"
+    }
+    fun getVacationPercentage():String{
+
+        return "${vacation/totalWorkdays*100}%"
+    }
+    fun getAbsentPercentage():String{
+
+        return "${absent/totalWorkdays*100}%"
+    }
+    fun getDelayPercentage():String{
+
+        return "${delay/totalWorkdays*100}%"
+    }
+}

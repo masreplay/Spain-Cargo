@@ -22,6 +22,10 @@ data class Day(
     @SerializedName("time")
     val time: Int
 ) {
+
+    fun getWorkTime():String{
+        return "${dayTimeChunks[0].from.substringBeforeLast(":").amPm()} - ${dayTimeChunks[0].to.substringBeforeLast(":").amPm()}"
+    }
     fun getDate(): String {
 
 
@@ -29,19 +33,59 @@ data class Day(
         val apiDate = parser.parse(datee)
 
         val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
+
         val date = sdf.format(apiDate)
         return date
 
 
     }
 
+    fun getDay(): String {
+
+
+        val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH)
+        val apiDate = parser.parse(datee)
+
+        val sdf = SimpleDateFormat("EEEE", Locale.ENGLISH)
+
+        val date = sdf.format(apiDate)
+        return date
+
+
+    }
+
+    fun getExeptionStatus():String?{
+        return if (status=="Late") {
+            HRMApp.applicationContext().getString(R.string.late)
+        }else ""
+
+
+    }
+
     fun getCheckInTime(): String {
-        return HRMApp.applicationContext().getString(R.string.check_in) +"    ${ dayTimeChunks[0].fingerprints[0].time.substringBeforeLast(":")} ${time.amPm()} ($status) "
+        if (dayTimeChunks[0].fingerprints.isNotEmpty()) {
+            return HRMApp.applicationContext()
+                .getString(R.string.check_in) + "    ${dayTimeChunks[0].fingerprints[0].time.substringBeforeLast(
+                ":"
+            ).amPm()}  ${getExeptionStatus()} "
+        }else{
+            return HRMApp.applicationContext().getString(R.string.no_check_in_yet)
+        }
 
     }
 
     fun getCheckOutTime(): String {
-        return HRMApp.applicationContext().getString(R.string.check_out) +" ${ dayTimeChunks[0].fingerprints[1].time.substringBeforeLast(":")} ${time.amPm()}  "
+        if (dayTimeChunks[0].fingerprints.isNotEmpty()) {
+
+
+            return HRMApp.applicationContext()
+                .getString(R.string.check_out) + " ${dayTimeChunks[0].fingerprints[1].time.substringBeforeLast(
+                ":"
+            ).amPm()}   "
+        }else {
+            return HRMApp.applicationContext().getString(R.string.no_check_out_yet)
+
+        }
 
     }
 }

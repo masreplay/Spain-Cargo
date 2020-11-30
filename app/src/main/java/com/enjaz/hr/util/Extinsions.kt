@@ -3,6 +3,7 @@ package com.enjaz.hr.util
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
+import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -32,13 +33,14 @@ fun View.snackbar(snackbarText: String,@ColorInt colorInt: Int) {
 
 }
 
-fun Int.amPm():String {
+fun String.amPm():String {
 
     val time =this.toString()
 
-    if (time.substringBefore(":").toInt()>12){
-        return HRMApp.applicationContext().getString(R.string.am)
-    }else return HRMApp.applicationContext().getString(R.string.pm)
+    Log.d("kkkkk",time.substringBefore(":"))
+    return if (time.substringBefore(":").toInt()<12){
+       this +" "+ HRMApp.applicationContext().getString(R.string.am)
+    }else this + " "+ HRMApp.applicationContext().getString(R.string.pm)
 }
 
 

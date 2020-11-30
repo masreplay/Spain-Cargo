@@ -21,9 +21,4 @@ data class DayTimeChunk(
     @SerializedName("to")
     val to: String
 )
-{
-    fun getTime():String{
 
-        return "$from - $to"
-    }
-}

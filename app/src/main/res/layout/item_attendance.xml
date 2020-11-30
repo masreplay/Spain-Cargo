@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="@{item.date}"
+            android:text="@{item.date+' '+item.day}"
             android:textColor="@android:color/black"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +46,7 @@
             android:layout_marginEnd="16dp"
             android:drawableStart="@drawable/ic_outline_watch_later_24"
             android:drawablePadding="16dp"
-            android:text="@{item.dayTimeChunks.get(0).time}"
+            android:text="@{item.workTime}"
             app:layout_constraintStart_toStartOf="@+id/tv_type"
             app:layout_constraintTop_toBottomOf="@+id/tv_type" />
 
@@ -109,8 +109,8 @@
             android:layout_marginTop="8dp"
             android:drawableStart="@drawable/ic_exclamation_mark"
             android:drawablePadding="16dp"
-            android:text="Delay exception"
-            android:visibility='@{item.equals("hussein")?View.VISIBLE:View.GONE}'
+            android:text="@{item.status}"
+            android:visibility="@{item.status.equals(@string/present) ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/imageView2"
             app:layout_constraintTop_toBottomOf="@+id/tv_check_out" />
@@ -126,7 +126,7 @@
             app:strokeColor="@color/colorPrimary"
             android:textAllCaps="false"
             android:textSize="12sp"
-            android:visibility='@{item.equals("hussein")?View.VISIBLE:View.GONE}'
+            android:visibility="@{item.status.equals(@string/present) ? View.GONE : View.VISIBLE}"
             app:cornerRadius="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
