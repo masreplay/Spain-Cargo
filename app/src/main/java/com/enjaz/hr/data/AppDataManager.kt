@@ -5,6 +5,7 @@ import com.enjaz.hr.data.model.BaseResource
 import com.enjaz.hr.data.model.Error
 import com.enjaz.hr.data.model.attendance.AttendanceResponse
 import com.enjaz.hr.data.model.home.HomeResponse
+import com.enjaz.hr.data.model.leaveTypes.LeaveTypesResponse
 import com.enjaz.hr.data.model.login.LoginResponse
 import com.google.gson.Gson
 import com.google.gson.JsonObject
@@ -29,6 +30,13 @@ class AppDataManager @Inject constructor(
             addProperty("year",year)
         }
         return wrapWithResourceObject(webservices.getAttendanceResponse(jsonElement = params)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread()))
+    }
+
+    fun getLeaveTypes():Single<BaseResource<LeaveTypesResponse>>{
+
+        return wrapWithResourceObject(webservices.getLeaveTypes()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread()))
     }

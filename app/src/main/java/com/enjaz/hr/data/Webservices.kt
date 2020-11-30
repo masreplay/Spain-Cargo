@@ -2,6 +2,7 @@ package com.enjaz.hr.data
 
 import com.enjaz.hr.data.model.attendance.AttendanceResponse
 import com.enjaz.hr.data.model.home.HomeResponse
+import com.enjaz.hr.data.model.leaveTypes.LeaveTypesResponse
 import com.enjaz.hr.data.model.login.LoginResponse
 import com.enjaz.hr.data.model.video.Category
 import com.enjaz.hr.data.model.video.VidModel
@@ -24,6 +25,8 @@ interface Webservices {
     fun getCategory(): Single<Response<List<Category>>>
 
 
+    @GET("api/hr/md/LeavesType/GetLeavesTypesForView")
+    fun getLeaveTypes(): Single<Response<LeaveTypesResponse>>
 
     @POST("api/hr/Attendance/GetMobileAttendanceStatistics")
     fun getAttendanceResponse(@Body jsonElement: JsonElement): Single<Response<AttendanceResponse>>

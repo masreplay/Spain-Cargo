@@ -10,6 +10,7 @@ import com.enjaz.hr.R
 import com.enjaz.hr.data.model.Types
 import com.enjaz.hr.databinding.FragmentRequsetTypeBinding
 import com.enjaz.hr.ui.base.BaseSheetFragment
+import com.enjaz.hr.util.snackBar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -79,6 +80,10 @@ class RequestTypeFragment :
 
     override fun dialogTimePickerLightEnd() {
         TODO("Not yet implemented")
+    }
+
+    override fun showSnack(string: String, color: String, drawable: Int?) {
+        snackBar(string, drawable, color, getViewDataBinding().parent, requireContext())
     }
 
 

@@ -445,11 +445,17 @@ class SendRequestFragment :
         ).show()
 
     }
+
+    override fun showSnack(string: String, color: String, drawable: Int?) {
+        TODO("Not yet implemented")
+    }
 }
 
 interface ISendRequestInteractionListener : BaseNavigator {
     fun dialogTimePickerLightStart()
     fun dialogTimePickerLightEnd()
+
+    fun showSnack(string: String, color: String, drawable: Int?)
 
 }
 

@@ -52,21 +52,10 @@
 
             android:text="@{item.type,default=Vacation}"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/tv_availableBalance"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:textSize="14sp"
            />
-        <carbon.widget.TextView
-            android:id="@+id/tv_availableBalance"
-            balance="@{item.type}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/carbon_grey_700"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_leave_type"
-            app:layout_constraintTop_toBottomOf="@id/tv_leave_type"
-                    />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
