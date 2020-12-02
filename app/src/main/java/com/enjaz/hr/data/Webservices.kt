@@ -3,8 +3,8 @@ package com.enjaz.hr.data
 import com.enjaz.hr.data.model.attendance.AttendanceResponse
 import com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponse
 import com.enjaz.hr.data.model.home.HomeResponse
-import com.enjaz.hr.data.model.leaveTypes.LeaveTypesResponse
 import com.enjaz.hr.data.model.login.LoginResponse
+import com.enjaz.hr.data.model.requestsTypes.RequestTypesResponse
 import com.enjaz.hr.data.model.video.Category
 import com.enjaz.hr.data.model.video.VidModel
 import com.google.gson.JsonElement
@@ -26,11 +26,13 @@ interface Webservices {
     fun getCategory(): Single<Response<List<Category>>>
 
 
+    @GET("api/hr/md/LeavesType/GetList")
+    fun getRequestsTypes(): Single<Response<RequestTypesResponse>>
+
+
     @PUT("api/hr/md/Leaves/ChangeLeaveRequest")
     fun cancelMyRequest(@Query("WorkflowCorrelationId")workflowCorrelationId:String,@Query("NewStatus")newStatus:Int): Single<Response<String>>
 
-    @GET("api/hr/md/LeavesType/GetLeavesTypesForView")
-    fun getLeaveTypes(): Single<Response<LeaveTypesResponse>>
 
     @POST("api/hr/Attendance/GetMobileAttendanceStatistics")
     fun getAttendanceResponse(@Body jsonElement: JsonElement): Single<Response<AttendanceResponse>>

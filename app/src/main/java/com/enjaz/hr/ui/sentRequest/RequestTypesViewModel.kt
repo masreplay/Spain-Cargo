@@ -8,7 +8,7 @@ import com.enjaz.hr.R
 import com.enjaz.hr.data.AppDataManager
 import com.enjaz.hr.data.model.BaseResource
 import com.enjaz.hr.data.model.Types
-import com.enjaz.hr.data.model.leaveTypes.LeaveTypesResponse
+import com.enjaz.hr.data.model.requestsTypes.RequestTypesResponse
 import com.enjaz.hr.ui.base.BaseViewModel
 
 class RequestTypesViewModel @ViewModelInject constructor(
@@ -19,7 +19,7 @@ class RequestTypesViewModel @ViewModelInject constructor(
 
 
     var dataResponse: MutableLiveData<MutableList<Types>> =MutableLiveData()
-    var leaveTypesResponse: MutableLiveData<BaseResource<LeaveTypesResponse>> = MutableLiveData()
+    var leaveTypesResponse: MutableLiveData<BaseResource<RequestTypesResponse>> = MutableLiveData()
 
 
     fun getData() {
@@ -52,7 +52,7 @@ class RequestTypesViewModel @ViewModelInject constructor(
 
     }
 
-    private fun onGetLeaveTypesSuccess(result: BaseResource<LeaveTypesResponse>) {
+    private fun onGetLeaveTypesSuccess(result: BaseResource<RequestTypesResponse>) {
 
 
         if (result.message !=null){
