@@ -27,7 +27,7 @@ interface Webservices {
 
 
     @GET("api/hr/md/LeavesType/GetList")
-    fun getRequestsTypes(): Single<Response<RequestTypesResponse>>
+    fun getRequestsTypes(@Query("TimeFlag")timeFlag :Boolean): Single<Response<RequestTypesResponse>>
 
 
     @PUT("api/hr/md/Leaves/ChangeLeaveRequest")

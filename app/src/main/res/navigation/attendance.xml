@@ -22,10 +22,10 @@
 
     </fragment>
     <dialog
-        android:id="@+id/requestTypeFragment"
-        android:name="com.enjaz.hr.ui.sentRequest.RequestTypeFragment"
+        android:id="@+id/requestMainTypesFragment"
+        android:name="com.enjaz.hr.ui.sentRequest.RequestMainTypesFragment"
         android:label="Request Type"
-        tools:layout="@layout/fragment_requset_type">
+        tools:layout="@layout/fragment_requset_main_types">
         <action
             android:id="@+id/nextAction"
             app:destination="@id/sendRequestFragment" />

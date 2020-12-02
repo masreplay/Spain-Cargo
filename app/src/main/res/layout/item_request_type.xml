@@ -11,7 +11,7 @@
             type="Integer" />
         <variable
             name="clickListener"
-            type="com.enjaz.hr.ui.sentRequest.RequestTypeFragment" />
+            type="com.enjaz.hr.ui.sentRequest.RequestMainTypesFragment" />
 
     </data>
 

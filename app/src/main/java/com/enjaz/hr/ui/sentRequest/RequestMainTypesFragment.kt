@@ -8,23 +8,23 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.enjaz.hr.R
 import com.enjaz.hr.data.model.Types
-import com.enjaz.hr.databinding.FragmentRequsetTypeBinding
+import com.enjaz.hr.databinding.FragmentRequsetMainTypesBinding
 import com.enjaz.hr.ui.base.BaseSheetFragment
 import com.enjaz.hr.util.snackBar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RequestTypeFragment :
-    BaseSheetFragment<FragmentRequsetTypeBinding, ISendRequestInteractionListener, RequestTypesViewModel>(),
+class RequestMainTypesFragment :
+    BaseSheetFragment<FragmentRequsetMainTypesBinding, ISendRequestInteractionListener, RequestTypesViewModel>(),
     ISendRequestInteractionListener ,ITypeItemActionListener{
 
     private val sedRequestViewModel: RequestTypesViewModel by viewModels()
-    lateinit var requsetTypesAdapter: RequsetTypesAdapter
+    lateinit var requsetTypesAdapter: RequsetMainTypesAdapter
 
     lateinit var list:ArrayList<String>
 
     override fun getLayoutId(): Int {
-        return R.layout.fragment_requset_type
+        return R.layout.fragment_requset_main_types
     }
 
     override fun getViewModel(): RequestTypesViewModel {
@@ -41,7 +41,7 @@ class RequestTypeFragment :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requsetTypesAdapter = RequsetTypesAdapter(requireContext(), mutableListOf())
+        requsetTypesAdapter = RequsetMainTypesAdapter(requireContext(), mutableListOf())
         requsetTypesAdapter.setOnItemClickListener(this)
 
         list= arrayListOf()
@@ -65,13 +65,13 @@ class RequestTypeFragment :
     }
 
     override fun onTypeClick(type: Types) {
-        if (type.type!=("Vacation (you have exceeded the limit)")) {
+
             val action =
-                RequestTypeFragmentDirections.nextAction(
+                RequestMainTypesFragmentDirections.nextAction(
                     type.type
                 )
             findNavController().navigate(action)
-        }
+
     }
 
     override fun dialogTimePickerLightStart() {

@@ -47,10 +47,10 @@ class AppDataManager @Inject constructor(
         )
     }
 
-    fun getLeaveTypes(): Single<BaseResource<RequestTypesResponse>> {
+    fun getLeaveTypes(timeFlag:Boolean): Single<BaseResource<RequestTypesResponse>> {
 
         return wrapWithResourceObject(
-            webservices.getRequestsTypes()
+            webservices.getRequestsTypes(timeFlag)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )

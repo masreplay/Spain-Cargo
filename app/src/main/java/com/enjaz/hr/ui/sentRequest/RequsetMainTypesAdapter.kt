@@ -7,12 +7,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.enjaz.hr.R
 import com.enjaz.hr.data.model.Types
-import com.enjaz.hr.databinding.ItemRequestTypeBinding
-import com.enjaz.hr.databinding.ItemSentBinding
 import com.enjaz.hr.ui.base.BaseDataItemInteractionListener
 import com.enjaz.hr.ui.base.BaseDataItemsAdapter
 
-open class RequsetTypesAdapter(
+open class RequsetMainTypesAdapter(
     protected var context: Context, objects: MutableList<Types>
 ) : BaseDataItemsAdapter<Types>(objects, null) {
 

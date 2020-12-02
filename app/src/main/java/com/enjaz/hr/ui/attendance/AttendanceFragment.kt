@@ -104,7 +104,7 @@ class AttendanceFragment :
 
 
     override fun onRequestClick() {
-        findNavController().navigate(R.id.requestTypeFragment)
+        findNavController().navigate(R.id.requestMainTypesFragment)
     }
 
     override fun showSnack(string: String, color: String, drawable: Int?) {
