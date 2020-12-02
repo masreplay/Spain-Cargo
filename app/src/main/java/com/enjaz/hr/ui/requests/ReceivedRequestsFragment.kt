@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.enjaz.hr.R
 import com.enjaz.hr.databinding.FramgnetReceivedRequestsBinding
 import com.enjaz.hr.ui.base.BaseFragment
@@ -39,7 +38,7 @@ class ReceivedRequestsFragment :
 
 
 
-        getViewModel().getdata()
+//        getViewModel().getdata()
         getViewDataBinding().rv.apply {
             adapter = receiveRequestsAdapter
         }
@@ -48,19 +47,19 @@ class ReceivedRequestsFragment :
         getViewDataBinding().rv.layoutManager = lm
 
 
-        getViewDataBinding().rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-
-
-                if (lm.findLastVisibleItemPosition() == lm.itemCount - 1) {
-                    getViewModel().appenddata()
-                    receiveRequestsAdapter.notifyDataSetChanged()
-                }
-
-                super.onScrolled(recyclerView, dx, dy)
-            }
-        })
+//        getViewDataBinding().rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//
+//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//
+//
+//                if (lm.findLastVisibleItemPosition() == lm.itemCount - 1) {
+////                    getViewModel().appenddata()
+////                    receiveRequestsAdapter.notifyDataSetChanged()
+//                }
+//
+//                super.onScrolled(recyclerView, dx, dy)
+//            }
+//        })
 
     }
 
@@ -97,6 +96,18 @@ class ReceivedRequestsFragment :
                 dialog.dismiss()
             }
             .show()
+    }
+
+    override fun noRequests() {
+        TODO("Not yet implemented")
+    }
+
+    override fun requestsAvailable() {
+        TODO("Not yet implemented")
+    }
+
+    override fun showSnack(string: String, color: String, drawable: Int?) {
+        TODO("Not yet implemented")
     }
 
 

@@ -1,6 +1,7 @@
 package com.enjaz.hr.data
 
 import com.enjaz.hr.data.model.attendance.AttendanceResponse
+import com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponse
 import com.enjaz.hr.data.model.home.HomeResponse
 import com.enjaz.hr.data.model.leaveTypes.LeaveTypesResponse
 import com.enjaz.hr.data.model.login.LoginResponse
@@ -25,13 +26,17 @@ interface Webservices {
     fun getCategory(): Single<Response<List<Category>>>
 
 
+    @PUT("api/hr/md/Leaves/ChangeLeaveRequest")
+    fun cancelMyRequest(@Query("WorkflowCorrelationId")workflowCorrelationId:String,@Query("NewStatus")newStatus:Int): Single<Response<String>>
+
     @GET("api/hr/md/LeavesType/GetLeavesTypesForView")
     fun getLeaveTypes(): Single<Response<LeaveTypesResponse>>
 
     @POST("api/hr/Attendance/GetMobileAttendanceStatistics")
     fun getAttendanceResponse(@Body jsonElement: JsonElement): Single<Response<AttendanceResponse>>
 
-
+    @GET("api/hr/md/Leaves/GetLeavesRequests")
+    fun getLeaveRequests(@Query("AsManger")boolean: Boolean,@Query("leaveStatus")id:Int?=null): Single<Response<LeaveRequestResponse>>
 
     @POST("api/hr/Employee/GetMobileHomeStatistics")
     fun getHomeResponse(@Body jsonElement: JsonElement): Single<Response<HomeResponse>>

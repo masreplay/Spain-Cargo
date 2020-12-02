@@ -43,7 +43,7 @@ class RequestsFragment :
 
         setHasOptionsMenu(true)
 
-        getViewModel().getdata()
+//        getViewModel().getdata()
 
 
         fragmentSent = SentRequestsFragment()
@@ -96,8 +96,24 @@ class RequestsFragment :
         )
                 || super.onOptionsItemSelected(item)
     }
+
+    override fun noRequests() {
+        TODO("Not yet implemented")
+    }
+
+    override fun requestsAvailable() {
+        TODO("Not yet implemented")
+    }
+
+    override fun showSnack(string: String, color: String, drawable: Int?) {
+        TODO("Not yet implemented")
+    }
 }
 
 interface IRequestsInteractionListener : BaseNavigator {
+
+    fun noRequests()
+    fun requestsAvailable()
+    fun showSnack(string: String, color: String, drawable: Int?)
 
 }

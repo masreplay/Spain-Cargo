@@ -17,6 +17,7 @@ import androidx.core.content.ContextCompat
 import com.enjaz.hr.HRMApp
 import com.enjaz.hr.R
 import com.google.android.material.snackbar.Snackbar
+import java.text.SimpleDateFormat
 import java.time.DayOfWeek
 import java.time.temporal.WeekFields
 import java.util.*
@@ -41,6 +42,35 @@ fun String.amPm():String {
     return if (time.substringBefore(":").toInt()<12){
        this +" "+ HRMApp.applicationContext().getString(R.string.am)
     }else this + " "+ HRMApp.applicationContext().getString(R.string.pm)
+}
+
+
+fun String.toDate(): String {
+
+
+    val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH)
+    val apiDate = parser.parse(this)
+
+    val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
+
+    val date = sdf.format(apiDate)
+    return date
+
+
+}
+
+fun String.toDay(): String {
+
+
+    val parser = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH)
+    val apiDate = parser.parse(this)
+
+    val sdf = SimpleDateFormat("EEE", Locale.ENGLISH)
+
+    val date = sdf.format(apiDate)
+    return date
+
+
 }
 
 

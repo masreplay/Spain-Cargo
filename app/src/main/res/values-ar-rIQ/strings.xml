@@ -100,8 +100,13 @@
     <string name="two_zeros">:00</string>
     <string name="no_data">There is no data</string>
     <string name="no_attendance">You have no attendance report this month</string>
+    <string name="pending">Pending</string>
+    <string name="canceled">Canceled</string>
+    <string name="approved">Approved</string>
+    <string name="rejected">Rejected</string>
 
-
+    <string name="waiting_for_approv">WaitingForApproval</string>
+    <string name="dash">-</string>
 
 
 </resources>

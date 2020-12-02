@@ -71,6 +71,18 @@ class FilterSheet :
         dpd.show()
     }
 
+    override fun noRequests() {
+        TODO("Not yet implemented")
+    }
+
+    override fun requestsAvailable() {
+        TODO("Not yet implemented")
+    }
+
+    override fun showSnack(string: String, color: String, drawable: Int?) {
+        TODO("Not yet implemented")
+    }
+
 
 }
 
