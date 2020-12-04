@@ -68,6 +68,14 @@ class UserInfoFragment :
         TODO("Not yet implemented")
     }
 
+    override fun detailsAvailable() {
+        TODO("Not yet implemented")
+    }
+
+    override fun noDetails() {
+        TODO("Not yet implemented")
+    }
+
 
 }
 

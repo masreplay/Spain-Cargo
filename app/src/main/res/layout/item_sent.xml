@@ -51,7 +51,7 @@
                 android:onClick="@{()->clickListener.onCancelClick(item)}"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="4dp"
-                android:text="@{item.leaveStatus.equals(@string/waiting_for_approv) ? @string/pending :item.leaveStatus.equals(@string/canceled) ? @string/rejected : item.leaveStatus}"
+                android:text="@{item.leaveStatus.equals(@string/waiting_for_approv) ? @string/pending  : item.leaveStatus}"
                 android:textColor="@android:color/white"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"

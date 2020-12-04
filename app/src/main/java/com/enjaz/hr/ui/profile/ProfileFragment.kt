@@ -33,7 +33,6 @@ class ProfileFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getViewModel().mylog()
 
 
     }
@@ -55,6 +54,14 @@ class ProfileFragment :
         findNavController().navigate(R.id.settingsFragment)
     }
 
+    override fun detailsAvailable() {
+        TODO("Not yet implemented")
+    }
+
+    override fun noDetails() {
+        TODO("Not yet implemented")
+    }
+
 
 }
 
@@ -64,4 +71,7 @@ interface IProfileInteractionListener : BaseNavigator {
     fun onBalanceClick()
     fun onSalaryDetailsClick()
     fun onSettingsClick()
+    fun detailsAvailable()
+    fun noDetails()
+
 }

@@ -104,9 +104,12 @@
     <string name="canceled">Canceled</string>
     <string name="approved">Approved</string>
     <string name="rejected">Rejected</string>
+    <string name="remaining">Remaining :</string>
 
     <string name="waiting_for_approv">WaitingForApproval</string>
     <string name="dash">-</string>
+    <string name="days">Days</string>
+    <string name="you_have_no_salary_details_yet">You have no salary details yet</string>
 
 
 </resources>

@@ -103,5 +103,9 @@
     <string name="approved">Approved</string>
     <string name="rejected">Rejected</string>
     <string name="dash">-</string>
+    <string name="remaining">Remaining :</string>
+
+    <string name="days">Days</string>
+    <string name="you_have_no_salary_details_yet">You have no salary details yet</string>
 
 </resources>

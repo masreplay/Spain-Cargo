@@ -4,10 +4,12 @@ import com.enjaz.hr.data.db.MovieDB
 import com.enjaz.hr.data.model.BaseResource
 import com.enjaz.hr.data.model.Error
 import com.enjaz.hr.data.model.attendance.AttendanceResponse
+import com.enjaz.hr.data.model.balance.BalanceResponse
 import com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponse
 import com.enjaz.hr.data.model.home.HomeResponse
 import com.enjaz.hr.data.model.login.LoginResponse
 import com.enjaz.hr.data.model.requestsTypes.RequestTypesResponse
+import com.enjaz.hr.data.model.salary.SalaryDetailsResponse
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import io.reactivex.Single
@@ -51,6 +53,24 @@ class AppDataManager @Inject constructor(
 
         return wrapWithResourceObject(
             webservices.getRequestsTypes(timeFlag)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+    fun getLeaveBalance(): Single<BaseResource<BalanceResponse>> {
+
+        return wrapWithResourceObject(
+            webservices.getLeaveBalance()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+    fun getSalaryDetails(): Single<BaseResource<SalaryDetailsResponse>> {
+
+        return wrapWithResourceObject(
+            webservices.getSalaryDetails()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )

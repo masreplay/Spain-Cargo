@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.enjaz.hr.R
 import com.enjaz.hr.databinding.FragmentSalaryDetailsBinding
 import com.enjaz.hr.ui.base.BaseFragment
+import com.enjaz.hr.util.makeGone
+import com.enjaz.hr.util.makeVisible
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -46,8 +48,8 @@ class SalaryDetailsFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getViewModel().mylog()
-        salaryDetailsAdapter.setItems(getViewModel().loginResponse)
+        getViewModel().getSalaryDetails()
+
         getViewDataBinding().rv.apply {
             layoutManager=LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false)
             adapter=salaryDetailsAdapter
@@ -72,6 +74,14 @@ class SalaryDetailsFragment :
 
     override fun onSettingsClick() {
         TODO("Not yet implemented")
+    }
+
+    override fun detailsAvailable() {
+        getViewDataBinding().lytNoData.makeGone()
+    }
+
+    override fun noDetails() {
+        getViewDataBinding().lytNoData.makeVisible()
     }
 
     override fun onItemClick(model: String) {

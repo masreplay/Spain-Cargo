@@ -15,6 +15,7 @@ class BalanceFragment :
 
     private val profileViewModel: ProfileViewModel by viewModels()
 
+    lateinit var balanceAdapter: BalanceAdapter
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_balance
@@ -33,12 +34,15 @@ class BalanceFragment :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        balanceAdapter= BalanceAdapter(requireContext(), mutableListOf())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        getViewModel().getLeaveBalance()
 
+        getViewDataBinding().rv.adapter=balanceAdapter
     }
 
 
@@ -55,6 +59,14 @@ class BalanceFragment :
     }
 
     override fun onSettingsClick() {
+        TODO("Not yet implemented")
+    }
+
+    override fun detailsAvailable() {
+        TODO("Not yet implemented")
+    }
+
+    override fun noDetails() {
         TODO("Not yet implemented")
     }
 
