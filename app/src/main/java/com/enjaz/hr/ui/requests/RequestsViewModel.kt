@@ -44,7 +44,7 @@ class RequestsViewModel @ViewModelInject constructor(
 
     }
 
-    fun cancelMyRequest(workCorrelationId: String,newStatus:Int){
+    fun changeRequestStatus(workCorrelationId: String,newStatus:Int){
 
 
         cancelMyRequestResponse.value = BaseResource.loading(cancelMyRequestResponse.value?.data)
@@ -62,7 +62,7 @@ class RequestsViewModel @ViewModelInject constructor(
 
 
             })
-        refreshListener.postValue(View.OnClickListener { cancelMyRequest(workCorrelationId,newStatus) })
+        refreshListener.postValue(View.OnClickListener { changeRequestStatus(workCorrelationId,newStatus) })
 
 
 
@@ -76,6 +76,8 @@ class RequestsViewModel @ViewModelInject constructor(
 
             navigator.showSnack(result.message, "#ED213A", R.drawable.ic_round_close_24)
 
+
+            leaveRequestResponse.postValue(result)
 
         }else result.data?.let {
 

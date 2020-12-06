@@ -46,6 +46,7 @@ class SendRequestViewModel @ViewModelInject constructor(
 
     private fun onGetLeaveTypesSuccess(result: BaseResource<RequestTypesResponse>) {
 
+        leaveTypesResponse.postValue(result)
 
         if (result.message !=null){
 
@@ -56,7 +57,6 @@ class SendRequestViewModel @ViewModelInject constructor(
         }else result.data?.let {
 
 
-            leaveTypesResponse.postValue(result)
 
 //            if (it.days.isEmpty()){
 //                navigator.noAttendance()

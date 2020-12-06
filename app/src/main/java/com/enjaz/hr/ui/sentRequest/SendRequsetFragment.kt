@@ -3,6 +3,7 @@ package com.enjaz.hr.ui.sentRequest
 import android.app.TimePickerDialog
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
@@ -43,6 +44,9 @@ class SendRequestFragment :
     private var startDate: LocalDate? = null
     private var endDate: LocalDate? = null
 
+    lateinit var startDateApi:String
+    lateinit var endDateApi:String
+
 
     private val headerDateFormatter = DateTimeFormatter.ofPattern("EEE'\n'd MMM")
 
@@ -70,7 +74,11 @@ class SendRequestFragment :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        if (args.leaveType=="Hourly"){
+            getViewModel().getLeaveTypes(true)
+        }else{
+            getViewModel().getLeaveTypes(false)
+        }
         types= mutableListOf()
     }
 
@@ -79,17 +87,13 @@ class SendRequestFragment :
 
 //        (activity as MainActivity).toolbar?.title = args.leaveType
 
-        if (args.leaveType=="Hourly"){
-            getViewModel().getLeaveTypes(true)
-        }else{
-            getViewModel().getLeaveTypes(false)
-        }
+
 
         getViewModel().leaveTypesResponse.observe(requireActivity(), androidx.lifecycle.Observer {
 
-             it.data?.items?.forEach {
+             it.data?.items?.forEach { it ->
 
-                types.add(it.name)
+                 types.add(it.name)
 
             }
             getViewDataBinding().spinner.attachDataSource(types)
@@ -190,6 +194,8 @@ class SendRequestFragment :
                     val roundBgView = container.binding.exFourRoundBgView
                     roundBgView.makeInVisible()
 
+                    startDateApi=day.date.toString()
+                    Log.d("kkkkk",startDateApi)
                     textView.text = day.date.dayOfMonth.toString()
 
                     if (day.owner == DayOwner.THIS_MONTH) {

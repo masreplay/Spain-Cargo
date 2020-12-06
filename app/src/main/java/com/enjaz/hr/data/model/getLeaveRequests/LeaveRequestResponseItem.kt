@@ -27,7 +27,10 @@ data class LeaveRequestResponseItem(
     @SerializedName("startDate")
     val startDate: String,
     @SerializedName("workflowCorrelationId")
-    val workflowCorrelationId: String
+    val workflowCorrelationId: String,
+    @SerializedName("requestCreationDate")
+    val requestCreationDate: String
+
 ){
 
     fun getDuration():String{
@@ -35,6 +38,10 @@ data class LeaveRequestResponseItem(
 
     }
 
+    fun getRequestDate():String{
+        return "${requestCreationDate.toDate()} ${requestCreationDate.toDay()}"
+
+    }
 
 
 

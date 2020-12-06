@@ -42,22 +42,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_middle"
                 android:gravity="center"
-                android:text="@string/no_attendance"
+                android:text="@string/you_have_no_requests_yet"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:textColor="@color/carbon_grey_700"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
-        <include
-            android:id="@+id/status"
-            layout="@layout/view_status"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:retryListener="@{viewModel.refreshListener}"
-            app:viewStatus="@{viewModel.leaveRequestResponse.status}"
-            />
+
 
 
         <androidx.recyclerview.widget.RecyclerView

@@ -85,7 +85,7 @@ class SentRequestsFragment :
                     dialog.dismiss()
                 }
                 .setPositiveButton("ok") { dialog, which ->
-                    getViewModel().cancelMyRequest(leaveRequestResponse.workflowCorrelationId,3)
+                    getViewModel().changeRequestStatus(leaveRequestResponse.workflowCorrelationId,3)
                     dialog.dismiss()
                 }
                 .show()

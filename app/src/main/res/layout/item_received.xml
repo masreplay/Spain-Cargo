@@ -4,9 +4,11 @@
 
     <data>
 
+
         <variable
             name="item"
-            type="com.enjaz.hr.data.model.Request" />
+            type="com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponseItem" />
+
 
         <variable
             name="clickListener"
@@ -27,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="Business Trip Request"
+            android:text="@{item.leaveName}"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +39,7 @@
             android:id="@+id/tv_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="March 27-March 28 2018"
+            android:text="@{item.duration}"
             android:textColor="@android:color/black"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@+id/tv_title"
@@ -48,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Abdalla Atheer"
+            android:text="@{item.employeeName}"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/circleImageView"
             app:layout_constraintTop_toTopOf="@+id/circleImageView" />
@@ -81,7 +83,7 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/bg_circle"
             android:backgroundTint="@color/colorAccent"
-            android:onClick="@{()->clickListener.onDeclinedClick()}"
+            android:onClick="@{()->clickListener.onDeclinedClick(item)}"
             android:padding="6dp"
             android:src="@drawable/ic_round_close_24"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -96,7 +98,7 @@
             android:layout_marginBottom="16dp"
             android:background="@drawable/bg_circle"
             android:backgroundTint="@color/green_400"
-            android:onClick="@{()->clickListener.onAcceptClick()}"
+            android:onClick="@{()->clickListener.onAcceptClick(item)}"
             android:padding="6dp"
             android:src="@drawable/ic_baseline_check_24"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -108,7 +110,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="16dp"
-            android:text="I am very sick I have flu"
+            android:text="@{item.leaveDescription}"
             android:textColor="@android:color/black"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
