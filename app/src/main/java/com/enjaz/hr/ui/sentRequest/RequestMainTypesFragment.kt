@@ -8,23 +8,23 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.enjaz.hr.R
 import com.enjaz.hr.data.model.Types
-import com.enjaz.hr.databinding.FragmentRequsetTypeBinding
+import com.enjaz.hr.databinding.FragmentRequsetMainTypesBinding
+import com.enjaz.hr.ui.base.BaseNavigator
 import com.enjaz.hr.ui.base.BaseSheetFragment
-import com.enjaz.hr.util.snackBar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RequestTypeFragment :
-    BaseSheetFragment<FragmentRequsetTypeBinding, ISendRequestInteractionListener, RequestTypesViewModel>(),
-    ISendRequestInteractionListener ,ITypeItemActionListener{
+class RequestMainTypesFragment :
+    BaseSheetFragment<FragmentRequsetMainTypesBinding, IRequestTypesInteractionListener, RequestTypesViewModel>(),
+    IRequestTypesInteractionListener ,ITypeItemActionListener{
 
     private val sedRequestViewModel: RequestTypesViewModel by viewModels()
-    lateinit var requsetTypesAdapter: RequsetTypesAdapter
+    lateinit var requsetTypesAdapter: RequsetMainTypesAdapter
 
     lateinit var list:ArrayList<String>
 
     override fun getLayoutId(): Int {
-        return R.layout.fragment_requset_type
+        return R.layout.fragment_requset_main_types
     }
 
     override fun getViewModel(): RequestTypesViewModel {
@@ -35,13 +35,13 @@ class RequestTypeFragment :
         return RequestTypesViewModel::class.java
     }
 
-    override fun getNavigator(): ISendRequestInteractionListener {
+    override fun getNavigator(): IRequestTypesInteractionListener {
         return this
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        requsetTypesAdapter = RequsetTypesAdapter(requireContext(), mutableListOf())
+        requsetTypesAdapter = RequsetMainTypesAdapter(requireContext(), mutableListOf())
         requsetTypesAdapter.setOnItemClickListener(this)
 
         list= arrayListOf()
@@ -65,27 +65,22 @@ class RequestTypeFragment :
     }
 
     override fun onTypeClick(type: Types) {
-        if (type.type!=("Vacation (you have exceeded the limit)")) {
+
             val action =
-                RequestTypeFragmentDirections.nextAction(
+                RequestMainTypesFragmentDirections.nextAction(
                     type.type
                 )
             findNavController().navigate(action)
-        }
+
     }
 
-    override fun dialogTimePickerLightStart() {
-        TODO("Not yet implemented")
-    }
-
-    override fun dialogTimePickerLightEnd() {
-        TODO("Not yet implemented")
-    }
-
-    override fun showSnack(string: String, color: String, drawable: Int?) {
-        snackBar(string, drawable, color, getViewDataBinding().parent, requireContext())
-    }
 
 
 }
+interface IRequestTypesInteractionListener : BaseNavigator {
+
+
+}
+
+
 

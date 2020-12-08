@@ -5,9 +5,13 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.afollestad.vvalidator.util.show
 import com.enjaz.hr.R
+import com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponseItem
 import com.enjaz.hr.databinding.FramgnetReceivedRequestsBinding
 import com.enjaz.hr.ui.base.BaseFragment
+import com.enjaz.hr.util.makeGone
+import com.enjaz.hr.util.snackBar
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,28 +43,28 @@ class ReceivedRequestsFragment :
 
 
 
-        getViewModel().getdata()
+        getViewModel().getLeaveRequests(true,4)
+
         getViewDataBinding().rv.apply {
             adapter = receiveRequestsAdapter
+            layoutManager=LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false)
         }
 
-        val lm = LinearLayoutManager(requireActivity())
-        getViewDataBinding().rv.layoutManager = lm
 
 
-        getViewDataBinding().rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-
-
-                if (lm.findLastVisibleItemPosition() == lm.itemCount - 1) {
-                    getViewModel().appenddata()
-                    receiveRequestsAdapter.notifyDataSetChanged()
-                }
-
-                super.onScrolled(recyclerView, dx, dy)
-            }
-        })
+//        getViewDataBinding().rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//
+//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//
+//
+//                if (lm.findLastVisibleItemPosition() == lm.itemCount - 1) {
+////                    getViewModel().appenddata()
+////                    receiveRequestsAdapter.notifyDataSetChanged()
+//                }
+//
+//                super.onScrolled(recyclerView, dx, dy)
+//            }
+//        })
 
     }
 
@@ -73,7 +77,7 @@ class ReceivedRequestsFragment :
 
     }
 
-    override fun onAcceptClick() {
+    override fun onAcceptClick(item: LeaveRequestResponseItem) {
         MaterialAlertDialogBuilder(context)
             .setTitle("Accept Request")
             .setMessage("Are you sure you want to accept this request")
@@ -81,12 +85,13 @@ class ReceivedRequestsFragment :
                 dialog.dismiss()
             }
             .setPositiveButton("Accept") { dialog, which ->
+                getViewModel().changeRequestStatus(item.workflowCorrelationId,1)
                 dialog.dismiss()
             }
             .show()
     }
 
-    override fun onDeclinedClick() {
+    override fun onDeclinedClick(item:LeaveRequestResponseItem) {
         MaterialAlertDialogBuilder(context)
             .setTitle("Decline Request")
             .setMessage("Are you sure you want to decline this request")
@@ -94,10 +99,27 @@ class ReceivedRequestsFragment :
                 dialog.dismiss()
             }
             .setPositiveButton("Decline") { dialog, which ->
+                getViewModel().changeRequestStatus(item.workflowCorrelationId,2)
                 dialog.dismiss()
             }
             .show()
     }
+
+
+    override fun noRequests() {
+        getViewDataBinding().lytNoData.show()
+    }
+
+    override fun requestsAvailable() {
+        getViewDataBinding().lytNoData.makeGone()
+    }
+
+    override fun showSnack(string: String, color: String, drawable: Int?) {
+        snackBar(string, drawable, color, getViewDataBinding().parent, requireContext())
+
+    }
+
+
 
 
 }

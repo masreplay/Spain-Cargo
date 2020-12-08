@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="com.enjaz.hr.data.model.Request" />
+            type="com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponseItem" />
 
         <variable
             name="clickListener"
@@ -24,8 +24,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            android:text="Yesterday"
-            android:textColor="#DADADA"
+            android:text="@{item.requestDate}"
+            android:textColor="@color/carbon_grey_400"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,17 +45,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/bg_round_sent"
-                android:backgroundTint="@{item.state==1?@color/orange:item.state==2?@color/green:@color/red}"
-                android:drawableEnd="@{item.state==1?@drawable/ic_close:null}"
+                android:backgroundTint="@{item.leaveStatus.equals(@string/waiting_for_approv)?@color/orange: item.leaveStatus.equals(@string/approved) ?@color/green:@color/red}"
+                android:drawableEnd="@{item.leaveStatus.equals(@string/waiting_for_approv)?@drawable/ic_close:null}"
                 android:drawablePadding="16dp"
-                android:onClick="@{()->clickListener.onCancelClick()}"
+                android:onClick="@{()->clickListener.onCancelClick(item)}"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="4dp"
-                android:text="@{item.name}"
+                android:text="@{item.leaveStatus.equals(@string/waiting_for_approv) ? @string/pending  : item.leaveStatus}"
                 android:textColor="@android:color/white"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -86,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Sick Leave"
+                android:text="@{item.leaveName}"
                 android:textColor="@color/text_grey_600"
                 app:layout_constraintStart_toStartOf="@+id/tv_type_title"
                 app:layout_constraintTop_toBottomOf="@+id/tv_type_title" />
@@ -119,7 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Having fever from last night"
+                android:text="@{item.leaveDescription}"
                 android:textColor="@color/text_grey_600"
                 app:layout_constraintStart_toStartOf="@+id/tv_type_title"
                 app:layout_constraintTop_toBottomOf="@+id/tv_reason_title" />
@@ -152,7 +153,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="12 Oct, 2019  to  15 Oct, 2019"
+                android:text="@{item.duration }"
                 android:textColor="@color/text_grey_600"
                 app:layout_constraintStart_toStartOf="@+id/tv_type_title"
                 app:layout_constraintTop_toBottomOf="@+id/tv_date_title" />

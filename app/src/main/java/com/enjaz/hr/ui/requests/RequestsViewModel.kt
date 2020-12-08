@@ -1,12 +1,13 @@
 package com.enjaz.hr.ui.requests
 
+import android.util.Log
+import android.view.View
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import com.enjaz.hr.R
 import com.enjaz.hr.data.AppDataManager
 import com.enjaz.hr.data.model.BaseResource
-import com.enjaz.hr.data.model.Request
-import com.enjaz.hr.data.model.token.TokenResult
+import com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponse
 import com.enjaz.hr.ui.base.BaseViewModel
 
 class RequestsViewModel @ViewModelInject constructor(
@@ -15,33 +16,108 @@ class RequestsViewModel @ViewModelInject constructor(
     dataManager
 ) {
 
-    var strings: MutableLiveData<MutableList<Request>> =
-        MutableLiveData()
+    var leaveRequestResponse: MutableLiveData<BaseResource<LeaveRequestResponse>> = MutableLiveData()
+
+    var cancelMyRequestResponse: MutableLiveData<BaseResource<String>> = MutableLiveData()
+
+    fun getLeaveRequests(isManager: Boolean,filter:Int?=null){
 
 
-    fun getdata() {
-        strings.value = mutableListOf(
-            Request("Pending", 1, R.color.orange),
-            Request("Approved", 2, R.color.green_400),
-            Request("Rejected", 3, R.color.red),
-            Request("Rejected", 3, R.color.red),
-            Request("Rejected", 3, R.color.red)
+        leaveRequestResponse.value = BaseResource.loading(leaveRequestResponse.value?.data)
 
-        )
+
+
+        dispose(
+            dataManager.getLeaveRequests(isManager,filter),
+            ::onGetLeaveRequestsSuccess,
+            { e ->
+                //error handling
+                e.message?.let { leaveRequestResponse.postValue(BaseResource.error(it, null))
+                    Log.d("error",it)
+                }
+
+
+            })
+        refreshListener.postValue(View.OnClickListener { getLeaveRequests(isManager,filter) })
+
+
+
     }
 
-    fun appenddata() {
-        strings.value?.add(Request("Pending", 1, R.color.orange))
-        strings.value?.add(Request("Approved", 2, R.color.green_400))
-        strings.value?.add(Request("Rejected", 3, R.color.red))
+    fun changeRequestStatus(workCorrelationId: String,newStatus:Int){
 
-        strings.value = strings.value
+
+        cancelMyRequestResponse.value = BaseResource.loading(cancelMyRequestResponse.value?.data)
+
+
+
+        dispose(
+            dataManager.cancelMyRequest(workCorrelationId,newStatus),
+            ::onCancelRequestsSuccess,
+            { e ->
+                //error handling
+                e.message?.let { cancelMyRequestResponse.postValue(BaseResource.error(it, null))
+                    Log.d("error",it)
+                }
+
+
+            })
+        refreshListener.postValue(View.OnClickListener { changeRequestStatus(workCorrelationId,newStatus) })
+
+
+
     }
 
+    private fun onGetLeaveRequestsSuccess(result: BaseResource<LeaveRequestResponse>) {
 
-    private fun onLoginSuccess(result: BaseResource<TokenResult>) {
 
-        //loginResponse.postValue(result)
+        if (result.message !=null){
+
+
+            navigator.showSnack(result.message, "#ED213A", R.drawable.ic_round_close_24)
+
+
+            leaveRequestResponse.postValue(result)
+
+        }else result.data?.let {
+
+            leaveRequestResponse.postValue(result)
+
+            if (it.isEmpty()){
+                navigator.noRequests()
+            }else{
+                navigator.requestsAvailable()
+            }
+
+
+
+
+        }
+
+
+
+
+    }
+    private fun onCancelRequestsSuccess(result: BaseResource<String>) {
+
+
+        if (result.message !=null){
+
+
+            navigator.showSnack(result.message, "#ED213A", R.drawable.ic_round_close_24)
+
+
+        }else {
+
+            cancelMyRequestResponse.postValue(result)
+
+            getLeaveRequests(false)
+
+
+        }
+
+
+
     }
 
 }

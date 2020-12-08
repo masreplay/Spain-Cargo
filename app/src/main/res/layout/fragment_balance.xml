@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.enjaz.hr.ui.profile.ProfileViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -138,6 +142,7 @@
 
 
 <com.google.android.material.card.MaterialCardView
+    android:id="@+id/card_leaveCredit"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="10dp"
@@ -148,6 +153,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/qi_card"
 
+    android:visibility="gone"
     >
 
 
@@ -155,6 +161,7 @@
             android:id="@+id/constraintLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
 
   >
 
@@ -195,179 +202,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
-
-                <TextView
-                    android:id="@+id/tv_takenLeavesLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="Remaining : 8 days"
-                    android:textColor="@color/carbon_grey_800"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/view_line" />
-
-                <TextView
-                    android:id="@+id/tv_remainLeavesLabel"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:fontFamily="sans-serif-medium"
-
-                    android:text="12 Vacation"
-                    android:textColor="@color/carbon_grey_800"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/view_line" />
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/rv"
+    items="@{viewModel.balanceResponse.data.balances}"
+    android:layout_width="match_parent"
+    android:layout_height="210dp"
+    android:orientation="vertical"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/view_line"
+    tools:listitem="@layout/item_balance"
 
 
-                <ProgressBar
-                    android:id="@+id/progress"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:max="12"
-                    android:progress="4"
-                    android:progressBackgroundTint="#a8d8ea"
-                    android:progressTint="#a8d8ea"
-                    app:layout_constraintEnd_toEndOf="@id/tv_remainLeavesLabel"
-                    app:layout_constraintStart_toStartOf="@id/tv_takenLeavesLabel"
-                    app:layout_constraintTop_toBottomOf="@id/tv_takenLeavesLabel"
-
-                    />
-
-
-                <TextView
-                    android:id="@+id/tv_takenLeavesLabel2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="Remaining : 41 hour"
-                    android:textColor="@color/carbon_grey_800"
-
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/progress" />
-
-                <TextView
-                    android:id="@+id/tv_remainLeavesLabel2"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:fontFamily="sans-serif-medium"
-
-                    android:text="48 Hours"
-                    android:textColor="@color/carbon_grey_800"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/progress" />
-
-
-                <ProgressBar
-                    android:id="@+id/progress2"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:max="48"
-                    android:progress="7"
-                    android:progressBackgroundTint="#aa96da"
-                    android:progressTint="#aa96da"
-                    app:layout_constraintEnd_toEndOf="@id/tv_remainLeavesLabel2"
-                    app:layout_constraintStart_toStartOf="@id/tv_takenLeavesLabel2"
-                    app:layout_constraintTop_toBottomOf="@id/tv_takenLeavesLabel2"
-
-                    />
-
-                <TextView
-                    android:id="@+id/tv_takenLeavesLabel3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-
-                    android:fontFamily="sans-serif-medium"
-                    android:text="Remaining : 2 days"
-                    android:textColor="@color/carbon_grey_800"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/progress2" />
-
-                <TextView
-                    android:id="@+id/tv_remainLeavesLabel3"
-                    android:layout_width="wrap_content"
-
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="10 Sick Leave"
-                    android:textColor="@color/carbon_grey_800"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/progress2" />
-
-
-                <ProgressBar
-                    android:id="@+id/progress3"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:max="10"
-                    android:progress="8"
-                    android:progressBackgroundTint="#fcbad3"
-                    android:progressTint="#fcbad3"
-                    app:layout_constraintEnd_toEndOf="@id/tv_remainLeavesLabel3"
-                    app:layout_constraintStart_toStartOf="@id/tv_takenLeavesLabel3"
-                    app:layout_constraintTop_toBottomOf="@id/tv_takenLeavesLabel3"
-
-                    />
-
-                <TextView
-                    android:id="@+id/tv_takenLeavesLabel4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="Remaining : 3 days"
-                    android:textColor="@color/carbon_grey_800"
-
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/progress3" />
-
-                <TextView
-                    android:id="@+id/tv_remainLeavesLabel4"
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="16dp"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="8 Unpaid Leave"
-                    android:textColor="@color/carbon_grey_800"
-
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/progress3" />
-
-
-                <ProgressBar
-                    android:id="@+id/progress5"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:max="8"
-                    android:progress="5"
-                    android:progressBackgroundTint="#EAC680"
-                    android:progressTint="#EAC680"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@id/tv_remainLeavesLabel4"
-                    app:layout_constraintStart_toStartOf="@id/tv_takenLeavesLabel4"
-                    app:layout_constraintTop_toBottomOf="@id/tv_takenLeavesLabel4"
-
-                    />
+    />
 
 
 

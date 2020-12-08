@@ -11,6 +11,7 @@
     </data>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
@@ -55,27 +56,25 @@
             app:layout_constraintTop_toBottomOf="@id/exFourCalendar"
 
             />
-        
-        <org.angmarch.views.NiceSpinner
+
+        <Spinner
             android:id="@+id/spinner"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/carbon_grid8"
             android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/carbon_grey_100"
-            app:arrowDrawable="@drawable/ic_baseline_keyboard_arrow_down_24"
-            app:arrowTint="@color/black"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/tv_leave_type"
             app:layout_constraintTop_toBottomOf="@id/tv_leave_type"
-            app:textTint="@color/carbon_grey_800"
+
 
             />
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/lyt_hourly"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="@id/tv_leave_type"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="16dp"
@@ -95,17 +94,20 @@
        app:layout_constraintTop_toTopOf="parent"
        />
 
-        <carbon.widget.TextView
+        <EditText
             android:id="@+id/tv_timePickerStart"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
             android:background="@color/grey_100"
             android:gravity="center_vertical"
+            android:editable="false"
+
+            android:focusedByDefault="true"
             android:onClick="@{()->viewModel.navigator.dialogTimePickerLightStart()}"
             android:padding="4dp"
+            android:textSize="14sp"
             android:text="Select time"
-            android:layout_marginEnd="16dp"
             app:carbon_cornerRadius="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@id/tv_from"
@@ -123,16 +125,18 @@
             app:layout_constraintTop_toBottomOf="@id/tv_timePickerStart"
             />
 
-        <carbon.widget.TextView
+        <EditText
             android:id="@+id/tv_timePickerEnd"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginTop="8dp"
             android:background="@color/grey_100"
             android:gravity="center_vertical"
-            android:layout_marginEnd="16dp"
+            android:editable="false"
+            android:focusedByDefault="true"
             android:onClick="@{()->viewModel.navigator.dialogTimePickerLightEnd()}"
             android:padding="4dp"
+            android:textSize="14sp"
             android:text="Select time"
             app:carbon_cornerRadius="4dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -175,6 +179,7 @@
             />
 
         <carbon.widget.Button
+            android:id="@+id/btn_applyForLeave"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

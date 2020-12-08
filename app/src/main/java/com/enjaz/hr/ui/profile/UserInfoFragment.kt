@@ -68,6 +68,22 @@ class UserInfoFragment :
         TODO("Not yet implemented")
     }
 
+    override fun detailsAvailable() {
+        TODO("Not yet implemented")
+    }
+
+    override fun noDetails() {
+        TODO("Not yet implemented")
+    }
+
+    override fun hideLeaveCreditView() {
+        TODO("Not yet implemented")
+    }
+
+    override fun showLeaveCreditView() {
+        TODO("Not yet implemented")
+    }
+
 
 }
 

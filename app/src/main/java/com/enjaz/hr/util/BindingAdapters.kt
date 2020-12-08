@@ -1,11 +1,13 @@
 package com.enjaz.hr.util
 
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -33,6 +35,37 @@ fun loadImage(view: SimpleDraweeView, imageUrl: String?) {
 fun setTime(view: TextView, time: Int) {
     view.text = "$time:00"
 }
+
+@BindingAdapter("progressColors")
+fun setProgressColors(progressBar: ProgressBar, position: Int) {
+
+    when(position){
+
+        0-> {
+            progressBar.progressTintList= ColorStateList.valueOf(Color.parseColor("#a8d8ea"))
+            progressBar.progressBackgroundTintList=ColorStateList.valueOf(Color.parseColor("#a8d8ea"))
+        }
+
+        1->{
+            progressBar.progressTintList= ColorStateList.valueOf(Color.parseColor("#aa96da"))
+            progressBar.progressBackgroundTintList=ColorStateList.valueOf(Color.parseColor("#aa96da"))
+        }
+        2->{
+            progressBar.progressTintList= ColorStateList.valueOf(Color.parseColor("#fcbad3"))
+            progressBar.progressBackgroundTintList=ColorStateList.valueOf(Color.parseColor("#fcbad3"))
+        }
+        3->{
+            progressBar.progressTintList= ColorStateList.valueOf(Color.parseColor("#EAC680"))
+            progressBar.progressBackgroundTintList=ColorStateList.valueOf(Color.parseColor("#EAC680"))
+        }else->{
+        progressBar.progressTintList= ColorStateList.valueOf(Color.parseColor("#a8d8ea"))
+        progressBar.progressBackgroundTintList=ColorStateList.valueOf(Color.parseColor("#a8d8ea"))
+    }
+
+    }
+}
+
+
 
 @BindingAdapter("balance")
 fun setClickableIf(view: TextView, string: String) {

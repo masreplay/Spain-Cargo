@@ -6,15 +6,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.enjaz.hr.R
-import com.enjaz.hr.data.model.Request
+import com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponseItem
 import com.enjaz.hr.databinding.ItemReceivedBinding
-import com.enjaz.hr.databinding.ItemSentBinding
 import com.enjaz.hr.ui.base.BaseDataItemInteractionListener
 import com.enjaz.hr.ui.base.BaseDataItemsAdapter
 
 open class ReceivedRequestsAdapter(
-    protected var context: Context, objects: MutableList<Request>
-) : BaseDataItemsAdapter<Request>(objects, null) {
+    protected var context: Context, objects: MutableList<LeaveRequestResponseItem>
+) : BaseDataItemsAdapter<LeaveRequestResponseItem>(objects, null) {
 
     protected lateinit var binding: ItemReceivedBinding
 
@@ -35,7 +34,7 @@ open class ReceivedRequestsAdapter(
 
 }
 interface IRRequestsItemActionListener : BaseDataItemInteractionListener {
-    fun onAcceptClick()
-    fun onDeclinedClick()
+    fun onAcceptClick(item:LeaveRequestResponseItem)
+    fun onDeclinedClick(item:LeaveRequestResponseItem)
 }
 
