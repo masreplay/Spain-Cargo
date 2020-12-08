@@ -9,14 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.enjaz.hr.R
 import com.enjaz.hr.data.model.Types
 import com.enjaz.hr.databinding.FragmentRequsetMainTypesBinding
+import com.enjaz.hr.ui.base.BaseNavigator
 import com.enjaz.hr.ui.base.BaseSheetFragment
-import com.enjaz.hr.util.snackBar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RequestMainTypesFragment :
-    BaseSheetFragment<FragmentRequsetMainTypesBinding, ISendRequestInteractionListener, RequestTypesViewModel>(),
-    ISendRequestInteractionListener ,ITypeItemActionListener{
+    BaseSheetFragment<FragmentRequsetMainTypesBinding, IRequestTypesInteractionListener, RequestTypesViewModel>(),
+    IRequestTypesInteractionListener ,ITypeItemActionListener{
 
     private val sedRequestViewModel: RequestTypesViewModel by viewModels()
     lateinit var requsetTypesAdapter: RequsetMainTypesAdapter
@@ -35,7 +35,7 @@ class RequestMainTypesFragment :
         return RequestTypesViewModel::class.java
     }
 
-    override fun getNavigator(): ISendRequestInteractionListener {
+    override fun getNavigator(): IRequestTypesInteractionListener {
         return this
     }
 
@@ -74,18 +74,13 @@ class RequestMainTypesFragment :
 
     }
 
-    override fun dialogTimePickerLightStart() {
-        TODO("Not yet implemented")
-    }
-
-    override fun dialogTimePickerLightEnd() {
-        TODO("Not yet implemented")
-    }
-
-    override fun showSnack(string: String, color: String, drawable: Int?) {
-        snackBar(string, drawable, color, getViewDataBinding().parent, requireContext())
-    }
 
 
 }
+interface IRequestTypesInteractionListener : BaseNavigator {
+
+
+}
+
+
 

@@ -58,6 +58,18 @@ class SalaryDetailsFragment :
 
     }
 
+    override fun detailsAvailable() {
+        getViewDataBinding().lytNoData.makeGone()
+    }
+
+    override fun noDetails() {
+        getViewDataBinding().lytNoData.makeVisible()
+    }
+
+
+    override fun onItemClick(model: String) {
+        findNavController().navigate(R.id.deductionDetailsFragment)
+    }
 
 
     override fun onPersonalDetailsClick() {
@@ -76,16 +88,13 @@ class SalaryDetailsFragment :
         TODO("Not yet implemented")
     }
 
-    override fun detailsAvailable() {
-        getViewDataBinding().lytNoData.makeGone()
+
+    override fun hideLeaveCreditView() {
+        TODO("Not yet implemented")
     }
 
-    override fun noDetails() {
-        getViewDataBinding().lytNoData.makeVisible()
-    }
-
-    override fun onItemClick(model: String) {
-        findNavController().navigate(R.id.deductionDetailsFragment)
+    override fun showLeaveCreditView() {
+        TODO("Not yet implemented")
     }
 
 

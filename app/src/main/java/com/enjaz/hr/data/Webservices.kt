@@ -7,6 +7,7 @@ import com.enjaz.hr.data.model.home.HomeResponse
 import com.enjaz.hr.data.model.login.LoginResponse
 import com.enjaz.hr.data.model.requestsTypes.RequestTypesResponse
 import com.enjaz.hr.data.model.salary.SalaryDetailsResponse
+import com.enjaz.hr.data.model.sendRequest.SendRequestResponse
 import com.enjaz.hr.data.model.video.Category
 import com.enjaz.hr.data.model.video.VidModel
 import com.google.gson.JsonElement
@@ -46,7 +47,7 @@ interface Webservices {
     fun getHomeResponse(@Body jsonElement: JsonElement): Single<Response<HomeResponse>>
 
     @POST("api/hr/md/Leaves/RequestLeave")
-    fun sendLeaveRequest(@Body jsonElement: JsonElement): Single<Response<HomeResponse>>
+    fun sendLeaveRequest(@Body jsonElement: JsonElement): Single<Response<SendRequestResponse>>
 
     @POST("api/hr/md/LeaveBalance/GetMyLeaveBalances")
     fun getLeaveBalance(): Single<Response<BalanceResponse>>

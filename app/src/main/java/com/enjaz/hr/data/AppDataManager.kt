@@ -2,14 +2,15 @@ package com.enjaz.hr.data
 
 import com.enjaz.hr.data.db.MovieDB
 import com.enjaz.hr.data.model.BaseResource
-import com.enjaz.hr.data.model.Error
 import com.enjaz.hr.data.model.attendance.AttendanceResponse
 import com.enjaz.hr.data.model.balance.BalanceResponse
+import com.enjaz.hr.data.model.error.ErrorResponse
 import com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponse
 import com.enjaz.hr.data.model.home.HomeResponse
 import com.enjaz.hr.data.model.login.LoginResponse
 import com.enjaz.hr.data.model.requestsTypes.RequestTypesResponse
 import com.enjaz.hr.data.model.salary.SalaryDetailsResponse
+import com.enjaz.hr.data.model.sendRequest.SendRequestResponse
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import io.reactivex.Single
@@ -34,6 +35,23 @@ class AppDataManager @Inject constructor(
         }
         return wrapWithResourceObject(
             webservices.getAttendanceResponse(jsonElement = params)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+    fun sendLeaveRequest(startDate:String,endDate:String,leaveName:String,leaveDescription:String,leaveTypeId:Int): Single<BaseResource<SendRequestResponse>> {
+
+        val params = JsonObject().apply {
+            addProperty("startDate", startDate)
+            addProperty("endDate", endDate)
+            addProperty("leaveName", leaveName)
+            addProperty("leaveDescription", leaveDescription)
+            addProperty("leaveTypeId", leaveTypeId)
+
+        }
+        return wrapWithResourceObject(
+            webservices.sendLeaveRequest(jsonElement = params)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )
@@ -119,8 +137,8 @@ class AppDataManager @Inject constructor(
 
             } else {
                 val gson = Gson()
-                val errorResponse = gson.fromJson(it.errorBody()?.string(), Error::class.java)
-                BaseResource.error(errorResponse.errorDescription, it.body())
+                val errorResponse = gson.fromJson(it.errorBody()?.string(), ErrorResponse::class.java)
+                BaseResource.error(errorResponse.error.message.toString(), it.body())
             }
         }
     }

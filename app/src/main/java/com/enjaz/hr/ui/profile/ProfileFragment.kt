@@ -62,6 +62,14 @@ class ProfileFragment :
         TODO("Not yet implemented")
     }
 
+    override fun hideLeaveCreditView() {
+        TODO("Not yet implemented")
+    }
+
+    override fun showLeaveCreditView() {
+        TODO("Not yet implemented")
+    }
+
 
 }
 
@@ -73,5 +81,6 @@ interface IProfileInteractionListener : BaseNavigator {
     fun onSettingsClick()
     fun detailsAvailable()
     fun noDetails()
-
+    fun hideLeaveCreditView()
+    fun showLeaveCreditView()
 }

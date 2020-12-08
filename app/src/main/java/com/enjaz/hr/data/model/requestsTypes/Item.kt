@@ -30,4 +30,5 @@ data class Item(
     val paidFlag: Boolean,
     @SerializedName("timeFlag")
     val timeFlag: Boolean
+
 )

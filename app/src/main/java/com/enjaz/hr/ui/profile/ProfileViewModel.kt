@@ -61,7 +61,6 @@ class ProfileViewModel @ViewModelInject constructor(
 
 
             })
-        refreshListener.postValue(View.OnClickListener { getLeaveBalance() })
 
 
 
@@ -92,24 +91,24 @@ class ProfileViewModel @ViewModelInject constructor(
 
     private fun onGetBalanceSuccess(result: BaseResource<BalanceResponse>) {
 
+        balanceResponse.postValue(result)
 
         if (result.message !=null){
 
 
-//            navigator.showSnack(result.message, "#ED213A", R.drawable.ic_round_close_24)
+            navigator.hideLeaveCreditView()
 
 
         }else result.data?.let {
 
 
-            balanceResponse.postValue(result)
 
-//            if (it.days.isEmpty()){
-//                navigator.noAttendance()
-//            }else{
-//                navigator.attendanceAvailable()
-//
-//            }
+            if (it.balances.isEmpty()){
+                navigator.hideLeaveCreditView()
+            }else{
+                navigator.showLeaveCreditView()
+
+            }
 
         }
 

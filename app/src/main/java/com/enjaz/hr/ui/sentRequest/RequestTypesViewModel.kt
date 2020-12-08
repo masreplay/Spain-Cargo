@@ -8,7 +8,7 @@ import com.enjaz.hr.ui.base.BaseViewModel
 
 class RequestTypesViewModel @ViewModelInject constructor(
     dataManager: AppDataManager
-) : BaseViewModel<ISendRequestInteractionListener>(
+) : BaseViewModel<IRequestTypesInteractionListener>(
     dataManager
 ) {
 

@@ -6,6 +6,8 @@ import androidx.fragment.app.viewModels
 import com.enjaz.hr.R
 import com.enjaz.hr.databinding.FragmentBalanceBinding
 import com.enjaz.hr.ui.base.BaseFragment
+import com.enjaz.hr.util.makeGone
+import com.enjaz.hr.util.makeVisible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,7 +36,7 @@ class BalanceFragment :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        balanceAdapter= BalanceAdapter(requireContext(), mutableListOf())
+        balanceAdapter = BalanceAdapter(requireContext(), mutableListOf())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,9 +44,19 @@ class BalanceFragment :
 
         getViewModel().getLeaveBalance()
 
-        getViewDataBinding().rv.adapter=balanceAdapter
+        getViewDataBinding().rv.adapter = balanceAdapter
     }
 
+
+
+
+    override fun hideLeaveCreditView() {
+        getViewDataBinding().cardLeaveCredit.makeGone()
+    }
+
+    override fun showLeaveCreditView() {
+        getViewDataBinding().cardLeaveCredit.makeVisible()
+    }
 
     override fun onPersonalDetailsClick() {
         TODO("Not yet implemented")
@@ -69,7 +81,6 @@ class BalanceFragment :
     override fun noDetails() {
         TODO("Not yet implemented")
     }
-
 
 }
 

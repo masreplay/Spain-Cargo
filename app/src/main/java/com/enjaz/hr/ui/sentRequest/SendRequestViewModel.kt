@@ -8,6 +8,7 @@ import com.enjaz.hr.R
 import com.enjaz.hr.data.AppDataManager
 import com.enjaz.hr.data.model.BaseResource
 import com.enjaz.hr.data.model.requestsTypes.RequestTypesResponse
+import com.enjaz.hr.data.model.sendRequest.SendRequestResponse
 import com.enjaz.hr.ui.base.BaseViewModel
 
 class SendRequestViewModel @ViewModelInject constructor(
@@ -19,6 +20,8 @@ class SendRequestViewModel @ViewModelInject constructor(
 
 
     var leaveTypesResponse: MutableLiveData<BaseResource<RequestTypesResponse>> = MutableLiveData()
+    var sendLeaveRequestResponse: MutableLiveData<BaseResource<SendRequestResponse>> = MutableLiveData()
+
 
     fun getLeaveTypes(timeFlag:Boolean){
 
@@ -44,6 +47,29 @@ class SendRequestViewModel @ViewModelInject constructor(
 
     }
 
+    fun sendLeaveRequest(startDate:String,endDate:String,leaveName:String,leaveDescription:String,leaveTypeId:Int){
+
+
+
+        navigator.onSendingRequest()
+
+
+        dispose(
+            dataManager.sendLeaveRequest(startDate,endDate,leaveName,leaveDescription,leaveTypeId),
+            ::onSendLeaveRequestSuccess,
+            { e ->
+                //error handling
+                e.message?.let {
+                    sendLeaveRequestResponse.postValue(BaseResource.error(it, null))
+                    Log.d("error",it)
+                }
+
+
+            })
+
+
+
+    }
     private fun onGetLeaveTypesSuccess(result: BaseResource<RequestTypesResponse>) {
 
         leaveTypesResponse.postValue(result)
@@ -58,6 +84,32 @@ class SendRequestViewModel @ViewModelInject constructor(
 
 
 
+//            if (it.days.isEmpty()){
+//                navigator.noAttendance()
+//            }else{
+//                navigator.attendanceAvailable()
+//
+//            }
+
+        }
+
+    }
+
+    private fun onSendLeaveRequestSuccess(result: BaseResource<SendRequestResponse>) {
+
+        sendLeaveRequestResponse.postValue(result)
+
+        if (result.message !=null){
+
+            navigator.onSendingRequestError(result.message)
+
+
+
+        }else result.data?.let {
+
+
+
+            navigator.onSendingRequestSuccess()
 //            if (it.days.isEmpty()){
 //                navigator.noAttendance()
 //            }else{

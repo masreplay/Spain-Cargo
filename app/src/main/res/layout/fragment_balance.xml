@@ -142,6 +142,7 @@
 
 
 <com.google.android.material.card.MaterialCardView
+    android:id="@+id/card_leaveCredit"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="10dp"
@@ -152,6 +153,7 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/qi_card"
 
+    android:visibility="gone"
     >
 
 
@@ -159,6 +161,7 @@
             android:id="@+id/constraintLayout4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
 
   >
 

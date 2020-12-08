@@ -49,6 +49,15 @@
 
         </LinearLayout>
 
+        <include
+            android:id="@+id/status"
+            layout="@layout/view_status"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:retryListener="@{viewModel.refreshListener}"
+            app:viewStatus="@{viewModel.leaveRequestResponse.status}"
+            />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"

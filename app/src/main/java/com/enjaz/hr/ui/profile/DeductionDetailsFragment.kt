@@ -66,6 +66,14 @@ class DeductionDetailsFragment :
         TODO("Not yet implemented")
     }
 
+    override fun hideLeaveCreditView() {
+        TODO("Not yet implemented")
+    }
+
+    override fun showLeaveCreditView() {
+        TODO("Not yet implemented")
+    }
+
 
 }
 

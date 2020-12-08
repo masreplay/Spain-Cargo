@@ -109,5 +109,9 @@
     <string name="you_have_no_salary_details_yet">You have no salary details yet</string>
     <string name="there_is_no_pending_requests">There is no pending requests</string>
     <string name="you_have_no_requests_yet">you have no requests yet</string>
+    <string name="loading">Loading</string>
+    <string name="request_sent">Your request has been sent successfully</string>
+    <string name="ops">Oops...</string>
+    <string name="sending_request">Sending your request</string>
 
 </resources>
