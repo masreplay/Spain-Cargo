@@ -3,6 +3,7 @@ package com.enjaz.hr
 import android.app.Application
 import android.content.Context
 import com.enjaz.hr.util.PrefsManager
+import com.facebook.drawee.backends.pipeline.Fresco
 import com.yariksoffice.lingver.Lingver
 import dagger.hilt.android.HiltAndroidApp
 import java.util.*
@@ -14,7 +15,7 @@ class HRMApp : Application() {
         super.onCreate()
         Lingver.init(this, Locale.getDefault())
         PrefsManager.init(this)
-
+        Fresco.initialize(this)
     }
 
     init {

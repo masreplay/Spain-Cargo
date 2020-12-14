@@ -33,10 +33,12 @@ class UserInfoFragment :
 
         setEllipsize()
 
+        getViewModel().getProfileInfo()
+
 
     }
 
-    fun setEllipsize(){
+    private fun setEllipsize(){
         getViewDataBinding().tvAddress.isSelected=true
         getViewDataBinding().tvAge.isSelected=true
         getViewDataBinding().tvBirthDate.isSelected=true

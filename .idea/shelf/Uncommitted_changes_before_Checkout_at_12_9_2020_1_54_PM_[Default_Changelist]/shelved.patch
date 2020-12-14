@@ -1,0 +1,110 @@
+Index: app/src/main/java/com/enjaz/hr/ui/base/BaseDataItemsAdapter.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.enjaz.hr.ui.base\r\n\r\nimport android.view.LayoutInflater\r\nimport android.view.View\r\nimport android.view.ViewGroup\r\nimport androidx.databinding.ViewDataBinding\r\nimport androidx.recyclerview.widget.DiffUtil\r\nimport androidx.recyclerview.widget.RecyclerView\r\nimport com.enjaz.hr.BR\r\n\r\nabstract class BaseDataItemsAdapter<T>(\r\n    private var items: List<T>,\r\n    private var itemInteractionListener: BaseDataItemInteractionListener?\r\n) : RecyclerView.Adapter<BaseDataItemsAdapter.BaseViewHolder>() {\r\n\r\n    private var layoutInflater: LayoutInflater? = null\r\n\r\n    private fun getLayoutInflater(view: View): LayoutInflater {\r\n        return layoutInflater ?: LayoutInflater.from(view.context).also {\r\n            layoutInflater = it\r\n        }\r\n    }\r\n\r\n    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {\r\n        return ItemViewHolder(\r\n            createViewDataBinding(getLayoutInflater(parent), parent, viewType)\r\n        )\r\n    }\r\n\r\n    abstract fun createViewDataBinding(\r\n        inflater: LayoutInflater,\r\n        parent: ViewGroup,\r\n        viewType: Int\r\n    ): ViewDataBinding\r\n\r\n    override fun getItemCount(): Int = items.size\r\n\r\n    override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {\r\n        val itemIndex = position\r\n        if (holder is ItemViewHolder) {\r\n            holder.viewBinding.setVariable(BR.item, items[itemIndex])\r\n            holder.viewBinding.setVariable(BR.clickListener, itemInteractionListener)\r\n            holder.viewBinding.setVariable(BR.position, itemIndex)\r\n\r\n        }\r\n    }\r\n\r\n\r\n    //This function checks if the items aren't updated\r\n    open fun setItems(newItems: List<T>) {\r\n        DiffUtil.calculateDiff(object : DiffUtil.Callback() {\r\n            override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {\r\n                if (oldItemPosition < 0 || newItemPosition < 0) {\r\n                    return oldItemPosition == newItemPosition\r\n                }\r\n                val oldPosition = oldItemPosition\r\n                val newPosition = newItemPosition\r\n                return areItemsTheSame(items[oldPosition], newItems[newPosition])\r\n            }\r\n\r\n            override fun getOldListSize(): Int = items.size\r\n\r\n            override fun getNewListSize(): Int = newItems.size\r\n\r\n            override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {\r\n                if (oldItemPosition < 0 || newItemPosition < 0) {\r\n                    return oldItemPosition == newItemPosition\r\n                }\r\n                val oldPosition = oldItemPosition\r\n                val newPosition = newItemPosition\r\n                return areContentsTheSame(items[oldPosition], newItems[newPosition])\r\n            }\r\n\r\n        }).let {\r\n            items = newItems\r\n            it.dispatchUpdatesTo(this)\r\n        }\r\n    }\r\n\r\n    open fun areItemsTheSame(oldItem: T, newItem: T): Boolean {\r\n        return oldItem?.equals(newItem) ?: false\r\n    }\r\n\r\n    open fun areContentsTheSame(oldItem: T, newItem: T): Boolean {\r\n        return oldItem?.equals(newItem) ?: false\r\n    }\r\n\r\n    fun setOnItemClickListener(onInteraction: BaseDataItemInteractionListener) {\r\n        this.itemInteractionListener = onInteraction\r\n    }\r\n\r\n    class ViewHolder(val viewBinding: ViewDataBinding) : RecyclerView.ViewHolder(viewBinding.root)\r\n\r\n    class ItemViewHolder(val viewBinding: ViewDataBinding) : BaseViewHolder(viewBinding.root)\r\n\r\n    open class BaseViewHolder(view: View) : RecyclerView.ViewHolder(view)\r\n}\r\n\r\ninterface BaseDataItemInteractionListener\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/enjaz/hr/ui/base/BaseDataItemsAdapter.kt	(revision d4f41c0c5f759774b9206feed662943d192b00d7)
++++ app/src/main/java/com/enjaz/hr/ui/base/BaseDataItemsAdapter.kt	(date 1606820991824)
+@@ -36,11 +36,10 @@
+     override fun getItemCount(): Int = items.size
+ 
+     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
+-        val itemIndex = position
+         if (holder is ItemViewHolder) {
+-            holder.viewBinding.setVariable(BR.item, items[itemIndex])
++            holder.viewBinding.setVariable(BR.item, items[position])
+             holder.viewBinding.setVariable(BR.clickListener, itemInteractionListener)
+-            holder.viewBinding.setVariable(BR.position, itemIndex)
++            holder.viewBinding.setVariable(BR.position, position)
+ 
+         }
+     }
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"CMakeSettings\">\r\n    <configurations>\r\n      <configuration PROFILE_NAME=\"Debug\" CONFIG_NAME=\"Debug\" />\r\n    </configurations>\r\n  </component>\r\n  <component name=\"ProjectInspectionProfilesVisibleTreeState\">\r\n    <entry key=\"Project Default\">\r\n      <profile-state>\r\n        <expanded-state>\r\n          <State />\r\n          <State>\r\n            <id>Android</id>\r\n          </State>\r\n          <State>\r\n            <id>Class structureJava</id>\r\n          </State>\r\n          <State>\r\n            <id>Cloning issuesJava</id>\r\n          </State>\r\n          <State>\r\n            <id>Code style issuesJava</id>\r\n          </State>\r\n          <State>\r\n            <id>CorrectnessLintAndroid</id>\r\n          </State>\r\n          <State>\r\n            <id>Groovy</id>\r\n          </State>\r\n          <State>\r\n            <id>Inheritance issuesJava</id>\r\n          </State>\r\n          <State>\r\n            <id>InternationalizationJava</id>\r\n          </State>\r\n          <State>\r\n            <id>Java</id>\r\n          </State>\r\n          <State>\r\n            <id>LintAndroid</id>\r\n          </State>\r\n          <State>\r\n            <id>Numeric issuesJava</id>\r\n          </State>\r\n          <State>\r\n            <id>PerformanceJava</id>\r\n          </State>\r\n          <State>\r\n            <id>PerformanceLintAndroid</id>\r\n          </State>\r\n          <State>\r\n            <id>Potentially confusing code constructsGroovy</id>\r\n          </State>\r\n          <State>\r\n            <id>Probable bugsJava</id>\r\n          </State>\r\n          <State>\r\n            <id>SecurityJava</id>\r\n          </State>\r\n          <State>\r\n            <id>Serialization issuesJava</id>\r\n          </State>\r\n          <State>\r\n            <id>Threading issuesJava</id>\r\n          </State>\r\n        </expanded-state>\r\n      </profile-state>\r\n    </entry>\r\n  </component>\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_8\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(revision d4f41c0c5f759774b9206feed662943d192b00d7)
++++ .idea/misc.xml	(date 1607508864194)
+@@ -68,7 +68,7 @@
+       </profile-state>
+     </entry>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <string name=\"app_name\">HRM</string>\r\n\r\n\r\n    <string name=\"requests\">Requests</string>\r\n    <string name=\"team\">Team</string>\r\n    <string name=\"profile\">Profile</string>\r\n    <string name=\"job_type\">Job type</string>\r\n    <string name=\"experience_level\">Experience level</string>\r\n    <string name=\"show_result\">Show result</string>\r\n    <string name=\"clear\">Clear</string>\r\n    <string name=\"notifications\">Notifications</string>\r\n    <string name=\"user_friendly_experience\">User Friendly Experience</string>\r\n    <string name=\"drive_employee_engagement_and_reduce_administrative_burden_with_a_solution_that_is_designed_to_look_work_and_feel_like_a_consumer_application\">Drive employee engagement and reduce administrative burden with a solution that is designed to look,work,and feel like a consumer application</string>\r\n    <string name=\"mobile_accessibility\">Mobile Accessibility</string>\r\n    <string name=\"empower_employees_to_access_and_interact_with_their_core_hr_systems_like_payroll_benefits_and_time_management\">Empower employees to access and interact with their core HR systems like payroll, benefits, and time management</string>\r\n    <string name=\"attendance\">Attendance</string>\r\n    <string name=\"streamline_time_tracking_and_scheduling_so_you_can_decrease_payroll_errors_reduce_overtime_costs_and_improve_productivity\">Streamline time tracking and scheduling so you can decrease payroll errors, reduce overtime costs, and improve productivity</string>\r\n    <string name=\"announcements\">Announcements</string>\r\n    <string name=\"get_notified_when_event_take_a_place\">Get notified when event take a place</string>\r\n    <string name=\"prev\">Prev</string>\r\n    <string name=\"next\">Next</string>\r\n    <string name=\"done\">Done</string>\r\n\r\n\r\n    <string name=\"welcome_back\">Welcome back</string>\r\n    <string name=\"sign_in_to_continue\">Sign in to continue</string>\r\n    <string name=\"email\">Email</string>\r\n    <string name=\"password\">Password</string>\r\n    <string name=\"login\">Login</string>\r\n    <string name=\"forgot_password\">Forgot password</string>\r\n    <string name=\"working_hours\">Working hours</string>\r\n    <string name=\"delays\">Delays</string>\r\n    <string name=\"excuse_ndelays\">Excuse\\ndelays</string>\r\n    <string name=\"extra_hours\">Extra hours</string>\r\n    <string name=\"over_time\">Over time</string>\r\n    <string name=\"missing_punch\">Missing punch</string>\r\n    <string name=\"basic_salary_and_additions\">Basic salary and additions</string>\r\n    <string name=\"salary\">Salary</string>\r\n    <string name=\"bonus\">Bonus</string>\r\n    <string name=\"late\">Late</string>\r\n    <string name=\"miss_punch\">Miss punch</string>\r\n    <string name=\"enter_a_name_or_an_id\">Enter a name or an ID</string>\r\n    <string name=\"from\">From</string>\r\n    <string name=\"post_date\">Post date</string>\r\n    <string name=\"to\">To</string>\r\n    <string name=\"pick_a_start_date\">Pick a start date</string>\r\n    <string name=\"pick_an_end_date\">Pick an end date</string>\r\n    <string name=\"salary_details\">Salary Details</string>\r\n    <string name=\"settings\">Settings</string>\r\n    <string name=\"about\">About</string>\r\n    <string name=\"logout\">Logout</string>\r\n    <string name=\"basic_information\">Basic Information</string>\r\n    <string name=\"email_address\">Email address</string>\r\n    <string name=\"employee_id\">Employee ID</string>\r\n    <string name=\"mobile_phone\">Mobile phone</string>\r\n    <string name=\"birth_date\">Birth date</string>\r\n    <string name=\"age\">Age</string>\r\n    <string name=\"address\">Address</string>\r\n    <string name=\"marital_status\">Marital status</string>\r\n    <string name=\"work_information\">Work Information</string>\r\n    <string name=\"department\">Department</string>\r\n    <string name=\"reporting_to\">Reporting to</string>\r\n    <string name=\"date_on_joining\">Date on joining</string>\r\n    <string name=\"employee_status\">Employee status</string>\r\n    <string name=\"role\">Role</string>\r\n    <string name=\"work_phone\">Work phone</string>\r\n    <string name=\"experience\">Experience</string>\r\n    <string name=\"base_salary\">Base salary</string>\r\n    <string name=\"deduction\">Deduction</string>\r\n    <string name=\"statistics\">Statistics</string>\r\n    <string name=\"present\">Present</string>\r\n    <string name=\"vacation\">Vacation</string>\r\n    <string name=\"absent\">Absent</string>\r\n    <string name=\"delay\">Delay</string>\r\n    <string name=\"more\">More</string>\r\n    <string name=\"team_members\">Team members</string>\r\n    <string name=\"received\">Received</string>\r\n    <string name=\"sent\">Sent</string>\r\n    <string name=\"request\">Request</string>\r\n    <string name=\"home\">Home</string>\r\n    <string name=\"user_information\">User information</string>\r\n    <string name=\"deduction_details\">Deduction details</string>\r\n    <string name=\"total_salary\">Total salary</string>\r\n    <string name=\"total_deduction\">Total deduction</string>\r\n    <string name=\"language\">Language</string>\r\n</resources>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/strings.xml	(revision d4f41c0c5f759774b9206feed662943d192b00d7)
++++ app/src/main/res/values/strings.xml	(date 1605565595166)
+@@ -31,7 +31,7 @@
+     <string name="forgot_password">Forgot password</string>
+     <string name="working_hours">Working hours</string>
+     <string name="delays">Delays</string>
+-    <string name="excuse_ndelays">Excuse\ndelays</string>
++    <string name="excuse_ndelays">Excuses</string>
+     <string name="extra_hours">Extra hours</string>
+     <string name="over_time">Over time</string>
+     <string name="missing_punch">Missing punch</string>
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/compiler.xml	(date 1607508864214)
++++ .idea/compiler.xml	(date 1607508864214)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <bytecodeTargetLevel target="1.8" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"testRunner\" value=\"PLATFORM\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/gradle.xml	(revision d4f41c0c5f759774b9206feed662943d192b00d7)
++++ .idea/gradle.xml	(date 1607508864219)
+@@ -14,6 +14,7 @@
+           </set>
+         </option>
+         <option name="resolveModulePerSourceSet" value="false" />
++        <option name="useQualifiedModuleNames" value="true" />
+       </GradleProjectSettings>
+     </option>
+   </component>
+Index: app/src/main/res/drawable/bg_round_outline_ripple_16dp.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?><!-- An white rectangle ripple. -->\r\n<ripple xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    android:color=\"@color/grey_100\">\r\n\r\n\r\n\r\n    <item\r\n        android:id=\"@android:id/mask\"\r\n        android:gravity=\"center\">\r\n        <shape android:shape=\"rectangle\">\r\n            <solid android:color=\"@android:color/white\" />\r\n\r\n            <corners android:radius=\"16dp\" />\r\n        </shape>\r\n    </item>\r\n\r\n    <item>\r\n        <shape android:shape=\"rectangle\">\r\n\r\n            <stroke\r\n                android:color=\"@android:color/white\"\r\n                android:width=\"1dp\"/>\r\n            <corners android:radius=\"16dp\" />\r\n        </shape>\r\n    </item>\r\n</ripple>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/drawable/bg_round_outline_ripple_16dp.xml	(revision d4f41c0c5f759774b9206feed662943d192b00d7)
++++ app/src/main/res/drawable/bg_round_outline_ripple_16dp.xml	(date 1606817931970)
+@@ -1,9 +1,6 @@
+ <?xml version="1.0" encoding="utf-8"?><!-- An white rectangle ripple. -->
+ <ripple xmlns:android="http://schemas.android.com/apk/res/android"
+     android:color="@color/grey_100">
+-
+-
+-
+     <item
+         android:id="@android:id/mask"
+         android:gravity="center">

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 import com.enjaz.hr.HRMApp
+import com.enjaz.hr.data.model.profile.UserInfo
 import com.google.gson.Gson
 
 
@@ -19,10 +20,11 @@ class PrefsManager {
     }
 
 
-    fun getString(string:String): String? {
+    fun getString(string: String): String? {
         val string = sharedPref.getString(string, null)
         return string
     }
+
     fun getRefreshToken(): String? {
         val refreshToken = sharedPref.getString("refreshToken", null)
         return refreshToken
@@ -50,12 +52,23 @@ class PrefsManager {
 
 
     fun setString(key: String, value: String) {
-
         sharedPrefsEditor = sharedPref.edit()
         sharedPrefsEditor.putString(key, value)
         sharedPrefsEditor.apply()
+    }
 
+    fun saveProfile(value: UserInfo) {
+        val gson = Gson()
+        val res = gson.toJson(value)
+        sharedPrefsEditor = sharedPref.edit()
+        sharedPrefsEditor.putString("UserProfile", res)
+        sharedPrefsEditor.apply()
+    }
 
+    fun getProfile(): UserInfo {
+        val gson = Gson()
+
+        return gson.fromJson(sharedPref.getString("UserProfile", null), UserInfo::class.java)
     }
 
     companion object {

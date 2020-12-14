@@ -32,7 +32,7 @@
     <string name="forgot_password">Forgot password</string>
     <string name="working_hours">Working hours</string>
     <string name="delays">Delays</string>
-    <string name="excuse_ndelays">Excuse\ndelays</string>
+    <string name="excuse_ndelays">Excuses</string>
     <string name="extra_hours">Extra hours</string>
     <string name="over_time">Over time</string>
     <string name="missing_punch">Missing punch</string>

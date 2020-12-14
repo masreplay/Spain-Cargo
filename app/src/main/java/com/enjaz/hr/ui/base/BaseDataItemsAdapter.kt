@@ -36,11 +36,10 @@ abstract class BaseDataItemsAdapter<T>(
     override fun getItemCount(): Int = items.size
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
-        val itemIndex = position
         if (holder is ItemViewHolder) {
-            holder.viewBinding.setVariable(BR.item, items[itemIndex])
+            holder.viewBinding.setVariable(BR.item, items[position])
             holder.viewBinding.setVariable(BR.clickListener, itemInteractionListener)
-            holder.viewBinding.setVariable(BR.position, itemIndex)
+            holder.viewBinding.setVariable(BR.position, position)
 
         }
     }

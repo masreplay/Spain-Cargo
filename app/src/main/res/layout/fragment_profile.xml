@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
 
     <data>
 
@@ -34,23 +35,18 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <com.mikhaellopez.circularimageview.CircularImageView
+                <com.facebook.drawee.view.SimpleDraweeView
                     android:id="@+id/image"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_marginTop="50dp"
-                    android:src="@drawable/photo_male_8"
-                    app:civ_border="true"
-                    app:civ_border_color="@color/carbon_black"
-                    app:civ_border_width="2dp"
-                    app:civ_shadow="true"
-                    app:civ_shadow_radius="0" />
+                    bind:imageUrl="@{viewModel.userInfoResponse.data.profilePictureUrl}" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:text="Hassanein sabah"
+                    android:text="@{viewModel.userInfoResponse.data.basicInformation.name}"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
                     android:textColor="@color/carbon_grey_800" />
 
@@ -61,7 +57,7 @@
                     android:layout_marginTop="@dimen/spacing_medium"
                     android:layout_marginRight="@dimen/spacing_large"
                     android:gravity="center"
-                    android:text="Android Developer"
+                    android:text="@{viewModel.userInfoResponse.data.workInformation.jobTitle}"
                     android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
                     android:textColor="@color/carbon_grey_600" />
 

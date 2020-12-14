@@ -4,6 +4,10 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.enjaz.hr.ui.profile.ProfileViewModel" />
+
     </data>
 
 
@@ -81,6 +85,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="25dp"
                     android:layout_marginBottom="16dp">
+
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guide_1"
                         android:layout_width="1dp"
@@ -89,6 +94,7 @@
 
 
                         app:layout_constraintGuide_percent="0.52" />
+
                     <TextView
                         android:id="@+id/tv_emailLabel"
                         android:layout_width="wrap_content"
@@ -112,14 +118,12 @@
                         android:marqueeRepeatLimit="marquee_forever"
                         android:scrollHorizontally="true"
                         android:singleLine="true"
-                        android:text="Hassan@enjaz.tech"
+                        android:text="@{viewModel.userInfoResponse.data.basicInformation.email}"
                         android:textColor="@color/carbon_black"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="@id/guide_1"
-
-                        />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/tv_employeeIdLabel"
@@ -142,17 +146,13 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="marquee"
                         android:fontFamily="sans-serif"
-                        android:marqueeRepeatLimit="marquee_forever"
-                        android:scrollHorizontally="true"
                         android:singleLine="true"
-                        android:text="#14214"
+                        android:text="@{String.valueOf(viewModel.userInfoResponse.data.basicInformation.employeeNo),default=10234}"
                         android:textColor="@color/carbon_black"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@id/tv_email"
-                        app:layout_constraintTop_toTopOf="@id/tv_employeeIdLabel"
-
-                        />
+                        app:layout_constraintTop_toTopOf="@id/tv_employeeIdLabel" />
 
 
                     <TextView
@@ -179,7 +179,7 @@
                         android:marqueeRepeatLimit="marquee_forever"
                         android:scrollHorizontally="true"
                         android:singleLine="true"
-                        android:text="07713355238"
+                        android:text="@{viewModel.userInfoResponse.data.basicInformation.phone}"
                         android:textColor="@color/carbon_black"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -212,7 +212,7 @@
                         android:marqueeRepeatLimit="marquee_forever"
                         android:scrollHorizontally="true"
                         android:singleLine="true"
-                        android:text="23/06/1996"
+                        android:text="@{viewModel.userInfoResponse.data.basicInformation.birthDate.substring(0,10)}"
                         android:textColor="@color/carbon_black"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -245,7 +245,7 @@
                         android:marqueeRepeatLimit="marquee_forever"
                         android:scrollHorizontally="true"
                         android:singleLine="true"
-                        android:text="25 years"
+                        android:text="@{String.valueOf(viewModel.userInfoResponse.data.basicInformation.age)}"
                         android:textColor="@color/carbon_black"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -277,7 +277,7 @@
                         android:marqueeRepeatLimit="marquee_forever"
                         android:scrollHorizontally="true"
                         android:singleLine="true"
-                        android:text="Alghadeer"
+                        android:text="@{viewModel.userInfoResponse.data.basicInformation.address}"
                         android:textColor="@color/carbon_black"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -310,7 +310,7 @@
                         android:marqueeRepeatLimit="marquee_forever"
                         android:scrollHorizontally="true"
                         android:singleLine="true"
-                        android:text="Single"
+                        android:text="@{String.valueOf(viewModel.userInfoResponse.data.basicInformation.maritalStatus)}"
                         android:textColor="@color/carbon_black"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -390,6 +390,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="25dp"
                     android:layout_marginBottom="16dp">
+
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/guide_2"
                         android:layout_width="1dp"
@@ -398,6 +399,7 @@
 
 
                         app:layout_constraintGuide_percent="0.52" />
+
                     <TextView
                         android:id="@+id/tv_departmentLabel"
                         android:layout_width="wrap_content"
@@ -421,14 +423,12 @@
                         android:marqueeRepeatLimit="marquee_forever"
                         android:scrollHorizontally="true"
                         android:singleLine="true"
-                        android:text="Muamalaty"
+                        android:text="@{viewModel.userInfoResponse.data.workInformation.department}"
                         android:textColor="@color/carbon_black"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="@id/guide_2"
-
-                        />
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/tv_reportToLabel"
@@ -454,7 +454,7 @@
                         android:marqueeRepeatLimit="marquee_forever"
                         android:scrollHorizontally="true"
                         android:singleLine="true"
-                        android:text="Muamalaty"
+                        android:text="@{viewModel.userInfoResponse.data.workInformation.reportingTo}"
                         android:textColor="@color/carbon_black"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -488,7 +488,7 @@
                         android:marqueeRepeatLimit="marquee_forever"
                         android:scrollHorizontally="true"
                         android:singleLine="true"
-                        android:text="12/12/2020"
+                        android:text="@{viewModel.userInfoResponse.data.workInformation.joinDate.substring(0,10)}"
                         android:textColor="@color/carbon_black"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -521,7 +521,7 @@
                         android:marqueeRepeatLimit="marquee_forever"
                         android:scrollHorizontally="true"
                         android:singleLine="true"
-                        android:text="Active"
+                        android:text="@{viewModel.userInfoResponse.data.workInformation.employeeStatus}"
                         android:textColor="@color/carbon_black"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -554,7 +554,7 @@
                         android:marqueeRepeatLimit="marquee_forever"
                         android:scrollHorizontally="true"
                         android:singleLine="true"
-                        android:text="Admin"
+                        android:text="@{viewModel.userInfoResponse.data.workInformation.role}"
                         android:textColor="@color/carbon_black"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -586,7 +586,7 @@
                         android:marqueeRepeatLimit="marquee_forever"
                         android:scrollHorizontally="true"
                         android:singleLine="true"
-                        android:text="07713355238"
+                        android:text="@{viewModel.userInfoResponse.data.workInformation.workPhone}"
                         android:textColor="@color/carbon_black"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -616,7 +616,7 @@
                         android:marqueeRepeatLimit="marquee_forever"
                         android:scrollHorizontally="true"
                         android:singleLine="true"
-                        android:text="Mid-Level"
+                        android:text="@{viewModel.userInfoResponse.data.workInformation.experience}"
                         android:textColor="@color/carbon_black"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"

@@ -5,6 +5,7 @@ import com.enjaz.hr.data.model.balance.BalanceResponse
 import com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponse
 import com.enjaz.hr.data.model.home.HomeResponse
 import com.enjaz.hr.data.model.login.LoginResponse
+import com.enjaz.hr.data.model.profile.UserInfo
 import com.enjaz.hr.data.model.requestsTypes.RequestTypesResponse
 import com.enjaz.hr.data.model.salary.SalaryDetailsResponse
 import com.enjaz.hr.data.model.sendRequest.SendRequestResponse
@@ -46,6 +47,9 @@ interface Webservices {
     @POST("api/hr/Employee/GetMobileHomeStatistics")
     fun getHomeResponse(@Body jsonElement: JsonElement): Single<Response<HomeResponse>>
 
+    @POST("api/hr/Employee/GetMyProfileInfo")
+    fun getProfileInfo(): Single<Response<UserInfo>>
+
     @POST("api/hr/md/Leaves/RequestLeave")
     fun sendLeaveRequest(@Body jsonElement: JsonElement): Single<Response<SendRequestResponse>>
 
@@ -57,18 +61,10 @@ interface Webservices {
     fun getSalaryDetails(): Single<Response<SalaryDetailsResponse>>
 
 
-
-
-
-
     @FormUrlEncoded
     @POST("connect/token")
     fun login(@Field ("client_id")client_id:String,@Field ("grant_type")grant_type:String,
               @Field ("username")username:String,@Field ("password")password:String,@Field ("Scope")Scope:String):
             Single<Response<LoginResponse>>
-
-
-
-
 
 }
