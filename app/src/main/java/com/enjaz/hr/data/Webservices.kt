@@ -4,6 +4,7 @@ import com.enjaz.hr.data.model.attendance.AttendanceResponse
 import com.enjaz.hr.data.model.balance.BalanceResponse
 import com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponse
 import com.enjaz.hr.data.model.home.HomeResponse
+import com.enjaz.hr.data.model.home.Teammate
 import com.enjaz.hr.data.model.login.LoginResponse
 import com.enjaz.hr.data.model.profile.UserInfo
 import com.enjaz.hr.data.model.requestsTypes.RequestTypesResponse
@@ -60,6 +61,8 @@ interface Webservices {
     @GET("api/payroll/md/Salary/GetSalaryListForEmployee")
     fun getSalaryDetails(): Single<Response<SalaryDetailsResponse>>
 
+    @GET("/api/hr/Employee/GetMyTeammates")
+    fun GetMyTeammates(): Single<Response<List<Teammate>>>
 
     @FormUrlEncoded
     @POST("connect/token")

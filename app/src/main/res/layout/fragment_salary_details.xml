@@ -13,17 +13,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/grey_100"
-        >
+        android:background="@color/grey_100">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/item_salary_details"
-            items="@{viewModel.salaryDetailsResponse.data.items}"
-
-            />
+            items="@{viewModel.salaryDetailsResponse.data.items}"/>
 
         <LinearLayout
             android:id="@+id/lyt_no_data"

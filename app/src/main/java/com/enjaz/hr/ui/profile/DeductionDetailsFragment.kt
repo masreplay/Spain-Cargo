@@ -3,9 +3,14 @@ package com.enjaz.hr.ui.profile
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.enjaz.hr.R
+import com.enjaz.hr.data.model.salary.Item
 import com.enjaz.hr.databinding.FragmentDeductionDetailsBinding
 import com.enjaz.hr.ui.base.BaseFragment
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -14,6 +19,10 @@ class DeductionDetailsFragment :
     IProfileInteractionListener {
 
     private val profileViewModel: ProfileViewModel by viewModels()
+    private val args: DeductionDetailsFragmentArgs by navArgs()
+
+    lateinit var salaryDetailAdapter: SalaryDetailAdapter
+    lateinit var salaryDetailAdapterDed: SalaryDetailAdapter
 
 
     override fun getLayoutId(): Int {
@@ -32,46 +41,55 @@ class DeductionDetailsFragment :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        salaryDetailAdapter= SalaryDetailAdapter(requireContext(), arrayListOf())
+        salaryDetailAdapterDed= SalaryDetailAdapter(requireContext(), arrayListOf())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val gson = Gson()
+        val res=gson.fromJson(args.salaryDetails, Item::class.java)
 
+        getViewDataBinding().rvAdditions.apply {
+            adapter=salaryDetailAdapter
+        }
+
+        getViewDataBinding().rvDeductions.apply {
+            adapter=salaryDetailAdapterDed
+        }
+
+        salaryDetailAdapter.setItems(res.salaryDetails.filter { it.isAddition })
+        salaryDetailAdapterDed.setItems(res.salaryDetails.filter { !it.isAddition })
 
     }
 
 
     override fun onPersonalDetailsClick() {
-        TODO("Not yet implemented")
     }
 
     override fun onBalanceClick() {
-        TODO("Not yet implemented")
     }
 
     override fun onSalaryDetailsClick() {
-        TODO("Not yet implemented")
     }
 
     override fun onSettingsClick() {
+    }
+
+    override fun onEditProfilePhotoClick() {
         TODO("Not yet implemented")
     }
 
     override fun detailsAvailable() {
-        TODO("Not yet implemented")
     }
 
     override fun noDetails() {
-        TODO("Not yet implemented")
     }
 
     override fun hideLeaveCreditView() {
-        TODO("Not yet implemented")
     }
 
     override fun showLeaveCreditView() {
-        TODO("Not yet implemented")
     }
 
 

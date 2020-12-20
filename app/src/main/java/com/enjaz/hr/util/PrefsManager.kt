@@ -1,7 +1,7 @@
 package com.enjaz.hr.util
 
-import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.preference.PreferenceManager
 import com.enjaz.hr.HRMApp
 import com.enjaz.hr.data.model.profile.UserInfo
@@ -65,10 +65,13 @@ class PrefsManager {
         sharedPrefsEditor.apply()
     }
 
-    fun getProfile(): UserInfo {
+    fun getProfile(): UserInfo? {
         val gson = Gson()
-
-        return gson.fromJson(sharedPref.getString("UserProfile", null), UserInfo::class.java)
+        if (sharedPref.getString("UserProfile", null) != null) {
+            return gson.fromJson(sharedPref.getString("UserProfile", null), UserInfo::class.java)
+        } else {
+            return null
+        }
     }
 
     companion object {
@@ -76,7 +79,7 @@ class PrefsManager {
         var instance: PrefsManager? = null
             private set
 
-        fun init(context: Context) {
+        fun init() {
             if (instance == null) {
                 instance = PrefsManager()
             }

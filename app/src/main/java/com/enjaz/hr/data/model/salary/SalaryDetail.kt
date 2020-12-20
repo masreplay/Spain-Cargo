@@ -1,6 +1,7 @@
 package com.enjaz.hr.data.model.salary
 
 
+import com.enjaz.hr.util.toFormat
 import com.google.gson.annotations.SerializedName
 
 data class SalaryDetail(
@@ -20,4 +21,11 @@ data class SalaryDetail(
     val salaryId: Int,
     @SerializedName("variableId")
     val variableId: Int
-)
+) {
+    fun getAmount(): String {
+        return if (isAddition)
+            "+ " + amount.toFormat() + " IQD"
+        else
+            "- " + amount.toFormat() + " IQD"
+    }
+}

@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <variable
+            name="viewModel"
+            type="com.enjaz.hr.ui.profile.ProfileViewModel" />
 
     </data>
 
@@ -21,7 +26,6 @@
             app:carbon_elevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-
             app:layout_constraintTop_toTopOf="parent">
 
             <carbon.widget.ImageView
@@ -49,7 +53,6 @@
                 app:layout_constraintStart_toEndOf="@+id/imageView5"
                 app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
-
             <View
                 android:id="@+id/view_line"
                 android:layout_width="0dp"
@@ -60,97 +63,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
-            <TextView
-                android:id="@+id/tv_salaryL"
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_additions"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/salary"
-                android:textColor="@color/carbon_grey_700"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/view_line"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@+id/view_line"
+                tools:itemCount="4"
+                tools:listitem="@layout/item_salary_details" />
 
-                />
-
-            <TextView
-                android:id="@+id/tv_salary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="+ 1,000,000 IQD"
-                android:textColor="@color/green2"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_salaryL"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_salaryL"
-
-                />
-
-            <TextView
-                android:id="@+id/tv_overTimeL"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/over_time"
-                android:textColor="@color/carbon_grey_700"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_salaryL"
-
-                />
-
-            <TextView
-                android:id="@+id/tv_overTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="+ 100,000 IQD"
-                android:textColor="@color/green2"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_overTimeL"
-                app:layout_constraintStart_toStartOf="@id/tv_salary"
-                app:layout_constraintTop_toTopOf="@id/tv_overTimeL"
-
-                />
-
-            <TextView
-                android:id="@+id/tv_bonusL"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                android:text="@string/bonus"
-                android:textColor="@color/carbon_grey_700"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_overTimeL"
-
-                />
-
-            <TextView
-                android:id="@+id/tv_bonus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="+ 100,000 IQD"
-                android:textColor="@color/green2"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_bonusL"
-                app:layout_constraintStart_toStartOf="@id/tv_salary"
-                app:layout_constraintTop_toTopOf="@id/tv_bonusL"
-
-                />
         </carbon.widget.ConstraintLayout>
 
         <carbon.widget.ConstraintLayout
@@ -163,7 +84,6 @@
             app:carbon_elevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-
             app:layout_constraintTop_toBottomOf="@id/lyt_basic_salary">
 
             <carbon.widget.ImageView
@@ -202,97 +122,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView28" />
 
-            <TextView
-                android:id="@+id/tv_lateL"
-                android:layout_width="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_deductions"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/late"
-                android:textColor="@color/carbon_grey_700"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/view_line2"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@+id/view_line2"
+                tools:itemCount="4"
+                tools:listitem="@layout/item_salary_details" />
 
-                />
-
-            <TextView
-                android:id="@+id/tv_late"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="- 1,000,000 IQD"
-                android:textColor="@color/red"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_lateL"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_lateL"
-
-                />
-
-            <TextView
-                android:id="@+id/tv_absentL"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:text="@string/absent"
-                android:textColor="@color/carbon_grey_700"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_lateL"
-
-                />
-
-            <TextView
-                android:id="@+id/tv_absent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="- 100,000 IQD"
-                android:textColor="@color/red"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_absentL"
-                app:layout_constraintStart_toStartOf="@id/tv_late"
-                app:layout_constraintTop_toTopOf="@id/tv_absentL"
-
-                />
-
-            <TextView
-                android:id="@+id/tv_discountL"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                android:text="@string/miss_punch"
-                android:textColor="@color/carbon_grey_700"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_absentL"
-
-                />
-
-            <TextView
-                android:id="@+id/tv_discount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="sans-serif-medium"
-                android:text="- 100,000 IQD"
-                android:textColor="@color/red"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="@id/tv_discountL"
-                app:layout_constraintStart_toStartOf="@id/tv_late"
-                app:layout_constraintTop_toTopOf="@id/tv_discountL"
-
-                />
         </carbon.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

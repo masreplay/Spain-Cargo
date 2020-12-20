@@ -16,16 +16,27 @@
     <fragment
         android:id="@+id/salaryDetailsFragment"
         android:name="com.enjaz.hr.ui.profile.SalaryDetailsFragment"
-        android:label="@string/salary_details" />
+        android:label="Salary">
+        <action
+            android:id="@+id/next_action"
+            app:destination="@id/deductionDetailsFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/deductionDetailsFragment"
         android:name="com.enjaz.hr.ui.profile.DeductionDetailsFragment"
-        android:label="Deduction details" />
+        android:label="Salary details">
+        <argument
+            android:name="salary_details"
+            android:defaultValue="@null"
+            app:nullable="true"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/balanceFragment"
         android:name="com.enjaz.hr.ui.profile.BalanceFragment"
-        android:label="Balance" />
         android:label="@string/deduction_details" />
+
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.enjaz.hr.ui.settings.SettingsFragment"

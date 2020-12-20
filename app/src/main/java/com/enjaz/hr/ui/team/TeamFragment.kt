@@ -37,7 +37,7 @@ class TeamFragment :
         super.onViewCreated(view, savedInstanceState)
         Log.i("abdalla19988", "abdalla19988")
 
-        getViewModel().getdata()
+        getViewModel().getMyTeammates()
         getViewDataBinding().rv.apply {
             adapter = teamAdapter
         }

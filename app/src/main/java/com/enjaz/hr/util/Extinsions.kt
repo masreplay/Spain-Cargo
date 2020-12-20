@@ -17,6 +17,8 @@ import androidx.core.content.ContextCompat
 import com.enjaz.hr.HRMApp
 import com.enjaz.hr.R
 import com.google.android.material.snackbar.Snackbar
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
 import java.text.SimpleDateFormat
 import java.time.DayOfWeek
 import java.time.temporal.WeekFields
@@ -42,6 +44,11 @@ fun String.amPm():String {
     return if (time.substringBefore(":").toInt()<12){
        this +" "+ HRMApp.applicationContext().getString(R.string.am)
     }else this + " "+ HRMApp.applicationContext().getString(R.string.pm)
+}
+
+
+fun Int?.toFormat(): String {
+    return DecimalFormat("#,###", DecimalFormatSymbols.getInstance(Locale.US)).format(this)
 }
 
 

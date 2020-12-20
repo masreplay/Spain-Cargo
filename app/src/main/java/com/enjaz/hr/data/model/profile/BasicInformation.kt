@@ -10,6 +10,6 @@ data class BasicInformation (
 	@SerializedName("birthDate") val birthDate : String,
 	@SerializedName("age") val age : Int,
 	@SerializedName("address") val address : String,
-	@SerializedName("maritalStatus") val maritalStatus : Int,
+	@SerializedName("maritalStatus") val maritalStatus : String,
 	@SerializedName("name") val name : String
 )

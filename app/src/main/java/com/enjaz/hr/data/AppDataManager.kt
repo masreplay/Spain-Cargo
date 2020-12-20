@@ -7,6 +7,7 @@ import com.enjaz.hr.data.model.balance.BalanceResponse
 import com.enjaz.hr.data.model.error.ErrorResponse
 import com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponse
 import com.enjaz.hr.data.model.home.HomeResponse
+import com.enjaz.hr.data.model.home.Teammate
 import com.enjaz.hr.data.model.login.LoginResponse
 import com.enjaz.hr.data.model.profile.UserInfo
 import com.enjaz.hr.data.model.requestsTypes.RequestTypesResponse
@@ -129,6 +130,15 @@ class AppDataManager @Inject constructor(
         }
         return wrapWithResourceObject(
             webservices.getHomeResponse(jsonElement = params)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+    fun getMyTeamMates(): Single<BaseResource<List<Teammate>>> {
+
+        return wrapWithResourceObject(
+            webservices.GetMyTeammates()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )

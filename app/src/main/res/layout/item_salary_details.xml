@@ -6,7 +6,8 @@
 
         <variable
             name="item"
-            type="String" />
+            type="com.enjaz.hr.data.model.salary.Item" />
+
         <variable
             name="clickListener"
             type="com.enjaz.hr.ui.profile.SalaryDetailsFragment" />
@@ -16,94 +17,62 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:clickable="true"
-        android:onClick="@{()->clickListener.onItemClick(item)}"
         android:layout_marginTop="8dp"
-        app:carbon_cornerRadius="8dp"
         android:background="@color/carbon_white"
-        android:focusable="true">
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{()->clickListener.onItemClick(item)}"
+        app:carbon_cornerRadius="8dp">
+
 
         <TextView
             android:id="@+id/tv_start_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/tv_total_salaryL"
-            app:layout_constraintEnd_toEndOf="@id/tv_total_salaryL"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="16dp"
             android:fontFamily="sans-serif-medium"
+            android:text="@{item.dateFormatted}"
             android:textColor="@color/carbon_grey_800"
-            android:text="2020-01-06"
-
-            />
-
-
-        <TextView
-            android:id="@+id/tv_dash"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_margin="16dp"
-            android:fontFamily="sans-serif-medium"
-            android:textColor="@color/carbon_grey_800"
-            android:text="-"
-
-            />
-        <TextView
-            android:id="@+id/tv_end_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@id/tv_total_deductionL"
-            app:layout_constraintStart_toStartOf="@id/tv_total_deductionL"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="16dp"
-            android:fontFamily="sans-serif-medium"
-            android:textColor="@color/carbon_grey_800"
-            android:text="2020-02-05"
-
-            />
-
-
+            app:layout_constraintStart_toStartOf="@+id/tv_total_salaryL"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <View
             android:id="@+id/separator"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="@color/carbon_grey_200"
-            app:layout_constraintTop_toBottomOf="@id/tv_start_date"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
-            />
+            android:background="@color/carbon_grey_200"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_start_date" />
 
 
         <TextView
             android:id="@+id/tv_total_salaryL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/separator"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="parent"
             android:text="@string/total_salary"
             android:textColor="@color/carbon_grey_700"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/separator"
 
             />
+
         <TextView
             android:id="@+id/tv_total_salary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tv_total_salaryL"
-            app:layout_constraintStart_toStartOf="@id/tv_total_salaryL"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="4dp"
-            android:text="+ 1,000,000 IQD"
-            android:textColor="@color/green"
-            android:fontFamily="sans-serif-medium"
             android:layout_marginBottom="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="@{item.amount}"
+            android:textColor="@color/green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_total_salaryL"
+            app:layout_constraintTop_toBottomOf="@id/tv_total_salaryL"
 
             />
 
@@ -112,23 +81,23 @@
             android:id="@+id/tv_total_deductionL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/separator"
-            android:layout_marginEnd="16dp"
             android:layout_marginTop="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"
             android:text="@string/total_deduction"
             android:textColor="@color/carbon_grey_700"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/separator" />
+
         <TextView
             android:id="@+id/tv_total_deduction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tv_total_salaryL"
-            app:layout_constraintStart_toStartOf="@id/tv_total_deductionL"
             android:layout_marginTop="4dp"
-            android:text="- 100,000 IQD"
-            android:textColor="@color/red"
             android:fontFamily="sans-serif-medium"
+            android:text="@{item.totalDeductionFormatted}"
+            android:textColor="@color/red"
+            app:layout_constraintStart_toStartOf="@id/tv_total_deductionL"
+            app:layout_constraintTop_toBottomOf="@id/tv_total_salaryL"
 
             />
 

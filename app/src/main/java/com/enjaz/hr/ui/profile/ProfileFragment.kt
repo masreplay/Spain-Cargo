@@ -54,6 +54,10 @@ class ProfileFragment :
         findNavController().navigate(R.id.settingsFragment)
     }
 
+    override fun onEditProfilePhotoClick() {
+
+    }
+
     override fun detailsAvailable() {
         TODO("Not yet implemented")
     }
@@ -79,6 +83,7 @@ interface IProfileInteractionListener : BaseNavigator {
     fun onBalanceClick()
     fun onSalaryDetailsClick()
     fun onSettingsClick()
+    fun onEditProfilePhotoClick()
     fun detailsAvailable()
     fun noDetails()
     fun hideLeaveCreditView()

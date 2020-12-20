@@ -14,7 +14,7 @@ class HRMApp : Application() {
     override fun onCreate() {
         super.onCreate()
         Lingver.init(this, Locale.getDefault())
-        PrefsManager.init(this)
+        PrefsManager.init()
         Fresco.initialize(this)
     }
 

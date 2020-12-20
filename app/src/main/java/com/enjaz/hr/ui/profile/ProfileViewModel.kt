@@ -51,8 +51,8 @@ class ProfileViewModel @ViewModelInject constructor(
             ::onGetProfileInfoSuccess,
             { e ->
                 //error handling
-
-                userInfoResponse.postValue(BaseResource.success(PrefsManager.instance?.getProfile()))
+                if (PrefsManager.instance?.getProfile()!=null)
+                    userInfoResponse.postValue(BaseResource.success(PrefsManager.instance?.getProfile()))
 
             })
         refreshListener.postValue(View.OnClickListener { getProfileInfo() })

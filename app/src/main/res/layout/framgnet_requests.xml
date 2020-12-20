@@ -28,31 +28,43 @@
                 android:layout_height="match_parent"
                 android:background="@color/colorPrimary" />
         </com.github.florent37.shapeofview.shapes.ArcView>
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs"
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginHorizontal="16dp"
-            android:background="@drawable/bg_round_ripple_16dp"
-            android:elevation="0dp"
-            app:elevation="0dp"
-            app:tabIndicatorFullWidth="true"
-            app:tabIndicatorHeight="3dp"
-            app:tabRippleColor="@color/colorPrimary"
-            app:tabSelectedTextColor="@color/colorPrimary"
-            app:tabTextAppearance="@style/profile_text_tabs">
+            app:layout_constraintTop_toTopOf="parent">
 
-        </com.google.android.material.tabs.TabLayout>
+            <TextView
+                android:id="@+id/tv_received"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_round_outline_ripple_16dp"
+                android:paddingVertical="8dp"
+                android:text="Received"
+                android:textAlignment="center"
+                android:textColor="@color/white" />
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/pager"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabs"
+            <TextView
+                android:id="@+id/tv_sent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_round_ripple_16dp"
+                android:paddingVertical="8dp"
+                android:text="Sent"
+                android:textAlignment="center"
+                android:textColor="@color/black" />
+        </LinearLayout>
 
-        />
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

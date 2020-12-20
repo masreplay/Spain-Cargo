@@ -3,14 +3,17 @@ package com.enjaz.hr.ui.profile
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.enjaz.hr.R
+import com.enjaz.hr.data.model.salary.Item
 import com.enjaz.hr.databinding.FragmentSalaryDetailsBinding
 import com.enjaz.hr.ui.base.BaseFragment
 import com.enjaz.hr.util.makeGone
 import com.enjaz.hr.util.makeVisible
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -67,8 +70,10 @@ class SalaryDetailsFragment :
     }
 
 
-    override fun onItemClick(model: String) {
-        findNavController().navigate(R.id.deductionDetailsFragment)
+    override fun onItemClick(model: Item) {
+        val gson=Gson()
+        val action =SalaryDetailsFragmentDirections.nextAction(gson.toJson(model))
+        findNavController().navigate(action)
     }
 
 
@@ -85,6 +90,10 @@ class SalaryDetailsFragment :
     }
 
     override fun onSettingsClick() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onEditProfilePhotoClick() {
         TODO("Not yet implemented")
     }
 

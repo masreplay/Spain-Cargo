@@ -6,13 +6,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.enjaz.hr.R
+import com.enjaz.hr.data.model.home.Teammate
 import com.enjaz.hr.databinding.ItemSentBinding
 import com.enjaz.hr.databinding.ItemTeamBinding
 import com.enjaz.hr.ui.base.BaseDataItemsAdapter
 
 open class TeamAdapter(
-    protected var context: Context, objects: MutableList<String>
-) : BaseDataItemsAdapter<String>(objects, null) {
+    protected var context: Context, objects: MutableList<Teammate>
+) : BaseDataItemsAdapter<Teammate>(objects, null) {
 
     protected lateinit var binding: ItemTeamBinding
 
