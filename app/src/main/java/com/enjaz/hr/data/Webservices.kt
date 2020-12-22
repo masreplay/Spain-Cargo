@@ -14,6 +14,7 @@ import com.enjaz.hr.data.model.video.Category
 import com.enjaz.hr.data.model.video.VidModel
 import com.google.gson.JsonElement
 import io.reactivex.Single
+import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.*
 
@@ -32,18 +33,24 @@ interface Webservices {
 
 
     @GET("api/hr/md/LeavesType/GetList")
-    fun getRequestsTypes(@Query("TimeFlag")timeFlag :Boolean): Single<Response<RequestTypesResponse>>
+    fun getRequestsTypes(@Query("TimeFlag") timeFlag: Boolean): Single<Response<RequestTypesResponse>>
 
 
     @PUT("api/hr/md/Leaves/ChangeLeaveRequest")
-    fun cancelMyRequest(@Query("WorkflowCorrelationId")workflowCorrelationId:String,@Query("NewStatus")newStatus:Int): Single<Response<String>>
+    fun cancelMyRequest(
+        @Query("WorkflowCorrelationId") workflowCorrelationId: String,
+        @Query("NewStatus") newStatus: Int
+    ): Single<Response<String>>
 
 
     @POST("api/hr/Attendance/GetMobileAttendanceStatistics")
     fun getAttendanceResponse(@Body jsonElement: JsonElement): Single<Response<AttendanceResponse>>
 
     @GET("api/hr/md/Leaves/GetLeavesRequests")
-    fun getLeaveRequests(@Query("AsManger")boolean: Boolean,@Query("leaveStatus")id:Int?=null): Single<Response<LeaveRequestResponse>>
+    fun getLeaveRequests(
+        @Query("AsManger") boolean: Boolean,
+        @Query("leaveStatus") id: Int? = null
+    ): Single<Response<LeaveRequestResponse>>
 
     @POST("api/hr/Employee/GetMobileHomeStatistics")
     fun getHomeResponse(@Body jsonElement: JsonElement): Single<Response<HomeResponse>>
@@ -66,8 +73,17 @@ interface Webservices {
 
     @FormUrlEncoded
     @POST("connect/token")
-    fun login(@Field ("client_id")client_id:String,@Field ("grant_type")grant_type:String,
-              @Field ("username")username:String,@Field ("password")password:String,@Field ("Scope")Scope:String):
+    fun login(
+        @Field("client_id") client_id: String,
+        @Field("grant_type") grant_type: String,
+        @Field("username") username: String,
+        @Field("password") password: String,
+        @Field("Scope") Scope: String
+    ):
             Single<Response<LoginResponse>>
+
+    @Multipart
+    @POST("/api/hr/Employee/ChangeProfilePicture")
+    fun updateProfilePicture(@Part File: MultipartBody.Part): Single<Response<String>>
 
 }

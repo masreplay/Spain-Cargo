@@ -16,14 +16,13 @@
         android:background="@color/grey_100">
 
 
-
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/qi_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="16dp"
-
+            android:visibility="gone"
             app:cardBackgroundColor="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -141,90 +140,85 @@
         </com.google.android.material.card.MaterialCardView>
 
 
-<com.google.android.material.card.MaterialCardView
-    android:id="@+id/card_leaveCredit"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginHorizontal="10dp"
-    android:layout_marginTop="20dp"
-    app:cardBackgroundColor="@color/carbon_white"
-    app:cardElevation="0dp"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/qi_card"
-
-    android:visibility="gone"
-    >
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout4"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_leaveCredit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/carbon_white"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@id/qi_card">
 
 
-  >
-
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_margin="16dp"
-                android:background="@drawable/bg_circle_transparent"
-                android:backgroundTint="@color/colorPrimary"
-                android:padding="4dp"
-                android:src="@drawable/ic_baseline_fiber_manual_record_24"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView27"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout4"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="Leaves Credit"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-                app:layout_constraintStart_toEndOf="@+id/imageView5"
-                app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
 
-            <View
-                android:id="@+id/view_line"
-                android:layout_width="0dp"
-                android:layout_height="2dp"
-                android:layout_margin="16dp"
-                android:background="@color/grey_200"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView27" />
-
-<androidx.recyclerview.widget.RecyclerView
-    android:id="@+id/rv"
-    items="@{viewModel.balanceResponse.data.balances}"
-    android:layout_width="match_parent"
-    android:layout_height="210dp"
-    android:orientation="vertical"
-    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/view_line"
-    tools:listitem="@layout/item_balance"
+                >
 
 
-    />
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_margin="16dp"
+                    android:background="@drawable/bg_circle_transparent"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_baseline_fiber_manual_record_24"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView27"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Leaves Credit"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+                    app:layout_constraintStart_toEndOf="@+id/imageView5"
+                    app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
 
+                <View
+                    android:id="@+id/view_line"
+                    android:layout_width="0dp"
+                    android:layout_height="2dp"
+                    android:layout_margin="16dp"
+                    android:background="@color/grey_200"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv"
+                    items="@{viewModel.balanceResponse.data.balances}"
+                    android:layout_width="match_parent"
+                    android:layout_height="210dp"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view_line"
+                    tools:listitem="@layout/item_balance"
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-</com.google.android.material.card.MaterialCardView>
+                    />
 
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

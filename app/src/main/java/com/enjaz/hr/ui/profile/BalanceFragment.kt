@@ -74,6 +74,10 @@ class BalanceFragment :
         TODO("Not yet implemented")
     }
 
+    override fun onEditProfilePhotoClick() {
+
+    }
+
     override fun detailsAvailable() {
         TODO("Not yet implemented")
     }

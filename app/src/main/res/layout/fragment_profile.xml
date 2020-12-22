@@ -9,8 +9,11 @@
             name="viewModel"
             type="com.enjaz.hr.ui.profile.ProfileViewModel" />
 
-    </data>
+        <import type="com.enjaz.hr.data.model.Status" />
 
+        <import type="android.view.View" />
+
+    </data>
 
 
     <LinearLayout
@@ -20,359 +23,372 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="match_parent">
 
-            >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <com.facebook.drawee.view.SimpleDraweeView
-                    android:id="@+id/image"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_marginTop="32dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:roundedCornerRadius="100dp"
-                    bind:imageUrl="@{viewModel.userInfoResponse.data.profilePictureUrl}" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_edit_24"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    app:layout_constraintBottom_toBottomOf="@+id/image"
-                    app:layout_constraintEnd_toEndOf="@+id/image" />
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:animateLayoutChanges="true">
 
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text='@{viewModel.userInfoResponse.data.basicInformation.name,default="abdalla atheer"}'
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
-                    android:textColor="@color/carbon_grey_800"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/image" />
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:elevation="3dp"
+                        android:visibility="@{viewModel.updateUserProfileResponse.status==Status.LOADING?View.VISIBLE:View.GONE,default=gone}"
+                        app:layout_constraintBottom_toBottomOf="@+id/image"
+                        app:layout_constraintEnd_toEndOf="@+id/image"
+                        app:layout_constraintStart_toStartOf="@+id/image"
+                        app:layout_constraintTop_toTopOf="@+id/image" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text='@{viewModel.userInfoResponse.data.workInformation.jobTitle,default="Developer"}'
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-                    android:textColor="@color/carbon_grey_600"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginBottom="16dp"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/image"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_marginTop="32dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:roundedCornerRadius="100dp"
+                        bind:imageUrl="@{viewModel.userInfoResponse.data.profilePictureUrl}" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:visibility="@{viewModel.updateUserProfileResponse.status==Status.LOADING?View.GONE:View.VISIBLE,default=visible}"
+                        android:onClick="@{()->viewModel.navigator.onEditProfilePhotoClick()}"
+                        android:src="@drawable/ic_baseline_edit_24"
+                        app:layout_constraintBottom_toBottomOf="@+id/image"
+                        app:layout_constraintEnd_toEndOf="@+id/image" />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text='@{viewModel.userInfoResponse.data.basicInformation.name,default="abdalla atheer"}'
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                        android:textColor="@color/carbon_grey_800"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/image" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:gravity="center"
+                        android:text='@{viewModel.userInfoResponse.data.workInformation.jobTitle,default="Developer"}'
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+                        android:textColor="@color/carbon_grey_600"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            <carbon.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/carbon_white"
-                app:carbon_cornerRadiusTopEnd="40dp"
-                app:carbon_cornerRadiusTopStart="40dp"
-
-                >
-
-                <LinearLayout
+                <carbon.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginHorizontal="8dp"
-                    android:orientation="vertical"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@color/carbon_white"
+                    app:carbon_cornerRadiusTopEnd="40dp"
+                    app:carbon_cornerRadiusTopStart="40dp"
 
                     >
 
-
-                    <carbon.widget.LinearLayout
-                        android:id="@+id/lyt_personalDetails"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/spacing_xxlarge"
-                        android:layout_marginTop="30dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center_vertical"
-                        android:onClick="@{()->viewModel.navigator.onPersonalDetailsClick()}"
-                        android:orientation="horizontal"
-                        android:paddingLeft="@dimen/spacing_large"
-                        android:paddingRight="@dimen/spacing_large"
-                        app:carbon_rippleColor="@color/colorPrimaryLight">
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="8dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
 
-                        <carbon.widget.ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="#deeeff"
-                            android:padding="6dp"
-                            app:carbon_cornerRadius="6dp"
-                            app:carbon_tint="#298aec"
-                            app:srcCompat="@drawable/ic_person_outline" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/spacing_large"
-                            android:layout_marginRight="@dimen/spacing_large"
-                            android:layout_weight="1"
-                            android:text="@string/user_information"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                            android:textColor="@color/carbon_grey_800"
-                            app:fontFamily="sans-serif-medium" />
-
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:tint="@color/carbon_grey_500"
-                            app:srcCompat="@drawable/ic_arrow_right" />
+                        >
 
 
-                    </carbon.widget.LinearLayout>
+                        <carbon.widget.LinearLayout
+                            android:id="@+id/lyt_personalDetails"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:layout_marginTop="30dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:onClick="@{()->viewModel.navigator.onPersonalDetailsClick()}"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            app:carbon_rippleColor="@color/colorPrimaryLight">
+
+                            <carbon.widget.ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="#deeeff"
+                                android:padding="6dp"
+                                app:carbon_cornerRadius="6dp"
+                                app:carbon_tint="#298aec"
+                                app:srcCompat="@drawable/ic_person_outline" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:layout_weight="1"
+                                android:text="@string/user_information"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                android:textColor="@color/carbon_grey_800"
+                                app:fontFamily="sans-serif-medium" />
+
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:tint="@color/carbon_grey_500"
+                                app:srcCompat="@drawable/ic_arrow_right" />
 
 
-                    <carbon.widget.LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/spacing_xxlarge"
-                        android:layout_marginTop="10dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center_vertical"
-                        android:onClick="@{()->viewModel.navigator.onSalaryDetailsClick()}"
-                        android:orientation="horizontal"
-
-                        android:paddingLeft="@dimen/spacing_large"
-                        android:paddingRight="@dimen/spacing_large"
-                        app:carbon_rippleColor="@color/colorPrimaryLight">
-
-                        <carbon.widget.ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@color/greenLight"
-                            android:padding="6dp"
-                            app:carbon_cornerRadius="6dp"
-                            app:carbon_tint="#00c290"
-                            app:srcCompat="@drawable/ic_coin" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/spacing_large"
-                            android:layout_marginRight="@dimen/spacing_large"
-                            android:layout_weight="1"
-                            android:text="@string/salary_details"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                            android:textColor="@color/carbon_grey_800"
-                            app:fontFamily="sans-serif-medium" />
-
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:tint="@color/carbon_grey_500"
-                            app:srcCompat="@drawable/ic_arrow_right" />
+                        </carbon.widget.LinearLayout>
 
 
-                    </carbon.widget.LinearLayout>
-                    <carbon.widget.LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/spacing_xxlarge"
-                        android:layout_marginTop="10dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center_vertical"
-                        android:onClick="@{()->viewModel.navigator.onBalanceClick()}"
-                        android:orientation="horizontal"
+                        <carbon.widget.LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:layout_marginTop="10dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:onClick="@{()->viewModel.navigator.onSalaryDetailsClick()}"
+                            android:orientation="horizontal"
 
-                        android:paddingLeft="@dimen/spacing_large"
-                        android:paddingRight="@dimen/spacing_large"
-                        app:carbon_rippleColor="@color/colorPrimaryLight">
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            app:carbon_rippleColor="@color/colorPrimaryLight">
 
-                        <carbon.widget.ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="#F1D4F8"
-                            android:padding="6dp"
-                            app:carbon_cornerRadius="6dp"
-                            app:carbon_tint="#CB1CEA"
-                            app:srcCompat="@drawable/ic_balance" />
+                            <carbon.widget.ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/greenLight"
+                                android:padding="6dp"
+                                app:carbon_cornerRadius="6dp"
+                                app:carbon_tint="#00c290"
+                                app:srcCompat="@drawable/ic_coin" />
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/spacing_large"
-                            android:layout_marginRight="@dimen/spacing_large"
-                            android:layout_weight="1"
-                            android:text="Balance"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                            android:textColor="@color/carbon_grey_800"
-                            app:fontFamily="sans-serif-medium" />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:layout_weight="1"
+                                android:text="@string/salary_details"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                android:textColor="@color/carbon_grey_800"
+                                app:fontFamily="sans-serif-medium" />
 
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:tint="@color/carbon_grey_500"
-                            app:srcCompat="@drawable/ic_arrow_right" />
-
-
-                    </carbon.widget.LinearLayout>
-
-                    <carbon.widget.LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/spacing_xxlarge"
-                        android:layout_marginTop="10dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:onClick="@{()->viewModel.navigator.onSettingsClick()}"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:paddingLeft="@dimen/spacing_large"
-                        android:paddingRight="@dimen/spacing_large"
-                        app:carbon_rippleColor="@color/colorPrimaryLight">
-
-                        <carbon.widget.ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@color/orangeLight"
-                            android:padding="6dp"
-                            app:carbon_cornerRadius="6dp"
-                            app:carbon_tint="#ff9b00"
-                            app:srcCompat="@drawable/ic_outline_settings_24" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/spacing_large"
-                            android:layout_marginRight="@dimen/spacing_large"
-                            android:layout_weight="1"
-                            android:text="@string/settings"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                            android:textColor="@color/carbon_grey_800"
-                            app:fontFamily="sans-serif-medium" />
-
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:tint="@color/carbon_grey_500"
-                            app:srcCompat="@drawable/ic_arrow_right" />
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:tint="@color/carbon_grey_500"
+                                app:srcCompat="@drawable/ic_arrow_right" />
 
 
-                    </carbon.widget.LinearLayout>
+                        </carbon.widget.LinearLayout>
+
+                        <carbon.widget.LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:layout_marginTop="10dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:onClick="@{()->viewModel.navigator.onBalanceClick()}"
+                            android:orientation="horizontal"
+
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            app:carbon_rippleColor="@color/colorPrimaryLight">
+
+                            <carbon.widget.ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="#F1D4F8"
+                                android:padding="6dp"
+                                app:carbon_cornerRadius="6dp"
+                                app:carbon_tint="#CB1CEA"
+                                app:srcCompat="@drawable/ic_balance" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:layout_weight="1"
+                                android:text="Balance"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                android:textColor="@color/carbon_grey_800"
+                                app:fontFamily="sans-serif-medium" />
+
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:tint="@color/carbon_grey_500"
+                                app:srcCompat="@drawable/ic_arrow_right" />
 
 
-                    <carbon.widget.LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/spacing_xxlarge"
-                        android:layout_marginTop="10dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
+                        </carbon.widget.LinearLayout>
 
-                        android:paddingLeft="@dimen/spacing_large"
-                        android:paddingRight="@dimen/spacing_large"
-                        app:carbon_rippleColor="@color/colorPrimaryLight">
+                        <carbon.widget.LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:layout_marginTop="10dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:onClick="@{()->viewModel.navigator.onSettingsClick()}"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            app:carbon_rippleColor="@color/colorPrimaryLight">
 
-                        <carbon.widget.ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="#fbfcb6"
-                            android:padding="6dp"
-                            app:carbon_cornerRadius="6dp"
-                            app:carbon_tint="@color/carbon_yellow_800"
-                            app:srcCompat="@drawable/ic_outline_info_24" />
+                            <carbon.widget.ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@color/orangeLight"
+                                android:padding="6dp"
+                                app:carbon_cornerRadius="6dp"
+                                app:carbon_tint="#ff9b00"
+                                app:srcCompat="@drawable/ic_outline_settings_24" />
 
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/spacing_large"
-                            android:layout_marginRight="@dimen/spacing_large"
-                            android:layout_weight="1"
-                            android:text="@string/about"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                            android:textColor="@color/carbon_grey_800"
-                            app:fontFamily="sans-serif-medium" />
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:layout_weight="1"
+                                android:text="@string/settings"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                android:textColor="@color/carbon_grey_800"
+                                app:fontFamily="sans-serif-medium" />
 
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:tint="@color/carbon_grey_500"
-                            app:srcCompat="@drawable/ic_arrow_right" />
-
-
-                    </carbon.widget.LinearLayout>
-
-                    <carbon.widget.LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/spacing_xxlarge"
-                        android:layout_marginTop="10dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-
-                        android:paddingLeft="@dimen/spacing_large"
-                        android:paddingRight="@dimen/spacing_large"
-                        app:carbon_rippleColor="@color/colorPrimaryLight">
-
-                        <carbon.widget.ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="#fce8e8"
-                            android:padding="6dp"
-                            app:carbon_cornerRadius="6dp"
-                            app:carbon_tint="#ff4a4a"
-                            app:srcCompat="@drawable/ic_power_settings" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/spacing_large"
-                            android:layout_marginRight="@dimen/spacing_large"
-                            android:layout_weight="1"
-                            android:text="@string/logout"
-                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                            android:textColor="@color/carbon_grey_800"
-                            app:fontFamily="sans-serif-medium" />
-
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:tint="@color/carbon_grey_500"
-                            app:srcCompat="@drawable/ic_arrow_right" />
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:tint="@color/carbon_grey_500"
+                                app:srcCompat="@drawable/ic_arrow_right" />
 
 
-                    </carbon.widget.LinearLayout>
-                </LinearLayout>
-
-            </carbon.widget.ConstraintLayout>
+                        </carbon.widget.LinearLayout>
 
 
-        </LinearLayout>
+                        <carbon.widget.LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:layout_marginTop="10dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            app:carbon_rippleColor="@color/colorPrimaryLight">
+
+                            <carbon.widget.ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="#fbfcb6"
+                                android:padding="6dp"
+                                app:carbon_cornerRadius="6dp"
+                                app:carbon_tint="@color/carbon_yellow_800"
+                                app:srcCompat="@drawable/ic_outline_info_24" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:layout_weight="1"
+                                android:text="@string/about"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                android:textColor="@color/carbon_grey_800"
+                                app:fontFamily="sans-serif-medium" />
+
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:tint="@color/carbon_grey_500"
+                                app:srcCompat="@drawable/ic_arrow_right" />
+
+
+                        </carbon.widget.LinearLayout>
+
+                        <carbon.widget.LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/spacing_xxlarge"
+                            android:layout_marginTop="10dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+
+                            android:paddingLeft="@dimen/spacing_large"
+                            android:paddingRight="@dimen/spacing_large"
+                            app:carbon_rippleColor="@color/colorPrimaryLight">
+
+                            <carbon.widget.ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="#fce8e8"
+                                android:padding="6dp"
+                                app:carbon_cornerRadius="6dp"
+                                app:carbon_tint="#ff4a4a"
+                                app:srcCompat="@drawable/ic_power_settings" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/spacing_large"
+                                android:layout_marginRight="@dimen/spacing_large"
+                                android:layout_weight="1"
+                                android:text="@string/logout"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                                android:textColor="@color/carbon_grey_800"
+                                app:fontFamily="sans-serif-medium" />
+
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:tint="@color/carbon_grey_500"
+                                app:srcCompat="@drawable/ic_arrow_right" />
+
+
+                        </carbon.widget.LinearLayout>
+                    </LinearLayout>
+
+                </carbon.widget.ConstraintLayout>
+
+
+            </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 

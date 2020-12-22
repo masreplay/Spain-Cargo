@@ -18,9 +18,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="@{item.allocationName}"
-            android:textSize="16sp"
+            android:layout_marginVertical="8dp"
+            android:layout_marginStart="16dp"
+            android:text='@{item.allocationName,default="Marrige"}'
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,11 +28,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="@{item.amount}"
-            android:textColor="@{item.addition?@color/green:@color/red}"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:layout_marginVertical="8dp"
+            android:layout_marginEnd="16dp"
+            android:text='@{item.amount,default="1000 IQD"}'
+            android:textColor="@{item.addition?@color/green:@color/red,default=@color/green}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

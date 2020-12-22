@@ -11,6 +11,7 @@ import com.enjaz.hr.data.model.profile.UserInfo
 import com.enjaz.hr.data.model.salary.SalaryDetailsResponse
 import com.enjaz.hr.ui.base.BaseViewModel
 import com.enjaz.hr.util.PrefsManager
+import okhttp3.MultipartBody
 
 class ProfileViewModel @ViewModelInject constructor(
     dataManager: AppDataManager
@@ -24,6 +25,35 @@ class ProfileViewModel @ViewModelInject constructor(
 
     var userInfoResponse: MutableLiveData<BaseResource<UserInfo>> = MutableLiveData()
 
+    var updateUserProfileResponse: MutableLiveData<BaseResource<String>> = MutableLiveData()
+
+
+    fun updateUserProfile(File: MultipartBody.Part) {
+        updateUserProfileResponse.value =
+            BaseResource.loading(updateUserProfileResponse.value?.data)
+        dispose(
+            dataManager.updateProfilePicture(File),
+            ::onUpdateProfileSuccess,
+            { e ->
+                //error handling
+                e.message?.let {
+                    updateUserProfileResponse.postValue(BaseResource.error(it, null))
+                    Log.d("error", it)
+                }
+
+
+            })
+        refreshListener.postValue(View.OnClickListener { updateUserProfile(File) })
+
+
+    }
+
+
+    private fun onUpdateProfileSuccess(result: BaseResource<String>) {
+        result.data?.let {
+            updateUserProfileResponse.postValue(result)
+        }
+    }
 
     fun getSalaryDetails() {
         salaryDetailsResponse.value = BaseResource.loading(salaryDetailsResponse.value?.data)
@@ -51,7 +81,7 @@ class ProfileViewModel @ViewModelInject constructor(
             ::onGetProfileInfoSuccess,
             { e ->
                 //error handling
-                if (PrefsManager.instance?.getProfile()!=null)
+                if (PrefsManager.instance?.getProfile() != null)
                     userInfoResponse.postValue(BaseResource.success(PrefsManager.instance?.getProfile()))
 
             })

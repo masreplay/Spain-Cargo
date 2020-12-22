@@ -38,7 +38,6 @@ fun setTime(view: TextView, time: Int) {
 
 @BindingAdapter("progressColors")
 fun setProgressColors(progressBar: ProgressBar, position: Int) {
-
     when(position){
 
         0-> {

@@ -18,6 +18,7 @@ import com.google.gson.JsonObject
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import okhttp3.MultipartBody
 import retrofit2.Response
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -148,6 +149,14 @@ class AppDataManager @Inject constructor(
 
         return wrapWithResourceObject(
             webservices.login("EnjazERP_App", "password", username, pass, "EnjazERP")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+    fun updateProfilePicture(File: MultipartBody.Part): Single<BaseResource<String>> {
+        return wrapWithResourceObject(
+            webservices.updateProfilePicture(File)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )

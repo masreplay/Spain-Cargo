@@ -23,8 +23,6 @@ class RequestsFragment :
     IRequestsInteractionListener {
 
     private val requestsViewModel: RequestsViewModel by viewModels()
-    lateinit var fragmentSent: Fragment
-    lateinit var fragmentReceived: Fragment
     override fun getLayoutId(): Int {
         return R.layout.framgnet_requests
     }
