@@ -34,6 +34,7 @@ class ReceivedRequestsFragment :
     }
 
 
+
     override fun getNavigator(): IRequestsInteractionListener {
         return this
     }
@@ -43,7 +44,6 @@ class ReceivedRequestsFragment :
 
 
 
-        getViewModel().getLeaveRequests(true,4)
 
         getViewDataBinding().rv.apply {
             adapter = receiveRequestsAdapter
@@ -75,10 +75,12 @@ class ReceivedRequestsFragment :
         receiveRequestsAdapter = ReceivedRequestsAdapter(requireContext(), mutableListOf())
         receiveRequestsAdapter.setOnItemClickListener(this)
 
+        getViewModel().getLeaveRequests(true,4)
+
     }
 
     override fun onAcceptClick(item: LeaveRequestResponseItem) {
-        MaterialAlertDialogBuilder(context)
+        MaterialAlertDialogBuilder(requireActivity())
             .setTitle("Accept Request")
             .setMessage("Are you sure you want to accept this request")
             .setNegativeButton("Cancel") { dialog, which ->
@@ -92,7 +94,7 @@ class ReceivedRequestsFragment :
     }
 
     override fun onDeclinedClick(item:LeaveRequestResponseItem) {
-        MaterialAlertDialogBuilder(context)
+        MaterialAlertDialogBuilder(requireActivity())
             .setTitle("Decline Request")
             .setMessage("Are you sure you want to decline this request")
             .setNegativeButton("Cancel") { dialog, which ->
@@ -114,12 +116,15 @@ class ReceivedRequestsFragment :
         getViewDataBinding().lytNoData.makeGone()
     }
 
+
     override fun showSnack(string: String, color: String, drawable: Int?) {
         snackBar(string, drawable, color, getViewDataBinding().parent, requireContext())
 
     }
 
-
+    override fun onFabClick() {
+        TODO("Not yet implemented")
+    }
 
 
 }

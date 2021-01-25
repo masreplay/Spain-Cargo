@@ -29,7 +29,6 @@ class SalaryDetailsFragment :
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_salary_details
-
     }
 
     override fun getViewModel(): ProfileViewModel {
@@ -78,6 +77,10 @@ class SalaryDetailsFragment :
 
 
     override fun onPersonalDetailsClick() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onDeleteProfilePhotoClick() {
         TODO("Not yet implemented")
     }
 

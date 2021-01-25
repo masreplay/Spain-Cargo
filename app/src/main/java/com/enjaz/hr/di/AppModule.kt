@@ -30,7 +30,10 @@ object AppModule {
 
     @Provides
     @Singleton
-    internal fun provideRetrofit(shredPref: SharedPreferences,@ApplicationContext context: Context): Webservices {
+    internal fun provideRetrofit(
+        shredPref: SharedPreferences,
+        @ApplicationContext context: Context
+    ): Webservices {
 
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
@@ -82,7 +85,6 @@ object AppModule {
     @Singleton
     fun providesRoomDatabase(@ApplicationContext context: Context): MovieDB {
         return Room.databaseBuilder(context, MovieDB::class.java, "hr_database").build()
-
     }
 
     @Singleton

@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.enjaz.hr.ui.sentRequest.RequestTypesViewModel" />
+            type="com.enjaz.hr.ui.sendRequest.RequestTypesViewModel" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -75,11 +75,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/view_line"
-
-                tools:listitem="@layout/item_request_type"
-                />
-
-
+                tools:listitem="@layout/item_request_type" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

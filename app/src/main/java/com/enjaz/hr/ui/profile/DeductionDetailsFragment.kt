@@ -6,6 +6,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.afollestad.vvalidator.util.hide
 import com.enjaz.hr.R
 import com.enjaz.hr.data.model.salary.Item
 import com.enjaz.hr.databinding.FragmentDeductionDetailsBinding
@@ -58,6 +59,9 @@ class DeductionDetailsFragment :
             adapter=salaryDetailAdapterDed
         }
 
+        if(res.salaryDetails.none { !it.isAddition })
+            getViewDataBinding().lytDeductions.hide()
+
         salaryDetailAdapter.setItems(res.salaryDetails.filter { it.isAddition })
         salaryDetailAdapterDed.setItems(res.salaryDetails.filter { !it.isAddition })
 
@@ -65,6 +69,10 @@ class DeductionDetailsFragment :
 
 
     override fun onPersonalDetailsClick() {
+    }
+
+    override fun onDeleteProfilePhotoClick() {
+        TODO("Not yet implemented")
     }
 
     override fun onBalanceClick() {

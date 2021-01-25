@@ -119,6 +119,10 @@ class AttendanceFragment :
     override fun attendanceAvailable() {
         getViewDataBinding().lytNoData.makeGone()
     }
+
+    override fun onFabClick() {
+        findNavController().navigate(R.id.requestMainTypesFragment)
+    }
 }
 
 
@@ -126,4 +130,5 @@ interface IAttendanceInteractionListener : BaseNavigator {
     fun showSnack(string: String, color: String, drawable: Int?)
     fun noAttendance()
     fun attendanceAvailable()
+    fun onFabClick()
 }

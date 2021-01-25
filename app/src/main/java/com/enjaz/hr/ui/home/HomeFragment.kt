@@ -71,7 +71,7 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
                 .defaultSelectedDate(calendar)
                 .build()
 
-        getViewModel().getHomeData((calendar.get(Calendar.MONTH)+1),calendar.get(Calendar.YEAR))
+        getViewModel().getHomeData((calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.YEAR))
 
 //        getViewModel().getSchedulle(
 //            (calendar.get(Calendar.MONTH) + 1).toString() + " " + (calendar.get(
@@ -80,13 +80,13 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
 //        )
 
 
-
-
         horizontalCalendar.calendarListener = object : HorizontalCalendarListener() {
             override fun onDateSelected(date: Calendar?, position: Int) { //do something
 
-                    getViewModel().getHomeData((horizontalCalendar.selectedDate.time.month + 1) , horizontalCalendar.selectedDate.get(Calendar.YEAR))
-
+                getViewModel().getHomeData(
+                    (horizontalCalendar.selectedDate.time.month + 1),
+                    horizontalCalendar.selectedDate.get(Calendar.YEAR)
+                )
 
 
             }
@@ -101,37 +101,34 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
             response.data?.let {
 
 
+                val section1 = DonutSection(
+                    name = "section_1",
+                    color = ContextCompat.getColor(requireActivity(), R.color.green),
+                    amount = it.vacation.toFloat()
+                )
 
-            val section1 = DonutSection(
-                name = "section_1",
-                color = ContextCompat.getColor(requireActivity(), R.color.green),
-                amount = it.vacation.toFloat()
-            )
 
-
-            val section2 = DonutSection(
+                val section2 = DonutSection(
                     name = "section_2",
                     color = ContextCompat.getColor(requireActivity(), R.color.colorPrimary),
                     amount = it.present.toFloat()
                 )
 
-            val section3 =
-                DonutSection(
-                    name = "section_3",
-                    color = ContextCompat.getColor(requireActivity(), R.color.orange),
-                    amount = it.delay.toFloat()
-                )
+                val section3 = DonutSection(
+                        name = "section_3",
+                        color = ContextCompat.getColor(requireActivity(), R.color.orange),
+                        amount = it.delay.toFloat()
+                    )
 
-            val section4 =
-                DonutSection(
-                    name = "section_4",
-                    color = ContextCompat.getColor(requireActivity(), R.color.red),
-                    amount = it.deduction.toFloat()
-                )
+                val section4 = DonutSection(
+                        name = "section_4",
+                        color = ContextCompat.getColor(requireActivity(), R.color.red),
+                        amount = it.absent.toFloat()
+                    )
 
-            donut_attendance.cap = 100f
-            donut_attendance.submitData(listOf(section1,section2, section3, section4) )
-        }
+                donut_attendance?.cap = it.totalWorkdays.toFloat()
+                donut_attendance?.submitData(listOf(section1, section2, section3, section4))
+            }
 
         })
 
@@ -153,7 +150,6 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
         usersAdapter = UsersAdapter(requireContext(), mutableListOf())
 
     }
-
 
 
 }

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -9,6 +9,22 @@
         <item name="android:datePickerStyle">@style/DatePicker</item>
         <item name="android:datePickerDialogTheme">@style/DatePicker</item>
     </style>
+
+    <style name="LoginTheme" parent="AppTheme">
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+    </style>
+
+    <style name="RippleStyleWhite">
+        <item name="mrl_rippleOverlay">true</item>
+        <item name="mrl_rippleColor">#80FFFFFF</item>
+        <item name="mrl_rippleHover">true</item>
+        <item name="mrl_rippleAlpha">0.2</item>
+    </style>
+
+    <style name="RippleStyleBlack" parent="RippleStyleWhite">
+        <item name="mrl_rippleColor">#8096989A</item>
+    </style>
+
 
     <style name="SwitchButtonStyle">
         <item name="android:paddingLeft">10dp</item>
@@ -41,8 +57,6 @@
     </style>
 
     <style name="StyleTitleText">
-
-        <!--        <item name="android:textColor">@color/switch_color_thumb_states</item>-->
         <item name="android:textSize">12sp</item>
     </style>
 
@@ -61,5 +75,7 @@
         <item name="android:datePickerMode">calendar</item>
         <item name="android:minDate">01/01/2019</item>
     </style>
+
+
 
 </resources>

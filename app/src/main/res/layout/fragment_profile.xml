@@ -16,7 +16,7 @@
     </data>
 
 
-    <LinearLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/grey_200">
@@ -42,7 +42,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:elevation="3dp"
-                        android:visibility="@{viewModel.updateUserProfileResponse.status==Status.LOADING?View.VISIBLE:View.GONE,default=gone}"
+                        android:visibility="@{viewModel.updateUserProfileResponse.status==Status.LOADING||viewModel.clearProfilePictureResponse.status==Status.LOADING?View.VISIBLE:View.GONE,default=gone}"
                         app:layout_constraintBottom_toBottomOf="@+id/image"
                         app:layout_constraintEnd_toEndOf="@+id/image"
                         app:layout_constraintStart_toStartOf="@+id/image"
@@ -57,19 +57,23 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:roundedCornerRadius="100dp"
+                        app:placeholderImageScaleType="fitXY"
+                        app:placeholderImage="@drawable/ic_placeholder"
                         bind:imageUrl="@{viewModel.userInfoResponse.data.profilePictureUrl}" />
 
                     <ImageView
+                        android:id="@+id/imageView7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="?attr/selectableItemBackgroundBorderless"
                         android:clickable="true"
                         android:focusable="true"
-                        android:visibility="@{viewModel.updateUserProfileResponse.status==Status.LOADING?View.GONE:View.VISIBLE,default=visible}"
                         android:onClick="@{()->viewModel.navigator.onEditProfilePhotoClick()}"
                         android:src="@drawable/ic_baseline_edit_24"
+                        android:visibility="@{viewModel.updateUserProfileResponse.status==Status.LOADING||viewModel.clearProfilePictureResponse.status==Status.LOADING?View.GONE:View.VISIBLE,default=visible}"
                         app:layout_constraintBottom_toBottomOf="@+id/image"
                         app:layout_constraintEnd_toEndOf="@+id/image" />
+
 
                     <TextView
                         android:id="@+id/textView6"
@@ -390,7 +394,7 @@
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-    </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
 </layout>

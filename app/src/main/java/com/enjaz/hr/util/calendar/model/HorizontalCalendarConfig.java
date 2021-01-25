@@ -10,7 +10,7 @@ public class HorizontalCalendarConfig {
     public static final float DEFAULT_SIZE_TEXT_MIDDLE = 24f;
     public static final float DEFAULT_SIZE_TEXT_BOTTOM = 14f;
 
-    public static final String DEFAULT_FORMAT_TEXT_TOP = "MMM";
+    public static final String DEFAULT_FORMAT_TEXT_TOP = "MMMM";
     public static final String DEFAULT_FORMAT_TEXT_MIDDLE = "dd";
     public static final String DEFAULT_FORMAT_TEXT_BOTTOM = "EEE";
 

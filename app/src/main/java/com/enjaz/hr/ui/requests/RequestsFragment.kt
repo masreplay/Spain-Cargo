@@ -2,24 +2,28 @@ package com.enjaz.hr.ui.requests
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.*
-import android.view.View.OnTouchListener
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
+import androidx.viewpager.widget.ViewPager
 import com.enjaz.hr.R
 import com.enjaz.hr.databinding.FramgnetRequestsBinding
 import com.enjaz.hr.ui.base.BaseFragment
 import com.enjaz.hr.ui.base.BaseNavigator
+import com.enjaz.hr.ui.base.BaseSheetFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.framgnet_requests.*
 
 
 @AndroidEntryPoint
 class RequestsFragment :
-    BaseFragment<FramgnetRequestsBinding, IRequestsInteractionListener, RequestsViewModel>(),
+    BaseSheetFragment<FramgnetRequestsBinding, IRequestsInteractionListener, RequestsViewModel>(),
     IRequestsInteractionListener {
 
     private val requestsViewModel: RequestsViewModel by viewModels()
@@ -50,7 +54,10 @@ class RequestsFragment :
             tv_received.setTextColor(Color.BLACK)
             tv_sent.setTextColor(Color.WHITE)
             tv_sent.background =
-                ContextCompat.getDrawable(requireActivity(), R.drawable.bg_round_outline_ripple_16dp)
+                ContextCompat.getDrawable(
+                    requireActivity(),
+                    R.drawable.bg_round_outline_ripple_16dp
+                )
             tv_received.background =
                 ContextCompat.getDrawable(
                     requireActivity(),
@@ -69,17 +76,60 @@ class RequestsFragment :
                     R.drawable.bg_round_ripple_16dp
                 )
             tv_received.background =
-                ContextCompat.getDrawable(requireActivity(), R.drawable.bg_round_outline_ripple_16dp)
+                ContextCompat.getDrawable(
+                    requireActivity(),
+                    R.drawable.bg_round_outline_ripple_16dp
+                )
 
             getViewDataBinding().pager.currentItem = 1
         }
+
+        getViewDataBinding().pager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrollStateChanged(state: Int) {}
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+            }
+
+            override fun onPageSelected(position: Int) {
+                if (position == 1) {
+                    tv_sent.setTextColor(Color.BLACK)
+                    tv_received.setTextColor(Color.WHITE)
+                    tv_sent.background =
+                        ContextCompat.getDrawable(
+                            requireActivity(),
+                            R.drawable.bg_round_ripple_16dp
+                        )
+                    tv_received.background =
+                        ContextCompat.getDrawable(
+                            requireActivity(),
+                            R.drawable.bg_round_outline_ripple_16dp
+                        )
+                } else {
+                    tv_received.setTextColor(Color.BLACK)
+                    tv_sent.setTextColor(Color.WHITE)
+                    tv_sent.background =
+                        ContextCompat.getDrawable(
+                            requireActivity(),
+                            R.drawable.bg_round_outline_ripple_16dp
+                        )
+                    tv_received.background =
+                        ContextCompat.getDrawable(
+                            requireActivity(),
+                            R.drawable.bg_round_ripple_16dp
+                        )
+                }
+            }
+        })
 
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         menu.clear()
-        inflater.inflate(R.menu.filter, menu)
+        inflater.inflate(R.menu.filter_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -90,6 +140,7 @@ class RequestsFragment :
                 || super.onOptionsItemSelected(item)
     }
 
+
     override fun noRequests() {
         TODO("Not yet implemented")
     }
@@ -98,8 +149,13 @@ class RequestsFragment :
         TODO("Not yet implemented")
     }
 
+
     override fun showSnack(string: String, color: String, drawable: Int?) {
         TODO("Not yet implemented")
+    }
+
+    override fun onFabClick() {
+        findNavController().navigate(R.id.requestMainTypesFragment)
     }
 }
 
@@ -108,5 +164,6 @@ interface IRequestsInteractionListener : BaseNavigator {
     fun noRequests()
     fun requestsAvailable()
     fun showSnack(string: String, color: String, drawable: Int?)
+    fun onFabClick()
 
 }

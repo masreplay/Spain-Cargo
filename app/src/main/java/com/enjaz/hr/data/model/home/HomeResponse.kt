@@ -27,18 +27,18 @@ data class HomeResponse(
 
     fun getPresentPercentage():String{
 
-        return "${present/totalWorkdays*100}%"
+        return "${(present.toDouble()/totalWorkdays.toDouble())*100.0}%"
     }
     fun getVacationPercentage():String{
 
-        return "${vacation/totalWorkdays*100}%"
+        return "${(vacation.toDouble()/totalWorkdays.toDouble())*100.0}%"
     }
     fun getAbsentPercentage():String{
 
-        return "${absent/totalWorkdays*100}%"
+        return "${(absent.toDouble()/totalWorkdays.toDouble())*100.0}%"
     }
     fun getDelayPercentage():String{
 
-        return "${delay/totalWorkdays*100}%"
+        return "${(delay.toDouble()/totalWorkdays.toDouble())*100.0}%"
     }
 }

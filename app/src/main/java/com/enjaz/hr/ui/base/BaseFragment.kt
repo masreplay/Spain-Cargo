@@ -93,8 +93,6 @@ abstract class BaseSheetFragment<T : ViewDataBinding, N : BaseNavigator, V : Bas
     @LayoutRes
     abstract fun getLayoutId(): Int
 
-    abstract fun getViewModelClass(): Class<V>
-
 
     abstract fun getNavigator(): N
 

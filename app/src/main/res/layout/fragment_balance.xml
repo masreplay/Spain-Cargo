@@ -147,6 +147,7 @@
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="20dp"
             android:visibility="gone"
+            tools:visibility="visible"
             app:cardBackgroundColor="@color/carbon_white"
             app:cardElevation="0dp"
             app:layout_constraintEnd_toEndOf="parent"

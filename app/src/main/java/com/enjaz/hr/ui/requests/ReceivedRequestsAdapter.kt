@@ -30,8 +30,6 @@ open class ReceivedRequestsAdapter(
         )
     }
 
-
-
 }
 interface IRRequestsItemActionListener : BaseDataItemInteractionListener {
     fun onAcceptClick(item:LeaveRequestResponseItem)

@@ -1,11 +1,12 @@
 package com.enjaz.hr.data
 
+import android.accounts.AuthenticatorDescription
 import com.enjaz.hr.data.db.MovieDB
 import com.enjaz.hr.data.model.BaseResource
 import com.enjaz.hr.data.model.attendance.AttendanceResponse
 import com.enjaz.hr.data.model.balance.BalanceResponse
 import com.enjaz.hr.data.model.error.ErrorResponse
-import com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponse
+import com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponseItem
 import com.enjaz.hr.data.model.home.HomeResponse
 import com.enjaz.hr.data.model.home.Teammate
 import com.enjaz.hr.data.model.login.LoginResponse
@@ -14,6 +15,7 @@ import com.enjaz.hr.data.model.requestsTypes.RequestTypesResponse
 import com.enjaz.hr.data.model.salary.SalaryDetailsResponse
 import com.enjaz.hr.data.model.sendRequest.SendRequestResponse
 import com.google.gson.Gson
+import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -66,6 +68,19 @@ class AppDataManager @Inject constructor(
         )
     }
 
+    fun sendFingerPrintRequest(description: String,type:Int,time:String): Single<BaseResource<Void>> {
+        val params = JsonObject().apply {
+            addProperty("description", description)
+            addProperty("type", type)
+            addProperty("time", time)
+
+        }
+        return wrapWithResourceObject(
+            webservices.sendFingerPrintRequest(params)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
 
     fun cancelMyRequest(workCorrelationId: String, newStatus: Int): Single<BaseResource<String>> {
 
@@ -104,12 +119,11 @@ class AppDataManager @Inject constructor(
     }
 
     fun getLeaveRequests(
-        boolean: Boolean,
+        isManager: Boolean,
         id: Int? = null
-    ): Single<BaseResource<LeaveRequestResponse>> {
-
+    ): Single<BaseResource<ArrayList<LeaveRequestResponseItem>>> {
         return wrapWithResourceObject(
-            webservices.getLeaveRequests(boolean, id)
+            webservices.getLeaveRequests(isManager, id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )
@@ -139,7 +153,7 @@ class AppDataManager @Inject constructor(
     fun getMyTeamMates(): Single<BaseResource<List<Teammate>>> {
 
         return wrapWithResourceObject(
-            webservices.GetMyTeammates()
+            webservices.getMyTeammates()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )
@@ -149,6 +163,16 @@ class AppDataManager @Inject constructor(
 
         return wrapWithResourceObject(
             webservices.login("EnjazERP_App", "password", username, pass, "EnjazERP")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+
+
+    fun clearProfilePicture(): Single<BaseResource<String>> {
+        return wrapWithResourceObject(
+            webservices.clearProfilePicture()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )

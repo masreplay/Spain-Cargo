@@ -17,7 +17,6 @@ class ViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         }
     }
 
-    // this counts total number of tabs
     override fun getCount(): Int {
         return 2
     }
@@ -27,7 +26,6 @@ class ViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
             0 -> "Received"
             1 -> "Sent"
             else -> "Sent"
-
         }
     }
 }

@@ -26,7 +26,7 @@
 
     <string name="welcome_back">Welcome back</string>
     <string name="sign_in_to_continue">Sign in to continue</string>
-    <string name="email">Email</string>
+    <string name="email">Email or Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="forgot_password">Forgot password</string>
@@ -113,5 +113,17 @@
     <string name="request_sent">Your request has been sent successfully</string>
     <string name="ops">Oops...</string>
     <string name="sending_request">Sending your request</string>
+    <string name="total_delay">Total Delay</string>
+    <string name="total_time">Total Time</string>
+    <string name="applied_duration">Applied Duration</string>
+    <string name="reason">Reason</string>
+    <string name="type_of_leave">Type of Leave</string>
+    <string name="casncel_request">Cancel Request</string>
+    <string name="msg_cancel">Are you sure you want to cancel this request</string>
+    <string name="dismiss">dismiss</string>
+    <string name="ok">ok</string>
+    <string name="missed_out_punch">Missed out Punch</string>
+    <string name="remove">Remove</string>
+    <string name="edit">Change Profile Picture</string>
 
 </resources>

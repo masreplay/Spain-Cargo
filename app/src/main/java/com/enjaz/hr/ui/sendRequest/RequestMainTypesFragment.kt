@@ -1,4 +1,4 @@
-package com.enjaz.hr.ui.sentRequest
+package com.enjaz.hr.ui.sendRequest
 
 import android.os.Bundle
 import android.view.View
@@ -31,9 +31,6 @@ class RequestMainTypesFragment :
         return sedRequestViewModel
     }
 
-    override fun getViewModelClass(): Class<RequestTypesViewModel> {
-        return RequestTypesViewModel::class.java
-    }
 
     override fun getNavigator(): IRequestTypesInteractionListener {
         return this

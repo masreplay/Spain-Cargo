@@ -57,6 +57,10 @@ class UserInfoFragment :
     override fun onPersonalDetailsClick() {
     }
 
+    override fun onDeleteProfilePhotoClick() {
+        TODO("Not yet implemented")
+    }
+
 
     override fun onBalanceClick() {
         TODO("Not yet implemented")

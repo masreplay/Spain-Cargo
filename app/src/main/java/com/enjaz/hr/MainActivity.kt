@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
             startActivity(intent)
             finish()
         }
+
         if (savedInstanceState == null) {
             setupBottomNavigationBar()
             val toolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
         }
 
 
-        val sharedPreferences = getDefaultSharedPreferences(applicationContext);
+        val sharedPreferences = getDefaultSharedPreferences(applicationContext)
         sharedPreferences.registerOnSharedPreferenceChangeListener(this)
 
 
@@ -99,12 +100,15 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
 
     override fun onSharedPreferenceChanged(p0: SharedPreferences?, key: String?) {
         if (key.equals("language")) {
-            Log.i("taaaaaaaaaaag","taaaaaaaaaaag")
             Lingver.getInstance().setLocale(this, p0!!.getString(key, "en")!!)
             val intent=Intent(this,MainActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
             startActivity(intent)
         }
 
+    }
+
+    fun refreshRequestsFragment(){
+        
     }
 }

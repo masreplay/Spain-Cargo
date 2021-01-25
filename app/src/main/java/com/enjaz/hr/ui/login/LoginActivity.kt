@@ -3,7 +3,7 @@ package com.enjaz.hr.ui.login
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
+import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import androidx.activity.viewModels
@@ -17,6 +17,7 @@ import com.enjaz.hr.databinding.ActivityLoginBinding
 import com.enjaz.hr.ui.base.BaseActivity
 import com.enjaz.hr.ui.base.BaseNavigator
 import com.enjaz.hr.util.PrefsManager
+import com.enjaz.hr.util.showSnack
 import com.enjaz.hr.util.snackBar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -34,11 +35,6 @@ class LoginActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getViewDataBinding().status.constraintError.setBackgroundColor(Color.TRANSPARENT)
-        getViewDataBinding().status.constraintError.isClickable = false
-
-        getViewDataBinding().status.tvErrorMsg.hide()
-        getViewDataBinding().status.imageError.hide()
 
         val window: Window = this.window
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
@@ -46,8 +42,6 @@ class LoginActivity :
         window.statusBarColor = ContextCompat.getColor(this, R.color.white)
 
         form {
-
-
             input(R.id.et_password) {
                 isNotEmpty().description("Password required")
                 onErrors { _, errors ->
@@ -59,11 +53,10 @@ class LoginActivity :
                 isNotEmpty().description("Enter a valid E-MAIL")
                 onErrors { _, errors ->
                     val firstError: FieldError? = errors.firstOrNull()
-                    getViewDataBinding().tilEmail.error  = firstError?.description
+                    getViewDataBinding().tilEmail.error = firstError?.description
                 }
             }
             submitWith(R.id.btn_login) {
-
                 getViewModel().login()
             }
         }
@@ -74,19 +67,13 @@ class LoginActivity :
     }
 
     override fun login() {
-
         PrefsManager.instance?.setString("login", "1")
-        Handler().postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }, 800)
+        startActivity(Intent(this, MainActivity::class.java))
     }
 
-    override fun showSnack(string: String, color: String, drawable: Int?) {
-
-        snackBar(string, drawable, color, getViewDataBinding().parentView, this)
-
+    override fun showError() {
+        val contextView = findViewById<View>(R.id.parent)
+        contextView.showSnack("Invalid username or password!")
     }
 
     override fun getViewModel(): LoginViewModel {
@@ -97,5 +84,5 @@ class LoginActivity :
 
 interface ILoginInteractionListener : BaseNavigator {
     fun login()
-    fun showSnack(string: String, color: String, drawable: Int?)
+    fun showError()
 }

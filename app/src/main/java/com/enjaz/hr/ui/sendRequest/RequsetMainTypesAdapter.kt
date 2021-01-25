@@ -1,4 +1,4 @@
-package com.enjaz.hr.ui.sentRequest
+package com.enjaz.hr.ui.sendRequest
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -30,6 +30,7 @@ open class RequsetMainTypesAdapter(
 
 
 }
+
 interface ITypeItemActionListener : BaseDataItemInteractionListener {
     fun onTypeClick(type: Types)
 }

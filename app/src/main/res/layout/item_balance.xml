@@ -51,9 +51,7 @@
             android:progress="@{item.taken}"
             app:layout_constraintEnd_toEndOf="@id/tv_remainLeavesLabel"
             app:layout_constraintStart_toStartOf="@id/tv_takenLeavesLabel"
-            app:layout_constraintTop_toBottomOf="@id/tv_takenLeavesLabel"
-
-            />
+            app:layout_constraintTop_toBottomOf="@id/tv_takenLeavesLabel" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

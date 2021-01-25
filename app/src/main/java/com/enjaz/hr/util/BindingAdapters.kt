@@ -1,5 +1,6 @@
 package com.enjaz.hr.util
 
+import android.animation.ValueAnimator
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -36,41 +37,54 @@ fun setTime(view: TextView, time: Int) {
     view.text = "$time:00"
 }
 
+@BindingAdapter("textanimation")
+fun textanimation(view: TextView, salary: Int) {
+    val animator = ValueAnimator.ofInt(0, salary)
+    animator.duration = 1000
+    animator.addUpdateListener { animation -> view.text = animation.animatedValue.toString() + "$" }
+    animator.start()
+}
+
 @BindingAdapter("progressColors")
 fun setProgressColors(progressBar: ProgressBar, position: Int) {
-    when(position){
+    when (position) {
 
-        0-> {
-            progressBar.progressTintList= ColorStateList.valueOf(Color.parseColor("#a8d8ea"))
-            progressBar.progressBackgroundTintList=ColorStateList.valueOf(Color.parseColor("#a8d8ea"))
+        0 -> {
+            progressBar.progressTintList = ColorStateList.valueOf(Color.parseColor("#a8d8ea"))
+            progressBar.progressBackgroundTintList =
+                ColorStateList.valueOf(Color.parseColor("#a8d8ea"))
         }
 
-        1->{
-            progressBar.progressTintList= ColorStateList.valueOf(Color.parseColor("#aa96da"))
-            progressBar.progressBackgroundTintList=ColorStateList.valueOf(Color.parseColor("#aa96da"))
+        1 -> {
+            progressBar.progressTintList = ColorStateList.valueOf(Color.parseColor("#aa96da"))
+            progressBar.progressBackgroundTintList =
+                ColorStateList.valueOf(Color.parseColor("#aa96da"))
         }
-        2->{
-            progressBar.progressTintList= ColorStateList.valueOf(Color.parseColor("#fcbad3"))
-            progressBar.progressBackgroundTintList=ColorStateList.valueOf(Color.parseColor("#fcbad3"))
+        2 -> {
+            progressBar.progressTintList = ColorStateList.valueOf(Color.parseColor("#fcbad3"))
+            progressBar.progressBackgroundTintList =
+                ColorStateList.valueOf(Color.parseColor("#fcbad3"))
         }
-        3->{
-            progressBar.progressTintList= ColorStateList.valueOf(Color.parseColor("#EAC680"))
-            progressBar.progressBackgroundTintList=ColorStateList.valueOf(Color.parseColor("#EAC680"))
-        }else->{
-        progressBar.progressTintList= ColorStateList.valueOf(Color.parseColor("#a8d8ea"))
-        progressBar.progressBackgroundTintList=ColorStateList.valueOf(Color.parseColor("#a8d8ea"))
-    }
+        3 -> {
+            progressBar.progressTintList = ColorStateList.valueOf(Color.parseColor("#EAC680"))
+            progressBar.progressBackgroundTintList =
+                ColorStateList.valueOf(Color.parseColor("#EAC680"))
+        }
+        else -> {
+            progressBar.progressTintList = ColorStateList.valueOf(Color.parseColor("#a8d8ea"))
+            progressBar.progressBackgroundTintList =
+                ColorStateList.valueOf(Color.parseColor("#a8d8ea"))
+        }
 
     }
 }
 
 
-
 @BindingAdapter("balance")
 fun setClickableIf(view: TextView, string: String) {
-    when(string){
-        "Vacation" -> view.text="2 days left"
-        "Hourly" -> view.text="23 hours left"
+    when (string) {
+        "Vacation" -> view.text = "2 days left"
+        "Hourly" -> view.text = "23 hours left"
         else -> view.hide()
     }
 }
@@ -85,9 +99,21 @@ fun setIv(view: ImageView, string: String) {
         "Vacation" -> view.setImageResource(R.drawable.ic_vacation)
         "Hourly" -> view.setImageResource(R.drawable.ic_time)
         "Overtime" -> view.setImageResource(R.drawable.ic_overtime)
-        "Miss punch" -> view.setImageResource(R.drawable.ic_fingerprint)
+        "Miss Punch" -> view.setImageResource(R.drawable.ic_fingerprint)
 
 
+    }
+}
+
+@BindingAdapter("minutesFormat")
+fun minutesFormat(view: TextView, TotalMinutes: Int) {
+    val hours = TotalMinutes.toDouble() / 60.0
+    val minutes = TotalMinutes.rem(60.0)
+
+    when {
+        hours.toInt() == 0 -> view.text = "${minutes.toInt()}m"
+        minutes.toInt() == 0 -> view.text = "${hours.toInt()}h"
+        else -> view.text = "${hours.toInt()}h ${minutes.toInt()}m"
     }
 }
 

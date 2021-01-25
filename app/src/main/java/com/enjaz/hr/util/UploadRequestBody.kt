@@ -1,4 +1,4 @@
-package com.enjaz.hr
+package com.enjaz.hr.util
 
 
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -23,7 +23,6 @@ class UploadRequestBody(
             var read: Int
 
             while (inputStream.read(buffer).also { read = it } != -1) {
-
                 uploaded += read
                 sink.write(buffer, 0, read)
             }

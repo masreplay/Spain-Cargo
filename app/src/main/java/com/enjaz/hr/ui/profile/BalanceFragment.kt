@@ -62,6 +62,10 @@ class BalanceFragment :
         TODO("Not yet implemented")
     }
 
+    override fun onDeleteProfilePhotoClick() {
+        TODO("Not yet implemented")
+    }
+
     override fun onBalanceClick() {
         TODO("Not yet implemented")
     }

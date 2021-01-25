@@ -1,4 +1,4 @@
-package com.enjaz.hr.ui.sentRequest
+package com.enjaz.hr.ui.sendRequest
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
@@ -13,18 +13,14 @@ class RequestTypesViewModel @ViewModelInject constructor(
 ) {
 
 
-    var dataResponse: MutableLiveData<MutableList<Types>> =MutableLiveData()
+    var dataResponse: MutableLiveData<MutableList<Types>> = MutableLiveData()
 
 
     fun getData() {
-        dataResponse.value= mutableListOf(
-            Types("Vacation"),Types("Hourly"))
-
-
+        dataResponse.value = mutableListOf(
+            Types("Vacation"), Types("Hourly"), Types("Miss Punch")
+        )
     }
-
-
-
 }
 
 

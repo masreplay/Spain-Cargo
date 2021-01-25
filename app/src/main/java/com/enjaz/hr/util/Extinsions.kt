@@ -36,6 +36,10 @@ fun View.snackbar(snackbarText: String,@ColorInt colorInt: Int) {
 
 }
 
+fun View.showSnack(text: String, length: Int = Snackbar.LENGTH_SHORT) {
+    Snackbar.make(this, text, length).setBackgroundTint(ContextCompat.getColor(this.context,R.color.colorPrimaryDark)).show()
+}
+
 fun String.amPm():String {
 
     val time =this.toString()

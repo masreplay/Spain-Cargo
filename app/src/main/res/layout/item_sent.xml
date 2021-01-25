@@ -15,6 +15,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/parent"
+        android:layout_marginBottom="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -23,7 +24,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
             android:text="@{item.requestDate}"
             android:textColor="@color/carbon_grey_400"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:autoMirrored="true"
                 android:background="@drawable/bg_round_sent"
                 android:backgroundTint="@{item.leaveStatus.equals(@string/waiting_for_approv)?@color/orange: item.leaveStatus.equals(@string/approved) ?@color/green:@color/red}"
                 android:drawableEnd="@{item.leaveStatus.equals(@string/waiting_for_approv)?@drawable/ic_close:null}"
@@ -63,34 +64,35 @@
                 android:layout_width="26dp"
                 android:layout_height="26dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
                 android:background="@drawable/bg_circle_transparent_300"
                 android:backgroundTint="#F683C6"
                 android:padding="6dp"
                 android:src="@drawable/ic_business_time"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/tv_type_title" />
 
             <TextView
                 android:id="@+id/tv_type_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:text="Type of Leave"
+                android:text="@string/type_of_leave"
                 android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/tv_type"
                 app:layout_constraintStart_toEndOf="@+id/imageView4"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/tv_status" />
 
             <TextView
                 android:id="@+id/tv_type"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
                 android:text="@{item.leaveName}"
                 android:textColor="@color/text_grey_600"
+                app:layout_constraintEnd_toStartOf="@+id/tv_status"
                 app:layout_constraintStart_toStartOf="@+id/tv_type_title"
-                app:layout_constraintTop_toBottomOf="@+id/tv_type_title" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_status" />
 
             <ImageView
                 android:id="@+id/imageView5"
@@ -110,21 +112,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Reason"
+                android:text="@string/reason"
                 android:textSize="12sp"
                 app:layout_constraintStart_toEndOf="@+id/imageView4"
                 app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
+
             <TextView
                 android:id="@+id/tv_reason"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp"
+                android:singleLine="true"
                 android:text="@{item.leaveDescription}"
                 android:textColor="@color/text_grey_600"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tv_type_title"
                 app:layout_constraintTop_toBottomOf="@+id/tv_reason_title" />
-
 
             <ImageView
                 android:id="@+id/imageView6"
@@ -143,7 +148,7 @@
                 android:id="@+id/tv_date_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Applied Duration"
+                android:text="@string/applied_duration"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/tv_type_title"
                 app:layout_constraintTop_toTopOf="@+id/imageView6" />

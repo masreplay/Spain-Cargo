@@ -9,7 +9,13 @@
         android:id="@+id/requestsFragment"
         android:name="com.enjaz.hr.ui.requests.RequestsFragment"
         tools:layout="@layout/framgnet_requests"
-        android:label="@string/requests" />
+        android:label="@string/requests" >
+        <action
+            android:id="@+id/action_requestsFragment_to_requestMainTypesFragment"
+            app:destination="@id/requestMainTypesFragment" />
+    </fragment>
+
+
     <fragment
         android:id="@+id/receivedRequestsFragment"
         android:name="com.enjaz.hr.ui.requests.ReceivedRequestsFragment"
@@ -20,9 +26,32 @@
         android:name="com.enjaz.hr.ui.requests.SentRequestsFragment"
         tools:layout="@layout/framgnet_sent_requests"
         android:label="SentRequestsFragment" />
+
+    <fragment
+        android:id="@+id/sendRequestFragment"
+        android:name="com.enjaz.hr.ui.sendRequest.SendRequestFragment"
+        tools:layout="@layout/fragment_send_request">
+        <argument
+            android:name="leaveType"
+            android:defaultValue=" "
+            app:argType="string" />
+
+
+    </fragment>
     <dialog
-        android:id="@+id/filterSheet"
-        android:name="com.enjaz.hr.ui.requests.FilterSheet"
-        tools:layout="@layout/fragment_filter"
-        android:label="FilterSheet" />
+        android:id="@+id/requestMainTypesFragment"
+        android:name="com.enjaz.hr.ui.sendRequest.RequestMainTypesFragment"
+        android:label="Request Type"
+        tools:layout="@layout/fragment_requset_main_types">
+        <action
+            android:id="@+id/nextAction"
+            app:destination="@id/sendRequestFragment" />
+
+
+
+    </dialog>
+    <dialog
+        android:id="@+id/filterFragment"
+        android:name="com.enjaz.hr.ui.requests.FilterFragment"
+        android:label="FilterFragment" />
 </navigation>

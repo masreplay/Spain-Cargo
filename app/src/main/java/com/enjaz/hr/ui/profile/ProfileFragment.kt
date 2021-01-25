@@ -5,15 +5,17 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.widget.LinearLayout
 import androidx.core.net.toFile
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.enjaz.hr.R
-import com.enjaz.hr.UploadRequestBody
 import com.enjaz.hr.databinding.FragmentProfileBinding
 import com.enjaz.hr.ui.base.BaseFragment
 import com.enjaz.hr.ui.base.BaseNavigator
+import com.enjaz.hr.util.UploadRequestBody
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import dagger.hilt.android.AndroidEntryPoint
@@ -59,6 +61,30 @@ class ProfileFragment :
         findNavController().navigate(R.id.userInfoFragment)
     }
 
+    private fun showSheet() {
+        val btnsheet = layoutInflater.inflate(R.layout.sheet_profile, null)
+        val dialog = BottomSheetDialog(this.requireContext())
+        dialog.setContentView(btnsheet)
+        dialog.findViewById<LinearLayout>(R.id.lyt_remove)?.setOnClickListener {
+            getViewModel().deleteProfilePicture()
+            dialog.dismiss()
+        }
+        dialog.findViewById<LinearLayout>(R.id.lyt_edit)?.setOnClickListener {
+            val intent = CropImage.activity()
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .setAspectRatio(1, 1)
+                .getIntent(requireActivity())
+            startActivityForResult(intent, CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE)
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
+    override fun onDeleteProfilePhotoClick() {
+
+    }
+
     override fun onBalanceClick() {
         findNavController().navigate(R.id.balanceFragment)
     }
@@ -73,13 +99,9 @@ class ProfileFragment :
     }
 
     override fun onEditProfilePhotoClick() {
-        val intent = CropImage.activity()
-            .setGuidelines(CropImageView.Guidelines.ON)
-            .setAspectRatio(1, 1)
-            .getIntent(requireActivity())
+        showSheet()
 
 
-        startActivityForResult(intent, CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE)
     }
 
     override fun detailsAvailable() {
@@ -108,7 +130,11 @@ class ProfileFragment :
                     MultipartBody.Part.createFormData(
                         "File",
                         resultUri.toFile().name,
-                        UploadRequestBody(resultUri.toFile(), "image", "jpg")
+                        UploadRequestBody(
+                            resultUri.toFile(),
+                            "image",
+                            "jpg"
+                        )
                     )
                 )
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
@@ -121,7 +147,7 @@ class ProfileFragment :
 
 interface IProfileInteractionListener : BaseNavigator {
     fun onPersonalDetailsClick()
-
+    fun onDeleteProfilePhotoClick()
     fun onBalanceClick()
     fun onSalaryDetailsClick()
     fun onSettingsClick()

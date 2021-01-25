@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
 
         <variable
             name="viewModel"
@@ -12,333 +13,202 @@
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/white">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/collapsing_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/carbon_white"
-                app:contentScrim="?attr/colorPrimary"
-                app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Title"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/grey_100"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-
-                    <com.github.florent37.shapeofview.shapes.ArcView
-                        android:id="@+id/arcView"
-                        android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:shape_arc_height="30dp"
-                        app:shape_arc_position="bottom">
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@color/colorPrimary" />
-                    </com.github.florent37.shapeofview.shapes.ArcView>
-
-                    <com.enjaz.hr.util.calendar.HorizontalCalendarView
-                        android:id="@+id/rv_date"
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:layout_marginTop="16dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:selectedDateBackground="@drawable/bg_round_rect_8dp"
-                        app:selectorColor="@android:color/transparent"
-                        app:textColorNormal="@color/white"
-                        app:textColorSelected="@color/colorPrimary"
-                        app:unSelectedDateBackground="@drawable/bg_rect_transparent" />
-                    <LinearLayout
-                        android:id="@+id/lyt_no_data"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="50dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:elevation="1dp"
-                        android:gravity="center"
-                        android:orientation="vertical"
-
-                        android:visibility="gone"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/rv_date">
-
-                        <ImageView
-                            android:layout_width="250dp"
-                            android:layout_height="150dp"
-                            app:srcCompat="@drawable/ic_attend" />
-
-                        <TextView
-                            android:id="@+id/tv_noData"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/spacing_middle"
-                            android:gravity="center"
-                            android:text="@string/no_attendance"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                            android:textColor="@color/carbon_grey_700"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-                    <include
-                        android:id="@+id/status"
-                        layout="@layout/view_status"
-                        android:layout_width="300dp"
-                        android:layout_height="250dp"
-                        android:layout_margin="30dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/rv_date"
-                        app:retryListener="@{viewModel.refreshListener}"
-                        app:viewStatus="@{viewModel.attendanceResponse.status}"
-                        />
-
-                    <LinearLayout
-                        android:id="@+id/linear"
-                        android:layout_width="match_parent"
-                        android:layout_height="130dp"
-                        android:visibility="@{viewModel.attendanceResponse.data.days.size()==0 ? View.GONE : View.VISIBLE}"
-                        android:orientation="horizontal"
-                        app:layout_constraintTop_toBottomOf="@+id/rv_date">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_margin="8dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/bg_round_ripple_16dp"
-                            android:clickable="true"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-
-                            <TextView
-                                android:id="@+id/tv_workingHours"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@{String.valueOf(viewModel.attendanceResponse.data.totalWorkTime)+@string/two_zeros}"
-                                android:textColor="@color/colorPrimary" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/working_hours"
-                                android:textColor="@color/home_text" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_margin="8dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/bg_round_ripple_16dp"
-                            android:clickable="true"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="10dp">
-
-
-
-                            <TextView
-                                android:id="@+id/tv_delays"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@{String.valueOf(viewModel.attendanceResponse.data.totalDelay)+@string/two_zeros}"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                android:textColor="@color/red" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/delays"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                                android:textColor="@color/home_text" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_margin="8dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/bg_round_ripple_16dp"
-                            android:clickable="true"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="10dp"
-                            android:textAlignment="center">
-
-                            <TextView
-                                android:id="@+id/tv_excuseDelays"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="12:00"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                android:textColor="@color/orange" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/spacing_medium"
-                                android:text="@string/excuse_ndelays"
-                                android:textColor="@color/home_text" />
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="130dp"
-                        android:visibility="@{viewModel.attendanceResponse.data.days.size()==0 ? View.GONE : View.VISIBLE}"
-                        android:orientation="horizontal"
-                        app:layout_constraintTop_toBottomOf="@+id/linear">
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_margin="8dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/bg_round_ripple_16dp"
-                            android:clickable="true"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/tv_extraHours"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="8:00"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                android:textColor="@color/colorPrimary" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/spacing_medium"
-                                android:text="@string/extra_hours"
-                                android:textColor="@color/home_text" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_margin="8dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/bg_round_ripple_16dp"
-                            android:clickable="true"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/tv_overTime"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@{String.valueOf(viewModel.attendanceResponse.data.totalOvertime)+@string/two_zeros}"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                android:textColor="@color/colorPrimary" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/spacing_medium"
-                                android:text="@string/over_time"
-                                android:textColor="@color/home_text" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_margin="8dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/bg_round_ripple_16dp"
-                            android:clickable="true"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/tv_missingPunch"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="6:00"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
-                                android:textColor="@color/red" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/spacing_medium"
-                                android:text="@string/missing_punch"
-                                android:textColor="@color/home_text" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.core.widget.NestedScrollView
-            android:id="@+id/nested_content"
+            android:id="@+id/nsv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:scrollbars="none"
-            android:scrollingCache="true"
-            android:background="@color/grey_100"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:background="@color/grey_100">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/parent"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:clickable="true"
-                android:backgroundTint="@color/grey_100"
-                android:background="@drawable/bg_round_ripple_16dp">
+                android:layout_height="match_parent">
 
+
+                <com.github.florent37.shapeofview.shapes.ArcView
+                    android:id="@+id/arcView"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shape_arc_height="30dp"
+                    app:shape_arc_position="bottom">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorPrimary" />
+                </com.github.florent37.shapeofview.shapes.ArcView>
+
+                <com.enjaz.hr.util.calendar.HorizontalCalendarView
+                    android:id="@+id/rv_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:selectedDateBackground="@drawable/bg_round_rect_8dp"
+                    app:selectorColor="@android:color/transparent"
+                    app:textColorNormal="@color/white"
+                    app:textColorSelected="@color/colorPrimary"
+                    app:unSelectedDateBackground="@drawable/bg_rect_transparent" />
+
+                <LinearLayout
+                    android:id="@+id/lyt_no_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:elevation="1dp"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/arcView">
+
+                    <ImageView
+                        android:layout_width="250dp"
+                        android:layout_height="150dp"
+                        android:layout_marginTop="32dp"
+                        app:srcCompat="@drawable/ic_attend" />
+
+                    <TextView
+                        android:id="@+id/tv_noData"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_middle"
+                        android:gravity="center"
+                        android:text="@string/no_attendance"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+                        android:textColor="@color/carbon_grey_700"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <include
+                    android:id="@+id/status"
+                    layout="@layout/view_status"
+                    android:layout_width="300dp"
+                    android:layout_height="250dp"
+                    android:layout_margin="30dp"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/rv_date"
+                    app:retryListener="@{viewModel.refreshListener}"
+                    app:viewStatus="@{viewModel.attendanceResponse.status}" />
+
+
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:orientation="horizontal"
+                    android:visibility="@{viewModel.attendanceResponse.data.days.size()==0 ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintTop_toBottomOf="@+id/rv_date">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_round_ripple_16dp"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="10dp"
+                        android:textAlignment="center">
+
+                        <TextView
+                            android:id="@+id/tv_excuseDelays"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            minutesFormat="@{viewModel.attendanceResponse.data.totalWorkTime}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                            android:textColor="@color/colorPrimary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_medium"
+                            android:text="@string/total_time"
+                            android:textColor="@color/home_text" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_round_ripple_16dp"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_extraHours"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            minutesFormat="@{viewModel.attendanceResponse.data.totalOvertime}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                            android:textColor="@color/green_400" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_medium"
+                            android:text="@string/over_time"
+                            android:textColor="@color/home_text" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_round_ripple_16dp"
+                        android:clickable="true"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_missingPunch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            minutesFormat="@{viewModel.attendanceResponse.data.totalDelay}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+                            android:textColor="@color/red" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_medium"
+                            android:text="@string/total_delay"
+                            android:textColor="@color/home_text" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv"
                     items="@{viewModel.attendanceResponse.data.days}"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:itemCount="7"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                    tools:itemCount="2"
                     tools:listitem="@layout/item_attendance" />
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </androidx.core.widget.NestedScrollView>
 
 

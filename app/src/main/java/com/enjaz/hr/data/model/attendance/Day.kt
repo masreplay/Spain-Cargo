@@ -52,29 +52,26 @@ data class Day(
     }
 
     fun getCheckInTime(): String {
-        if (dayTimeChunks[0].fingerprints.isNotEmpty()) {
-            return HRMApp.applicationContext()
+        return if (dayTimeChunks[0].fingerprints.isNotEmpty()) {
+            HRMApp.applicationContext()
                 .getString(R.string.check_in) + "    ${dayTimeChunks[0].fingerprints[0].time.substringBeforeLast(
                 ":"
             ).amPm()}  ${getExeptionStatus()} "
         } else {
-            return HRMApp.applicationContext().getString(R.string.no_check_in_yet)
+            HRMApp.applicationContext().getString(R.string.no_check_in_yet)
         }
 
     }
 
     fun getCheckOutTime(): String {
-        if (dayTimeChunks[0].fingerprints.isNotEmpty()) {
-
-
-            return HRMApp.applicationContext()
+        return if (dayTimeChunks[0].fingerprints.isNotEmpty()) {
+            HRMApp.applicationContext()
                 .getString(R.string.check_out) + " ${dayTimeChunks[0].fingerprints[1].time.substringBeforeLast(
                 ":"
-            ).amPm()}   "
+            ).amPm()}   " +
+                    ""
         } else {
-            return HRMApp.applicationContext().getString(R.string.no_check_out_yet)
-
+            HRMApp.applicationContext().getString(R.string.missed_out_punch)
         }
-
     }
 }

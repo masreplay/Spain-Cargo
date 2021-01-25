@@ -1,4 +1,4 @@
-package com.enjaz.hr.ui.sentRequest
+package com.enjaz.hr.ui.sendRequest
 
 import android.app.TimePickerDialog
 import android.graphics.Color
@@ -9,11 +9,13 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.afollestad.vvalidator.field.FieldError
 import com.afollestad.vvalidator.form
+import com.afollestad.vvalidator.util.hide
+import com.afollestad.vvalidator.util.show
 import com.enjaz.hr.MainActivity
 import com.enjaz.hr.R
 import com.enjaz.hr.databinding.CalendarDayLayoutBinding
@@ -32,7 +34,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.YearMonth
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -41,7 +42,7 @@ class SendRequestFragment :
     BaseFragment<FragmentSendRequestBinding, ISendRequestInteractionListener, SendRequestViewModel>(),
     ISendRequestInteractionListener {
 
-    private val sedRequestViewModel: SendRequestViewModel by viewModels()
+    val sedRequestViewModel: SendRequestViewModel by activityViewModels()
     private val args: SendRequestFragmentArgs by navArgs()
     private val today = LocalDate.now()
     private var selectedDate: LocalDate? = null
@@ -51,16 +52,14 @@ class SendRequestFragment :
     private var endDate: LocalDate? = null
 
     lateinit var startDateApi: String
-    lateinit var startTimeApi: String
+    private var startTimeApi: String? = null
 
     lateinit var endDateApi: String
-    lateinit var endTimeApi: String
+    private var endTimeApi: String? = null
 
     var leaveTypeId: Int? = null
 
     lateinit var pDialog: SweetAlertDialog
-
-    private val headerDateFormatter = DateTimeFormatter.ofPattern("EEE'\n'd MMM")
 
 
     private val startBackground: GradientDrawable by lazy {
@@ -84,62 +83,65 @@ class SendRequestFragment :
         return this
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        types = arrayListOf()
-
-
-        if (args.leaveType == "Hourly") {
-            getViewModel().getLeaveTypes(true)
-
-        } else {
-            getViewModel().getLeaveTypes(false)
-        }
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         pDialog = SweetAlertDialog(requireActivity(), SweetAlertDialog.PROGRESS_TYPE)
 
-//        (activity as MainActivity).toolbar?.title = args.leaveType
+        types = arrayListOf()
+
+
+        if (args.leaveType == "Hourly") {
+            getViewModel().getLeaveTypes(true)
+        } else {
+            getViewModel().getLeaveTypes(false)
+        }
 
 
         val adapter = ArrayAdapter(
             requireContext(),
-            android.R.layout.simple_spinner_item, types
+            android.R.layout.simple_list_item_1,
+            types
         )
 
-
-        getViewModel().leaveTypesResponse.observe(requireActivity(), androidx.lifecycle.Observer {
-
-            it.data?.items?.forEach { it ->
+        adapter.notifyDataSetChanged()
 
 
-                types.add(it.name)
-
-            }
-            Log.d("kkkkk", types.toString())
-            getViewDataBinding().spinner.adapter = adapter
 
 
-        })
+        if (!args.leaveType.equals("Miss Punch")) {
+            getViewModel().leaveTypesResponse.observe(
+                requireActivity(),
+                androidx.lifecycle.Observer {
+                    types.clear()
 
-        getViewDataBinding().spinner.onItemSelectedListener =
-            object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    TODO("Not yet implemented")
+                    it.data?.items?.forEach { it ->
+                        types.add(it.name)
+                    }
+                    Log.d("leaveTypesResponse", types.toString())
+                    getViewDataBinding().spinner.adapter = adapter
+
+
+                })
+
+            getViewDataBinding().spinner.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onNothingSelected(p0: AdapterView<*>?) {
+                    }
+
+                    override fun onItemSelected(
+                        p0: AdapterView<*>?,
+                        view: View?,
+                        position: Int,
+                        long: Long
+                    ) {
+                        leaveTypeId =
+                            getViewModel().leaveTypesResponse.value?.data?.items?.get(position)?.id
+                    }
                 }
+        }
 
-                override fun onItemSelected(
-                    p0: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    long: Long
-                ) {
-                    leaveTypeId =
-                        getViewModel().leaveTypesResponse.value?.data?.items?.get(position)?.id
-                }
-            }
+
 
 
 
@@ -217,34 +219,65 @@ class SendRequestFragment :
             }
         }
 
+
         if (args.leaveType == "Hourly") {
-            form {
+
+            getViewDataBinding().lytHourly.makeVisible()
+            getViewDataBinding().exFourCalendar.dayBinder =
+                object : DayBinder<SingleDayViewContainer> {
+                    override fun create(view: View) = SingleDayViewContainer(view)
+                    override fun bind(container: SingleDayViewContainer, day: CalendarDay) {
+                        container.day = day
+                        val textView = container.binding.exFourDayText
+                        val roundBgView = container.binding.exFourRoundBgView
+                        roundBgView.makeInVisible()
 
 
-                input(R.id.tv_timePickerStart) {
-                    matches("([0-1]?[0-9]|2[0-3]):[0-5][0-9]").description("pick a time")
-                    onErrors { _, errors ->
-                        val firstError: FieldError? = errors.firstOrNull()
-                        getViewDataBinding().tvTimePickerStart.error = firstError?.description
+                        textView.text = day.date.dayOfMonth.toString()
+
+                        if (day.owner == DayOwner.THIS_MONTH) {
+                            textView.makeVisible()
+                            roundBgView.makeVisible()
+                            roundBgView.setBackgroundResource(R.drawable.example_4_single_selected_bg)
+
+                            when (day.date) {
+                                today -> {
+                                    startDateApi = day.date.toString()
+                                    endDateApi = day.date.toString()
+                                    textView.setTextColorRes(R.color.white)
+                                    roundBgView.makeVisible()
+                                    roundBgView.setBackgroundResource(R.drawable.example_4_today_bg)
+
+                                }
+                                selectedDate -> {
+                                    startDateApi = day.date.toString()
+                                    endDateApi = day.date.toString()
+                                    textView.setTextColorRes(R.color.colorPrimary)
+                                    roundBgView.makeVisible()
+                                    roundBgView.setBackgroundResource(R.drawable.example_4_single_selected_bg)
+
+                                }
+                                else -> {
+                                    textView.setTextColorRes(R.color.white)
+                                    roundBgView.makeGone()
+                                }
+                            }
+                        } else {
+                            textView.makeInVisible()
+                            roundBgView.makeGone()
+
+                        }
                     }
                 }
-                input(R.id.tv_timePickerEnd) {
-                    matches("([0-1]?[0-9]|2[0-3]):[0-5][0-9]").description("pick a time")
-                    onErrors { _, errors ->
-                        val firstError: FieldError? = errors.firstOrNull()
-                        getViewDataBinding().tvTimePickerEnd.error = firstError?.description
-                    }
-                }
 
-                input(R.id.tv_reason) {
-                    isNotEmpty().description("Describe your leave situation")
-                    onErrors { _, errors ->
-                        val firstError: FieldError? = errors.firstOrNull()
-                        getViewDataBinding().tvReason.error = firstError?.description
-                    }
-                }
-                submitWith(R.id.btn_applyForLeave) {
 
+            getViewDataBinding().btnApplyForLeave.setOnClickListener {
+                if (startTimeApi == null) {
+                    getViewDataBinding().tvTimePickerStart.error = "pick a time"
+                }
+                if (endTimeApi == null) {
+                    getViewDataBinding().tvTimePickerEnd.error = "pick a time"
+                } else {
                     leaveTypeId?.let { it1 ->
                         getViewModel().sendLeaveRequest(
                             "${startDateApi + startTimeApi}",
@@ -258,7 +291,22 @@ class SendRequestFragment :
             }
 
 
-            getViewDataBinding().lytHourly.makeVisible()
+        }
+
+        else if (args.leaveType == "Miss Punch") {
+
+            getViewDataBinding().lytHourly.show()
+            getViewDataBinding().tvFrom.text = "time"
+            getViewDataBinding().tvTo.hide()
+            getViewDataBinding().tvTimePickerStart.hide()
+
+            types.add("Miss in punch")
+            types.add("Miss out punch")
+
+            getViewDataBinding().spinner.adapter = adapter
+            adapter.notifyDataSetChanged()
+
+
             getViewDataBinding().exFourCalendar.dayBinder =
                 object : DayBinder<SingleDayViewContainer> {
                     override fun create(view: View) = SingleDayViewContainer(view)
@@ -295,7 +343,6 @@ class SendRequestFragment :
                                     Log.d("kkkkk", endDateApi)
 
                                     textView.setTextColorRes(R.color.colorPrimary)
-//                                textView.setBackgroundResource(R.drawable.example_4_single_selected_bg)
                                     roundBgView.makeVisible()
                                     roundBgView.setBackgroundResource(R.drawable.example_4_single_selected_bg)
 
@@ -313,17 +360,29 @@ class SendRequestFragment :
                     }
                 }
 
-
-        } else {
             form {
 
                 input(R.id.tv_reason) {
-                    isNotEmpty().description("Describe your leave situation")
+                    isNotEmpty().description("Please fill this field")
                     onErrors { _, errors ->
                         val firstError: FieldError? = errors.firstOrNull()
                         getViewDataBinding().tvReason.error = firstError?.description
                     }
                 }
+
+                submitWith(R.id.btn_applyForLeave) {
+                    getViewModel().sendFingerPrintRequest(
+                        getViewDataBinding().tvReason.text.toString()
+                        , getViewDataBinding().spinner.selectedItemPosition
+                        , startDateApi + endTimeApi
+
+                    )
+                }
+            }
+
+        }
+        else {
+            form {
                 submitWith(R.id.btn_applyForLeave) {
 
                     leaveTypeId?.let { it1 ->
@@ -368,7 +427,6 @@ class SendRequestFragment :
                                 }
                                 day.date == startDate -> {
                                     startDateApi = day.date.toString()
-                                    Log.d("kkkkk", startDateApi)
 
                                     textView.setTextColorRes(R.color.colorPrimary)
                                     textView.background = startBackground
@@ -380,7 +438,6 @@ class SendRequestFragment :
                                 }
                                 day.date == endDate -> {
                                     endDateApi = day.date.toString()
-                                    Log.d("kkkkk", endDateApi)
 
                                     textView.setTextColorRes(R.color.colorPrimary)
                                     textView.background = endBackground
@@ -388,8 +445,7 @@ class SendRequestFragment :
                                 day.date == today -> {
                                     startDateApi = day.date.toString()
                                     endDateApi = day.date.toString()
-                                    Log.d("kkkkk", startDateApi)
-                                    Log.d("kkkkk", endDateApi)
+
 
                                     textView.setTextColorRes(R.color.white)
                                     roundBgView.makeVisible()
@@ -400,28 +456,16 @@ class SendRequestFragment :
                         }
                     } else {
 
-                        // This part is to make the coloured selection background continuous
-                        // on the blank in and out dates across various months and also on dates(months)
-                        // between the start and end dates if the selection spans across multiple months.
-
                         val startDate = startDate
                         val endDate = endDate
                         if (startDate != null && endDate != null) {
-                            // Mimic selection of inDates that are less than the startDate.
-                            // Example: When 26 Feb 2019 is startDate and 5 Mar 2019 is endDate,
-                            // this makes the inDates in Mar 2019 for 24 & 25 Feb 2019 look selected.
                             if ((day.owner == DayOwner.PREVIOUS_MONTH &&
                                         startDate.monthValue == day.date.monthValue &&
                                         endDate.monthValue != day.date.monthValue) ||
-                                // Mimic selection of outDates that are greater than the endDate.
-                                // Example: When 25 Apr 2019 is startDate and 2 May 2019 is endDate,
-                                // this makes the outDates in Apr 2019 for 3 & 4 May 2019 look selected.
+
                                 (day.owner == DayOwner.NEXT_MONTH &&
                                         startDate.monthValue != day.date.monthValue &&
                                         endDate.monthValue == day.date.monthValue) ||
-
-                                // Mimic selection of in and out dates of intermediate
-                                // months if the selection spans across multiple months.
                                 (startDate < day.date && endDate > day.date &&
                                         startDate.monthValue != day.date.monthValue &&
                                         endDate.monthValue != day.date.monthValue)
@@ -434,18 +478,17 @@ class SendRequestFragment :
             }
         }
 
+        getViewDataBinding().exFourCalendar.monthScrollListener =
+            object : MonthScrollListener {
+                override fun invoke(p1: CalendarMonth) {
+                    val monthYearTitle =
+                        "${p1.yearMonth.month.name.toLowerCase().capitalize()} ${p1.year}"
 
+                    (activity as MainActivity).toolbar?.title = monthYearTitle
 
-        getViewDataBinding().exFourCalendar.monthScrollListener = object : MonthScrollListener {
-            override fun invoke(p1: CalendarMonth) {
-                val monthYearTitle =
-                    "${p1.yearMonth.month.name.toLowerCase().capitalize()} ${p1.year}"
-
-                (activity as MainActivity).toolbar?.title = monthYearTitle
+                }
 
             }
-
-        }
 
 
     }
@@ -456,9 +499,13 @@ class SendRequestFragment :
             timePicker.setBackgroundResource(R.color.colorPrimary)
             cal.set(Calendar.HOUR_OF_DAY, hour)
             cal.set(Calendar.MINUTE, minute)
-            getViewDataBinding().tvTimePickerStart.setText(SimpleDateFormat("HH:mm").format(cal.time))
-            startTimeApi = "T${SimpleDateFormat("HH:mm").format(cal.time)}"
-            Log.d("kkkkk", startTimeApi)
+            getViewDataBinding().tvTimePickerStart.setText(
+                SimpleDateFormat(
+                    "hh:mm a",
+                    Locale.US
+                ).format(cal.time)
+            )
+            startTimeApi = "T${SimpleDateFormat("HH:mm", Locale.US).format(cal.time)}"
         }
         TimePickerDialog(
             requireContext(),
@@ -477,9 +524,13 @@ class SendRequestFragment :
         val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, hour, minute ->
             cal.set(Calendar.HOUR_OF_DAY, hour)
             cal.set(Calendar.MINUTE, minute)
-            getViewDataBinding().tvTimePickerEnd.setText(SimpleDateFormat("HH:mm").format(cal.time))
-            endTimeApi = "T${SimpleDateFormat("HH:mm").format(cal.time)}"
-            Log.d("kkkkk", endTimeApi)
+            getViewDataBinding().tvTimePickerEnd.setText(
+                SimpleDateFormat(
+                    "hh:mm a",
+                    Locale.US
+                ).format(cal.time)
+            )
+            endTimeApi = "T${SimpleDateFormat("HH:mm", Locale.US).format(cal.time)}"
         }
         TimePickerDialog(
             requireContext(),
@@ -493,6 +544,7 @@ class SendRequestFragment :
     }
 
     override fun onSendingRequestSuccess() {
+        (requireActivity() as MainActivity).refreshRequestsFragment()
         Handler().postDelayed({
             pDialog.hide()
             SweetAlertDialog(requireContext(), SweetAlertDialog.SUCCESS_TYPE)

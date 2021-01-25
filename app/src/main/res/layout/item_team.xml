@@ -26,10 +26,11 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="16sp"
+            app:placeholderImageScaleType="fitXY"
+            app:placeholderImage="@drawable/profile"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:roundedCornerRadius="120dp"
             bind:imageUrl="@{item.pictureUrl}" />
 
         <TextView

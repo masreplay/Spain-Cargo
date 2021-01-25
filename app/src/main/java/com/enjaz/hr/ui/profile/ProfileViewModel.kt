@@ -26,7 +26,22 @@ class ProfileViewModel @ViewModelInject constructor(
     var userInfoResponse: MutableLiveData<BaseResource<UserInfo>> = MutableLiveData()
 
     var updateUserProfileResponse: MutableLiveData<BaseResource<String>> = MutableLiveData()
+    var clearProfilePictureResponse: MutableLiveData<BaseResource<String>> = MutableLiveData()
 
+
+    fun deleteProfilePicture() {
+        clearProfilePictureResponse.value =
+            BaseResource.loading(clearProfilePictureResponse.value?.data)
+        dispose(
+            dataManager.clearProfilePicture(),
+            ::onClearProfileSuccess,
+            { e ->
+                //error handling
+                e.message?.let {
+                    clearProfilePictureResponse.postValue(BaseResource.error(it, null))
+                }
+            })
+    }
 
     fun updateUserProfile(File: MultipartBody.Part) {
         updateUserProfileResponse.value =
@@ -52,6 +67,14 @@ class ProfileViewModel @ViewModelInject constructor(
     private fun onUpdateProfileSuccess(result: BaseResource<String>) {
         result.data?.let {
             updateUserProfileResponse.postValue(result)
+            getProfileInfo()
+        }
+    }
+
+    private fun onClearProfileSuccess(result: BaseResource<String>) {
+        result.data?.let {
+            clearProfilePictureResponse.postValue(result)
+            getProfileInfo()
         }
     }
 
@@ -75,15 +98,16 @@ class ProfileViewModel @ViewModelInject constructor(
     }
 
     fun getProfileInfo() {
-        userInfoResponse.value = BaseResource.loading(userInfoResponse.value?.data)
+        PrefsManager.instance?.getProfile().let {
+            BaseResource.success(it)
+        }
         dispose(
             dataManager.getProfileInfo(),
             ::onGetProfileInfoSuccess,
             { e ->
-                //error handling
-                if (PrefsManager.instance?.getProfile() != null)
-                    userInfoResponse.postValue(BaseResource.success(PrefsManager.instance?.getProfile()))
-
+                PrefsManager.instance?.getProfile().let {
+                    BaseResource.success(it)
+                }
             })
         refreshListener.postValue(View.OnClickListener { getProfileInfo() })
 

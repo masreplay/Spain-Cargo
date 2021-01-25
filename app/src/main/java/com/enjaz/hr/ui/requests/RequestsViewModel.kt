@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.enjaz.hr.R
 import com.enjaz.hr.data.AppDataManager
 import com.enjaz.hr.data.model.BaseResource
-import com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponse
+import com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponseItem
 import com.enjaz.hr.ui.base.BaseViewModel
 
 class RequestsViewModel @ViewModelInject constructor(
@@ -16,17 +16,13 @@ class RequestsViewModel @ViewModelInject constructor(
     dataManager
 ) {
 
-    var leaveRequestResponse: MutableLiveData<BaseResource<LeaveRequestResponse>> = MutableLiveData()
+    var leaveRequestResponse: MutableLiveData<BaseResource<ArrayList<LeaveRequestResponseItem>>> = MutableLiveData()
 
     var cancelMyRequestResponse: MutableLiveData<BaseResource<String>> = MutableLiveData()
 
+    @JvmOverloads
     fun getLeaveRequests(isManager: Boolean,filter:Int?=null){
-
-
         leaveRequestResponse.value = BaseResource.loading(leaveRequestResponse.value?.data)
-
-
-
         dispose(
             dataManager.getLeaveRequests(isManager,filter),
             ::onGetLeaveRequestsSuccess,
@@ -35,12 +31,8 @@ class RequestsViewModel @ViewModelInject constructor(
                 e.message?.let { leaveRequestResponse.postValue(BaseResource.error(it, null))
                     Log.d("error",it)
                 }
-
-
             })
         refreshListener.postValue(View.OnClickListener { getLeaveRequests(isManager,filter) })
-
-
 
     }
 
@@ -68,7 +60,7 @@ class RequestsViewModel @ViewModelInject constructor(
 
     }
 
-    private fun onGetLeaveRequestsSuccess(result: BaseResource<LeaveRequestResponse>) {
+    private fun onGetLeaveRequestsSuccess(result: BaseResource<ArrayList<LeaveRequestResponseItem>>) {
 
 
         if (result.message !=null){

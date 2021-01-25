@@ -2,7 +2,7 @@ package com.enjaz.hr.data
 
 import com.enjaz.hr.data.model.attendance.AttendanceResponse
 import com.enjaz.hr.data.model.balance.BalanceResponse
-import com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponse
+import com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponseItem
 import com.enjaz.hr.data.model.home.HomeResponse
 import com.enjaz.hr.data.model.home.Teammate
 import com.enjaz.hr.data.model.login.LoginResponse
@@ -48,9 +48,9 @@ interface Webservices {
 
     @GET("api/hr/md/Leaves/GetLeavesRequests")
     fun getLeaveRequests(
-        @Query("AsManger") boolean: Boolean,
+        @Query("AsManger") isManager: Boolean,
         @Query("leaveStatus") id: Int? = null
-    ): Single<Response<LeaveRequestResponse>>
+    ): Single<Response<ArrayList<LeaveRequestResponseItem>>>
 
     @POST("api/hr/Employee/GetMobileHomeStatistics")
     fun getHomeResponse(@Body jsonElement: JsonElement): Single<Response<HomeResponse>>
@@ -61,6 +61,9 @@ interface Webservices {
     @POST("api/hr/md/Leaves/RequestLeave")
     fun sendLeaveRequest(@Body jsonElement: JsonElement): Single<Response<SendRequestResponse>>
 
+    @POST("api/hr/Fingerprint/RequestCheckFingerprint")
+    fun sendFingerPrintRequest(@Body body: JsonElement): Single<Response<Void>>
+
     @POST("api/hr/md/LeaveBalance/GetMyLeaveBalances")
     fun getLeaveBalance(): Single<Response<BalanceResponse>>
 
@@ -69,7 +72,7 @@ interface Webservices {
     fun getSalaryDetails(): Single<Response<SalaryDetailsResponse>>
 
     @GET("/api/hr/Employee/GetMyTeammates")
-    fun GetMyTeammates(): Single<Response<List<Teammate>>>
+    fun getMyTeammates(): Single<Response<List<Teammate>>>
 
     @FormUrlEncoded
     @POST("connect/token")
@@ -85,5 +88,8 @@ interface Webservices {
     @Multipart
     @POST("/api/hr/Employee/ChangeProfilePicture")
     fun updateProfilePicture(@Part File: MultipartBody.Part): Single<Response<String>>
+
+    @POST("/api/hr/Employee/ClearProfilePicture")
+    fun clearProfilePicture(): Single<Response<String>>
 
 }
