@@ -18,9 +18,10 @@ class RequestTypesViewModel @ViewModelInject constructor(
 
     fun getData() {
         dataResponse.value = mutableListOf(
-            Types("Vacation"), Types("Hourly"), Types("Miss Punch")
+            Types("Vacation"), Types("Hourly"), Types("Miss Punch"), Types("Overtime")
         )
     }
+
 }
 
 

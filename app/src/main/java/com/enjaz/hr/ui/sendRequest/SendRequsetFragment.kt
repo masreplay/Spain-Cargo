@@ -164,7 +164,6 @@ class SendRequestFragment :
         )
         getViewDataBinding().exFourCalendar.scrollToMonth(currentMonth)
 
-        ////////////////////////////////////////////////////////////////////////////////////////////
         class SingleDayViewContainer(view: View) : ViewContainer(view) {
             // Will be set when this container is bound. See the dayBinder.
             lateinit var day: CalendarDay
@@ -280,8 +279,8 @@ class SendRequestFragment :
                 } else {
                     leaveTypeId?.let { it1 ->
                         getViewModel().sendLeaveRequest(
-                            "${startDateApi + startTimeApi}",
-                            "${endDateApi + endTimeApi}",
+                            startDateApi + startTimeApi,
+                            endDateApi + endTimeApi,
                             getViewDataBinding().spinner.selectedItem.toString(),
                             getViewDataBinding().tvReason.text.toString(),
                             it1
@@ -291,192 +290,291 @@ class SendRequestFragment :
             }
 
 
-        }
+        } else
 
-        else if (args.leaveType == "Miss Punch") {
+            if (args.leaveType == "Miss Punch") {
 
-            getViewDataBinding().lytHourly.show()
-            getViewDataBinding().tvFrom.text = "time"
-            getViewDataBinding().tvTo.hide()
-            getViewDataBinding().tvTimePickerStart.hide()
+                getViewDataBinding().lytHourly.show()
+                getViewDataBinding().tvFrom.text = "time"
+                getViewDataBinding().tvTo.hide()
+                getViewDataBinding().tvTimePickerStart.hide()
 
-            types.add("Miss in punch")
-            types.add("Miss out punch")
+                types.add("Miss in punch")
+                types.add("Miss out punch")
 
-            getViewDataBinding().spinner.adapter = adapter
-            adapter.notifyDataSetChanged()
-
-
-            getViewDataBinding().exFourCalendar.dayBinder =
-                object : DayBinder<SingleDayViewContainer> {
-                    override fun create(view: View) = SingleDayViewContainer(view)
-                    override fun bind(container: SingleDayViewContainer, day: CalendarDay) {
-                        container.day = day
-                        val textView = container.binding.exFourDayText
-                        val roundBgView = container.binding.exFourRoundBgView
-                        roundBgView.makeInVisible()
+                getViewDataBinding().spinner.adapter = adapter
+                adapter.notifyDataSetChanged()
 
 
-                        textView.text = day.date.dayOfMonth.toString()
+                getViewDataBinding().exFourCalendar.dayBinder =
+                    object : DayBinder<SingleDayViewContainer> {
+                        override fun create(view: View) = SingleDayViewContainer(view)
+                        override fun bind(container: SingleDayViewContainer, day: CalendarDay) {
+                            container.day = day
+                            val textView = container.binding.exFourDayText
+                            val roundBgView = container.binding.exFourRoundBgView
+                            roundBgView.makeInVisible()
 
-                        if (day.owner == DayOwner.THIS_MONTH) {
-                            textView.makeVisible()
-                            roundBgView.makeVisible()
-                            roundBgView.setBackgroundResource(R.drawable.example_4_single_selected_bg)
 
-                            when (day.date) {
-                                today -> {
-                                    startDateApi = day.date.toString()
-                                    endDateApi = day.date.toString()
-                                    Log.d("kkkkk", startDateApi)
-                                    Log.d("kkkkk", endDateApi)
+                            textView.text = day.date.dayOfMonth.toString()
 
-                                    textView.setTextColorRes(R.color.white)
-                                    roundBgView.makeVisible()
-                                    roundBgView.setBackgroundResource(R.drawable.example_4_today_bg)
+                            if (day.owner == DayOwner.THIS_MONTH) {
+                                textView.makeVisible()
+                                roundBgView.makeVisible()
+                                roundBgView.setBackgroundResource(R.drawable.example_4_single_selected_bg)
 
+                                when (day.date) {
+                                    today -> {
+                                        startDateApi = day.date.toString()
+                                        endDateApi = day.date.toString()
+                                        Log.d("kkkkk", startDateApi)
+                                        Log.d("kkkkk", endDateApi)
+
+                                        textView.setTextColorRes(R.color.white)
+                                        roundBgView.makeVisible()
+                                        roundBgView.setBackgroundResource(R.drawable.example_4_today_bg)
+
+                                    }
+                                    selectedDate -> {
+                                        startDateApi = day.date.toString()
+                                        endDateApi = day.date.toString()
+                                        Log.d("kkkkk", startDateApi)
+                                        Log.d("kkkkk", endDateApi)
+
+                                        textView.setTextColorRes(R.color.colorPrimary)
+                                        roundBgView.makeVisible()
+                                        roundBgView.setBackgroundResource(R.drawable.example_4_single_selected_bg)
+
+                                    }
+                                    else -> {
+                                        textView.setTextColorRes(R.color.white)
+                                        roundBgView.makeGone()
+                                    }
                                 }
-                                selectedDate -> {
-                                    startDateApi = day.date.toString()
-                                    endDateApi = day.date.toString()
-                                    Log.d("kkkkk", startDateApi)
-                                    Log.d("kkkkk", endDateApi)
+                            } else {
+                                textView.makeInVisible()
+                                roundBgView.makeGone()
 
-                                    textView.setTextColorRes(R.color.colorPrimary)
-                                    roundBgView.makeVisible()
-                                    roundBgView.setBackgroundResource(R.drawable.example_4_single_selected_bg)
-
-                                }
-                                else -> {
-                                    textView.setTextColorRes(R.color.white)
-                                    roundBgView.makeGone()
-                                }
                             }
-                        } else {
-                            textView.makeInVisible()
-                            roundBgView.makeGone()
-
                         }
                     }
-                }
 
-            form {
+                form {
 
-                input(R.id.tv_reason) {
-                    isNotEmpty().description("Please fill this field")
-                    onErrors { _, errors ->
-                        val firstError: FieldError? = errors.firstOrNull()
-                        getViewDataBinding().tvReason.error = firstError?.description
+                    input(R.id.tv_reason) {
+                        isNotEmpty().description("Please fill this field")
+                        onErrors { _, errors ->
+                            val firstError: FieldError? = errors.firstOrNull()
+                            getViewDataBinding().tvReason.error = firstError?.description
+                        }
                     }
-                }
 
-                submitWith(R.id.btn_applyForLeave) {
-                    getViewModel().sendFingerPrintRequest(
-                        getViewDataBinding().tvReason.text.toString()
-                        , getViewDataBinding().spinner.selectedItemPosition
-                        , startDateApi + endTimeApi
+                    submitWith(R.id.btn_applyForLeave) {
+                        getViewModel().sendFingerPrintRequest(
+                            getViewDataBinding().tvReason.text.toString()
+                            , getViewDataBinding().spinner.selectedItemPosition
+                            , startDateApi + endTimeApi
 
-                    )
-                }
-            }
-
-        }
-        else {
-            form {
-                submitWith(R.id.btn_applyForLeave) {
-
-                    leaveTypeId?.let { it1 ->
-                        getViewModel().sendLeaveRequest(
-                            "$startDateApi",
-                            "$endDateApi",
-                            getViewDataBinding().spinner.selectedItem.toString(),
-                            getViewDataBinding().tvReason.text.toString(),
-                            it1
                         )
                     }
                 }
-            }
+
+            } else
+                if (args.leaveType == "Overtime") {
+                    getViewDataBinding().tvReason.hide()
+                    getViewDataBinding().tvReasonTitle.hide()
+                    getViewDataBinding().spinnerContainer.hide()
+                    getViewDataBinding().lytHourly.show()
+                    getViewDataBinding().btnApplyForLeave.show()
+
+                    getViewDataBinding().exFourCalendar.dayBinder =
+                        object : DayBinder<DayViewContainer> {
+                            override fun create(view: View) = DayViewContainer(view)
+                            override fun bind(container: DayViewContainer, day: CalendarDay) {
+                                container.day = day
+                                val textView = container.binding.exFourDayText
+                                val roundBgView = container.binding.exFourRoundBgView
+
+                                textView.text = null
+                                textView.background = null
+                                roundBgView.makeInVisible()
 
 
+                                if (day.owner == DayOwner.THIS_MONTH) {
+                                    textView.text = day.day.toString()
 
-            getViewDataBinding().lytHourly.makeGone()
+                                    if (day.date.isBefore(today)) {
+                                        textView.setTextColorRes(R.color.white)
+                                    } else {
+                                        when {
+                                            startDate == day.date && endDate == null -> {
+                                                textView.setTextColorRes(R.color.colorPrimary)
+                                                roundBgView.makeVisible()
+                                                roundBgView.setBackgroundResource(R.drawable.example_4_single_selected_bg)
+                                            }
+                                            day.date == startDate -> {
+                                                startDateApi = day.date.toString()
 
-            getViewDataBinding().exFourCalendar.dayBinder = object : DayBinder<DayViewContainer> {
-                override fun create(view: View) = DayViewContainer(view)
-                override fun bind(container: DayViewContainer, day: CalendarDay) {
-                    container.day = day
-                    val textView = container.binding.exFourDayText
-                    val roundBgView = container.binding.exFourRoundBgView
+                                                textView.setTextColorRes(R.color.colorPrimary)
+                                                textView.background = startBackground
 
-                    textView.text = null
-                    textView.background = null
-                    roundBgView.makeInVisible()
+                                            }
+                                            startDate != null && endDate != null && (day.date > startDate && day.date < endDate) -> {
+                                                textView.setTextColorRes(R.color.white)
+                                                textView.setBackgroundResource(R.drawable.example_4_continuous_selected_bg_middle)
+                                            }
+                                            day.date == endDate -> {
+                                                endDateApi = day.date.toString()
+
+                                                textView.setTextColorRes(R.color.colorPrimary)
+                                                textView.background = endBackground
+                                            }
+                                            day.date == today -> {
+                                                startDateApi = day.date.toString()
+                                                endDateApi = day.date.toString()
 
 
-                    if (day.owner == DayOwner.THIS_MONTH) {
-                        textView.text = day.day.toString()
+                                                textView.setTextColorRes(R.color.white)
+                                                roundBgView.makeVisible()
+                                                roundBgView.setBackgroundResource(R.drawable.example_4_today_bg)
+                                            }
+                                            else -> textView.setTextColorRes(R.color.white)
+                                        }
+                                    }
+                                } else {
 
-                        if (day.date.isBefore(today)) {
-                            textView.setTextColorRes(R.color.white)
-                        } else {
-                            when {
-                                startDate == day.date && endDate == null -> {
-                                    textView.setTextColorRes(R.color.colorPrimary)
-                                    roundBgView.makeVisible()
-                                    roundBgView.setBackgroundResource(R.drawable.example_4_single_selected_bg)
+                                    val startDate = startDate
+                                    val endDate = endDate
+                                    if (startDate != null && endDate != null) {
+                                        if ((day.owner == DayOwner.PREVIOUS_MONTH &&
+                                                    startDate.monthValue == day.date.monthValue &&
+                                                    endDate.monthValue != day.date.monthValue) ||
+
+                                            (day.owner == DayOwner.NEXT_MONTH &&
+                                                    startDate.monthValue != day.date.monthValue &&
+                                                    endDate.monthValue == day.date.monthValue) ||
+                                            (startDate < day.date && endDate > day.date &&
+                                                    startDate.monthValue != day.date.monthValue &&
+                                                    endDate.monthValue != day.date.monthValue)
+                                        ) {
+                                            textView.setBackgroundResource(R.drawable.example_4_continuous_selected_bg_middle)
+                                        }
+                                    }
                                 }
-                                day.date == startDate -> {
-                                    startDateApi = day.date.toString()
-
-                                    textView.setTextColorRes(R.color.colorPrimary)
-                                    textView.background = startBackground
-
-                                }
-                                startDate != null && endDate != null && (day.date > startDate && day.date < endDate) -> {
-                                    textView.setTextColorRes(R.color.white)
-                                    textView.setBackgroundResource(R.drawable.example_4_continuous_selected_bg_middle)
-                                }
-                                day.date == endDate -> {
-                                    endDateApi = day.date.toString()
-
-                                    textView.setTextColorRes(R.color.colorPrimary)
-                                    textView.background = endBackground
-                                }
-                                day.date == today -> {
-                                    startDateApi = day.date.toString()
-                                    endDateApi = day.date.toString()
-
-
-                                    textView.setTextColorRes(R.color.white)
-                                    roundBgView.makeVisible()
-                                    roundBgView.setBackgroundResource(R.drawable.example_4_today_bg)
-                                }
-                                else -> textView.setTextColorRes(R.color.white)
                             }
                         }
-                    } else {
+                    getViewDataBinding().btnApplyForLeave.setOnClickListener {
+                        if (startTimeApi == null) {
+                            getViewDataBinding().tvTimePickerStart.error = "pick a time"
+                        }
+                        if (endTimeApi == null) {
+                            getViewDataBinding().tvTimePickerEnd.error = "pick a time"
+                        } else {
+                            getViewModel().requestOvertime(
+                                startDateApi + startTimeApi,
+                                endDateApi + endTimeApi
+                            )
 
-                        val startDate = startDate
-                        val endDate = endDate
-                        if (startDate != null && endDate != null) {
-                            if ((day.owner == DayOwner.PREVIOUS_MONTH &&
-                                        startDate.monthValue == day.date.monthValue &&
-                                        endDate.monthValue != day.date.monthValue) ||
+                        }
+                    }
 
-                                (day.owner == DayOwner.NEXT_MONTH &&
-                                        startDate.monthValue != day.date.monthValue &&
-                                        endDate.monthValue == day.date.monthValue) ||
-                                (startDate < day.date && endDate > day.date &&
-                                        startDate.monthValue != day.date.monthValue &&
-                                        endDate.monthValue != day.date.monthValue)
-                            ) {
-                                textView.setBackgroundResource(R.drawable.example_4_continuous_selected_bg_middle)
+                } else {
+                    form {
+                        submitWith(R.id.btn_applyForLeave) {
+
+                            leaveTypeId?.let { it1 ->
+                                getViewModel().sendLeaveRequest(
+                                    "$startDateApi",
+                                    "$endDateApi",
+                                    getViewDataBinding().spinner.selectedItem.toString(),
+                                    getViewDataBinding().tvReason.text.toString(),
+                                    it1
+                                )
                             }
                         }
                     }
+
+
+
+                    getViewDataBinding().lytHourly.makeGone()
+
+                    getViewDataBinding().exFourCalendar.dayBinder =
+                        object : DayBinder<DayViewContainer> {
+                            override fun create(view: View) = DayViewContainer(view)
+                            override fun bind(container: DayViewContainer, day: CalendarDay) {
+                                container.day = day
+                                val textView = container.binding.exFourDayText
+                                val roundBgView = container.binding.exFourRoundBgView
+
+                                textView.text = null
+                                textView.background = null
+                                roundBgView.makeInVisible()
+
+
+                                if (day.owner == DayOwner.THIS_MONTH) {
+                                    textView.text = day.day.toString()
+
+                                    if (day.date.isBefore(today)) {
+                                        textView.setTextColorRes(R.color.white)
+                                    } else {
+                                        when {
+                                            startDate == day.date && endDate == null -> {
+                                                textView.setTextColorRes(R.color.colorPrimary)
+                                                roundBgView.makeVisible()
+                                                roundBgView.setBackgroundResource(R.drawable.example_4_single_selected_bg)
+                                            }
+                                            day.date == startDate -> {
+                                                startDateApi = day.date.toString()
+
+                                                textView.setTextColorRes(R.color.colorPrimary)
+                                                textView.background = startBackground
+
+                                            }
+                                            startDate != null && endDate != null && (day.date > startDate && day.date < endDate) -> {
+                                                textView.setTextColorRes(R.color.white)
+                                                textView.setBackgroundResource(R.drawable.example_4_continuous_selected_bg_middle)
+                                            }
+                                            day.date == endDate -> {
+                                                endDateApi = day.date.toString()
+
+                                                textView.setTextColorRes(R.color.colorPrimary)
+                                                textView.background = endBackground
+                                            }
+                                            day.date == today -> {
+                                                startDateApi = day.date.toString()
+                                                endDateApi = day.date.toString()
+
+
+                                                textView.setTextColorRes(R.color.white)
+                                                roundBgView.makeVisible()
+                                                roundBgView.setBackgroundResource(R.drawable.example_4_today_bg)
+                                            }
+                                            else -> textView.setTextColorRes(R.color.white)
+                                        }
+                                    }
+                                } else {
+
+                                    val startDate = startDate
+                                    val endDate = endDate
+                                    if (startDate != null && endDate != null) {
+                                        if ((day.owner == DayOwner.PREVIOUS_MONTH &&
+                                                    startDate.monthValue == day.date.monthValue &&
+                                                    endDate.monthValue != day.date.monthValue) ||
+
+                                            (day.owner == DayOwner.NEXT_MONTH &&
+                                                    startDate.monthValue != day.date.monthValue &&
+                                                    endDate.monthValue == day.date.monthValue) ||
+                                            (startDate < day.date && endDate > day.date &&
+                                                    startDate.monthValue != day.date.monthValue &&
+                                                    endDate.monthValue != day.date.monthValue)
+                                        ) {
+                                            textView.setBackgroundResource(R.drawable.example_4_continuous_selected_bg_middle)
+                                        }
+                                    }
+                                }
+                            }
+                        }
                 }
-            }
-        }
 
         getViewDataBinding().exFourCalendar.monthScrollListener =
             object : MonthScrollListener {

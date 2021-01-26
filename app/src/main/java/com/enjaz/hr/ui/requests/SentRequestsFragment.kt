@@ -1,19 +1,18 @@
 package com.enjaz.hr.ui.requests
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.afollestad.vvalidator.util.hide
 import com.afollestad.vvalidator.util.show
 import com.enjaz.hr.R
 import com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponseItem
 import com.enjaz.hr.databinding.FramgnetSentRequestsBinding
 import com.enjaz.hr.ui.base.BaseFragment
 import com.enjaz.hr.ui.sendRequest.SendRequestViewModel
-import com.enjaz.hr.util.makeGone
 import com.enjaz.hr.util.snackBar
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
@@ -117,7 +116,7 @@ class SentRequestsFragment :
     }
 
     override fun requestsAvailable() {
-        getViewDataBinding().lytNoData.makeGone()
+        getViewDataBinding().lytNoData.hide()
     }
 
     override fun showSnack(string: String, color: String, drawable: Int?) {

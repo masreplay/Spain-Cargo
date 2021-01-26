@@ -61,6 +61,9 @@ interface Webservices {
     @POST("api/hr/md/Leaves/RequestLeave")
     fun sendLeaveRequest(@Body jsonElement: JsonElement): Single<Response<SendRequestResponse>>
 
+    @POST("api/hr/Attendance/RequestOvertime")
+    fun requestOvertime(@Body jsonElement: JsonElement): Single<Response<Void>>
+
     @POST("api/hr/Fingerprint/RequestCheckFingerprint")
     fun sendFingerPrintRequest(@Body body: JsonElement): Single<Response<Void>>
 

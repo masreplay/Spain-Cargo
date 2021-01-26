@@ -23,6 +23,7 @@ class SendRequestViewModel @ViewModelInject constructor(
         MutableLiveData()
 
     var missPunchResponse: MutableLiveData<BaseResource<Void>> = MutableLiveData()
+    var overTimeResponse: MutableLiveData<BaseResource<Void>> = MutableLiveData()
 
 
     fun getLeaveTypes(timeFlag: Boolean) {
@@ -56,10 +57,7 @@ class SendRequestViewModel @ViewModelInject constructor(
         leaveDescription: String,
         leaveTypeId: Int
     ) {
-
         navigator.onSendingRequest()
-
-
         dispose(
             dataManager.sendLeaveRequest(
                 startDate,
@@ -73,6 +71,28 @@ class SendRequestViewModel @ViewModelInject constructor(
                 //error handling
                 e.message?.let {
                     sendLeaveRequestResponse.postValue(BaseResource.error(it, null))
+                    navigator.onSendingRequestError("an Error accord")
+                }
+            })
+    }
+
+    fun requestOvertime(
+        startDate: String,
+        endDate: String
+    ) {
+
+        overTimeResponse.value = BaseResource.loading(overTimeResponse.value?.data)
+
+        dispose(
+            dataManager.requestOvertime(
+                startDate,
+                endDate
+            ),
+            ::onOverTimeSuccess,
+            { e ->
+                //error handling
+                e.message?.let {
+                    overTimeResponse.postValue(BaseResource.error(it, null))
                     navigator.onSendingRequestError("an Error accord")
                 }
             })
@@ -106,6 +126,17 @@ class SendRequestViewModel @ViewModelInject constructor(
 
         navigator.onSendingRequestSuccess()
 
+    }
+
+    private fun onOverTimeSuccess(result: BaseResource<Void>) {
+
+        overTimeResponse.postValue(result)
+
+        result.message?.let {
+            navigator.showSnack(result.message, "#ED213A", R.drawable.ic_round_close_24)
+        }
+
+        //navigator.onSendingRequestSuccess()
     }
 
     private fun onGetLeaveTypesSuccess(result: BaseResource<RequestTypesResponse>) {

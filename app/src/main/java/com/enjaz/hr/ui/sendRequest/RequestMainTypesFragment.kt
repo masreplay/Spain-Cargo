@@ -46,11 +46,6 @@ class RequestMainTypesFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getViewModel().getData()
-//        list=  arrayListOf("Annual leave","Bereavement leave","Business trip leave"
-//            ,"Long service leave", "Maternity/Paternity leave","Sick leave",
-//            "Self-Quarantine Leave","Time off in lieu","Unpaid leave")
-
-//        requsetTypesAdapter.setItems(  list)
 
         getViewDataBinding().rv.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)

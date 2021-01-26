@@ -33,11 +33,6 @@
         <action
             android:id="@+id/nextAction"
             app:destination="@id/sendRequestFragment" />
-
-        <argument
-            android:name="attendance_id"
-            android:defaultValue="0"
-            app:argType="int" />
     </dialog>
 
 </navigation>

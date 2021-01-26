@@ -30,7 +30,6 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
 
     override fun getLayoutId(): Int {
         return R.layout.framgnet_home
-
     }
 
     override fun getViewModel(): HomeViewModel {

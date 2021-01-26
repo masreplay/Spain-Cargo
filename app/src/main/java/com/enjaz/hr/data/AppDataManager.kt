@@ -68,6 +68,24 @@ class AppDataManager @Inject constructor(
         )
     }
 
+    fun requestOvertime(
+        startDate: String,
+        endDate: String
+    ): Single<BaseResource<Void>> {
+
+        val params = JsonObject().apply {
+            addProperty("startDate", startDate)
+            addProperty("endDate", endDate)
+
+        }
+        return wrapWithResourceObject(
+            webservices.requestOvertime(jsonElement = params)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+
     fun sendFingerPrintRequest(description: String,type:Int,time:String): Single<BaseResource<Void>> {
         val params = JsonObject().apply {
             addProperty("description", description)

@@ -47,8 +47,6 @@
             android:id="@+id/nextAction"
             app:destination="@id/sendRequestFragment" />
 
-
-
     </dialog>
     <dialog
         android:id="@+id/filterFragment"
