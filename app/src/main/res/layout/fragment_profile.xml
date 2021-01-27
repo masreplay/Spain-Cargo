@@ -353,7 +353,7 @@
                             android:focusable="true"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
-
+                            android:onClick="@{()->viewModel.navigator.logout()}"
                             android:paddingLeft="@dimen/spacing_large"
                             android:paddingRight="@dimen/spacing_large"
                             app:carbon_rippleColor="@color/colorPrimaryLight">

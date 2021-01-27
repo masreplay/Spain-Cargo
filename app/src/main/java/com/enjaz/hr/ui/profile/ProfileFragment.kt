@@ -14,8 +14,11 @@ import com.enjaz.hr.R
 import com.enjaz.hr.databinding.FragmentProfileBinding
 import com.enjaz.hr.ui.base.BaseFragment
 import com.enjaz.hr.ui.base.BaseNavigator
+import com.enjaz.hr.ui.login.LoginActivity
+import com.enjaz.hr.util.PrefsManager
 import com.enjaz.hr.util.UploadRequestBody
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,10 +46,14 @@ class ProfileFragment :
         return this
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        getViewModel().getProfileInfo()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getViewModel().getProfileInfo()
 
         getViewModel().updateUserProfileResponse.observe(requireActivity(), Observer { resource ->
             resource?.data?.let {
@@ -98,10 +105,26 @@ class ProfileFragment :
         findNavController().navigate(R.id.settingsFragment)
     }
 
+    override fun logout() {
+        MaterialAlertDialogBuilder(
+            requireActivity()
+        )
+            .setTitle("Confirm logout")
+            .setNegativeButton("cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setPositiveButton("logout") { _, _ ->
+                PrefsManager.instance?.clearPreferences()
+                val intent=Intent(requireActivity(),LoginActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+            }
+            .show()
+    }
+
+
     override fun onEditProfilePhotoClick() {
         showSheet()
-
-
     }
 
     override fun detailsAvailable() {
@@ -151,6 +174,7 @@ interface IProfileInteractionListener : BaseNavigator {
     fun onBalanceClick()
     fun onSalaryDetailsClick()
     fun onSettingsClick()
+    fun logout()
     fun onEditProfilePhotoClick()
     fun detailsAvailable()
     fun noDetails()

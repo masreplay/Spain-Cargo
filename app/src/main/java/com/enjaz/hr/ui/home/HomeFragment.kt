@@ -41,6 +41,10 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
         return this
     }
 
+
+
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getViewDataBinding().status.constraintLoading.setBackgroundColor(Color.WHITE)
@@ -70,13 +74,6 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
                 .defaultSelectedDate(calendar)
                 .build()
 
-        getViewModel().getHomeData((calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.YEAR))
-
-//        getViewModel().getSchedulle(
-//            (calendar.get(Calendar.MONTH) + 1).toString() + " " + (calendar.get(
-//                Calendar.DAY_OF_MONTH
-//            )).toString()
-//        )
 
 
         horizontalCalendar.calendarListener = object : HorizontalCalendarListener() {
@@ -147,6 +144,9 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         usersAdapter = UsersAdapter(requireContext(), mutableListOf())
+        val calendar = Calendar.getInstance()
+        getViewModel().getHomeData((calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.YEAR))
+
 
     }
 

@@ -21,10 +21,10 @@ class RequestsViewModel @ViewModelInject constructor(
     var cancelMyRequestResponse: MutableLiveData<BaseResource<String>> = MutableLiveData()
 
     @JvmOverloads
-    fun getLeaveRequests(isManager: Boolean,filter:Int?=null){
+    fun getLeaveRequests(isManager: Boolean){
         leaveRequestResponse.value = BaseResource.loading(leaveRequestResponse.value?.data)
         dispose(
-            dataManager.getLeaveRequests(isManager,filter),
+            dataManager.getLeaveRequests(isManager),
             ::onGetLeaveRequestsSuccess,
             { e ->
                 //error handling
@@ -32,7 +32,7 @@ class RequestsViewModel @ViewModelInject constructor(
                     Log.d("error",it)
                 }
             })
-        refreshListener.postValue(View.OnClickListener { getLeaveRequests(isManager,filter) })
+        refreshListener.postValue(View.OnClickListener { getLeaveRequests(isManager) })
 
     }
 

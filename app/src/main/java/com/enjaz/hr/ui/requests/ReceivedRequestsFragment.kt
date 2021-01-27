@@ -75,7 +75,7 @@ class ReceivedRequestsFragment :
         receiveRequestsAdapter = ReceivedRequestsAdapter(requireContext(), mutableListOf())
         receiveRequestsAdapter.setOnItemClickListener(this)
 
-        getViewModel().getLeaveRequests(true,4)
+        getViewModel().getLeaveRequests(true)
 
     }
 

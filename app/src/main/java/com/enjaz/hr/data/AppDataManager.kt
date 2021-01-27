@@ -69,13 +69,13 @@ class AppDataManager @Inject constructor(
     }
 
     fun requestOvertime(
-        startDate: String,
-        endDate: String
+        startTime: String,
+        endTime: String
     ): Single<BaseResource<Void>> {
 
         val params = JsonObject().apply {
-            addProperty("startDate", startDate)
-            addProperty("endDate", endDate)
+            addProperty("startTime", startTime)
+            addProperty("endTime", endTime)
 
         }
         return wrapWithResourceObject(
@@ -137,11 +137,9 @@ class AppDataManager @Inject constructor(
     }
 
     fun getLeaveRequests(
-        isManager: Boolean,
-        id: Int? = null
-    ): Single<BaseResource<ArrayList<LeaveRequestResponseItem>>> {
+        isManager: Boolean): Single<BaseResource<ArrayList<LeaveRequestResponseItem>>> {
         return wrapWithResourceObject(
-            webservices.getLeaveRequests(isManager, id)
+            webservices.getLeaveRequests(isManager)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )

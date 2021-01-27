@@ -42,9 +42,7 @@
     <string name="late">(Late)</string>
     <string name="miss_punch">Miss punch</string>
     <string name="enter_a_name_or_an_id">Enter a name or an ID</string>
-    <string name="from">From</string>
     <string name="post_date">Post date</string>
-    <string name="to">To</string>
     <string name="pick_a_start_date">Pick a start date</string>
     <string name="pick_an_end_date">Pick an end date</string>
     <string name="salary_details">Salary Details</string>
@@ -125,5 +123,8 @@
     <string name="missed_out_punch">Missed out Punch</string>
     <string name="remove">Remove</string>
     <string name="edit">Change Profile Picture</string>
+    <string name="select_time">Select time</string>
+    <string name="to">To</string>
+    <string name="from">From</string>
 
 </resources>

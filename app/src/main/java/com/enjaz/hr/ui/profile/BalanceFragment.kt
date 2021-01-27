@@ -78,6 +78,10 @@ class BalanceFragment :
         TODO("Not yet implemented")
     }
 
+    override fun logout() {
+        TODO("Not yet implemented")
+    }
+
     override fun onEditProfilePhotoClick() {
 
     }

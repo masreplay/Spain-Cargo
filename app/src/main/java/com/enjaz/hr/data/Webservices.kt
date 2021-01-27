@@ -48,8 +48,7 @@ interface Webservices {
 
     @GET("api/hr/md/Leaves/GetLeavesRequests")
     fun getLeaveRequests(
-        @Query("AsManger") isManager: Boolean,
-        @Query("leaveStatus") id: Int? = null
+        @Query("AsManger") isManager: Boolean
     ): Single<Response<ArrayList<LeaveRequestResponseItem>>>
 
     @POST("api/hr/Employee/GetMobileHomeStatistics")

@@ -221,7 +221,6 @@ class SendRequestFragment :
 
         if (args.leaveType == "Hourly") {
 
-            getViewDataBinding().lytHourly.makeVisible()
             getViewDataBinding().exFourCalendar.dayBinder =
                 object : DayBinder<SingleDayViewContainer> {
                     override fun create(view: View) = SingleDayViewContainer(view)
@@ -294,7 +293,6 @@ class SendRequestFragment :
 
             if (args.leaveType == "Miss Punch") {
 
-                getViewDataBinding().lytHourly.show()
                 getViewDataBinding().tvFrom.text = "time"
                 getViewDataBinding().tvTo.hide()
                 getViewDataBinding().tvTimePickerStart.hide()
@@ -384,82 +382,51 @@ class SendRequestFragment :
                     getViewDataBinding().tvReason.hide()
                     getViewDataBinding().tvReasonTitle.hide()
                     getViewDataBinding().spinnerContainer.hide()
-                    getViewDataBinding().lytHourly.show()
-                    getViewDataBinding().btnApplyForLeave.show()
+                    getViewDataBinding().tvLeaveType.hide()
 
                     getViewDataBinding().exFourCalendar.dayBinder =
-                        object : DayBinder<DayViewContainer> {
-                            override fun create(view: View) = DayViewContainer(view)
-                            override fun bind(container: DayViewContainer, day: CalendarDay) {
+                        object : DayBinder<SingleDayViewContainer> {
+                            override fun create(view: View) = SingleDayViewContainer(view)
+                            override fun bind(container: SingleDayViewContainer, day: CalendarDay) {
                                 container.day = day
                                 val textView = container.binding.exFourDayText
                                 val roundBgView = container.binding.exFourRoundBgView
-
-                                textView.text = null
-                                textView.background = null
                                 roundBgView.makeInVisible()
 
 
+                                textView.text = day.date.dayOfMonth.toString()
+
                                 if (day.owner == DayOwner.THIS_MONTH) {
-                                    textView.text = day.day.toString()
+                                    textView.makeVisible()
+                                    roundBgView.makeVisible()
+                                    roundBgView.setBackgroundResource(R.drawable.example_4_single_selected_bg)
 
-                                    if (day.date.isBefore(today)) {
-                                        textView.setTextColorRes(R.color.white)
-                                    } else {
-                                        when {
-                                            startDate == day.date && endDate == null -> {
-                                                textView.setTextColorRes(R.color.colorPrimary)
-                                                roundBgView.makeVisible()
-                                                roundBgView.setBackgroundResource(R.drawable.example_4_single_selected_bg)
-                                            }
-                                            day.date == startDate -> {
-                                                startDateApi = day.date.toString()
+                                    when (day.date) {
+                                        today -> {
+                                            startDateApi = day.date.toString()
+                                            endDateApi = day.date.toString()
+                                            textView.setTextColorRes(R.color.white)
+                                            roundBgView.makeVisible()
+                                            roundBgView.setBackgroundResource(R.drawable.example_4_today_bg)
 
-                                                textView.setTextColorRes(R.color.colorPrimary)
-                                                textView.background = startBackground
+                                        }
+                                        selectedDate -> {
+                                            startDateApi = day.date.toString()
+                                            endDateApi = day.date.toString()
+                                            textView.setTextColorRes(R.color.colorPrimary)
+                                            roundBgView.makeVisible()
+                                            roundBgView.setBackgroundResource(R.drawable.example_4_single_selected_bg)
 
-                                            }
-                                            startDate != null && endDate != null && (day.date > startDate && day.date < endDate) -> {
-                                                textView.setTextColorRes(R.color.white)
-                                                textView.setBackgroundResource(R.drawable.example_4_continuous_selected_bg_middle)
-                                            }
-                                            day.date == endDate -> {
-                                                endDateApi = day.date.toString()
-
-                                                textView.setTextColorRes(R.color.colorPrimary)
-                                                textView.background = endBackground
-                                            }
-                                            day.date == today -> {
-                                                startDateApi = day.date.toString()
-                                                endDateApi = day.date.toString()
-
-
-                                                textView.setTextColorRes(R.color.white)
-                                                roundBgView.makeVisible()
-                                                roundBgView.setBackgroundResource(R.drawable.example_4_today_bg)
-                                            }
-                                            else -> textView.setTextColorRes(R.color.white)
+                                        }
+                                        else -> {
+                                            textView.setTextColorRes(R.color.white)
+                                            roundBgView.makeGone()
                                         }
                                     }
                                 } else {
+                                    textView.makeInVisible()
+                                    roundBgView.makeGone()
 
-                                    val startDate = startDate
-                                    val endDate = endDate
-                                    if (startDate != null && endDate != null) {
-                                        if ((day.owner == DayOwner.PREVIOUS_MONTH &&
-                                                    startDate.monthValue == day.date.monthValue &&
-                                                    endDate.monthValue != day.date.monthValue) ||
-
-                                            (day.owner == DayOwner.NEXT_MONTH &&
-                                                    startDate.monthValue != day.date.monthValue &&
-                                                    endDate.monthValue == day.date.monthValue) ||
-                                            (startDate < day.date && endDate > day.date &&
-                                                    startDate.monthValue != day.date.monthValue &&
-                                                    endDate.monthValue != day.date.monthValue)
-                                        ) {
-                                            textView.setBackgroundResource(R.drawable.example_4_continuous_selected_bg_middle)
-                                        }
-                                    }
                                 }
                             }
                         }
@@ -484,8 +451,8 @@ class SendRequestFragment :
 
                             leaveTypeId?.let { it1 ->
                                 getViewModel().sendLeaveRequest(
-                                    "$startDateApi",
-                                    "$endDateApi",
+                                    startDateApi,
+                                    endDateApi,
                                     getViewDataBinding().spinner.selectedItem.toString(),
                                     getViewDataBinding().tvReason.text.toString(),
                                     it1

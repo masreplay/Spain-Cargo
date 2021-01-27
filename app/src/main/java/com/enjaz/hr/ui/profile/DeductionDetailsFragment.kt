@@ -84,6 +84,10 @@ class DeductionDetailsFragment :
     override fun onSettingsClick() {
     }
 
+    override fun logout() {
+        TODO("Not yet implemented")
+    }
+
     override fun onEditProfilePhotoClick() {
         TODO("Not yet implemented")
     }

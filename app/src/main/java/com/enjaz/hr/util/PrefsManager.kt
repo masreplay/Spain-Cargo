@@ -1,7 +1,6 @@
 package com.enjaz.hr.util
 
 import android.content.SharedPreferences
-import android.util.Log
 import androidx.preference.PreferenceManager
 import com.enjaz.hr.HRMApp
 import com.enjaz.hr.data.model.profile.UserInfo
@@ -31,8 +30,7 @@ class PrefsManager {
     }
 
     fun getAccessToken(): String? {
-        val accessToken = sharedPref.getString("accessToken", null)
-        return accessToken
+        return sharedPref.getString("accessToken", null)
     }
 
 
@@ -65,12 +63,18 @@ class PrefsManager {
         sharedPrefsEditor.apply()
     }
 
+    fun clearPreferences() {
+        sharedPrefsEditor = sharedPref.edit()
+        sharedPrefsEditor.clear()
+        sharedPrefsEditor.apply()
+    }
+
     fun getProfile(): UserInfo? {
         val gson = Gson()
-        if (sharedPref.getString("UserProfile", null) != null) {
-            return gson.fromJson(sharedPref.getString("UserProfile", null), UserInfo::class.java)
+        return if (sharedPref.getString("UserProfile", null) != null) {
+            gson.fromJson(sharedPref.getString("UserProfile", null), UserInfo::class.java)
         } else {
-            return null
+            null
         }
     }
 

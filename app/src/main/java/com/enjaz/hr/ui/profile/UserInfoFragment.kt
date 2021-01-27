@@ -74,6 +74,10 @@ class UserInfoFragment :
         TODO("Not yet implemented")
     }
 
+    override fun logout() {
+        TODO("Not yet implemented")
+    }
+
     override fun onEditProfilePhotoClick() {
         TODO("Not yet implemented")
     }

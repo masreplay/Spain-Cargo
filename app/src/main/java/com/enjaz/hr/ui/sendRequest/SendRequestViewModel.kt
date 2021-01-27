@@ -77,16 +77,16 @@ class SendRequestViewModel @ViewModelInject constructor(
     }
 
     fun requestOvertime(
-        startDate: String,
-        endDate: String
+        startTime: String,
+        endTime: String
     ) {
 
         overTimeResponse.value = BaseResource.loading(overTimeResponse.value?.data)
 
         dispose(
             dataManager.requestOvertime(
-                startDate,
-                endDate
+                startTime,
+                endTime
             ),
             ::onOverTimeSuccess,
             { e ->

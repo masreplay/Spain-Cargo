@@ -3,7 +3,6 @@
     android:shape="rectangle">
     <solid android:color="@color/white" />
 
-    <!--We update these values dynamically-->
     <corners
         android:bottomLeftRadius="26dp"
         android:topLeftRadius="26dp" />
