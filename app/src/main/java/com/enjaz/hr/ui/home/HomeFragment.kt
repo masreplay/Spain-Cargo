@@ -26,6 +26,7 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
 
     private val homeViewModel: HomeViewModel by viewModels()
     lateinit var usersAdapter: UsersAdapter
+    lateinit var employeeAdapter: EmployeesAdapter
 
 
     override fun getLayoutId(): Int {
@@ -40,9 +41,6 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
     override fun getNavigator(): IHomeInteractionListener {
         return this
     }
-
-
-
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -92,6 +90,10 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
             adapter = usersAdapter
         }
 
+        getViewDataBinding().rv2.apply {
+            adapter = employeeAdapter
+        }
+
 
         getViewModel().homeResponse.observe(requireActivity(), Observer { response ->
             response.data?.let {
@@ -111,16 +113,16 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
                 )
 
                 val section3 = DonutSection(
-                        name = "section_3",
-                        color = ContextCompat.getColor(requireActivity(), R.color.orange),
-                        amount = it.delay.toFloat()
-                    )
+                    name = "section_3",
+                    color = ContextCompat.getColor(requireActivity(), R.color.orange),
+                    amount = it.delay.toFloat()
+                )
 
                 val section4 = DonutSection(
-                        name = "section_4",
-                        color = ContextCompat.getColor(requireActivity(), R.color.red),
-                        amount = it.absent.toFloat()
-                    )
+                    name = "section_4",
+                    color = ContextCompat.getColor(requireActivity(), R.color.red),
+                    amount = it.absent.toFloat()
+                )
 
                 donut_attendance?.cap = it.totalWorkdays.toFloat()
                 donut_attendance?.submitData(listOf(section1, section2, section3, section4))
@@ -135,26 +137,27 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
         findNavController().navigate(R.id.teamFragment)
     }
 
+    override fun showEmployees() {
+        findNavController().navigate(R.id.teamFragment)
+    }
+
     override fun showSnack(string: String, color: String, drawable: Int?) {
         snackBar(string, drawable, color, getViewDataBinding().parent, requireContext())
-
     }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         usersAdapter = UsersAdapter(requireContext(), mutableListOf())
+        employeeAdapter = EmployeesAdapter(requireContext(), mutableListOf())
         val calendar = Calendar.getInstance()
         getViewModel().getHomeData((calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.YEAR))
-
-
     }
-
-
 }
 
 interface IHomeInteractionListener : BaseNavigator {
     fun showTeam()
+    fun showEmployees()
     fun showSnack(string: String, color: String, drawable: Int?)
 
 }

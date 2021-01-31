@@ -123,6 +123,7 @@
     <string name="casncel_request">Cancel Request</string>
     <string name="remove">Remove</string>
     <string name="select_time">Select time</string>
+    <string name="employees">Employees</string>
 
 
 </resources>
