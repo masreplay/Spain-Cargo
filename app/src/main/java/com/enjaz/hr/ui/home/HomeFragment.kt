@@ -12,6 +12,7 @@ import com.enjaz.hr.R
 import com.enjaz.hr.databinding.FramgnetHomeBinding
 import com.enjaz.hr.ui.base.BaseFragment
 import com.enjaz.hr.ui.base.BaseNavigator
+import com.enjaz.hr.ui.employees.EmployeesAdapter
 import com.enjaz.hr.util.calendar.HorizontalCalendar
 import com.enjaz.hr.util.calendar.utils.HorizontalCalendarListener
 import com.enjaz.hr.util.snackBar
@@ -26,7 +27,7 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
 
     private val homeViewModel: HomeViewModel by viewModels()
     lateinit var usersAdapter: UsersAdapter
-    lateinit var employeeAdapter: EmployeesAdapter
+    lateinit var employeeAdapter: EmployeesHomeAdapter
 
 
     override fun getLayoutId(): Int {
@@ -138,7 +139,7 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
     }
 
     override fun showEmployees() {
-        findNavController().navigate(R.id.teamFragment)
+        findNavController().navigate(R.id.employeeFragment)
     }
 
     override fun showSnack(string: String, color: String, drawable: Int?) {
@@ -149,7 +150,10 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         usersAdapter = UsersAdapter(requireContext(), mutableListOf())
-        employeeAdapter = EmployeesAdapter(requireContext(), mutableListOf())
+        employeeAdapter = EmployeesHomeAdapter(
+            requireContext(),
+            mutableListOf()
+        )
         val calendar = Calendar.getInstance()
         getViewModel().getHomeData((calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.YEAR))
     }

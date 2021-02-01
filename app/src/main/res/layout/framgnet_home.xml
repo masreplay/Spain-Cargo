@@ -415,6 +415,7 @@
                         android:clickable="true"
                         android:drawableEnd="@drawable/ic_baseline_arrow_forward_ios_24"
                         android:focusable="true"
+                        android:background="?attr/selectableItemBackgroundBorderless"
                         android:onClick="@{()->viewModel.navigator.showTeam()}"
                         android:text="@string/more"
                         android:textColor="@color/home_text"
@@ -525,6 +526,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="16dp"
                         android:clickable="true"
+                        android:background="?attr/selectableItemBackgroundBorderless"
                         android:drawableEnd="@drawable/ic_baseline_arrow_forward_ios_24"
                         android:focusable="true"
                         android:onClick="@{()->viewModel.navigator.showEmployees()}"
@@ -554,7 +556,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/view_line2"
                         tools:itemCount="2"
-                        tools:listitem="@layout/item_employee" />
+                        tools:listitem="@layout/item_employee_home" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="0dp"

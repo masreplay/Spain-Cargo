@@ -1,11 +1,10 @@
 package com.enjaz.hr.ui.attendance
 
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.vvalidator.util.show
@@ -30,6 +29,8 @@ class AttendanceFragment :
 
     private lateinit var attendanceAdapter: AttendanceAdapter
 
+    private val args: AttendanceFragmentArgs by navArgs()
+
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_attendance
@@ -51,10 +52,16 @@ class AttendanceFragment :
 
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        args.employee?.let {
+            getViewDataBinding().ivImage.show()
+            getViewDataBinding().tvName.show()
+            getViewDataBinding().tvJob.show()
+            getViewDataBinding().tvName.text= it.name
+            getViewDataBinding().tvJob.text= it.departmentName
+        }
 
 
         val calendar = Calendar.getInstance()
@@ -80,14 +87,19 @@ class AttendanceFragment :
                 .defaultSelectedDate(calendar)
                 .build()
 
-        getViewModel().getAttendanceData((calendar.get(Calendar.MONTH)+1),calendar.get(Calendar.YEAR))
+        getViewModel().getAttendanceData(
+            (calendar.get(Calendar.MONTH) + 1),
+            calendar.get(Calendar.YEAR)
+        )
 
 
         horizontalCalendar.calendarListener = object : HorizontalCalendarListener() {
             override fun onDateSelected(date: Calendar?, position: Int) { //do something
 
-                getViewModel().getAttendanceData((horizontalCalendar.selectedDate.time.month + 1) , horizontalCalendar.selectedDate.get(Calendar.YEAR))
-
+                getViewModel().getAttendanceData(
+                    (horizontalCalendar.selectedDate.time.month + 1),
+                    horizontalCalendar.selectedDate.get(Calendar.YEAR)
+                )
 
 
             }
@@ -102,13 +114,12 @@ class AttendanceFragment :
     }
 
 
-
     override fun onRequestClick() {
         findNavController().navigate(R.id.requestMainTypesFragment)
     }
 
     override fun showSnack(string: String, color: String, drawable: Int?) {
-            snackBar(string, drawable, color, getViewDataBinding().parent, requireContext())
+        snackBar(string, drawable, color, getViewDataBinding().parent, requireContext())
 
     }
 
