@@ -1,14 +1,14 @@
 package com.enjaz.hr.ui.requests
 
 import android.util.Log
-import android.view.View
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import com.enjaz.hr.R
 import com.enjaz.hr.data.AppDataManager
 import com.enjaz.hr.data.model.BaseResource
-import com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponseItem
+import com.enjaz.hr.data.model.getLeaveRequests.LeavesResponse
 import com.enjaz.hr.ui.base.BaseViewModel
+import com.enjaz.hr.util.Constants.ITEMS_PER_PAGE
 
 class RequestsViewModel @ViewModelInject constructor(
     dataManager: AppDataManager
@@ -16,99 +16,109 @@ class RequestsViewModel @ViewModelInject constructor(
     dataManager
 ) {
 
-    var leaveRequestResponse: MutableLiveData<BaseResource<ArrayList<LeaveRequestResponseItem>>> = MutableLiveData()
-
+    var leaveRequestResponse: MutableLiveData<BaseResource<LeavesResponse>> = MutableLiveData()
+    var oldLeaveRequestResponse: MutableLiveData<BaseResource<LeavesResponse>> = MutableLiveData()
     var cancelMyRequestResponse: MutableLiveData<BaseResource<String>> = MutableLiveData()
 
-    @JvmOverloads
-    fun getLeaveRequests(isManager: Boolean){
+    fun getLeaveRequests(
+        isManager: Boolean = false,
+        IsHistory: Boolean = false,
+        skipCount: Int,
+        maxResult: Int = ITEMS_PER_PAGE
+    ) {
         leaveRequestResponse.value = BaseResource.loading(leaveRequestResponse.value?.data)
         dispose(
-            dataManager.getLeaveRequests(isManager),
+            dataManager.getLeaveRequests(isManager, IsHistory, skipCount, maxResult),
             ::onGetLeaveRequestsSuccess,
             { e ->
                 //error handling
-                e.message?.let { leaveRequestResponse.postValue(BaseResource.error(it, null))
-                    Log.d("error",it)
+                e.message?.let {
+                    leaveRequestResponse.postValue(BaseResource.error(it, null))
                 }
             })
-        refreshListener.postValue(View.OnClickListener { getLeaveRequests(isManager) })
 
     }
 
-    fun changeRequestStatus(workCorrelationId: String,newStatus:Int){
+    fun getOldLeaveRequests(
+        isManager: Boolean = true,
+        IsHistory: Boolean = true,
+        skipCount: Int,
+        maxResult: Int = ITEMS_PER_PAGE
+    ) {
+        oldLeaveRequestResponse.value = BaseResource.loading(oldLeaveRequestResponse.value?.data)
+        dispose(
+            dataManager.getLeaveRequests(isManager, IsHistory, skipCount, maxResult),
+            ::onGetOldLeaveRequestsSuccess,
+            { e ->
+                //error handling
+                e.message?.let {
+                    oldLeaveRequestResponse.postValue(BaseResource.error(it, null))
+                    Log.d("error", it)
+                }
+            })
 
+    }
+
+    fun changeRequestStatus(workCorrelationId: String, newStatus: Int, isManager: Boolean) {
 
         cancelMyRequestResponse.value = BaseResource.loading(cancelMyRequestResponse.value?.data)
 
-
-
         dispose(
-            dataManager.cancelMyRequest(workCorrelationId,newStatus),
+            dataManager.cancelMyRequest(workCorrelationId, newStatus, isManager),
             ::onCancelRequestsSuccess,
             { e ->
                 //error handling
-                e.message?.let { cancelMyRequestResponse.postValue(BaseResource.error(it, null))
-                    Log.d("error",it)
+                e.message?.let {
+                    cancelMyRequestResponse.postValue(BaseResource.error(it, null))
                 }
 
 
             })
-        refreshListener.postValue(View.OnClickListener { changeRequestStatus(workCorrelationId,newStatus) })
-
-
 
     }
 
-    private fun onGetLeaveRequestsSuccess(result: BaseResource<ArrayList<LeaveRequestResponseItem>>) {
+    private fun onGetLeaveRequestsSuccess(result: BaseResource<LeavesResponse>) {
 
-
-        if (result.message !=null){
-
+        result.message?.let {
 
             navigator.showSnack(result.message, "#ED213A", R.drawable.ic_round_close_24)
-
-
             leaveRequestResponse.postValue(result)
-
-        }else result.data?.let {
-
-            leaveRequestResponse.postValue(result)
-
-            if (it.isEmpty()){
-                navigator.noRequests()
-            }else{
-                navigator.requestsAvailable()
-            }
-
-
-
-
         }
 
 
+        result.data?.let {
+            leaveRequestResponse.postValue(result)
+            navigator.onSuccess(result.data)
+        }
 
 
     }
+
+    private fun onGetOldLeaveRequestsSuccess(result: BaseResource<LeavesResponse>) {
+
+        result.message?.let {
+            navigator.showSnack(result.message, "#ED213A", R.drawable.ic_round_close_24)
+            oldLeaveRequestResponse.postValue(result)
+        }
+
+
+        result.data?.let {
+            oldLeaveRequestResponse.postValue(result)
+            navigator.onHistorySuccess(result.data)
+        }
+
+
+    }
+
+
     private fun onCancelRequestsSuccess(result: BaseResource<String>) {
 
-
-        if (result.message !=null){
-
-
+        if (result.message != null) {
             navigator.showSnack(result.message, "#ED213A", R.drawable.ic_round_close_24)
-
-
-        }else {
-
+        } else {
+            navigator.onChangeRequestSuccess()
             cancelMyRequestResponse.postValue(result)
-
-            getLeaveRequests(false)
-
-
         }
-
-
 
     }
 

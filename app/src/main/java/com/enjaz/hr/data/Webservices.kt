@@ -2,7 +2,7 @@ package com.enjaz.hr.data
 
 import com.enjaz.hr.data.model.attendance.AttendanceResponse
 import com.enjaz.hr.data.model.balance.BalanceResponse
-import com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponseItem
+import com.enjaz.hr.data.model.getLeaveRequests.LeavesResponse
 import com.enjaz.hr.data.model.home.HomeResponse
 import com.enjaz.hr.data.model.home.Teammate
 import com.enjaz.hr.data.model.login.LoginResponse
@@ -10,8 +10,6 @@ import com.enjaz.hr.data.model.profile.UserInfo
 import com.enjaz.hr.data.model.requestsTypes.RequestTypesResponse
 import com.enjaz.hr.data.model.salary.SalaryDetailsResponse
 import com.enjaz.hr.data.model.sendRequest.SendRequestResponse
-import com.enjaz.hr.data.model.video.Category
-import com.enjaz.hr.data.model.video.VidModel
 import com.google.gson.JsonElement
 import io.reactivex.Single
 import okhttp3.MultipartBody
@@ -21,35 +19,26 @@ import retrofit2.http.*
 interface Webservices {
 
 
-    @GET("movies/{type}")
-    fun getMovies(
-        @Path("type") type: String,
-        @Query("genres") genres: String?,
-        @Query("extended") full: String?
-    ): Single<Response<List<VidModel>>>
-
-    @GET("genres/movies")
-    fun getCategory(): Single<Response<List<Category>>>
-
-
     @GET("api/hr/md/LeavesType/GetList")
     fun getRequestsTypes(@Query("TimeFlag") timeFlag: Boolean): Single<Response<RequestTypesResponse>>
 
 
-    @PUT("api/hr/md/Leaves/ChangeLeaveRequest")
+    @PUT("api/hr/Employee/ChangeRequestStatus")
     fun cancelMyRequest(
-        @Query("WorkflowCorrelationId") workflowCorrelationId: String,
-        @Query("NewStatus") newStatus: Int
+        @Body jsonElement: JsonElement
     ): Single<Response<String>>
 
 
     @POST("api/hr/Attendance/GetMobileAttendanceStatistics")
     fun getAttendanceResponse(@Body jsonElement: JsonElement): Single<Response<AttendanceResponse>>
 
-    @GET("api/hr/md/Leaves/GetLeavesRequests")
+    @GET("api/hr/Employee/GetAllWorkflows")
     fun getLeaveRequests(
-        @Query("AsManger") isManager: Boolean
-    ): Single<Response<ArrayList<LeaveRequestResponseItem>>>
+        @Query("SkipCount") SkipCount: Int,
+        @Query("MaxResultCount") MaxResultCount: Int,
+        @Query("IsManagerFilter") isManager: Boolean,
+        @Query("IsHistory") IsHistory: Boolean
+    ): Single<Response<LeavesResponse>>
 
     @POST("api/hr/Employee/GetMobileHomeStatistics")
     fun getHomeResponse(@Body jsonElement: JsonElement): Single<Response<HomeResponse>>

@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
-        <import type="android.view.View"/>
-        <import type="com.enjaz.hr.data.model.Status"/>
+        <import type="android.view.View" />
+
+        <import type="com.enjaz.hr.data.model.Status" />
+
         <variable
             name="viewModel"
             type="com.enjaz.hr.ui.requests.RequestsViewModel" />
     </data>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/stl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:refreshing="@{viewModel.leaveRequestResponse.status==Status.LOADING?true:false}"
-        app:onRefreshListener="@{() -> viewModel.getLeaveRequests(false)}">
+        app:refreshing="@{viewModel.leaveRequestResponse.status==Status.LOADING}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/parent"
@@ -33,7 +35,6 @@
                 android:elevation="1dp"
                 android:gravity="center"
                 android:orientation="vertical"
-
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -59,18 +60,21 @@
 
             </LinearLayout>
 
-            <include
-                android:id="@+id/status"
-                layout="@layout/view_status"
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:elevation="1dp"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/colorPrimaryDark"
+                android:indeterminateTintMode="src_atop"
+                android:visibility="@{viewModel.leaveRequestResponse.status==Status.LOADING?View.VISIBLE:View.GONE,default=gone}"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:retryListener="@{viewModel.refreshListener}"
-                app:viewStatus="@{viewModel.leaveRequestResponse.status}" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv"
-                items="@{viewModel.leaveRequestResponse.data}"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:orientation="vertical"

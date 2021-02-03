@@ -76,6 +76,11 @@ abstract class BaseDataItemsAdapter<T>(
         }
     }
 
+    open fun setItemsList(newItems: MutableList<T>) {
+        items=newItems
+        notifyDataSetChanged()
+    }
+
     open fun areItemsTheSame(oldItem: T, newItem: T): Boolean {
         return oldItem?.equals(newItem) ?: false
     }

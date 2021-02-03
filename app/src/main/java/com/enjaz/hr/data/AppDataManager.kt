@@ -1,12 +1,12 @@
 package com.enjaz.hr.data
 
-import android.accounts.AuthenticatorDescription
 import com.enjaz.hr.data.db.MovieDB
 import com.enjaz.hr.data.model.BaseResource
 import com.enjaz.hr.data.model.attendance.AttendanceResponse
 import com.enjaz.hr.data.model.balance.BalanceResponse
 import com.enjaz.hr.data.model.error.ErrorResponse
 import com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponseItem
+import com.enjaz.hr.data.model.getLeaveRequests.LeavesResponse
 import com.enjaz.hr.data.model.home.HomeResponse
 import com.enjaz.hr.data.model.home.Teammate
 import com.enjaz.hr.data.model.login.LoginResponse
@@ -15,7 +15,6 @@ import com.enjaz.hr.data.model.requestsTypes.RequestTypesResponse
 import com.enjaz.hr.data.model.salary.SalaryDetailsResponse
 import com.enjaz.hr.data.model.sendRequest.SendRequestResponse
 import com.google.gson.Gson
-import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -86,7 +85,11 @@ class AppDataManager @Inject constructor(
     }
 
 
-    fun sendFingerPrintRequest(description: String,type:Int,time:String): Single<BaseResource<Void>> {
+    fun sendFingerPrintRequest(
+        description: String,
+        type: Int,
+        time: String
+    ): Single<BaseResource<Void>> {
         val params = JsonObject().apply {
             addProperty("description", description)
             addProperty("type", type)
@@ -100,10 +103,16 @@ class AppDataManager @Inject constructor(
         )
     }
 
-    fun cancelMyRequest(workCorrelationId: String, newStatus: Int): Single<BaseResource<String>> {
+    fun cancelMyRequest(workCorrelationId: String, newStatus: Int,isManager:Boolean): Single<BaseResource<String>> {
 
+        val params = JsonObject().apply {
+            addProperty("workflowCorrelationId", workCorrelationId)
+            addProperty("newStatus", newStatus)
+            addProperty("isManager", isManager)
+
+        }
         return wrapWithResourceObject(
-            webservices.cancelMyRequest(workCorrelationId, newStatus)
+            webservices.cancelMyRequest(params)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )
@@ -137,9 +146,13 @@ class AppDataManager @Inject constructor(
     }
 
     fun getLeaveRequests(
-        isManager: Boolean): Single<BaseResource<ArrayList<LeaveRequestResponseItem>>> {
+        isManager: Boolean
+        , IsHistory: Boolean
+        , skipCount: Int
+        , maxResult: Int
+    ): Single<BaseResource<LeavesResponse>> {
         return wrapWithResourceObject(
-            webservices.getLeaveRequests(isManager)
+            webservices.getLeaveRequests(skipCount,maxResult,isManager,IsHistory)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )
@@ -183,7 +196,6 @@ class AppDataManager @Inject constructor(
                 .observeOn(AndroidSchedulers.mainThread())
         )
     }
-
 
 
     fun clearProfilePicture(): Single<BaseResource<String>> {

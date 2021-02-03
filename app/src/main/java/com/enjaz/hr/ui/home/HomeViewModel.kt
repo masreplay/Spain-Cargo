@@ -22,7 +22,6 @@ class HomeViewModel @ViewModelInject constructor(
 
     fun getHomeData(month:Int,year:Int){
 
-        Log.d("kkkkkk", homeResponse.value?.data?.teammates?.size.toString())
 
         homeResponse.value = BaseResource.loading(homeResponse.value?.data)
 
@@ -47,19 +46,11 @@ class HomeViewModel @ViewModelInject constructor(
 
     private fun onGetHomeSuccess(result: BaseResource<HomeResponse>) {
 
-        Log.d("hassaneinSuccess",result.data.toString())
-
-        if (result.message !=null){
-
-
+        result.message?.let{
             navigator.showSnack(result.message, "#ED213A", R.drawable.ic_round_close_24)
-
-
-        }else result.data?.let {
+        }
+        result.data?.let {
             homeResponse.postValue(result)
-            Log.d("kkkkkk", homeResponse.value?.data?.teammates?.size.toString())
-
-
         }
 
     }

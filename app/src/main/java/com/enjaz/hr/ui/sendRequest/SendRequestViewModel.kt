@@ -28,10 +28,7 @@ class SendRequestViewModel @ViewModelInject constructor(
 
     fun getLeaveTypes(timeFlag: Boolean) {
 
-
         leaveTypesResponse.value = BaseResource.loading(leaveTypesResponse.value?.data)
-
-
 
         dispose(
             dataManager.getLeaveTypes(timeFlag),
@@ -40,13 +37,10 @@ class SendRequestViewModel @ViewModelInject constructor(
                 //error handling
                 e.message?.let {
                     leaveTypesResponse.postValue(BaseResource.error(it, null))
-                    Log.d("error", it)
                 }
 
 
             })
-        refreshListener.postValue(View.OnClickListener { getLeaveTypes(timeFlag) })
-
 
     }
 

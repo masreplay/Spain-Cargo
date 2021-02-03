@@ -42,9 +42,6 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
     }
 
 
-
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         getViewDataBinding().status.constraintLoading.setBackgroundColor(Color.WHITE)
@@ -111,16 +108,16 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
                 )
 
                 val section3 = DonutSection(
-                        name = "section_3",
-                        color = ContextCompat.getColor(requireActivity(), R.color.orange),
-                        amount = it.delay.toFloat()
-                    )
+                    name = "section_3",
+                    color = ContextCompat.getColor(requireActivity(), R.color.orange),
+                    amount = it.delay.toFloat()
+                )
 
                 val section4 = DonutSection(
-                        name = "section_4",
-                        color = ContextCompat.getColor(requireActivity(), R.color.red),
-                        amount = it.absent.toFloat()
-                    )
+                    name = "section_4",
+                    color = ContextCompat.getColor(requireActivity(), R.color.red),
+                    amount = it.absent.toFloat()
+                )
 
                 donut_attendance?.cap = it.totalWorkdays.toFloat()
                 donut_attendance?.submitData(listOf(section1, section2, section3, section4))
@@ -146,7 +143,6 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
         usersAdapter = UsersAdapter(requireContext(), mutableListOf())
         val calendar = Calendar.getInstance()
         getViewModel().getHomeData((calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.YEAR))
-
 
     }
 

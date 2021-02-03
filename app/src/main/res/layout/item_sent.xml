@@ -6,7 +6,9 @@
 
         <variable
             name="item"
-            type="com.enjaz.hr.data.model.getLeaveRequests.LeaveRequestResponseItem" />
+            type="com.enjaz.hr.data.model.getLeaveRequests.Item" />
+
+        <import type="android.view.View" />
 
         <variable
             name="clickListener"
@@ -15,16 +17,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/parent"
-        android:layout_marginBottom="8dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
 
         <TextView
             android:id="@+id/tv_date_top"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="@{item.requestDate}"
+            android:text="@{item.requestCreationDate}"
             android:textColor="@color/carbon_grey_400"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -46,13 +48,13 @@
                 android:layout_marginTop="16dp"
                 android:autoMirrored="true"
                 android:background="@drawable/bg_round_sent"
-                android:backgroundTint="@{item.leaveStatus.equals(@string/waiting_for_approv)?@color/orange: item.leaveStatus.equals(@string/approved) ?@color/green:@color/red}"
-                android:drawableEnd="@{item.leaveStatus.equals(@string/waiting_for_approv)?@drawable/ic_close:null}"
+                android:backgroundTint="@{item.workflowStatus.equals(@string/waiting_for_approv)?@color/orange: item.workflowStatus.equals(@string/approved) ?@color/green:@color/red}"
+                android:drawableEnd="@{item.workflowStatus.equals(@string/waiting_for_approv)?@drawable/ic_close:null}"
                 android:drawablePadding="16dp"
                 android:onClick="@{()->clickListener.onCancelClick(item)}"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="4dp"
-                android:text="@{item.leaveStatus.equals(@string/waiting_for_approv) ? @string/pending  : item.leaveStatus}"
+                android:text="@{item.workflowStatus.equals(@string/waiting_for_approv) ? @string/pending  : item.workflowStatus}"
                 android:textColor="@android:color/white"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -88,11 +90,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
-                android:text="@{item.leaveName}"
+                android:text="@{item.requestType}"
                 android:textColor="@color/text_grey_600"
                 app:layout_constraintEnd_toStartOf="@+id/tv_status"
                 app:layout_constraintStart_toStartOf="@+id/tv_type_title"
                 app:layout_constraintTop_toBottomOf="@+id/tv_status" />
+
+            <!--            <androidx.constraintlayout.widget.Group-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:visibility="@{item.startDate==null?View.GONE:View.VISIBLE}"-->
+            <!--                app:constraint_referenced_ids="imageView6,tv_date_title,tv_date" />-->
 
             <ImageView
                 android:id="@+id/imageView5"
@@ -125,7 +133,7 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="16dp"
                 android:singleLine="true"
-                android:text="@{item.leaveDescription}"
+                android:text="No Reason"
                 android:textColor="@color/text_grey_600"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tv_type_title"
@@ -158,10 +166,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="@{item.duration }"
+                android:text="@{item.duration}"
                 android:textColor="@color/text_grey_600"
                 app:layout_constraintStart_toStartOf="@+id/tv_type_title"
                 app:layout_constraintTop_toBottomOf="@+id/tv_date_title" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

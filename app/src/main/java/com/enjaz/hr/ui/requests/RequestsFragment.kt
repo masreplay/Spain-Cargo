@@ -13,8 +13,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.viewpager.widget.ViewPager
 import com.enjaz.hr.R
+import com.enjaz.hr.data.model.getLeaveRequests.LeavesResponse
 import com.enjaz.hr.databinding.FramgnetRequestsBinding
-import com.enjaz.hr.ui.base.BaseFragment
 import com.enjaz.hr.ui.base.BaseNavigator
 import com.enjaz.hr.ui.base.BaseSheetFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -140,6 +140,10 @@ class RequestsFragment :
                 || super.onOptionsItemSelected(item)
     }
 
+    override fun onSuccess(leavesResponse: LeavesResponse) {
+
+    }
+
 
     override fun noRequests() {
         TODO("Not yet implemented")
@@ -157,13 +161,22 @@ class RequestsFragment :
     override fun onFabClick() {
         findNavController().navigate(R.id.requestMainTypesFragment)
     }
+
+    override fun onHistorySuccess(response: LeavesResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onChangeRequestSuccess() {
+
+    }
 }
 
 interface IRequestsInteractionListener : BaseNavigator {
-
+    fun onSuccess(leavesResponse: LeavesResponse)
     fun noRequests()
     fun requestsAvailable()
     fun showSnack(string: String, color: String, drawable: Int?)
     fun onFabClick()
-
+    fun onHistorySuccess(response: LeavesResponse)
+    fun onChangeRequestSuccess()
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.enjaz.hr.R
+import com.enjaz.hr.data.model.getLeaveRequests.LeavesResponse
 import com.enjaz.hr.databinding.FragmentRequestsFilterBinding
 import com.enjaz.hr.ui.base.BaseSheetFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,6 +38,10 @@ class FilterFragment :
 
     }
 
+    override fun onSuccess(leavesResponse: LeavesResponse) {
+        TODO("Not yet implemented")
+    }
+
     override fun noRequests() {
         TODO("Not yet implemented")
     }
@@ -51,6 +56,14 @@ class FilterFragment :
 
     override fun onFabClick() {
         TODO("Not yet implemented")
+    }
+
+    override fun onHistorySuccess(response: LeavesResponse) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onChangeRequestSuccess() {
+
     }
 
 
