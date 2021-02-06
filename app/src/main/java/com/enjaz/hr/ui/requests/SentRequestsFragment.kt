@@ -2,16 +2,20 @@ package com.enjaz.hr.ui.requests
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.vvalidator.util.hide
 import com.afollestad.vvalidator.util.show
 import com.enjaz.hr.R
+import com.enjaz.hr.data.model.Status
 import com.enjaz.hr.data.model.getLeaveRequests.Item
 import com.enjaz.hr.data.model.getLeaveRequests.LeavesResponse
 import com.enjaz.hr.databinding.FramgnetSentRequestsBinding
 import com.enjaz.hr.ui.base.BaseFragment
+import com.enjaz.hr.ui.sendRequest.SendRequestViewModel
 import com.enjaz.hr.util.Constants.ITEMS_PER_PAGE
 import com.enjaz.hr.util.snackBar
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -22,9 +26,8 @@ class SentRequestsFragment :
     BaseFragment<FramgnetSentRequestsBinding, IRequestsInteractionListener, RequestsViewModel>(),
     IRequestsInteractionListener, ISRequestsItemActionListener {
 
-    // TODO: 2/2/2021 reload and no data
-
     private val requestsViewModel: RequestsViewModel by viewModels()
+    val sedRequestViewModel: SendRequestViewModel by activityViewModels()
 
 
     private lateinit var sentRequestsAdapter: SentRequestsAdapter
@@ -49,6 +52,30 @@ class SentRequestsFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        sedRequestViewModel.missPunchResponse.observe(requireActivity(), Observer { resource ->
+            resource?.let {
+                if (it.status == Status.SUCCESS)
+                    refreshRequests()
+            }
+        })
+
+        sedRequestViewModel.overTimeResponse.observe(requireActivity(), Observer { resource ->
+            resource?.let {
+                if (it.status == Status.SUCCESS)
+                    refreshRequests()
+            }
+        })
+
+        sedRequestViewModel.sendLeaveRequestResponse.observe(
+            requireActivity(),
+            Observer { resource ->
+                resource?.let {
+                    if (it.status == Status.SUCCESS)
+                        refreshRequests()
+                }
+            })
+
+
         val lm = LinearLayoutManager(requireActivity())
 
         getViewDataBinding().rv.apply {
@@ -57,13 +84,7 @@ class SentRequestsFragment :
         }
 
         getViewDataBinding().stl.setOnRefreshListener {
-            maxSkip = 0
-            skip = 0
-            requests.clear()
-            getViewDataBinding().lytNoData.hide()
-            getViewModel().getLeaveRequests(
-                skipCount = skip
-            )
+            refreshRequests()
         }
 
 
@@ -140,7 +161,26 @@ class SentRequestsFragment :
     }
 
     override fun onChangeRequestSuccess() {
+        refreshRequests()
+    }
 
+    private fun refreshRequests() {
+        maxSkip = 0
+        skip = 0
+        requests.clear()
+        getViewDataBinding().lytNoData.hide()
+        getViewModel().getLeaveRequests(
+            skipCount = skip
+        )
+    }
+
+    override fun onShowMoreClicked() {
+    }
+
+    override fun onChangeRequestFailure() {
+    }
+
+    override fun onChangeRequestNetwork() {
     }
 
     override fun onCancelClick(leave: Item) {

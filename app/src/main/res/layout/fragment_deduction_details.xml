@@ -63,14 +63,21 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
+            <include
+                android:id="@+id/lyt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/item_salary_detail"
+                app:layout_constraintTop_toBottomOf="@+id/view_line" />
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_additions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@+id/view_line"
+                app:layout_constraintTop_toBottomOf="@+id/lyt"
                 tools:itemCount="4"
-                tools:listitem="@layout/item_salary_details" />
+                tools:listitem="@layout/item_salary_detail" />
 
         </carbon.widget.ConstraintLayout>
 
@@ -129,7 +136,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintTop_toBottomOf="@+id/view_line2"
                 tools:itemCount="4"
-                tools:listitem="@layout/item_salary_details" />
+                tools:listitem="@layout/item_salary_detail" />
 
         </carbon.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -85,11 +85,11 @@
             android:elevation="4dp"
             android:clickable="true"
             android:focusable="true"
-            android:visibility="@{(viewStatus == Status.LOADING) ?View.VISIBLE:View.GONE,default=gone}">
+            android:visibility="@{(viewStatus == Status.LOADING) ?View.VISIBLE:View.GONE,default=vis}">
 
             <com.airbnb.lottie.LottieAnimationView
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center"
                 app:lottie_autoPlay="true"
                 app:lottie_loop="true"

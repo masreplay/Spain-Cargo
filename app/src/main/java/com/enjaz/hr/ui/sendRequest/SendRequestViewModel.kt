@@ -76,6 +76,7 @@ class SendRequestViewModel @ViewModelInject constructor(
     ) {
 
         overTimeResponse.value = BaseResource.loading(overTimeResponse.value?.data)
+        navigator.onSendingRequest()
 
         dispose(
             dataManager.requestOvertime(
@@ -97,6 +98,7 @@ class SendRequestViewModel @ViewModelInject constructor(
 
 
         missPunchResponse.value = BaseResource.loading(missPunchResponse.value?.data)
+        navigator.onSendingRequest()
 
         dispose(
             dataManager.sendFingerPrintRequest(description, type, time),
@@ -105,7 +107,7 @@ class SendRequestViewModel @ViewModelInject constructor(
                 //error handling
                 e.message?.let {
                     missPunchResponse.postValue(BaseResource.error(it, null))
-                    Log.d("errorerror", it)
+                    navigator.onSendingRequestError("an Error accord")
                 }
             })
     }
@@ -115,7 +117,7 @@ class SendRequestViewModel @ViewModelInject constructor(
         missPunchResponse.postValue(result)
 
         result.message?.let {
-            navigator.showSnack(result.message, "#ED213A", R.drawable.ic_round_close_24)
+            navigator.onSendingRequestError(result.message)
         }
 
         navigator.onSendingRequestSuccess()
@@ -126,11 +128,11 @@ class SendRequestViewModel @ViewModelInject constructor(
 
         overTimeResponse.postValue(result)
 
-        result.message?.let {
-            navigator.showSnack(result.message, "#ED213A", R.drawable.ic_round_close_24)
+        if (result.message!=null){
+            navigator.onSendingRequestError(result.message)
+        }else{
+            navigator.onSendingRequestSuccess()
         }
-
-        //navigator.onSendingRequestSuccess()
     }
 
     private fun onGetLeaveTypesSuccess(result: BaseResource<RequestTypesResponse>) {

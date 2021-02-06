@@ -70,6 +70,7 @@ class RequestsViewModel @ViewModelInject constructor(
                 //error handling
                 e.message?.let {
                     cancelMyRequestResponse.postValue(BaseResource.error(it, null))
+                    navigator.onChangeRequestNetwork()
                 }
 
 
@@ -115,6 +116,8 @@ class RequestsViewModel @ViewModelInject constructor(
 
         if (result.message != null) {
             navigator.showSnack(result.message, "#ED213A", R.drawable.ic_round_close_24)
+            navigator.onChangeRequestFailure()
+
         } else {
             navigator.onChangeRequestSuccess()
             cancelMyRequestResponse.postValue(result)

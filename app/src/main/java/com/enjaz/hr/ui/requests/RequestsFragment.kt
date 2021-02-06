@@ -146,16 +146,13 @@ class RequestsFragment :
 
 
     override fun noRequests() {
-        TODO("Not yet implemented")
     }
 
     override fun requestsAvailable() {
-        TODO("Not yet implemented")
     }
 
 
     override fun showSnack(string: String, color: String, drawable: Int?) {
-        TODO("Not yet implemented")
     }
 
     override fun onFabClick() {
@@ -163,10 +160,19 @@ class RequestsFragment :
     }
 
     override fun onHistorySuccess(response: LeavesResponse) {
-        TODO("Not yet implemented")
     }
 
     override fun onChangeRequestSuccess() {
+
+    }
+
+    override fun onShowMoreClicked() {
+    }
+
+    override fun onChangeRequestFailure() {
+    }
+
+    override fun onChangeRequestNetwork() {
 
     }
 }
@@ -179,4 +185,7 @@ interface IRequestsInteractionListener : BaseNavigator {
     fun onFabClick()
     fun onHistorySuccess(response: LeavesResponse)
     fun onChangeRequestSuccess()
+    fun onShowMoreClicked()
+    fun onChangeRequestFailure()
+    fun onChangeRequestNetwork()
 }

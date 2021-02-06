@@ -10,6 +10,8 @@
             type="com.enjaz.hr.ui.requests.RequestsViewModel" />
 
         <import type="com.enjaz.hr.data.model.Status" />
+
+        <import type="android.view.View" />
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -69,6 +71,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:text="New Requests"
+                    android:textColor="@color/carbon_grey_400"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -84,6 +87,19 @@
                     tools:itemCount="2"
                     tools:listitem="@layout/item_received" />
 
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:elevation="1dp"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/colorPrimaryDark"
+                    android:indeterminateTintMode="src_atop"
+                    android:visibility="@{viewModel.leaveRequestResponse.status==Status.LOADING?View.VISIBLE:View.GONE,default=gone}"
+                    app:layout_constraintBottom_toBottomOf="@+id/rv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/rv" />
+
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/tv_show_more"
@@ -91,10 +107,13 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
+                    android:backgroundTint="@android:color/white"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
+                    android:onClick="@{()->viewModel.navigator.onShowMoreClicked()}"
                     android:text="@string/show_more"
                     android:textAllCaps="false"
+                    android:visibility="@{viewModel.leaveRequestResponse.data.totalCount>0?View.VISIBLE:View.GONE,default=gone}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/rv"
@@ -106,6 +125,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="16dp"
                     android:text="History"
+                    android:textColor="@color/carbon_grey_400"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"

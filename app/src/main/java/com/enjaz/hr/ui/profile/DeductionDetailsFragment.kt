@@ -2,10 +2,9 @@ package com.enjaz.hr.ui.profile
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.afollestad.vvalidator.util.hide
 import com.enjaz.hr.R
 import com.enjaz.hr.data.model.salary.Item
@@ -13,6 +12,7 @@ import com.enjaz.hr.databinding.FragmentDeductionDetailsBinding
 import com.enjaz.hr.ui.base.BaseFragment
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.item_salary_detail.*
 
 @AndroidEntryPoint
 class DeductionDetailsFragment :
@@ -42,28 +42,34 @@ class DeductionDetailsFragment :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        salaryDetailAdapter= SalaryDetailAdapter(requireContext(), arrayListOf())
-        salaryDetailAdapterDed= SalaryDetailAdapter(requireContext(), arrayListOf())
+        salaryDetailAdapter = SalaryDetailAdapter(requireContext(), arrayListOf())
+        salaryDetailAdapterDed = SalaryDetailAdapter(requireContext(), arrayListOf())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val gson = Gson()
-        val res=gson.fromJson(args.salaryDetails, Item::class.java)
+        val res = gson.fromJson(args.salaryDetails, Item::class.java)
 
         getViewDataBinding().rvAdditions.apply {
-            adapter=salaryDetailAdapter
+            adapter = salaryDetailAdapter
         }
 
         getViewDataBinding().rvDeductions.apply {
-            adapter=salaryDetailAdapterDed
+            adapter = salaryDetailAdapterDed
         }
 
-        if(res.salaryDetails.none { !it.isAddition })
+        tv_total_salary.text = res.amount.toString()
+        tv_total_salary.setTextColor(ContextCompat.getColor(requireActivity(), R.color.green))
+        tv_name.text = "Salary"
+
+        if (res.salaryDetails.none { !it.isAddition })
             getViewDataBinding().lytDeductions.hide()
+
 
         salaryDetailAdapter.setItems(res.salaryDetails.filter { it.isAddition })
         salaryDetailAdapterDed.setItems(res.salaryDetails.filter { !it.isAddition })
+
 
     }
 

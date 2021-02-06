@@ -10,7 +10,7 @@ import java.util.*
 
 data class Item(
     @SerializedName("amount")
-    val amount: Int,
+    val amount: Double,
     @SerializedName("creationTime")
     val creationTime: String,
     @SerializedName("creatorId")
@@ -34,18 +34,18 @@ data class Item(
     @SerializedName("lastModifierId")
     val lastModifierId: String,
     @SerializedName("totalDeduction")
-    val totalDeduction: Int,
+    val totalDeduction: Double,
     @SerializedName("recived")
     val recived: Boolean,
     @SerializedName("salaryDetails")
     val salaryDetails: List<SalaryDetail>
 ) {
     fun getAmount(): String {
-        return amount.toFormat() + " IQD"
+        return "$amount IQD"
     }
 
     fun getTotalDeductionFormatted(): String {
-        return totalDeduction.toFormat() + " IQD"
+        return "$totalDeduction IQD"
     }
 
     fun getDateFormatted(): String {

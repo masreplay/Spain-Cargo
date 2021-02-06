@@ -28,41 +28,35 @@ class FilterFragment :
         return this
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
-    }
-
     override fun onSuccess(leavesResponse: LeavesResponse) {
-        TODO("Not yet implemented")
     }
 
     override fun noRequests() {
-        TODO("Not yet implemented")
     }
 
     override fun requestsAvailable() {
-        TODO("Not yet implemented")
     }
 
     override fun showSnack(string: String, color: String, drawable: Int?) {
-        TODO("Not yet implemented")
     }
 
     override fun onFabClick() {
-        TODO("Not yet implemented")
     }
 
     override fun onHistorySuccess(response: LeavesResponse) {
-        TODO("Not yet implemented")
     }
 
     override fun onChangeRequestSuccess() {
+
+    }
+
+    override fun onShowMoreClicked() {
+    }
+
+    override fun onChangeRequestFailure() {
+    }
+
+    override fun onChangeRequestNetwork() {
 
     }
 

@@ -52,4 +52,8 @@
         android:id="@+id/filterFragment"
         android:name="com.enjaz.hr.ui.requests.FilterFragment"
         android:label="FilterFragment" />
+    <fragment
+        android:id="@+id/allReceivedRequestsFragment"
+        android:name="com.enjaz.hr.ui.requests.AllReceivedRequestsFragment"
+        android:label="All Requests" />
 </navigation>

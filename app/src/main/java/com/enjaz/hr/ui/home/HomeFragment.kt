@@ -47,8 +47,9 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
         getViewDataBinding().status.constraintLoading.setBackgroundColor(Color.WHITE)
         getViewDataBinding().status.constraintError.setBackgroundColor(Color.WHITE)
 
-
         val calendar = Calendar.getInstance()
+        getViewModel().getHomeData((calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.YEAR))
+
 
         val startDate = Calendar.getInstance()
         startDate.add(Calendar.MONTH, -12)
@@ -74,7 +75,7 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
 
 
         horizontalCalendar.calendarListener = object : HorizontalCalendarListener() {
-            override fun onDateSelected(date: Calendar?, position: Int) { //do something
+            override fun onDateSelected(date: Calendar?, position: Int) {
 
                 getViewModel().getHomeData(
                     (horizontalCalendar.selectedDate.time.month + 1),
@@ -84,6 +85,8 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
 
             }
         }
+
+
 
         getViewDataBinding().rv.apply {
             adapter = usersAdapter
@@ -99,7 +102,6 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
                     color = ContextCompat.getColor(requireActivity(), R.color.green),
                     amount = it.vacation.toFloat()
                 )
-
 
                 val section2 = DonutSection(
                     name = "section_2",
@@ -119,6 +121,7 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
                     amount = it.absent.toFloat()
                 )
 
+                donut_attendance?.clear()
                 donut_attendance?.cap = it.totalWorkdays.toFloat()
                 donut_attendance?.submitData(listOf(section1, section2, section3, section4))
             }
@@ -141,8 +144,7 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         usersAdapter = UsersAdapter(requireContext(), mutableListOf())
-        val calendar = Calendar.getInstance()
-        getViewModel().getHomeData((calendar.get(Calendar.MONTH) + 1), calendar.get(Calendar.YEAR))
+
 
     }
 

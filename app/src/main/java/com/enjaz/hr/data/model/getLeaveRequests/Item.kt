@@ -41,4 +41,8 @@ data class Item(
         val formatter = SimpleDateFormat("yyyy/MM/dd", Locale.US)
         return formatter.format(requestCreationDate)
     }
+
+    fun getReqType(): String? {
+        return requestType?.replace("\\d+", "")?.replace("([A-Z])", "$1 ")
+    }
 }

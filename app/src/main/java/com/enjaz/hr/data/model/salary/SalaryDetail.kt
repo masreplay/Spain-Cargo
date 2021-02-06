@@ -8,7 +8,7 @@ data class SalaryDetail(
     @SerializedName("allocationName")
     val allocationName: String,
     @SerializedName("amount")
-    val amount: Int,
+    val amount: Double,
     @SerializedName("description")
     val description: String,
     @SerializedName("historyId")
@@ -24,8 +24,8 @@ data class SalaryDetail(
 ) {
     fun getAmount(): String {
         return if (isAddition)
-            "+ " + amount.toFormat() + " IQD"
+            "+ $amount IQD"
         else
-            "- " + amount.toFormat() + " IQD"
+            "- $amount IQD"
     }
 }
