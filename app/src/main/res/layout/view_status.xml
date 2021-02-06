@@ -85,7 +85,7 @@
             android:elevation="4dp"
             android:clickable="true"
             android:focusable="true"
-            android:visibility="@{(viewStatus == Status.LOADING) ?View.VISIBLE:View.GONE,default=vis}">
+            android:visibility="@{(viewStatus == Status.LOADING) ?View.VISIBLE:View.GONE,default=gone}">
 
             <com.airbnb.lottie.LottieAnimationView
                 android:layout_width="100dp"
