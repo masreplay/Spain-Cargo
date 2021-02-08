@@ -75,6 +75,22 @@ class SentRequestsFragment :
                 }
             })
 
+        getViewModel().leaveRequestResponse.observe(requireActivity(), Observer { resource ->
+            resource?.let {
+                if (it.status == Status.SUCCESS || it.status == Status.ERROR)
+                    getViewDataBinding().stl.isRefreshing = false
+                if (it.status == Status.ERROR && maxSkip == 0)
+                    getViewDataBinding().constraintError.show()
+                if (it.status == Status.LOADING)
+                    getViewDataBinding().constraintError.hide()
+
+            }
+        })
+
+        getViewDataBinding().imageError.setOnClickListener {
+            getViewDataBinding().constraintError.hide()
+            getViewModel().getLeaveRequests(skipCount = skip)
+        }
 
         val lm = LinearLayoutManager(requireActivity())
 

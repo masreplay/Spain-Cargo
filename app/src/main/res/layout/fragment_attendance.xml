@@ -7,6 +7,8 @@
 
         <import type="android.view.View" />
 
+        <import type="com.enjaz.hr.data.model.Status" />
+
         <variable
             name="viewModel"
             type="com.enjaz.hr.ui.attendance.AttendanceViewModel" />
@@ -16,12 +18,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <include
+            layout="@layout/view_status"
+            app:layout_constraintTop_toBottomOf="@id/rv_date"
+            app:retryListener="@{viewModel.refreshListener}"
+            app:viewStatus="@{viewModel.attendanceResponse.status}" />
+
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nsv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/grey_100">
+            android:background="@color/grey_100"
+            android:visibility="@{viewModel.attendanceResponse.status==Status.ERROR?View.GONE:View.VISIBLE}">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/parent"
@@ -90,19 +99,6 @@
 
                 </LinearLayout>
 
-                <include
-                    android:id="@+id/status"
-                    layout="@layout/view_status"
-                    android:layout_width="300dp"
-                    android:layout_height="250dp"
-                    android:layout_margin="30dp"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/rv_date"
-                    app:retryListener="@{viewModel.refreshListener}"
-                    app:viewStatus="@{viewModel.attendanceResponse.status}" />
-
 
                 <LinearLayout
                     android:id="@+id/linearLayout2"
@@ -126,9 +122,9 @@
 
                         <TextView
                             android:id="@+id/tv_excuseDelays"
+                            minutesFormat="@{viewModel.attendanceResponse.data.totalWorkTime}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            minutesFormat="@{viewModel.attendanceResponse.data.totalWorkTime}"
                             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                             android:textColor="@color/colorPrimary" />
 
@@ -153,9 +149,9 @@
 
                         <TextView
                             android:id="@+id/tv_extraHours"
+                            minutesFormat="@{viewModel.attendanceResponse.data.totalOvertime}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            minutesFormat="@{viewModel.attendanceResponse.data.totalOvertime}"
                             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                             android:textColor="@color/green_400" />
 
@@ -181,9 +177,9 @@
 
                         <TextView
                             android:id="@+id/tv_missingPunch"
+                            minutesFormat="@{viewModel.attendanceResponse.data.totalDelay}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            minutesFormat="@{viewModel.attendanceResponse.data.totalDelay}"
                             android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                             android:textColor="@color/red" />
 
