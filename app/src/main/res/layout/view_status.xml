@@ -67,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_large"
-                android:text="Press the above button to retry"
+                android:text="@string/press_the_above_button_to_retry"
                 android:textColor="@color/carbon_grey_700"
                 android:textSize="14sp"
                 android:textStyle="bold"

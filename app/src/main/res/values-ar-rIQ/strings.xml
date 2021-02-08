@@ -39,7 +39,7 @@
     <string name="over_time">وقت اضافي</string>
     <string name="missing_punch">Missing punch</string>
     <string name="basic_salary_and_additions">الراتب الاسمي والاضافات</string>
-    <string name="salary">راتب</string>
+    <string name="salary">الراتب</string>
     <string name="bonus">اضافة</string>
     <string name="late">(تاخير)</string>
     <string name="miss_punch">Miss punch</string>
@@ -120,9 +120,26 @@
     <string name="total_time">الوقت الكلي</string>
     <string name="reason">السبب</string>
     <string name="type_of_leave">انواع الاجازة</string>
-    <string name="casncel_request">Cancel Request</string>
-    <string name="remove">Remove</string>
-    <string name="select_time">Select time</string>
+    <string name="casncel_request">الغاء الطلب</string>
+    <string name="remove">حذف</string>
+    <string name="select_time">حدد وقت</string>
+    <string name="balance">الحساب</string>
+    <string name="show_more">عرض المزيد</string>
+    <string name="edit">تغيير صورة الحساب</string>
+    <string name="leaves_credit">رصيد الاجازات</string>
+    <string name="confirm_logout">تاكيد الخروج</string>
+    <string name="msg_cancel">هل انت متاكد انك تريد الغاء الطلب</string>
+    <string name="dismiss">تجاهل</string>
+    <string name="ok">حسنا</string>
+    <string name="msg_no_members">لا يوجد اعضاء في فريقك</string>
+    <string name="miss_punch_type">بصمة فائتة</string>
+    <string name="overtime">وقت اضافي</string>
+    <string name="hourly">زمنية</string>
+    <string name="cancel">الغاء</string>
+    <string name="applied_duration">فترة المغادرة</string>
+    <string name="new_requests">طلبات جديدة</string>
+    <string name="history">طلبات قديمة</string>
+    <string name="deductions">الاستقطاعات</string>
 
 
 </resources>

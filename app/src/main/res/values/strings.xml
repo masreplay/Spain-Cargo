@@ -127,5 +127,17 @@
     <string name="to">To</string>
     <string name="from">From</string>
     <string name="show_more">Show More</string>
+    <string name="balance">Balance</string>
+    <string name="leaves_credit">Leaves Credit</string>
+    <string name="confirm_logout">Confirm logout</string>
+    <string name="cancel">cancel</string>
+    <string name="msg_no_members">There is no members in your team</string>
+    <string name="hourly">Hourly</string>
+    <string name="overtime">Overtime</string>
+    <string name="miss_punch_type">Miss Punch</string>
+    <string name="no_reason">No Reason</string>
+    <string name="new_requests">New Requests</string>
+    <string name="history">History</string>
+    <string name="deductions">Deductions</string>
 
 </resources>

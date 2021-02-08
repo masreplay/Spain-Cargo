@@ -1,8 +1,13 @@
 package com.enjaz.hr.data.model
 
-import com.google.gson.annotations.SerializedName
+import androidx.annotation.StringRes
+import com.enjaz.hr.HRMApp
 
 data class Types(
-    @SerializedName("string")
-    val type: String
-)
+    @StringRes
+    val type: Int
+) {
+    fun getType(): String {
+        return HRMApp.applicationContext().getString(type)
+    }
+}

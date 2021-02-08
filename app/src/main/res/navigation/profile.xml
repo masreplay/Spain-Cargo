@@ -16,7 +16,7 @@
     <fragment
         android:id="@+id/salaryDetailsFragment"
         android:name="com.enjaz.hr.ui.profile.SalaryDetailsFragment"
-        android:label="Salary">
+        android:label="@string/salary">
         <action
             android:id="@+id/next_action"
             app:destination="@id/deductionDetailsFragment" />

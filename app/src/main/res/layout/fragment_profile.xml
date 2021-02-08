@@ -243,7 +243,7 @@
                                 android:layout_marginLeft="@dimen/spacing_large"
                                 android:layout_marginRight="@dimen/spacing_large"
                                 android:layout_weight="1"
-                                android:text="Balance"
+                                android:text="@string/balance"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
                                 android:textColor="@color/carbon_grey_800"
                                 app:fontFamily="sans-serif-medium" />

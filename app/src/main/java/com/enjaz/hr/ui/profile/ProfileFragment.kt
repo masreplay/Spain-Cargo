@@ -109,11 +109,11 @@ class ProfileFragment :
         MaterialAlertDialogBuilder(
             requireActivity()
         )
-            .setTitle("Confirm logout")
-            .setNegativeButton("cancel") { dialog, _ ->
+            .setTitle(getString(R.string.confirm_logout))
+            .setNegativeButton(getString(R.string.cancel)) { dialog, _ ->
                 dialog.dismiss()
             }
-            .setPositiveButton("logout") { _, _ ->
+            .setPositiveButton(getString(R.string.logout)) { _, _ ->
                 PrefsManager.instance?.clearPreferences()
                 val intent=Intent(requireActivity(),LoginActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)

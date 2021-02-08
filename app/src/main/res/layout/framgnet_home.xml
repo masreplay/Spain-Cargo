@@ -472,7 +472,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="16dp"
                             android:fontFamily="sans-serif-medium"
-                            android:text="There is no members in your team"
+                            android:text="@string/msg_no_members"
                             android:textColor="@color/carbon_grey_600"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"

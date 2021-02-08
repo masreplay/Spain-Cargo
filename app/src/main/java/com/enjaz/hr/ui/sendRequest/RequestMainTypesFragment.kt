@@ -60,7 +60,7 @@ class RequestMainTypesFragment :
 
             val action =
                 RequestMainTypesFragmentDirections.nextAction(
-                    type.type
+                    type.getType()
                 )
             findNavController().navigate(action)
 
@@ -69,10 +69,7 @@ class RequestMainTypesFragment :
 
 
 }
-interface IRequestTypesInteractionListener : BaseNavigator {
-
-
-}
+interface IRequestTypesInteractionListener : BaseNavigator
 
 
 
