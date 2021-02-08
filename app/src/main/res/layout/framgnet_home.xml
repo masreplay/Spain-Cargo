@@ -90,10 +90,10 @@
 
                     <TextView
                         android:id="@+id/textView"
+                        textanimation="@{viewModel.homeResponse.data.basicSalary}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="3000$"
-                        textanimation="@{viewModel.homeResponse.data.basicSalary}"
                         android:textColor="@color/colorPrimary"
                         android:textSize="24sp"
                         app:layout_constraintBottom_toTopOf="@+id/textView2"
@@ -143,12 +143,12 @@
 
                     <TextView
                         android:id="@+id/textView3"
+                        textanimation="@{viewModel.homeResponse.data.deduction}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="200$"
                         android:textColor="@color/red"
                         android:textSize="24sp"
-                        textanimation="@{viewModel.homeResponse.data.deduction}"
                         app:layout_constraintBottom_toTopOf="@+id/textView4"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -378,7 +378,7 @@
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/bg_round_ripple_16dp"
                     android:clickable="true"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:focusable="true"
                     app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
                     app:layout_constraintStart_toStartOf="@+id/constraintLayout"
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
@@ -415,6 +415,7 @@
                         android:clickable="true"
                         android:drawableEnd="@drawable/ic_baseline_arrow_forward_ios_24"
                         android:focusable="true"
+                        android:background="?attr/selectableItemBackgroundBorderless"
                         android:onClick="@{()->viewModel.navigator.showTeam()}"
                         android:text="@string/more"
                         android:textColor="@color/home_text"
@@ -452,9 +453,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/view_line"
-
-                        >
+                        app:layout_constraintTop_toBottomOf="@id/view_line">
 
                         <ImageView
                             android:layout_width="0dp"
@@ -481,6 +480,120 @@
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/bg_round_ripple_16dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:carbon_touchMarginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
+                    app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
+
+                    <ImageView
+                        android:id="@+id/imageView6"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_margin="16dp"
+                        android:background="@drawable/bg_circle_transparent"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_baseline_fiber_manual_record_24"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView37"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/employees"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+                        app:layout_constraintStart_toEndOf="@+id/imageView6"
+                        app:layout_constraintTop_toTopOf="@+id/imageView6" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:clickable="true"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:drawableEnd="@drawable/ic_baseline_arrow_forward_ios_24"
+                        android:focusable="true"
+                        android:onClick="@{()->viewModel.navigator.showEmployees()}"
+                        android:text="@string/more"
+                        android:textColor="@color/home_text"
+                        android:visibility="@{viewModel.homeResponse.data.teammates.size()==0 ? View.GONE :View.VISIBLE, default=gone}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <View
+                        android:id="@+id/view_line2"
+                        android:layout_width="0dp"
+                        android:layout_height="2dp"
+                        android:layout_margin="16dp"
+                        android:background="@color/grey_200"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView37" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv2"
+                        items="@{viewModel.homeResponse.data.teammates}"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/view_line2"
+                        tools:itemCount="2"
+                        tools:listitem="@layout/item_employee_home" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="0dp"
+                        android:layout_height="200dp"
+                        android:background="@color/white"
+                        android:visibility="@{viewModel.homeResponse.data.teammates.size()==0 ? View.VISIBLE :View.GONE, default=gone}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/view_line2">
+
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_margin="8dp"
+                            android:src="@drawable/ic_team"
+                            app:layout_constraintBottom_toTopOf="@id/tv_empty2"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv_empty2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="There is no members in your team"
+                            android:textColor="@color/carbon_grey_600"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>

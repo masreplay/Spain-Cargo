@@ -126,6 +126,7 @@
     <string name="select_time">Select time</string>
     <string name="to">To</string>
     <string name="from">From</string>
+    <string name="employees">Employees</string>
     <string name="show_more">Show More</string>
     <string name="balance">Balance</string>
     <string name="leaves_credit">Leaves Credit</string>

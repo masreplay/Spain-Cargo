@@ -10,6 +10,13 @@
         android:name="com.enjaz.hr.ui.attendance.AttendanceFragment"
         android:label="@string/attendance"
         tools:layout="@layout/fragment_attendance" >
+
+        <argument
+            android:name="employee"
+            android:defaultValue="@null"
+            app:argType="com.enjaz.hr.data.model.home.Teammate"
+            app:nullable="true" />
+
         <action
             android:id="@+id/action_attendanceFragment_to_requestMainTypesFragment"
             app:destination="@id/requestMainTypesFragment" />

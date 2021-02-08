@@ -35,7 +35,6 @@ class TeamFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.i("abdalla19988", "abdalla19988")
 
         getViewModel().getMyTeammates()
         getViewDataBinding().rv.apply {
@@ -45,7 +44,6 @@ class TeamFragment :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.i("abdalla19988", "abdalla19988")
 
         teamAdapter = TeamAdapter(requireContext(), mutableListOf())
     }

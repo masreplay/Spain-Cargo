@@ -12,6 +12,7 @@ import com.enjaz.hr.R
 import com.enjaz.hr.databinding.FramgnetHomeBinding
 import com.enjaz.hr.ui.base.BaseFragment
 import com.enjaz.hr.ui.base.BaseNavigator
+import com.enjaz.hr.ui.employees.EmployeesAdapter
 import com.enjaz.hr.util.calendar.HorizontalCalendar
 import com.enjaz.hr.util.calendar.utils.HorizontalCalendarListener
 import com.enjaz.hr.util.snackBar
@@ -26,6 +27,7 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
 
     private val homeViewModel: HomeViewModel by viewModels()
     lateinit var usersAdapter: UsersAdapter
+    lateinit var employeeAdapter: EmployeesHomeAdapter
 
 
     override fun getLayoutId(): Int {
@@ -92,6 +94,10 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
             adapter = usersAdapter
         }
 
+        getViewDataBinding().rv2.apply {
+            adapter = employeeAdapter
+        }
+
 
         getViewModel().homeResponse.observe(requireActivity(), Observer { response ->
             response.data?.let {
@@ -135,24 +141,28 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
         findNavController().navigate(R.id.teamFragment)
     }
 
+    override fun showEmployees() {
+        findNavController().navigate(R.id.employeeFragment)
+    }
+
     override fun showSnack(string: String, color: String, drawable: Int?) {
         snackBar(string, drawable, color, getViewDataBinding().parent, requireContext())
-
     }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         usersAdapter = UsersAdapter(requireContext(), mutableListOf())
-
-
-    }
-
-
+        employeeAdapter = EmployeesHomeAdapter(
+            requireContext(),
+            mutableListOf()
+        )
+      }
 }
 
 interface IHomeInteractionListener : BaseNavigator {
     fun showTeam()
+    fun showEmployees()
     fun showSnack(string: String, color: String, drawable: Int?)
 
 }

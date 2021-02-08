@@ -2,6 +2,7 @@ package com.enjaz.hr.data.model.home
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class Teammate(
     @SerializedName("departmentName")
@@ -12,4 +13,4 @@ data class Teammate(
     val name: String,
     @SerializedName("pictureUrl")
     val pictureUrl: String
-)
+) : Serializable
