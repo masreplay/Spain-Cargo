@@ -40,12 +40,12 @@ class OnboardingActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (PrefsManager.instance!!.getString("boarding")=="1") {
+        if (PrefsManager.instance!!.finishedOnBoard()) {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }else {
-            PrefsManager.instance!!.setString("boarding", "1")
+            PrefsManager.instance!!.setOnBoard()
 
         }
 

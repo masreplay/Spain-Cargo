@@ -140,5 +140,6 @@
     <string name="new_requests">New Requests</string>
     <string name="history">History</string>
     <string name="deductions">Deductions</string>
+    <string name="logging_in">Logging into HR</string>
 
 </resources>

@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        if (PrefsManager.instance?.getString("login")!="1"){
+        if (!PrefsManager.instance?.isLoggedIn()!!){
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()

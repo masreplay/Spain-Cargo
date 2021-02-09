@@ -6,7 +6,7 @@
 
         <import type="android.view.View" />
 
-        <import type="com.enjaz.hr.data.model.Status"/>
+        <import type="com.enjaz.hr.data.model.Status" />
 
         <variable
             name="viewModel"
@@ -110,12 +110,12 @@
                 android:layout_width="0dp"
                 android:layout_height="55dp"
                 android:layout_marginTop="16dp"
+                android:alpha="@{viewModel.tokenResponse.status==Status.LOADING?0.5f:1.0f}"
                 android:backgroundTint="@color/colorPrimary"
+                android:enabled="@{viewModel.tokenResponse.status==Status.LOADING?false:true}"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:text="@string/login"
-                android:alpha="@{viewModel.tokenResponse.status==Status.LOADING?0.5f:1.0f}"
-                android:enabled="@{viewModel.tokenResponse.status==Status.LOADING?false:true}"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
@@ -124,17 +124,6 @@
                 app:layout_constraintStart_toStartOf="@+id/til_password"
                 app:layout_constraintTop_toBottomOf="@+id/til_password" />
 
-            <ProgressBar
-                android:layout_width="55dp"
-                android:layout_height="55dp"
-                android:elevation="3dp"
-                android:indeterminate="true"
-                android:visibility="@{viewModel.tokenResponse.status==Status.LOADING?View.VISIBLE:View.GONE,default=gone}"
-                android:indeterminateTint="@android:color/white"
-                android:indeterminateTintMode="src_atop"
-                app:layout_constraintBottom_toBottomOf="@+id/btn_login"
-                app:layout_constraintStart_toStartOf="@+id/btn_login"
-                app:layout_constraintTop_toTopOf="@+id/btn_login" />
 
             <TextView
                 android:id="@+id/forgot_password"

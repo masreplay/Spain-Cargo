@@ -9,25 +9,16 @@ import com.google.gson.Gson
 
 class PrefsManager {
     private var context = HRMApp
-    private var mGson: Gson = Gson()
     private var sharedPref: SharedPreferences =
         PreferenceManager.getDefaultSharedPreferences(context.applicationContext())
     private lateinit var sharedPrefsEditor: SharedPreferences.Editor
 
-    private fun getString(id: Int): String {
-        return context.instance!!.getString(id)
-    }
-
-
-    fun getString(string: String): String? {
-        val string = sharedPref.getString(string, null)
-        return string
-    }
 
     fun getRefreshToken(): String? {
         val refreshToken = sharedPref.getString("refreshToken", null)
         return refreshToken
     }
+
 
     fun getAccessToken(): String? {
         return sharedPref.getString("accessToken", null)
@@ -42,17 +33,29 @@ class PrefsManager {
     }
 
     fun saveRefreshToken(token: String?) {
-
         sharedPrefsEditor = sharedPref.edit()
         sharedPrefsEditor.putString("refreshToken", token)
         sharedPrefsEditor.apply()
     }
 
-
-    fun setString(key: String, value: String) {
+    fun setLoggedIn() {
         sharedPrefsEditor = sharedPref.edit()
-        sharedPrefsEditor.putString(key, value)
+        sharedPrefsEditor.putBoolean("LOGGED_IN", true)
         sharedPrefsEditor.apply()
+    }
+
+    fun isLoggedIn(): Boolean {
+        return sharedPref.getBoolean("LOGGED_IN", false)
+    }
+
+    fun setOnBoard() {
+        sharedPrefsEditor = sharedPref.edit()
+        sharedPrefsEditor.putBoolean("ON_BOARD", true)
+        sharedPrefsEditor.apply()
+    }
+
+    fun finishedOnBoard(): Boolean {
+        return sharedPref.getBoolean("ON_BOARD", false)
     }
 
     fun saveProfile(value: UserInfo) {

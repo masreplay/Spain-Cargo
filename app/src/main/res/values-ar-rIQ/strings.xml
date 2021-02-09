@@ -141,6 +141,7 @@
     <string name="history">طلبات قديمة</string>
     <string name="deductions">الاستقطاعات</string>
     <string name="employees">Employees</string>
+    <string name="logging_in">جاري تسجيل الدخول</string>
 
 
 </resources>

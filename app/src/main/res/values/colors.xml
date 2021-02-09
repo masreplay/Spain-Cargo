@@ -12,6 +12,7 @@
     <color name="cyan">#40E0D0</color>
 
     <color name="white">@android:color/white</color>
+    <color name="white_transparent">#44FFFFFF</color>
     <color name="black">@android:color/black</color>
     <color name="text_grey_600">#4F5357</color>
     <item name="home_text_100" type="color">#a6abb5</item>
