@@ -59,8 +59,8 @@ class AttendanceFragment :
             getViewDataBinding().ivImage.show()
             getViewDataBinding().tvName.show()
             getViewDataBinding().tvJob.show()
-            getViewDataBinding().tvName.text= it.name
-            getViewDataBinding().tvJob.text= it.departmentName
+            getViewDataBinding().tvName.text = it.name
+            getViewDataBinding().tvJob.text = it.departmentName
         }
 
 
@@ -87,20 +87,38 @@ class AttendanceFragment :
                 .defaultSelectedDate(calendar)
                 .build()
 
-        getViewModel().getAttendanceData(
-            (calendar.get(Calendar.MONTH) + 1),
-            calendar.get(Calendar.YEAR)
-        )
+        if (args.employee != null) {
+            getViewModel().getEmployeeAttendanceResponse(
+                (calendar.get(Calendar.MONTH) + 1),
+                calendar.get(Calendar.YEAR),
+                args.employee!!.id
+            )
+        } else {
+            getViewModel().getAttendanceData(
+                (calendar.get(Calendar.MONTH) + 1),
+                calendar.get(Calendar.YEAR)
+            )
+        }
+
+
+
 
 
         horizontalCalendar.calendarListener = object : HorizontalCalendarListener() {
             override fun onDateSelected(date: Calendar?, position: Int) { //do something
 
-                getViewModel().getAttendanceData(
-                    (horizontalCalendar.selectedDate.time.month + 1),
-                    horizontalCalendar.selectedDate.get(Calendar.YEAR)
-                )
-
+                if (args.employee != null) {
+                    getViewModel().getEmployeeAttendanceResponse(
+                        (horizontalCalendar.selectedDate.time.month + 1),
+                        horizontalCalendar.selectedDate.get(Calendar.YEAR),
+                        args.employee!!.id
+                    )
+                } else {
+                    getViewModel().getAttendanceData(
+                        (horizontalCalendar.selectedDate.time.month + 1),
+                        horizontalCalendar.selectedDate.get(Calendar.YEAR)
+                    )
+                }
 
             }
         }

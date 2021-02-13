@@ -20,51 +20,51 @@ class AttendanceViewModel @ViewModelInject constructor(
     var attendanceResponse: MutableLiveData<BaseResource<AttendanceResponse>> = MutableLiveData()
 
 
-    fun getAttendanceData(month:Int,year:Int){
-
-
+    fun getAttendanceData(month: Int, year: Int) {
         attendanceResponse.value = BaseResource.loading(attendanceResponse.value?.data)
-
-
-
         dispose(
-            dataManager.getAttendance(month,year),
+            dataManager.getAttendance(month, year),
             ::onGetAttendanceSuccess,
             { e ->
                 //error handling
-                e.message?.let { attendanceResponse.postValue(BaseResource.error(it, null))
-                    Log.d("error",it)
+                e.message?.let {
+                    attendanceResponse.postValue(BaseResource.error(it, null))
+                    Log.d("error", it)
                 }
-
-
             })
-        refreshListener.postValue(View.OnClickListener { getAttendanceData(month,year) })
-
-
-
+        refreshListener.postValue(View.OnClickListener { getAttendanceData(month, year) })
     }
+
+    fun getEmployeeAttendanceResponse(month: Int, year: Int, employeeId: Int) {
+        attendanceResponse.value = BaseResource.loading(attendanceResponse.value?.data)
+        dispose(
+            dataManager.getEmployeeAttendanceResponse(month, year, employeeId),
+            ::onGetAttendanceSuccess,
+            { e ->
+                //error handling
+                e.message?.let {
+                    attendanceResponse.postValue(BaseResource.error(it, null))
+                    Log.d("error", it)
+                }
+            })
+        refreshListener.postValue(View.OnClickListener { getEmployeeAttendanceResponse(month, year, employeeId) })
+    }
+
 
     private fun onGetAttendanceSuccess(result: BaseResource<AttendanceResponse>) {
 
 
-        if (result.message !=null){
-
-
+        result.message?.let {
             navigator.showSnack(result.message, "#ED213A", R.drawable.ic_round_close_24)
+        }
 
-
-        }else result.data?.let {
-
-
+        result.data?.let {
             attendanceResponse.postValue(result)
-
-            if (it.days.isEmpty()){
+            if (it.days.isEmpty()) {
                 navigator.noAttendance()
-            }else{
+            } else {
                 navigator.attendanceAvailable()
-
             }
-
         }
 
     }

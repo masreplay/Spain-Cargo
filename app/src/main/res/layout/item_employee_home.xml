@@ -8,13 +8,18 @@
 
         <variable
             name="item"
-            type="com.enjaz.hr.data.model.home.Teammate" />
+            type="com.enjaz.hr.data.model.home.Employee" />
+
+        <variable
+            name="clickListener"
+            type="com.enjaz.hr.ui.home.HomeFragment" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="@{()->clickListener.onItemClick(item)}">
 
         <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/roundedImageView"

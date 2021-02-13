@@ -16,6 +16,8 @@ data class HomeResponse(
     val present: Int,
     @SerializedName("teammates")
     val teammates: List<Teammate>,
+    @SerializedName("managedEmployees")
+    val managedEmployees: List<Employee>,
     @SerializedName("totalWorkdays")
     val totalWorkdays: Int,
     @SerializedName("vacation")

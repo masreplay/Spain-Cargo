@@ -32,6 +32,11 @@ interface Webservices {
     @POST("api/hr/Attendance/GetMobileAttendanceStatistics")
     fun getAttendanceResponse(@Body jsonElement: JsonElement): Single<Response<AttendanceResponse>>
 
+    @POST("api/hr/Attendance/GetAttendanceByEmployee")
+    fun getEmployeeAttendanceResponse(@Body jsonElement: JsonElement): Single<Response<AttendanceResponse>>
+
+
+
     @GET("api/hr/Employee/GetAllWorkflows")
     fun getLeaveRequests(
         @Query("SkipCount") SkipCount: Int,

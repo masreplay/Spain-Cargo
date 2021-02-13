@@ -44,6 +44,22 @@ class AppDataManager @Inject constructor(
         )
     }
 
+    fun getEmployeeAttendanceResponse(month: Int?, year: Int?,employeeId:Int): Single<BaseResource<AttendanceResponse>> {
+
+        val params = JsonObject().apply {
+            addProperty("month", month)
+            addProperty("year", year)
+            addProperty("EmployeeId", employeeId)
+        }
+        return wrapWithResourceObject(
+            webservices.getAttendanceResponse(jsonElement = params)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+
+
     fun sendLeaveRequest(
         startDate: String,
         endDate: String,

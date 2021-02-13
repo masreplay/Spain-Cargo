@@ -6,13 +6,16 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.enjaz.hr.R
+import com.enjaz.hr.data.model.Types
+import com.enjaz.hr.data.model.home.Employee
 import com.enjaz.hr.data.model.home.Teammate
 import com.enjaz.hr.databinding.ItemEmployeeHomeBinding
+import com.enjaz.hr.ui.base.BaseDataItemInteractionListener
 import com.enjaz.hr.ui.base.BaseDataItemsAdapter
 
 open class EmployeesHomeAdapter(
-    protected var context: Context, objects: MutableList<Teammate>
-) : BaseDataItemsAdapter<Teammate>(objects, null) {
+    protected var context: Context, objects: MutableList<Employee>
+) : BaseDataItemsAdapter<Employee>(objects, null) {
 
     protected lateinit var binding: ItemEmployeeHomeBinding
 
@@ -30,4 +33,8 @@ open class EmployeesHomeAdapter(
     }
 
 
+}
+
+interface IEmployeeItemActionListener : BaseDataItemInteractionListener {
+    fun onItemClick(employee: Employee)
 }

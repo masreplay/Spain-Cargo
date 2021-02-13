@@ -6,13 +6,16 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import app.futured.donut.DonutSection
 import com.enjaz.hr.R
+import com.enjaz.hr.data.model.home.Employee
 import com.enjaz.hr.databinding.FramgnetHomeBinding
 import com.enjaz.hr.ui.base.BaseFragment
 import com.enjaz.hr.ui.base.BaseNavigator
 import com.enjaz.hr.ui.employees.EmployeesAdapter
+import com.enjaz.hr.ui.employees.EmployeesFragmentDirections
 import com.enjaz.hr.util.calendar.HorizontalCalendar
 import com.enjaz.hr.util.calendar.utils.HorizontalCalendarListener
 import com.enjaz.hr.util.snackBar
@@ -23,7 +26,7 @@ import java.util.*
 
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener, HomeViewModel>(),
-    IHomeInteractionListener {
+    IHomeInteractionListener, IEmployeeItemActionListener {
 
     private val homeViewModel: HomeViewModel by viewModels()
     lateinit var usersAdapter: UsersAdapter
@@ -153,11 +156,17 @@ class HomeFragment : BaseFragment<FramgnetHomeBinding, IHomeInteractionListener,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         usersAdapter = UsersAdapter(requireContext(), mutableListOf())
-        employeeAdapter = EmployeesHomeAdapter(
-            requireContext(),
-            mutableListOf()
-        )
-      }
+        employeeAdapter = EmployeesHomeAdapter(requireContext(), mutableListOf())
+        employeeAdapter.setOnItemClickListener(this)
+    }
+
+    override fun onItemClick(employee: Employee) {
+        val action: NavDirections =
+            HomeFragmentDirections.actionHomeFragmentToAttendanceFragment2(
+                employee = employee
+            )
+        findNavController().navigate(action)
+    }
 }
 
 interface IHomeInteractionListener : BaseNavigator {

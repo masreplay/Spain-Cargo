@@ -548,7 +548,7 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv2"
-                        items="@{viewModel.homeResponse.data.teammates}"
+                        items="@{viewModel.homeResponse.data.managedEmployees}"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -562,7 +562,7 @@
                         android:layout_width="0dp"
                         android:layout_height="200dp"
                         android:background="@color/white"
-                        android:visibility="@{viewModel.homeResponse.data.teammates.size()==0 ? View.VISIBLE :View.GONE, default=gone}"
+                        android:visibility="@{viewModel.homeResponse.data.managedEmployees.size()==0 ? View.VISIBLE :View.GONE, default=gone}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

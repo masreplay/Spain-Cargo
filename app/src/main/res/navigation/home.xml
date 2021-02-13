@@ -13,6 +13,9 @@
         <action
             android:id="@+id/next_action"
             app:destination="@id/teamFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_attendanceFragment2"
+            app:destination="@id/attendanceFragment2" />
     </fragment>
 
     <fragment
@@ -38,7 +41,7 @@
         <argument
             android:name="employee"
             android:defaultValue="@null"
-            app:argType="com.enjaz.hr.data.model.home.Teammate"
+            app:argType="com.enjaz.hr.data.model.home.Employee"
             app:nullable="true" />
 
     </fragment>

@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import com.enjaz.hr.R
+import com.enjaz.hr.data.model.home.Employee
 import com.enjaz.hr.data.model.home.Teammate
 import com.enjaz.hr.databinding.FramgnetEmployeesBinding
 import com.enjaz.hr.ui.base.BaseFragment
@@ -53,10 +54,10 @@ class EmployeesFragment :
 
     }
 
-    override fun onEmployeeClick(teammate: Teammate) {
+    override fun onEmployeeClick(employee: Employee) {
         val action: NavDirections =
             EmployeesFragmentDirections.actionEmployeeFragmentToAttendanceFragment2(
-                employee = teammate
+                employee = employee
             )
         findNavController().navigate(action)
     }
