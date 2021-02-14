@@ -33,6 +33,7 @@
             android:layout_marginStart="16sp"
             app:placeholderImageScaleType="fitXY"
             app:placeholderImage="@drawable/profile"
+            app:roundedCornerRadius="40dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -40,21 +41,25 @@
 
         <TextView
             android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16sp"
+            android:layout_marginHorizontal="16dp"
+            android:singleLine="true"
             android:text="@{item.name}"
             android:textColor="@android:color/black"
             app:layout_constraintBottom_toTopOf="@+id/tv_position"
+            app:layout_constraintEnd_toStartOf="@+id/tv_state"
             app:layout_constraintStart_toEndOf="@+id/circleImageView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_position"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:singleLine="true"
             android:text="@{item.departmentName}"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/tv_name"
             app:layout_constraintStart_toStartOf="@+id/tv_name"
             app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
