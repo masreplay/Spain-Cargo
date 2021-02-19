@@ -66,6 +66,7 @@ class MainActivity : AppCompatActivity() {
                 when (destination.id) {
                     R.id.homeFragment -> {
                         fab.show()
+                        bottom_nav.show()
                     }
                     R.id.createOrderFragment, R.id.addItemFragment -> {
                         bottom_nav.hide()
