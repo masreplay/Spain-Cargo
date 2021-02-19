@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+
+        <variable
+            name="viewModel"
+            type="com.spain_cargo.cargo.ui.home.HomeViewModel" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_brands"
+            items="@{viewModel.brandsResponse.data.data.brands}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="@+id/status"
+            app:layout_constraintTop_toTopOf="@+id/status"
+            app:spanCount="2"
+            tools:listitem="@layout/item_country" />
+
+        <include
+            android:id="@+id/status"
+            layout="@layout/view_status"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:retryListener="@{viewModel.refreshListener}"
+            app:viewStatus="@{viewModel.brandsResponse.status}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -4,18 +4,14 @@
 
     <data>
 
-        <import type="com.enjaz.hr.data.model.Status" />
+        <import type="com.spain_cargo.cargo.data.model.Status" />
 
         <import type="android.view.View" />
 
 
         <variable
             name="viewStatus"
-            type="com.enjaz.hr.data.model.Status" />
-
-        <variable
-            name="listSize"
-            type="Integer" />
+            type="com.spain_cargo.cargo.data.model.Status" />
 
         <variable
             name="emptydrawable"
@@ -35,27 +31,26 @@
         android:id="@+id/parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/transparent"
-        android:elevation="2dp">
+        android:background="@android:color/transparent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_error"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/transparent"
+            android:background="@android:color/white"
             android:clickable="true"
             android:focusable="true"
             android:visibility="@{(viewStatus == Status.ERROR) ?View.VISIBLE:View.GONE,default=gone}">
 
             <ImageView
                 android:id="@+id/image_error"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:background="?selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true"
                 android:onClick="@{(v)->retryListener.onClick(v)}"
-                android:src="@drawable/ic_refresh"
+                android:src="@drawable/ic_baseline_refresh_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -66,9 +61,8 @@
                 android:id="@+id/tv_errorMsg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_large"
-                android:text="@string/press_the_above_button_to_retry"
-                android:textColor="@color/carbon_grey_700"
+                android:layout_marginTop="15dp"
+                android:text="انقر اعلاه لإعادة التحميل"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -81,34 +75,32 @@
             android:id="@+id/constraint_loading"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            android:elevation="4dp"
+            android:background="@android:color/white"
             android:clickable="true"
             android:focusable="true"
             android:visibility="@{(viewStatus == Status.LOADING) ?View.VISIBLE:View.GONE,default=gone}">
 
-            <com.airbnb.lottie.LottieAnimationView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"
-                app:lottie_rawRes="@raw/loading" />
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
         </FrameLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_empty"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/transparent"
+            android:background="@android:color/white"
             android:clickable="true"
             android:focusable="true"
-            android:visibility="gone">
+            android:visibility="@{(viewStatus == Status.EMPTY) ?View.VISIBLE:View.GONE,default=gone}">
 
             <ImageView
                 android:id="@+id/image_empty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:background="?selectableItemBackgroundBorderless"
                 android:clickable="true"
                 android:focusable="true"
@@ -123,9 +115,8 @@
                 android:id="@+id/tv_emptyMsg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_large"
+                android:layout_marginTop="15dp"
                 android:text="@{emptytext}"
-                android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"

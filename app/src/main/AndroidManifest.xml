@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.enjaz.hr">
+    package="com.spain_cargo.cargo">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.enjaz.hr.HRMApp"
+        android:name="com.spain_cargo.cargo.SpainApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,24 +14,33 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".ui.login.LoginActivity"
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+
+        <activity
+            android:name="com.spain_cargo.cargo.ui.login.LoginActivity"
             android:noHistory="true"
-            android:theme="@style/LoginTheme"/>
+            android:theme="@style/LoginScreen" />
 
-        <activity android:name=".MainActivity" />
 
-        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:theme="@style/Base.Theme.AppCompat"/>
-
-        <activity android:name=".ui.onboarding.OnboardingActivity"
-            android:noHistory="true"
-            android:theme="@style/LoginTheme">
+        <activity
+            android:name="com.spain_cargo.cargo.ui.countries.CountriesActivity"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name="com.spain_cargo.cargo.MainActivity"
+            android:windowSoftInputMode="adjustPan"/>
+
+
+        <activity
+            android:name=".ui.signUp.SignUpActivity"
+            android:theme="@style/LoginScreen" />
 
     </application>
 

@@ -1,69 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2b85ff</color>
-    <color name="colorPrimaryDark">#2b85ff</color>
-    <color name="colorPrimaryLight">#e3eeff</color>
-    <color name="colorAccent">#909090</color>
-    <color name="colorSecondary">#16EFF2</color>
-    <color name="colorSecondaryLight">#d9ffff</color>
-    <color name="orange" type="color">#fb9a07</color>
-    <color name="orangeLight" type="color">#fdf9d4</color>
+    <color name="colorPrimary">#980007</color>
+    <color name="colorPrimaryDark">#7A0106</color>
+    <color name="colorAccent">#FFC107</color>
 
-    <color name="cyan">#40E0D0</color>
-
-    <color name="white">@android:color/white</color>
-    <color name="white_transparent">#44FFFFFF</color>
-    <color name="black">@android:color/black</color>
-    <color name="text_grey_600">#4F5357</color>
-    <item name="home_text_100" type="color">#a6abb5</item>
-    <color name="grey_100" type="color">#f1f3f5</color>
-    <color name="grey_200" type="color">#f3f8ff</color>
-    <color name="grey_500" type="color">#E1DFDF</color>
-    <color name="green" type="color">#51c03e</color>
-    <color name="yellow">#f1b81d</color>
-
-    <color name="orangeQi">#f1951d</color>
-
-
-    <color name="green2" type="color">#00c290</color>
-    <color name="greenLight" type="color">#e3f6ee</color>
-    <color name="maroon">#92193a</color>
-    <color name="redLight" type="color">#F8E3E3</color>
-
-    <color name="green_400" type="color">#51c03e</color>
-    <color name="green_100" type="color">#00c290</color>
-    <item name="home_text" type="color">#c4c7cd</item>
-
-
-    <color name="example_1_bg">#3A284C</color>
-    <color name="example_1_bg_light">#433254</color>
-    <color name="example_1_white_light">#70FFFFFF</color>
-    <color name="example_1_white">#D9FFFFFF</color>
-    <color name="example_2_black">#D9000000</color>
-    <color name="example_2_white">#D9FFFFFF</color>
-    <color name="example_2_red">#F44336</color>
-    <color name="example_3_black">#D9000000</color>
-    <color name="example_3_white">#D9FFFFFF</color>
-    <color name="example_3_blue">#1973E8</color>
-    <color name="example_3_blue_light">#D2E3FC</color>
-    <color name="example_3_toolbar_color">#607D8B</color>
-    <color name="example_3_statusbar_color">#455A64</color>
-    <color name="example_4_grey">#474747</color>
-    <color name="example_4_green">#008489</color>
-    <color name="example_4_grey_past">#BEBEBE</color>
-    <color name="example_5_page_bg_color">#0E0E0E</color>
-    <color name="example_5_item_view_bg_color">#1B1B1B</color>
-    <color name="example_5_toolbar_color">#282828</color>
-    <color name="example_5_text_grey">#bdbdbd</color>
-    <color name="example_5_text_grey_light">#616161</color>
-    <color name="example_6_month_bg_color">#b2ebf2</color>
-
-    <color name="blue_100" type="color">#d0e3ff</color>
-    <color name="red" type="color">#ff4a4a</color>
-    <color name="blue_light" type="color">#d6e6ff</color>
-    <color name="hours_bg_checked">#1A89CACF</color>
-    <color name="hours_bg_pressed">#EFEFEF</color>
-    <color name="divider">#666666</color>
-    <color name="invalidate_day">#666666</color>
 
 </resources>

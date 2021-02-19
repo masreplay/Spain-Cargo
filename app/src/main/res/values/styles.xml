@@ -1,81 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:datePickerStyle">@style/DatePicker</item>
-        <item name="android:datePickerDialogTheme">@style/DatePicker</item>
+        <item name="fontFamily">@font/nunito_regular</item>
     </style>
 
-    <style name="LoginTheme" parent="AppTheme">
+    <style name="LoginScreen" parent="AppTheme">
+        <item name="android:statusBarColor">@android:color/white</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
     </style>
-
-    <style name="RippleStyleWhite">
-        <item name="mrl_rippleOverlay">true</item>
-        <item name="mrl_rippleColor">#80FFFFFF</item>
-        <item name="mrl_rippleHover">true</item>
-        <item name="mrl_rippleAlpha">0.2</item>
-    </style>
-
-    <style name="RippleStyleBlack" parent="RippleStyleWhite">
-        <item name="mrl_rippleColor">#8096989A</item>
-    </style>
-
-
-    <style name="SwitchButtonStyle">
-        <item name="android:paddingLeft">10dp</item>
-        <item name="android:paddingRight">10dp</item>
-        <item name="android:paddingTop">4dp</item>
-        <item name="android:paddingBottom">4dp</item>
-    </style>
-
-    <style name="DialogTheme" parent="ThemeOverlay.AppCompat.Dialog">
-        <item name="colorPrimary">@color/white</item>
-        <item name="colorPrimaryDark">@color/colorAccent</item>
-        <item name="colorAccent">@color/colorPrimary</item>
-        <item name="android:buttonBarPositiveButtonStyle">@style/PositiveButtonStyle</item>
-        <item name="android:buttonBarNegativeButtonStyle">@style/NegativeButtonStyle</item>
-    </style>
-
-    <style name="NegativeButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
-        <item name="android:textColor">@color/colorAccent</item>
-    </style>
-
-    <style name="profile_text_tabs" parent="TextAppearance.Design.Tab">
-
-        <item name="textAllCaps">false</item>
-        <item name="android:textColor">@color/grey_500</item>
-
-    </style>
-
-    <style name="PositiveButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
-        <item name="android:textColor">@color/colorPrimary</item>
-    </style>
-
-    <style name="StyleTitleText">
-        <item name="android:textSize">12sp</item>
-    </style>
-
-    <style name="CustomChipChoice" parent="@style/Widget.MaterialComponents.Chip.Choice">
-        <item name="chipBackgroundColor">@color/bg_chip_state_list</item>
-    </style>
-
-    <style name="DatePicker" parent="ThemeOverlay.MaterialComponents.Dialog">
-        <item name="colorAccent">@color/colorPrimary</item>
-        <item name="android:datePickerStyle">@style/DatePickerStyle</item>
-    </style>
-
-    <style name="DatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">
-        <item name="android:headerBackground">@color/colorPrimary</item>
-        <item name="android:yearListSelectorColor">@color/orange</item>
-        <item name="android:datePickerMode">calendar</item>
-        <item name="android:minDate">01/01/2019</item>
-    </style>
-
-
-
 </resources>

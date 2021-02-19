@@ -7,43 +7,20 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.enjaz.hr.ui.home.HomeFragment"
-        android:label="@string/home"
-        tools:layout="@layout/framgnet_home">
-        <action
-            android:id="@+id/next_action"
-            app:destination="@id/teamFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_attendanceFragment2"
-            app:destination="@id/attendanceFragment2" />
-    </fragment>
+        android:label="@string/brands"
+        android:name="com.spain_cargo.cargo.ui.home.HomeFragment"
+        tools:layout="@layout/fragment_home"/>
 
     <fragment
-        android:id="@+id/teamFragment"
-        android:name="com.enjaz.hr.ui.team.TeamFragment"
-        android:label="@string/team"
-        tools:layout="@layout/framgnet_team" />
-
+        android:id="@+id/createOrderFragment"
+        android:name="com.spain_cargo.cargo.ui.createOrder.CreateOrderFragment"
+        tools:layout="@layout/fragment_create_order"
+        android:label="@string/create_order" />
     <fragment
-        android:id="@+id/employeeFragment"
-        android:name="com.enjaz.hr.ui.employees.EmployeesFragment"
-        android:label="Employees"
-        tools:layout="@layout/framgnet_employees">
-        <action
-            android:id="@+id/action_employeeFragment_to_attendanceFragment2"
-            app:destination="@id/attendanceFragment2" />
-    </fragment>
-    <fragment
-        android:id="@+id/attendanceFragment2"
-        android:name="com.enjaz.hr.ui.attendance.AttendanceFragment"
-        android:label="Attendance">
+        android:id="@+id/addItemFragment"
+        android:name="com.spain_cargo.cargo.ui.addItem.AddItemFragment"
+        tools:layout="@layout/fragment_add_item"
+        android:label="@string/add_item" />
 
-        <argument
-            android:name="employee"
-            android:defaultValue="@null"
-            app:argType="com.enjaz.hr.data.model.home.Employee"
-            app:nullable="true" />
-
-    </fragment>
 
 </navigation>

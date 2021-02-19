@@ -4,31 +4,21 @@
 
     <item
         android:id="@+id/home"
-        android:icon="@drawable/ic_outline_home_24"
+        android:icon="@drawable/ic_baseline_local_offer_24"
         app:showAsAction="always"
-        android:title="@string/home" />
+        android:title="@string/brands" />
 
-<!--    <item-->
-<!--        android:id="@+id/notifications"-->
-<!--        android:icon="@drawable/ic_outline_notifications_24"-->
-<!--        app:showAsAction="always"-->
-<!--        android:title="@string/notifications" />-->
 
     <item
-        android:id="@+id/attendance"
-        android:icon="@drawable/ic_outline_event_note_24"
+        android:id="@+id/orders"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"
         app:showAsAction="always"
-        android:title="@string/attendance" />
+        android:title="@string/orders" />
 
-    <item
-        android:id="@+id/requests"
-        android:icon="@drawable/ic_round_swap_horiz_24"
-        app:showAsAction="always"
-        android:title="@string/requests" />
 
     <item
         android:id="@+id/profile"
         android:icon="@drawable/ic_person_outline"
         app:showAsAction="always"
-        android:title="@string/profile" />
+        android:title="Profile" />
 </menu>
