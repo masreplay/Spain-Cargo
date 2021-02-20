@@ -6,7 +6,7 @@ import com.spain_cargo.cargo.data.model.brands.BrandsResponse
 import com.spain_cargo.cargo.data.model.cities.CitiesResponse
 import com.spain_cargo.cargo.data.model.countries.CountriesResponse
 import com.spain_cargo.cargo.data.model.login.MainResponse
-import com.spain_cargo.cargo.data.model.orders.OrdersResponse
+import com.spain_cargo.cargo.data.model.profile.ProfileResponse
 import io.reactivex.Single
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -40,9 +40,12 @@ interface Webservices {
     fun getCities(): Single<Response<CitiesResponse>>
 
     @POST("api/orders/store")
-    fun checkout(@Body order:CreateOrder): Single<Response<String>>
+    fun checkout(@Body order: CreateOrder): Single<Response<String>>
 
     @GET("api/orders")
-    fun getOrders(@Query("status")status:String): Single<Response<OrdersResponse>>
+    fun getOrders(@Query("status") status: String): Single<Response<OrdersResponse>>
+
+    @GET("api/user")
+    fun getUsers(): Single<Response<ProfileResponse>>
 
 }

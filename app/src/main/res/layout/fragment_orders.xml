@@ -51,7 +51,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_brands"
-            items="@{viewModel.ordersResponse.data.data}"
+            items="@{viewModel.ordersResponse.data.data.orders}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -66,6 +66,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone"
             app:retryListener="@{viewModel.refreshListener}"
             app:viewStatus="@{viewModel.ordersResponse.status}" />
 

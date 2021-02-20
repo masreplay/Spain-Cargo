@@ -1,12 +1,12 @@
-package com.spain_cargo.cargo.data.model.orders
+package com.spain_cargo.cargo.data.model.profile
 
 
-import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
+import android.os.Parcelable
 
 @Parcelize
-data class OrdersResponse(
+data class ProfileResponse(
     @SerializedName("data")
-    val data: Data
+    val `data`: Data
 ) : Parcelable

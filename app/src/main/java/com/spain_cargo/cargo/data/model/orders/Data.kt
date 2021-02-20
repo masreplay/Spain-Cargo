@@ -6,11 +6,9 @@ import kotlinx.android.parcel.Parcelize
 import android.os.Parcelable
 
 @Parcelize
-data class City(
-    @SerializedName("amount")
-    val amount: Int,
-    @SerializedName("id")
-    val id: Int,
-    @SerializedName("name")
-    val name: String
+data class Data(
+    @SerializedName("orders")
+    val orders: List<Order>,
+    @SerializedName("pagination")
+    val pagination: Pagination
 ) : Parcelable

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="4dp"
         android:background="@drawable/bg_country"
+        tools:background="#FFD5D5"
         android:onClick="@{()->clickListener.onItemClick(item)}">
 
         <TextView
@@ -33,6 +35,8 @@
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold"
+            tools:lines="1"
+            tools:text="@tools:sample/lorem"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

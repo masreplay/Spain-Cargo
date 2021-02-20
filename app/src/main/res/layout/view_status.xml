@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -40,6 +41,7 @@
             android:background="@android:color/white"
             android:clickable="true"
             android:focusable="true"
+            tools:visibility="visible"
             android:visibility="@{(viewStatus == Status.ERROR) ?View.VISIBLE:View.GONE,default=gone}">
 
             <ImageView
@@ -77,6 +79,7 @@
             android:layout_height="match_parent"
             android:background="@android:color/white"
             android:clickable="true"
+
             android:focusable="true"
             android:visibility="@{(viewStatus == Status.LOADING) ?View.VISIBLE:View.GONE,default=gone}">
 

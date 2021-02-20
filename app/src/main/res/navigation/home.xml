@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:label="@string/brands"
         android:name="com.spain_cargo.cargo.ui.home.HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_profile"
+            app:destination="@id/profile" />
+    </fragment>
 
     <fragment
         android:id="@+id/createOrderFragment"
@@ -21,6 +25,7 @@
         android:name="com.spain_cargo.cargo.ui.addItem.AddItemFragment"
         tools:layout="@layout/fragment_add_item"
         android:label="@string/add_item" />
+    <include app:graph="@navigation/profile" />
 
 
 </navigation>

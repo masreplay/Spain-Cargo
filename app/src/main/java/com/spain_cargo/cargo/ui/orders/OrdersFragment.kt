@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import com.spain_cargo.cargo.R
-import com.spain_cargo.cargo.data.model.orders.Order
-import com.spain_cargo.cargo.databinding.FragmentHomeBinding
 import com.spain_cargo.cargo.databinding.FragmentOrdersBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
@@ -20,18 +18,12 @@ class OrdersFragment :
     private val ordersViewModel: OrdersViewModel by viewModels()
 
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_orders
-    }
+    override fun getLayoutId() = R.layout.fragment_orders
 
-    override fun getViewModel(): OrdersViewModel {
-        return ordersViewModel
-    }
+    override fun getViewModel() = ordersViewModel
 
 
-    override fun getNavigator(): IOrdersInteractionListener {
-        return this
-    }
+    override fun getNavigator() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

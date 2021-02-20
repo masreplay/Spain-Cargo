@@ -7,6 +7,7 @@ import com.spain_cargo.cargo.data.AppDataManager
 import com.spain_cargo.cargo.data.model.BaseResource
 import com.spain_cargo.cargo.data.model.brands.BrandsResponse
 import com.spain_cargo.cargo.data.model.countries.CountriesResponse
+import com.spain_cargo.cargo.data.model.profile.ProfileResponse
 import com.spain_cargo.cargo.ui.base.BaseViewModel
 import com.spain_cargo.cargo.util.print
 
@@ -41,8 +42,39 @@ class HomeViewModel @ViewModelInject constructor(
         result.data?.let {
             brandsResponse.postValue(result)
             it.print()
+
+        }
+    }
+
+    var usersResponse: MutableLiveData<BaseResource<ProfileResponse>> = MutableLiveData()
+
+
+    fun getUsers() {
+        usersResponse.value = BaseResource.loading(usersResponse.value?.data)
+
+        dispose(
+            dataManager.getUsers(),
+            ::onUsersSuccess,
+            { e ->
+                //error handling
+                e.message?.let {
+                    usersResponse.postValue(BaseResource.error(it, null))
+                }
+            })
+
+        refreshListener.postValue(View.OnClickListener { getUsers() })
+
+    }
+
+    private fun onUsersSuccess(result: BaseResource<ProfileResponse>) {
+
+        result.data?.let {
+            usersResponse.postValue(result)
+            it.print()
+
         }
 
     }
+
 
 }

@@ -1,9 +1,9 @@
 package com.spain_cargo.cargo.data
 
 import android.annotation.SuppressLint
-import com.spain_cargo.cargo.data.db.ItemDb
 import com.google.gson.Gson
 import com.google.gson.JsonObject
+import com.spain_cargo.cargo.data.db.ItemDb
 import com.spain_cargo.cargo.data.model.BaseResource
 import com.spain_cargo.cargo.data.model.CreateOrder
 import com.spain_cargo.cargo.data.model.Item
@@ -13,6 +13,7 @@ import com.spain_cargo.cargo.data.model.countries.CountriesResponse
 import com.spain_cargo.cargo.data.model.error.ErrorResponse
 import com.spain_cargo.cargo.data.model.login.MainResponse
 import com.spain_cargo.cargo.data.model.orders.OrdersResponse
+import com.spain_cargo.cargo.data.model.profile.ProfileResponse
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -105,15 +106,20 @@ class AppDataManager @Inject constructor(
         )
     }
 
+    fun getUsers(): Single<BaseResource<ProfileResponse>> {
+        return wrapWithResourceObject(
+            webservices.getUsers()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
 
 
-
-
-    fun insertItem(item: Item){
+    fun insertItem(item: Item) {
         database.itemDao().insert(item)
     }
 
-    fun deleteItem(item: Item){
+    fun deleteItem(item: Item) {
         database.itemDao().delete(item)
     }
 

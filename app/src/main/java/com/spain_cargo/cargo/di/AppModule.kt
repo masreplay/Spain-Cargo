@@ -75,8 +75,7 @@ object AppModule {
 
         return Retrofit.Builder()
             .baseUrl(
-                "http://phplaravel-547981-1758023.cloudwaysapps." +
-                        "com/"
+                "http://phplaravel-547981-1758023.cloudwaysapps.com/"
             )
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

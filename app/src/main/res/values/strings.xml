@@ -36,5 +36,7 @@
     <string name="from">From</string>
     <string name="to">To</string>
     <string name="added_at">Added At</string>
+    <string name="my_balance">My Balance</string>
+    <string name="label_profile">Profile</string>
 
 </resources>
