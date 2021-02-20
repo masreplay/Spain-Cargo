@@ -12,6 +12,7 @@ import com.spain_cargo.cargo.data.model.cities.CitiesResponse
 import com.spain_cargo.cargo.data.model.countries.CountriesResponse
 import com.spain_cargo.cargo.data.model.error.ErrorResponse
 import com.spain_cargo.cargo.data.model.login.MainResponse
+import com.spain_cargo.cargo.data.model.orders.Order
 import com.spain_cargo.cargo.data.model.orders.OrdersResponse
 import com.spain_cargo.cargo.data.model.profile.ProfileResponse
 import io.reactivex.Single
@@ -101,6 +102,14 @@ class AppDataManager @Inject constructor(
     fun getOrders(status: String): Single<BaseResource<OrdersResponse>> {
         return wrapWithResourceObject(
             webservices.getOrders(status)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+    fun deleteOrder(id: String): Single<BaseResource<Order>> {
+        return wrapWithResourceObject(
+            webservices.deleteOrder(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )

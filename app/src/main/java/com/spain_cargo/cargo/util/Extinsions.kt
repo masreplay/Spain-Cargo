@@ -5,7 +5,9 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.StringRes
+import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
+import com.spain_cargo.cargo.R
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.util.*
@@ -25,4 +27,21 @@ fun Any?.print(tag: String = "abdalla1997") {
 
 fun Int?.toFormat(): String {
     return DecimalFormat("#,###", DecimalFormatSymbols.getInstance(Locale.US)).format(this) + " د.ع"
+}
+
+
+fun Fragment.snackbar(
+    message: String?,
+    action: (() -> Unit)? = null,
+    actionTitle: String? = null
+) {
+    Snackbar.make(
+        this.requireView(),
+        message ?: "",
+        Snackbar.LENGTH_LONG
+    ).also { snackbar ->
+        snackbar.setAction(actionTitle ?: requireContext().getString(R.string.option_ok)) {
+            action ?: snackbar.dismiss()
+        }
+    }.show()
 }

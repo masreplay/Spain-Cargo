@@ -1,6 +1,5 @@
 package com.spain_cargo.cargo.util
 
-import android.net.Uri
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -29,9 +28,9 @@ fun timeAgo(view: TextView, date: Date?) {
 
 
 @BindingAdapter(value = ["items"])
-fun <T> setItems(view: RecyclerView, items: MutableList<T>?) {
+fun <T> RecyclerView.setItems(items: MutableList<T>?) {
     items?.let {
-        (view.adapter as? BaseDataItemsAdapter<T>)?.apply {
+        (this.adapter as? BaseDataItemsAdapter<T>)?.apply {
             setItems(it)
         }
     }

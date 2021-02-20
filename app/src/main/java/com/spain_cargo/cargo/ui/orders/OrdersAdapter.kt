@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.spain_cargo.cargo.R
+import com.spain_cargo.cargo.data.model.orders.Order
 import com.spain_cargo.cargo.ui.base.BaseDataItemInteractionListener
 import com.spain_cargo.cargo.ui.base.BaseDataItemsAdapter
 
@@ -31,5 +32,4 @@ open class OrdersAdapter(
 interface IOrderItemActionListener : BaseDataItemInteractionListener {
     fun onItemClick(item: Order)
     fun onItemDeleteClick(item: Order)
-
 }

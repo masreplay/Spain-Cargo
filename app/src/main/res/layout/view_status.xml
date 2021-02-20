@@ -41,7 +41,6 @@
             android:background="@android:color/white"
             android:clickable="true"
             android:focusable="true"
-            tools:visibility="visible"
             android:visibility="@{(viewStatus == Status.ERROR) ?View.VISIBLE:View.GONE,default=gone}">
 
             <ImageView

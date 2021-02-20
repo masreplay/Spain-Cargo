@@ -25,7 +25,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, IHomeInteractionListener,
 
     override fun getViewModel() = homeViewModel
 
-
     override fun getNavigator() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,7 +35,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, IHomeInteractionListener,
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         val brandsAdapter = HomeAdapter(requireContext(), mutableListOf())
         brandsAdapter.setOnItemClickListener(this)

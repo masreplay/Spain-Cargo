@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 import android.os.Parcelable
 
-@Parcelize
 data class Pagination(
     @SerializedName("count")
     val count: Int,
@@ -17,4 +16,4 @@ data class Pagination(
     val total: Int,
     @SerializedName("total_pages")
     val totalPages: Int
-) : Parcelable
+)

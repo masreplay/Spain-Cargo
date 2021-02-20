@@ -22,9 +22,7 @@ class CountriesActivity :
     private val countriesViewModel: CountriesViewModel by viewModels()
 
 
-    override fun getLayoutId(): Int {
-        return R.layout.activity_counties
-    }
+    override fun getLayoutId() = R.layout.activity_counties
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
