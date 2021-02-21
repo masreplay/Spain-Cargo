@@ -8,7 +8,6 @@ import com.spain_cargo.cargo.data.model.BaseResource
 import com.spain_cargo.cargo.data.model.orders.Order
 import com.spain_cargo.cargo.data.model.orders.OrdersResponse
 import com.spain_cargo.cargo.ui.base.BaseViewModel
-import com.spain_cargo.cargo.util.print
 
 class OrdersViewModel @ViewModelInject constructor(
     dataManager: AppDataManager
@@ -18,64 +17,70 @@ class OrdersViewModel @ViewModelInject constructor(
 
 
     var ordersResponse: MutableLiveData<BaseResource<OrdersResponse>> = MutableLiveData()
+    var orderDeleteResponse: MutableLiveData<BaseResource<Order>> = MutableLiveData()
+    var orderCompleteResponse: MutableLiveData<BaseResource<Order>> = MutableLiveData()
+    var orderRefundResponse: MutableLiveData<BaseResource<Order>> = MutableLiveData()
 
-
-    fun getOrders(status:String) {
+    fun getOrders(status: String) {
         ordersResponse.value = BaseResource.loading(ordersResponse.value?.data)
-
         dispose(
             dataManager.getOrders(status),
             ::onOrdersSuccess,
             { e ->
-                //error handling
-                e.message?.let {
-                    it.print("asdqwe123")
-                    ordersResponse.postValue(BaseResource.error(it, null))
-                }
+                e.message?.let { ordersResponse.postValue(BaseResource.error(it, null)) }
             })
-
         refreshListener.postValue(View.OnClickListener { getOrders(status) })
-
     }
 
     private fun onOrdersSuccess(result: BaseResource<OrdersResponse>) {
-
-        result.data?.let {
-            ordersResponse.postValue(result)
-            it.print()
-        }
-
+        result.data?.let { ordersResponse.postValue(result) }
     }
-
-    var orderDeleteResponse: MutableLiveData<BaseResource<Order>> = MutableLiveData()
 
 
     fun deleteOrder(id: String) {
         orderDeleteResponse.value = BaseResource.loading(orderDeleteResponse.value?.data)
-
         dispose(
             dataManager.deleteOrder(id),
             ::onOrderDeleteSuccess,
             { e ->
-                //error handling
-                e.message?.let {
-                    it.print("asdqwe123")
-                    orderDeleteResponse.postValue(BaseResource.error(it, null))
-                }
+                e.message?.let { orderDeleteResponse.postValue(BaseResource.error(it, null)) }
             })
-
         refreshListener.postValue(View.OnClickListener { deleteOrder(id) })
-
     }
 
     private fun onOrderDeleteSuccess(result: BaseResource<Order>) {
-
-        result.data?.let {
-            orderDeleteResponse.postValue(result)
-            it.print()
-        }
-
+        result.data?.let { orderDeleteResponse.postValue(result) }
     }
 
 
+    fun markOrderAsRefund(id: String) {
+        orderRefundResponse.value = BaseResource.loading(orderRefundResponse.value?.data)
+        dispose(
+            dataManager.markOrderAsRefund(id),
+            ::onMarkOrderAsRefundSuccess,
+            { e ->
+                e.message?.let { orderRefundResponse.postValue(BaseResource.error(it, null)) }
+            })
+        refreshListener.postValue(View.OnClickListener { deleteOrder(id) })
+    }
+
+    private fun onMarkOrderAsRefundSuccess(result: BaseResource<Order>) {
+        result.data?.let { orderRefundResponse.postValue(result) }
+    }
+
+
+    fun markOrderAsComplete(id: String) {
+        orderCompleteResponse.value = BaseResource.loading(orderCompleteResponse.value?.data)
+        dispose(
+            dataManager.markOrderAsRefund(id),
+            ::onMarkOrderAsCompleteSuccess,
+            { e ->
+                e.message?.let { orderCompleteResponse.postValue(BaseResource.error(it, null)) }
+            })
+        refreshListener.postValue(View.OnClickListener { deleteOrder(id) })
+    }
+
+    private fun onMarkOrderAsCompleteSuccess(result: BaseResource<Order>) {
+        result.data?.let { orderCompleteResponse.postValue(result) }
+    }
 }

@@ -8,7 +8,6 @@ import com.afollestad.vvalidator.field.FieldError
 import com.afollestad.vvalidator.form
 import com.afollestad.vvalidator.util.hide
 import com.afollestad.vvalidator.util.show
-import com.spain_cargo.cargo.MainActivity
 import com.spain_cargo.cargo.R
 import com.spain_cargo.cargo.data.model.Status
 import com.spain_cargo.cargo.databinding.ActivityLoginBinding
@@ -27,9 +26,7 @@ class LoginActivity :
     private val loginViewModel: LoginViewModel by viewModels()
 
 
-    override fun getLayoutId(): Int {
-        return R.layout.activity_login
-    }
+    override fun getLayoutId() = R.layout.activity_login
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

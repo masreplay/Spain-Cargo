@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import com.spain_cargo.cargo.data.AppDataManager
 import com.spain_cargo.cargo.data.model.BaseResource
 import com.spain_cargo.cargo.data.model.brands.BrandsResponse
-import com.spain_cargo.cargo.data.model.countries.CountriesResponse
 import com.spain_cargo.cargo.data.model.profile.ProfileResponse
 import com.spain_cargo.cargo.ui.base.BaseViewModel
 import com.spain_cargo.cargo.util.print
@@ -49,11 +48,11 @@ class HomeViewModel @ViewModelInject constructor(
     var usersResponse: MutableLiveData<BaseResource<ProfileResponse>> = MutableLiveData()
 
 
-    fun getUsers() {
+    fun getUser() {
         usersResponse.value = BaseResource.loading(usersResponse.value?.data)
 
         dispose(
-            dataManager.getUsers(),
+            dataManager.getUser(),
             ::onUsersSuccess,
             { e ->
                 //error handling
@@ -62,7 +61,7 @@ class HomeViewModel @ViewModelInject constructor(
                 }
             })
 
-        refreshListener.postValue(View.OnClickListener { getUsers() })
+        refreshListener.postValue(View.OnClickListener { getUser() })
 
     }
 

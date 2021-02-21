@@ -107,6 +107,14 @@ class AppDataManager @Inject constructor(
         )
     }
 
+    fun getOrderById(id: String): Single<BaseResource<Order>> {
+        return wrapWithResourceObject(
+            webservices.getOrderById(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
     fun deleteOrder(id: String): Single<BaseResource<Order>> {
         return wrapWithResourceObject(
             webservices.deleteOrder(id)
@@ -115,9 +123,25 @@ class AppDataManager @Inject constructor(
         )
     }
 
-    fun getUsers(): Single<BaseResource<ProfileResponse>> {
+    fun markOrderAsComplete(id: String): Single<BaseResource<Order>> {
         return wrapWithResourceObject(
-            webservices.getUsers()
+            webservices.markOrderAsComplete(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+    fun markOrderAsRefund(id: String): Single<BaseResource<Order>> {
+        return wrapWithResourceObject(
+            webservices.markOrderAsRefund(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+    fun getUser(): Single<BaseResource<ProfileResponse>> {
+        return wrapWithResourceObject(
+            webservices.getUser()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )

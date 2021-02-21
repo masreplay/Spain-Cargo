@@ -32,4 +32,6 @@ open class OrdersAdapter(
 interface IOrderItemActionListener : BaseDataItemInteractionListener {
     fun onItemClick(item: Order)
     fun onItemDeleteClick(item: Order)
+    fun onItemCompleteClick(id: String)
+    fun onItemRefundClick(id: String)
 }

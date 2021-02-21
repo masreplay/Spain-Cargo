@@ -45,12 +45,21 @@ interface Webservices {
     fun checkout(@Body order: CreateOrder): Single<Response<String>>
 
     @GET("api/user")
-    fun getUsers(): Single<Response<ProfileResponse>>
+    fun getUser(): Single<Response<ProfileResponse>>
 
     // Order
     @GET("api/orders")
     fun getOrders(@Query("status") status: String): Single<Response<OrdersResponse>>
 
+    @GET("api/orders/{id}")
+    fun getOrderById(@Path("id") id: String): Single<Response<Order>>
+
     @DELETE("api/orders/{id}")
     fun deleteOrder(@Path("id") id: String): Single<Response<Order>>
+
+    @PATCH("api/orders/complete/{id}")
+    fun markOrderAsComplete(@Path("id") id: String): Single<Response<Order>>
+
+    @PATCH("api/orders/refund/{id}")
+    fun markOrderAsRefund(@Path("id") id: String): Single<Response<Order>>
 }

@@ -20,16 +20,14 @@ class OrdersFragment :
 
     private val ordersViewModel: OrdersViewModel by viewModels()
 
-
     override fun getLayoutId() = R.layout.fragment_orders
-
     override fun getViewModel() = ordersViewModel
-
     override fun getNavigator() = this
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getViewModel().getOrders("completed")
+        getViewModel().getOrders("pending")
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -68,17 +66,25 @@ class OrdersFragment :
                     snackbar(getString(R.string.order_deleted_successfully))
                     // Todo : update recyclerview
                     // getViewModel().getOrders("completed")
-
                 }
-                setNegativeButton(getString(R.string.option_no)) { _, _ ->
-
-                }
-
+                setNegativeButton(getString(R.string.option_no)) { _, _ -> }
             }.create().show()
         else
         // TODO: remove delete icon from order card
             snackbar(getString(R.string.un_deletable_dialog_message))
     }
+
+    override fun onItemCompleteClick(id: String) {
+        getViewModel().markOrderAsComplete(id)
+        snackbar(getString(R.string.marked_as_completed))
+    }
+
+    override fun onItemRefundClick(id: String) {
+        getViewModel().markOrderAsRefund(id)
+        snackbar(getString(R.string.marked_as_refunded))
+    }
+
+
 }
 
 

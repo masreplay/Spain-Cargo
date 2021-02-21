@@ -30,7 +30,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, IHomeInteractionListener,
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getViewModel().getBrands(country_id)
-        getViewModel().getUsers()
+        getViewModel().getUser()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
