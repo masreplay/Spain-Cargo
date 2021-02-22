@@ -3,7 +3,7 @@ package com.spain_cargo.cargo.ui.login
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import com.afollestad.vvalidator.field.FieldError
 import com.afollestad.vvalidator.form
 import com.afollestad.vvalidator.util.hide
@@ -38,7 +38,7 @@ class LoginActivity :
             startActivity(Intent(this, SignUpActivity::class.java))
         }
 
-        getViewModel().loginResponse.observe(this, Observer { resource ->
+        getViewModel().loginResponse.observe(this) { resource ->
             resource?.let {
                 if (it.status == Status.LOADING) {
                     getViewDataBinding().progressCircular.show()
@@ -52,7 +52,7 @@ class LoginActivity :
                     this.toast(R.string.msg_err_login)
                 }
             }
-        })
+        }
 
 
         form {
@@ -76,13 +76,10 @@ class LoginActivity :
         }
     }
 
-    override fun getNavigator(): ILoginInteractionListener {
-        return this
-    }
+    override fun getNavigator() = this
 
-    override fun getViewModel(): LoginViewModel {
-        return loginViewModel
-    }
+
+    override fun getViewModel() = loginViewModel
 
 }
 

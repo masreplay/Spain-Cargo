@@ -178,7 +178,7 @@
                 android:layout_weight="1"
                 android:onClick="@{()->clickListener.onItemCompleteClick(item.id)}"
                 android:text="@string/complete"
-                android:visibility="@{(item.actions.completable == true)?View.VISIBLE : View.GONE, default=gone}"
+                android:visibility="@{item.actions.completable? View.VISIBLE : View.GONE, default=gone}"
                 tools:visibility="visible" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

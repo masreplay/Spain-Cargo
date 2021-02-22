@@ -21,9 +21,7 @@ class CountriesActivity :
 
     private val countriesViewModel: CountriesViewModel by viewModels()
 
-
     override fun getLayoutId() = R.layout.activity_counties
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,17 +40,11 @@ class CountriesActivity :
         getViewDataBinding().rvCountries.apply {
             adapter = countriesAdapter
         }
-
-
     }
 
-    override fun getNavigator(): ICountriesInteractionListener {
-        return this
-    }
+    override fun getNavigator() = this
 
-    override fun getViewModel(): CountriesViewModel {
-        return countriesViewModel
-    }
+    override fun getViewModel() = countriesViewModel
 
     override fun onItemClick(item: Country) {
         country_id = item.id

@@ -46,7 +46,7 @@
     <string name="sign_up">Sign up</string>
 
     <!-- messages -->
-    <string name="un_deletable_dialog_message">unDeletable item!</string>
+    <string name="un_deletable_dialog_message">unable to delete order item!</string>
     <string name="order_deleted_successfully">Order deleted successfully</string>
     <string name="placeholder_delete_dialog_message">sure to delete (%1$s) ?</string>
     <string name="delete_dialog_message">sure to delete this order?</string>
