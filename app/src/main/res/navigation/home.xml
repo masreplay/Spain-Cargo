@@ -29,7 +29,7 @@
     <fragment
         android:id="@+id/moneyRBCreateFragment"
         android:name="com.spain_cargo.cargo.ui.moneyRBCreate.MoneyRBCreateFragment"
-        android:label="MoneyRBCreateFragment"
+        android:label="@string/label_create_many_request"
         tools:layout="@layout/fragment_money_rb_create" />
 
 </navigation>

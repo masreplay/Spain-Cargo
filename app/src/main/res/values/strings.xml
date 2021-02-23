@@ -76,4 +76,5 @@
     <string name="accept">accept</string>
     <string name="reject">reject</string>
     <string name="status">status</string>
+    <string name="label_create_many_request">Create Money Request</string>
 </resources>
