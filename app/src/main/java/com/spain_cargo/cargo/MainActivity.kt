@@ -10,6 +10,8 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.afollestad.vvalidator.util.hide
 import com.afollestad.vvalidator.util.show
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.spain_cargo.cargo.data.model.login.User.Companion.USER
+import com.spain_cargo.cargo.util.PrefsManager
 import com.spain_cargo.cargo.util.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     private var currentNavController: LiveData<NavController>? = null
 
+    private lateinit var navGraphIds: List<Int>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -44,12 +47,23 @@ class MainActivity : AppCompatActivity() {
     private fun setupBottomNavigationBar() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
 
-        val navGraphIds = listOf(
-            R.navigation.home,
-            R.navigation.orders,
-            R.navigation.money,
-            R.navigation.request
-        )
+
+        navGraphIds = if (PrefsManager.instance?.getUser()?.data?.user?.role == USER) {
+            bottomNavigationView.menu.removeItem(R.id.request)
+            listOf(
+                R.navigation.home,
+                R.navigation.orders,
+                R.navigation.money
+            )
+        } else {
+            listOf(
+                R.navigation.home,
+                R.navigation.orders,
+                R.navigation.money,
+                R.navigation.request
+            )
+        }
+
 
         val controller = bottomNavigationView.setupWithNavController(
             navGraphIds = navGraphIds,
@@ -57,6 +71,8 @@ class MainActivity : AppCompatActivity() {
             containerId = R.id.nav_host_container,
             intent = intent
         )
+
+
 
         controller.observe(this, Observer { navController ->
 
