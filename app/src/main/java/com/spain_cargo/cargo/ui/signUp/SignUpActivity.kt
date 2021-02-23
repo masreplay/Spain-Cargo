@@ -12,7 +12,6 @@ import com.afollestad.vvalidator.field.FieldError
 import com.afollestad.vvalidator.form
 import com.afollestad.vvalidator.util.hide
 import com.afollestad.vvalidator.util.show
-import com.spain_cargo.cargo.MainActivity
 import com.spain_cargo.cargo.R
 import com.spain_cargo.cargo.data.model.Status
 import com.spain_cargo.cargo.databinding.ActivitySignupBinding
@@ -88,7 +87,7 @@ class SignUpActivity :
                 }
             }
             input(R.id.et_email) {
-                isNotEmpty().description(getString(R.string.msg_error_email))
+                isNotEmpty().description(getString(R.string.msg_err_email))
                 onErrors { _, errors ->
                     val firstError: FieldError? = errors.firstOrNull()
                     getViewDataBinding().tilEmail.error = firstError?.description

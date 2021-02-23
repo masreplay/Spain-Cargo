@@ -1,14 +1,16 @@
-package com.spain_cargo.cargo.ui.requestMoney
+package com.spain_cargo.cargo.ui.moneyRBCreate
 
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import com.afollestad.vvalidator.field.FieldError
 import com.afollestad.vvalidator.form
 import com.spain_cargo.cargo.R
-import com.spain_cargo.cargo.databinding.FragmentRequestMoneyBinding
+import com.spain_cargo.cargo.databinding.FragmentMoneyRbCreateBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
 import com.spain_cargo.cargo.util.print
@@ -17,28 +19,23 @@ import kotlinx.android.synthetic.main.fragment_request_money.*
 
 
 @AndroidEntryPoint
-class RequestMoneyFragment :
-    BaseFragment<FragmentRequestMoneyBinding, ICreateOrderInteractionListener, RequestMoneyViewModel>(),
-    ICreateOrderInteractionListener {
+class MoneyRBCreateFragment :
+    BaseFragment<FragmentMoneyRbCreateBinding, ICreateMoneyRBInteractionListener, MoneyRBCreateViewModel>(),
+    ICreateMoneyRBInteractionListener {
 
-    private val addItemViewModel: RequestMoneyViewModel by viewModels()
+    private val addItemViewModel: MoneyRBCreateViewModel by viewModels()
 
-    val users = listOf("user", "distributor", "admin")
+    private val users = listOf("distributor", "admin")
+
     private lateinit var usersAdapter: ArrayAdapter<String>
 
-    val types = listOf("immediate", "normal")
-    private lateinit var typesAdapter: ArrayAdapter<String>
-
-    override fun getLayoutId() = R.layout.fragment_request_money
-
+    override fun getLayoutId() = R.layout.fragment_money_rb_create
     override fun getViewModel() = addItemViewModel
-
     override fun getNavigator() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -46,10 +43,6 @@ class RequestMoneyFragment :
         usersAdapter =
             ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, users)
         (til_from.editText as? AutoCompleteTextView)?.setAdapter(usersAdapter)
-
-        typesAdapter =
-            ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, types)
-        (til_type.editText as? AutoCompleteTextView)?.setAdapter(typesAdapter)
 
 
         form {
@@ -62,40 +55,32 @@ class RequestMoneyFragment :
             }
 
             submitWith(R.id.btn_request) {
+                getViewDataBinding().etAmount.text.toString().print("123123")
                 createRequest()
+
             }
         }
     }
 
     private fun createRequest() {
         et_from.text.toString().print()
-        et_type.text.toString().print()
         usersAdapter.getPosition(et_from.text.toString()).print()
 
         if (usersAdapter.getPosition(et_from.text.toString()) + 1 == 0) {
             getViewDataBinding().tilFrom.error = getString(R.string.pick_an_item)
-        } else if (typesAdapter.getPosition(et_type.text.toString()) + 1 == 0) {
-            getViewDataBinding().tilType.error = getString(R.string.pick_an_item)
         }
-        if (et_from.text.toString() == "user" && et_key.text.isNullOrEmpty()) {
-            getViewDataBinding().tilKey.error = getString(R.string.msg_err_field_required)
-        } else if (et_from.text.toString() != "user") {
-            getViewModel().moneyRequest(
-                from = et_from.text.toString(),
-                amount = et_amount.text.toString().toInt(),
-                type = et_type.text.toString()
-            )
-        } else {
-            getViewModel().moneyRequest(
-                from = et_from.text.toString(),
-                amount = et_amount.text.toString().toInt(),
-                type = et_type.text.toString(),
-                payment_key = et_key.text.toString()
-            )
-        }
+
+        getViewModel().moneyBackRequests(
+            from = getViewDataBinding().etFrom.text.toString(),
+            amount = getViewDataBinding().etAmount.text.toString().toInt()
+        )
+//        getViewModel().requestMoneyResponse.observe(viewLifecycleOwner) {
+        findNavController().popBackStack()
+
+
     }
 
 
 }
 
-interface ICreateOrderInteractionListener : BaseNavigator
+interface ICreateMoneyRBInteractionListener : BaseNavigator

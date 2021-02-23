@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/request"
+    app:startDestination="@id/fragment_rb_money">
+
+    <fragment
+        android:id="@+id/fragment_rb_money"
+        android:name="com.spain_cargo.cargo.ui.moneyRB.MoneyRBFragment"
+        android:label="@string/request_money"
+        tools:layout="@layout/fragment_money_rb" />
+    <fragment
+        android:id="@+id/fragment_rb_create_money"
+        android:name="com.spain_cargo.cargo.ui.moneyRBCreate.MoneyRBCreateFragment"
+        android:label="MoneyRBCreateFragment"
+        tools:layout="@layout/fragment_money_rb_create" />
+
+</navigation>

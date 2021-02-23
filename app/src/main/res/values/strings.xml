@@ -46,11 +46,13 @@
     <string name="sign_up">Sign up</string>
 
     <!-- messages -->
-    <string name="un_deletable_dialog_message">unable to delete order item!</string>
-    <string name="order_deleted_successfully">Order deleted successfully</string>
-    <string name="placeholder_delete_dialog_message">sure to delete (%1$s) ?</string>
-    <string name="delete_dialog_message">sure to delete this order?</string>
-    <string name="msg_error_email">Enter a valid Email</string>
+    <string name="msg_un_deletable">unable to delete order item!</string>
+    <string name="msg_order_deleted_successfully">Order deleted successfully</string>
+    <string name="msg_placeholder_delete">sure to delete (%1$s)?</string>
+    <string name="msg_delete">sure to delete this order?</string>
+    <string name="msg_copy_to_clipboard">Copy to clipBoard</string>
+    <!-- messages error -->
+    <string name="msg_err_email">Enter a valid Email</string>
     <string name="msg_err_password">Password is required</string>
     <string name="msg_err_login">Failed To log in</string>
     <string name="msg_err_name">Name can\'t be empty</string>
@@ -58,10 +60,17 @@
     <string name="msg_err_date">BirthDate is required</string>
     <string name="msg_err_image">Pick an image first</string>
     <string name="msg_err_field_required">This Field Can\'t be empty</string>
+
+
+
     <string name="amount">Amount</string>
     <string name="type">Type</string>
     <string name="payment_key">Payment Key</string>
     <string name="request_money">Request Money</string>
     <string name="money">Money</string>
     <string name="pick_an_item">Pick a value</string>
+    <string name="request">Request</string>
+    <string name="accept">accept</string>
+    <string name="reject">reject</string>
+    <string name="status">status</string>
 </resources>

@@ -64,7 +64,7 @@ class LoginActivity :
                 }
             }
             input(R.id.et_email) {
-                isNotEmpty().description(getString(R.string.msg_error_email))
+                isNotEmpty().description(getString(R.string.msg_err_email))
                 onErrors { _, errors ->
                     val firstError: FieldError? = errors.firstOrNull()
                     getViewDataBinding().tilEmail.error = firstError?.description
