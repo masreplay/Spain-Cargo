@@ -11,8 +11,8 @@
         android:name="com.spain_cargo.cargo.ui.home.HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_homeFragment_to_profile"
-            app:destination="@id/profile" />
+            android:id="@+id/action_homeFragment_to_moneyRBCreateFragment"
+            app:destination="@id/moneyRBCreateFragment" />
     </fragment>
 
     <fragment
@@ -25,7 +25,11 @@
         android:name="com.spain_cargo.cargo.ui.addItem.AddItemFragment"
         tools:layout="@layout/fragment_add_item"
         android:label="@string/add_item" />
-    <include app:graph="@navigation/money" />
 
+    <fragment
+        android:id="@+id/moneyRBCreateFragment"
+        android:name="com.spain_cargo.cargo.ui.moneyRBCreate.MoneyRBCreateFragment"
+        android:label="MoneyRBCreateFragment"
+        tools:layout="@layout/fragment_money_rb_create" />
 
 </navigation>

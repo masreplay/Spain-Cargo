@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
 
     private var currentNavController: LiveData<NavController>? = null
 
-    private lateinit var navGraphIds: List<Int>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -48,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
 
 
-        navGraphIds = if (PrefsManager.instance?.getUser()?.data?.user?.role == USER) {
+        val navGraphIds = if (PrefsManager.instance?.getUser()?.data?.user?.role == USER) {
             bottomNavigationView.menu.removeItem(R.id.request)
             listOf(
                 R.navigation.home,

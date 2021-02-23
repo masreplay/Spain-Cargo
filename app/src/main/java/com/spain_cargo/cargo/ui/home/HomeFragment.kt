@@ -6,12 +6,15 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import com.spain_cargo.cargo.R
 import com.spain_cargo.cargo.data.model.brands.Brand
+import com.spain_cargo.cargo.data.model.login.User.Companion.USER
 import com.spain_cargo.cargo.databinding.FragmentHomeBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
 import com.spain_cargo.cargo.util.Constants.country_id
+import com.spain_cargo.cargo.util.PrefsManager
 import com.spain_cargo.cargo.util.copyToClipBoard
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -45,6 +48,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, IHomeInteractionListener,
             rvBrands.adapter = brandsAdapter
             cvBalances.setOnClickListener {
                 onBalanceClickListener()
+            }
+        }
+        getViewDataBinding().cvRequest.apply {
+            if (PrefsManager.instance?.getUser()?.data?.user?.role == USER) {
+                visibility = View.VISIBLE
+                setOnClickListener {
+                    findNavController().navigate(R.id.moneyRBCreateFragment)
+                }
             }
         }
     }
