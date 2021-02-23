@@ -120,7 +120,7 @@ class CreateOrderFragment :
 
     fun createOrder() {
         if (spinnerAdapter.getPosition(et_cities.text.toString()) + 1 == 0) {
-            getViewDataBinding().tilCity.error = getString(R.string.oick_location)
+            getViewDataBinding().tilCity.error = getString(R.string.pick_location)
         } else {
             getViewModel().checkout(
                 CreateOrder(

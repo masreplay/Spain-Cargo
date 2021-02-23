@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -23,6 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginVertical="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
         android:background="@drawable/bg_item"
         android:onClick="@{()->clickListener.onItemClick(item)}"
         android:padding="8dp">
@@ -47,6 +51,7 @@
             android:layout_marginStart="4dp"
             android:text="@{item.relations.country.name}"
             android:textSize="16sp"
+            tools:text="Iraq baghdad"
             app:layout_constraintBottom_toBottomOf="@+id/textView4"
             app:layout_constraintStart_toEndOf="@+id/textView4"
             app:layout_constraintTop_toTopOf="parent" />
@@ -67,6 +72,7 @@
         <TextView
             android:id="@+id/textView11"
             android:layout_width="0dp"
+            tools:text="Iraq dyala"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:text="@{item.entity.address}"
@@ -95,13 +101,14 @@
             android:layout_margin="4dp"
             android:text="@{String.valueOf(item.entity.amount)}"
             android:textSize="16sp"
+            tools:text="250,500"
             app:layout_constraintBottom_toBottomOf="@+id/textView12"
             app:layout_constraintEnd_toStartOf="@+id/imageView2"
             app:layout_constraintStart_toEndOf="@+id/textView12"
             app:layout_constraintTop_toTopOf="@+id/textView12" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/tv_added_at"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
@@ -110,25 +117,26 @@
             android:text="@string/added_at"
             android:textColor="@android:color/black"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
         <TextView
+            android:id="@+id/textView14"
             timeAgo="@{item.entity.createdAt}"
             android:layout_width="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_added_at"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView13"
-            app:layout_constraintStart_toEndOf="@+id/textView13"
-            app:layout_constraintTop_toTopOf="@+id/textView13" />
+            app:layout_constraintStart_toEndOf="@+id/tv_added_at"
+            app:layout_constraintTop_toTopOf="@+id/tv_added_at"
+            tools:text="@tools:sample/date/ddmmyy" />
 
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="35dp"
-            android:layout_height="25dp"
+        <ImageButton
+            android:id="@+id/ib_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
@@ -139,7 +147,40 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            app:layout_constraintStart_toStartOf="@+id/tv_added_at"
+            app:layout_constraintTop_toBottomOf="@+id/tv_added_at">
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_refund"
+                status="@{item.actions.completable}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:onClick="@{()->clickListener.onItemRefundClick(item.id)}"
+                android:text="@string/refund"
+                android:visibility="@{(item.actions.refundable == true)?View.VISIBLE : View.GONE, default=gone}"
+                tools:visibility="visible" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_completed"
+                status="@{item.actions.refundable}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:onClick="@{()->clickListener.onItemCompleteClick(item.id)}"
+                android:text="@string/complete"
+                android:visibility="@{item.actions.completable? View.VISIBLE : View.GONE, default=gone}"
+                tools:visibility="visible" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

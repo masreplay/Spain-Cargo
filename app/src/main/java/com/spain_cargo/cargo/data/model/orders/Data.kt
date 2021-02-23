@@ -5,7 +5,9 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
-data class OrdersResponse(
-    @SerializedName("data")
-    val data: Data
+data class Data(
+    @SerializedName("orders")
+    val orders: List<Order>?,
+    @SerializedName("pagination")
+    val pagination: Pagination
 )

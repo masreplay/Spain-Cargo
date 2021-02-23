@@ -6,7 +6,9 @@ import com.spain_cargo.cargo.data.model.brands.BrandsResponse
 import com.spain_cargo.cargo.data.model.cities.CitiesResponse
 import com.spain_cargo.cargo.data.model.countries.CountriesResponse
 import com.spain_cargo.cargo.data.model.login.MainResponse
+import com.spain_cargo.cargo.data.model.orders.Order
 import com.spain_cargo.cargo.data.model.orders.OrdersResponse
+import com.spain_cargo.cargo.data.model.profile.ProfileResponse
 import io.reactivex.Single
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -40,9 +42,24 @@ interface Webservices {
     fun getCities(): Single<Response<CitiesResponse>>
 
     @POST("api/orders/store")
-    fun checkout(@Body order:CreateOrder): Single<Response<String>>
+    fun checkout(@Body order: CreateOrder): Single<Response<String>>
 
+    @GET("api/user")
+    fun getUser(): Single<Response<ProfileResponse>>
+
+    // Order
     @GET("api/orders")
-    fun getOrders(@Query("status")status:String): Single<Response<OrdersResponse>>
+    fun getOrders(@Query("status") status: String): Single<Response<OrdersResponse>>
 
+    @GET("api/orders/{id}")
+    fun getOrderById(@Path("id") id: String): Single<Response<Order>>
+
+    @DELETE("api/orders/{id}")
+    fun deleteOrder(@Path("id") id: String): Single<Response<Order>>
+
+    @PATCH("api/orders/complete/{id}")
+    fun markOrderAsComplete(@Path("id") id: String): Single<Response<Order>>
+
+    @PATCH("api/orders/refund/{id}")
+    fun markOrderAsRefund(@Path("id") id: String): Single<Response<Order>>
 }

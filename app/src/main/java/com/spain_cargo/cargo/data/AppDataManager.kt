@@ -1,9 +1,9 @@
 package com.spain_cargo.cargo.data
 
 import android.annotation.SuppressLint
-import com.spain_cargo.cargo.data.db.ItemDb
 import com.google.gson.Gson
 import com.google.gson.JsonObject
+import com.spain_cargo.cargo.data.db.ItemDb
 import com.spain_cargo.cargo.data.model.BaseResource
 import com.spain_cargo.cargo.data.model.CreateOrder
 import com.spain_cargo.cargo.data.model.Item
@@ -12,7 +12,9 @@ import com.spain_cargo.cargo.data.model.cities.CitiesResponse
 import com.spain_cargo.cargo.data.model.countries.CountriesResponse
 import com.spain_cargo.cargo.data.model.error.ErrorResponse
 import com.spain_cargo.cargo.data.model.login.MainResponse
+import com.spain_cargo.cargo.data.model.orders.Order
 import com.spain_cargo.cargo.data.model.orders.OrdersResponse
+import com.spain_cargo.cargo.data.model.profile.ProfileResponse
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -106,8 +108,45 @@ class AppDataManager @Inject constructor(
         )
     }
 
+    fun getOrderById(id: String): Single<BaseResource<Order>> {
+        return wrapWithResourceObject(
+            webservices.getOrderById(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
 
+    fun deleteOrder(id: String): Single<BaseResource<Order>> {
+        return wrapWithResourceObject(
+            webservices.deleteOrder(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
 
+    fun markOrderAsComplete(id: String): Single<BaseResource<Order>> {
+        return wrapWithResourceObject(
+            webservices.markOrderAsComplete(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+    fun markOrderAsRefund(id: String): Single<BaseResource<Order>> {
+        return wrapWithResourceObject(
+            webservices.markOrderAsRefund(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+    fun getUser(): Single<BaseResource<ProfileResponse>> {
+        return wrapWithResourceObject(
+            webservices.getUser()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
 
 
     fun insertItem(item: Item){

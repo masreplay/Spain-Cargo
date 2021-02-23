@@ -1,5 +1,7 @@
 package com.spain_cargo.cargo.ui.profile
 
+import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.viewModels
 import com.spain_cargo.cargo.R
 import com.spain_cargo.cargo.databinding.FragmentProfileBinding
@@ -16,18 +18,16 @@ class ProfileFragment :
     private val profileViewModel: ProfileViewModel by viewModels()
 
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_profile
-    }
+    override fun getLayoutId() = R.layout.fragment_profile
 
-    override fun getViewModel(): ProfileViewModel {
-        return profileViewModel
-    }
+    override fun getViewModel() = profileViewModel
 
-    override fun getNavigator(): IProfileInteractionListener {
-        return this
-    }
+    override fun getNavigator() = this
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        getViewModel().getUsers()
+    }
 }
 
 interface IProfileInteractionListener : BaseNavigator {

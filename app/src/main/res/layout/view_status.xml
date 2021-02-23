@@ -40,7 +40,7 @@
             android:background="@android:color/white"
             android:clickable="true"
             android:focusable="true"
-            android:visibility="@{(viewStatus == Status.ERROR) ?View.VISIBLE:View.GONE,default=gone}">
+            android:visibility="@{(viewStatus == Status.ERROR)? View.VISIBLE:View.GONE,default=gone}">
 
             <ImageView
                 android:id="@+id/image_error"
@@ -77,6 +77,7 @@
             android:layout_height="match_parent"
             android:background="@android:color/white"
             android:clickable="true"
+
             android:focusable="true"
             android:visibility="@{(viewStatus == Status.LOADING) ?View.VISIBLE:View.GONE,default=gone}">
 

@@ -21,27 +21,20 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, IHomeInteractionListener,
     private val homeViewModel: HomeViewModel by viewModels()
 
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_home
-    }
+    override fun getLayoutId() = R.layout.fragment_home
 
-    override fun getViewModel(): HomeViewModel {
-        return homeViewModel
-    }
+    override fun getViewModel() = homeViewModel
 
-
-    override fun getNavigator(): IHomeInteractionListener {
-        return this
-    }
+    override fun getNavigator() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getViewModel().getBrands(country_id)
+        getViewModel().getUser()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         val brandsAdapter = HomeAdapter(requireContext(), mutableListOf())
         brandsAdapter.setOnItemClickListener(this)
@@ -49,7 +42,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, IHomeInteractionListener,
         getViewDataBinding().rvBrands.apply {
             adapter = brandsAdapter
         }
-
     }
 
     override fun onItemClick(item: Brand) {

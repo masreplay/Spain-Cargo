@@ -7,7 +7,9 @@
 
 
     <fragment
+        android:label="@string/label_profile"
         android:id="@+id/profileFragment"
+        tools:layout="@layout/fragment_create_order"
         android:name="com.spain_cargo.cargo.ui.profile.ProfileFragment" />
 
     <fragment

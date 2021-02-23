@@ -2,16 +2,18 @@ package com.spain_cargo.cargo.data.model.orders
 
 
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+import android.os.Parcelable
 
 data class Pagination(
     @SerializedName("count")
-    val count: Int?,
+    val count: Int,
     @SerializedName("current_page")
-    val currentPage: Int?,
+    val currentPage: Int,
     @SerializedName("per_page")
-    val perPage: Int?,
+    val perPage: Int,
     @SerializedName("total")
-    val total: Int?,
+    val total: Int,
     @SerializedName("total_pages")
-    val totalPages: Int?
+    val totalPages: Int
 )

@@ -24,9 +24,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
-
         if (savedInstanceState == null) {
             setupBottomNavigationBar()
             val toolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -36,10 +33,7 @@ class MainActivity : AppCompatActivity() {
         fab.setOnClickListener {
             currentNavController?.value?.navigate(R.id.createOrderFragment)
         }
-
-
     }
-
 
     private fun setupBottomNavigationBar() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
@@ -59,10 +53,9 @@ class MainActivity : AppCompatActivity() {
 
         controller.observe(this, Observer { navController ->
 
-            navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            navController.addOnDestinationChangedListener { controller, destination, _ ->
 
                 setupActionBarWithNavController(controller)
-
                 when (destination.id) {
                     R.id.homeFragment -> {
                         fab.show()
@@ -77,18 +70,10 @@ class MainActivity : AppCompatActivity() {
                         fab.hide()
                     }
                 }
-
             }
-
         })
         currentNavController = controller
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        return currentNavController?.value?.navigateUp() ?: false
-    }
-
-
+    override fun onSupportNavigateUp() = currentNavController?.value?.navigateUp() ?: false
 }
-
-
