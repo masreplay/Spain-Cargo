@@ -82,4 +82,5 @@
     <string name="label_create_many_request">Create Money Request</string>
     <string name="balance">Balance</string>
     <string name="joined_at">Joined at</string>
+    <string name="copied">Copied to clipboard</string>
 </resources>

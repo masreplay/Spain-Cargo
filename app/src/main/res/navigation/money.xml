@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/money"
-    app:startDestination="@id/profileFragment">
+    app:startDestination="@id/moneyRequestFragment">
 
 
     <fragment
         android:label="@string/money_request"
-        android:id="@+id/profileFragment"
+        android:id="@+id/moneyRequestFragment"
         tools:layout="@layout/fragment_money_requests"
         android:name="com.spain_cargo.cargo.ui.moneyRequests.MoneyRequestsFragment" />
     <fragment

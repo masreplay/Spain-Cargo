@@ -115,11 +115,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_baseline_email_24"
             android:text="@{viewModel.profileResponse.data.data.user.balance.paymentKey}"
             android:textColor="@android:color/black"
             android:textSize="20sp"
             android:gravity="center"
+            android:drawableStart="@drawable/ic_round_content_copy_24"
+            android:drawableTint="@android:color/black"
             android:onClick="@{()->viewModel.navigator.copy(viewModel.profileResponse.data.data.user.balance.paymentKey)}"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/textView25"

@@ -12,6 +12,7 @@ import com.spain_cargo.cargo.R
 import com.spain_cargo.cargo.databinding.FragmentProfileBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
+import com.spain_cargo.cargo.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -45,6 +46,7 @@ class ProfileFragment :
         val clipboard = requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clip = ClipData.newPlainText("label",key)
         clipboard.setPrimaryClip(clip)
+        requireActivity().toast(R.string.copied)
     }
 
 

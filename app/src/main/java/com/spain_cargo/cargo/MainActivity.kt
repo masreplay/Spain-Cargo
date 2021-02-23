@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
 
                 setupActionBarWithNavController(controller)
                 when (destination.id) {
-                    R.id.homeFragment, R.id.profileFragment, R.id.fragment_rb_money -> {
+                    R.id.homeFragment, R.id.moneyRequestFragment, R.id.fragment_rb_money -> {
                         fab.show()
                         bottom_nav.show()
                     }

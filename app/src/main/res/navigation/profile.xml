@@ -2,11 +2,11 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/profile"
-    app:startDestination="@id/profileFragment">
+    app:startDestination="@id/profile_fragment">
 
 
     <fragment
-        android:id="@+id/profileFragment"
+        android:id="@+id/profile_fragment"
         android:name="com.spain_cargo.cargo.ui.profile.ProfileFragment"
         android:label="@string/label_profile" />
 
