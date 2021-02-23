@@ -33,12 +33,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         fab.setOnClickListener {
-            if (currentNavController?.value?.currentDestination?.id == R.id.homeFragment) {
-                currentNavController?.value?.navigate(R.id.createOrderFragment)
-            } else if (currentNavController?.value?.currentDestination?.id == R.id.fragment_rb_money) {
-                currentNavController?.value?.navigate(R.id.fragment_rb_create_money)
-            } else {
-                currentNavController?.value?.navigate(R.id.requestMoneyFragment)
+            when (currentNavController?.value?.currentDestination?.id) {
+                R.id.homeFragment -> {
+                    currentNavController?.value?.navigate(R.id.createOrderFragment)
+                }
+                R.id.fragment_rb_money -> {
+                    currentNavController?.value?.navigate(R.id.fragment_rb_create_money)
+                }
+                else -> {
+                    currentNavController?.value?.navigate(R.id.requestMoneyFragment)
+                }
             }
         }
     }
@@ -52,14 +56,16 @@ class MainActivity : AppCompatActivity() {
             listOf(
                 R.navigation.home,
                 R.navigation.orders,
-                R.navigation.money
+                R.navigation.money,
+                R.navigation.profile
             )
         } else {
             listOf(
                 R.navigation.home,
                 R.navigation.orders,
                 R.navigation.money,
-                R.navigation.request
+                R.navigation.request,
+                R.navigation.profile
             )
         }
 

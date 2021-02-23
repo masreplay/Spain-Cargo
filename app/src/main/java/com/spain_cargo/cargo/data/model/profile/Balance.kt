@@ -5,6 +5,8 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import com.spain_cargo.cargo.util.toFormat
 import kotlinx.android.parcel.Parcelize
+import java.text.SimpleDateFormat
+import java.util.*
 
 @Parcelize
 data class Balance(
@@ -20,4 +22,6 @@ data class Balance(
     val userId: Int
 ) : Parcelable {
     val formattedAmount get() = amount.toFormat()
+
+
 }

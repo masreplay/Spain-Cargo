@@ -48,7 +48,6 @@
     <!-- messages -->
     <string name="msg_un_deletable">unable to delete order item!</string>
     <string name="msg_order_deleted_successfully">Order deleted successfully</string>
-    <string name="msg_placeholder_delete">sure to delete (%1$s)?</string>
     <string name="msg_delete">sure to delete this order?</string>
     <string name="msg_copy_to_clipboard">Copy to clipBoard</string>
     <!-- messages error -->
@@ -81,4 +80,6 @@
     <string name="failed_to_request_money">Failed to request money</string>
     <string name="monet_back_request">Money Back Request</string>
     <string name="label_create_many_request">Create Money Request</string>
+    <string name="balance">Balance</string>
+    <string name="joined_at">Joined at</string>
 </resources>

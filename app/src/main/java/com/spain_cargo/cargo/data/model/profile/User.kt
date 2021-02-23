@@ -4,13 +4,15 @@ package com.spain_cargo.cargo.data.model.profile
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
+import java.text.SimpleDateFormat
+import java.util.*
 
 @Parcelize
 data class User(
     @SerializedName("balance")
     val balance: Balance,
     @SerializedName("created_at")
-    val createdAt: String,
+    val createdAt: Date,
     @SerializedName("date_of_birth")
     val dateOfBirth: String,
     @SerializedName("email")
@@ -33,4 +35,12 @@ data class User(
     val twoFactorSecret: String?,
     @SerializedName("updated_at")
     val updatedAt: String
-) : Parcelable
+) : Parcelable{
+    fun getDate():String{
+        val formatter= SimpleDateFormat("yyyy-MM-dd", Locale.US)
+        return formatter.format(createdAt)
+    }
+
+}
+
+
