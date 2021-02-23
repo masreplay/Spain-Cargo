@@ -45,7 +45,6 @@ class OrdersViewModel @ViewModelInject constructor(
             { e ->
                 e.message?.let { orderDeleteResponse.postValue(BaseResource.error(it, null)) }
             })
-        refreshListener.postValue(View.OnClickListener { deleteOrder(id) })
     }
 
     private fun onOrderDeleteSuccess(result: BaseResource<Order>) {
@@ -61,7 +60,6 @@ class OrdersViewModel @ViewModelInject constructor(
             { e ->
                 e.message?.let { orderRefundResponse.postValue(BaseResource.error(it, null)) }
             })
-        refreshListener.postValue(View.OnClickListener { deleteOrder(id) })
     }
 
     private fun onMarkOrderAsRefundSuccess(result: BaseResource<Order>) {
@@ -72,12 +70,11 @@ class OrdersViewModel @ViewModelInject constructor(
     fun markOrderAsComplete(id: String) {
         orderCompleteResponse.value = BaseResource.loading(orderCompleteResponse.value?.data)
         dispose(
-            dataManager.markOrderAsRefund(id),
+            dataManager.markOrderAsComplete(id),
             ::onMarkOrderAsCompleteSuccess,
             { e ->
                 e.message?.let { orderCompleteResponse.postValue(BaseResource.error(it, null)) }
             })
-        refreshListener.postValue(View.OnClickListener { deleteOrder(id) })
     }
 
     private fun onMarkOrderAsCompleteSuccess(result: BaseResource<Order>) {

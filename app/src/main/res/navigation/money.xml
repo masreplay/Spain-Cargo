@@ -9,13 +9,11 @@
     <fragment
         android:label="@string/label_profile"
         android:id="@+id/profileFragment"
-        tools:layout="@layout/fragment_create_order"
-        android:name="com.spain_cargo.cargo.ui.profile.ProfileFragment" />
-
+        tools:layout="@layout/fragment_profile"
+        android:name="com.spain_cargo.cargo.ui.money.ProfileFragment" />
     <fragment
-        android:id="@+id/createOrderFragment"
-        android:name="com.spain_cargo.cargo.ui.createOrder.CreateOrderFragment"
-        tools:layout="@layout/fragment_create_order"
-        android:label="@string/create_order" />
+        android:id="@+id/requestMoneyFragment"
+        android:name="com.spain_cargo.cargo.ui.requestMoney.RequestMoneyFragment"
+        android:label="@string/request_money" />
 
 </navigation>

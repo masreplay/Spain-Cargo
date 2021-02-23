@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/ordersFragment"
-        android:label="@string/brands"
+        android:label="@string/orders"
         android:name="com.spain_cargo.cargo.ui.orders.OrdersFragment"
         tools:layout="@layout/fragment_orders"/>
 

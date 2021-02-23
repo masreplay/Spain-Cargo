@@ -25,7 +25,7 @@
         android:name="com.spain_cargo.cargo.ui.addItem.AddItemFragment"
         tools:layout="@layout/fragment_add_item"
         android:label="@string/add_item" />
-    <include app:graph="@navigation/profile" />
+    <include app:graph="@navigation/money" />
 
 
 </navigation>

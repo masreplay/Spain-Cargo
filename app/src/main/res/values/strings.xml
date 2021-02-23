@@ -58,4 +58,10 @@
     <string name="msg_err_date">BirthDate is required</string>
     <string name="msg_err_image">Pick an image first</string>
     <string name="msg_err_field_required">This Field Can\'t be empty</string>
+    <string name="amount">Amount</string>
+    <string name="type">Type</string>
+    <string name="payment_key">Payment Key</string>
+    <string name="request_money">Request Money</string>
+    <string name="money">Money</string>
+    <string name="pick_an_item">Pick a value</string>
 </resources>

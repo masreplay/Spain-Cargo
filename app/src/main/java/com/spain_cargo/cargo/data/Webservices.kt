@@ -62,4 +62,13 @@ interface Webservices {
 
     @PATCH("api/orders/refund/{id}")
     fun markOrderAsRefund(@Path("id") id: String): Single<Response<Order>>
+
+    @FormUrlEncoded
+    @POST("api/money-requests/store")
+    fun moneyRequest(
+        @Field("from") from: String,
+        @Field("amount") amount: Int,
+        @Field("type") type: String,
+        @Field("payment_key") payment_key: String?
+    ): Single<Response<String>>
 }

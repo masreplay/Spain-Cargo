@@ -118,7 +118,7 @@ class CreateOrderFragment :
         getViewModel().getItems()
     }
 
-    fun createOrder() {
+    private fun createOrder() {
         if (spinnerAdapter.getPosition(et_cities.text.toString()) + 1 == 0) {
             getViewDataBinding().tilCity.error = getString(R.string.pick_location)
         } else {

@@ -1,4 +1,4 @@
-package com.spain_cargo.cargo.ui.profile
+package com.spain_cargo.cargo.ui.money
 
 import android.os.Bundle
 import android.view.View

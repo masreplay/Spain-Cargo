@@ -31,7 +31,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         fab.setOnClickListener {
-            currentNavController?.value?.navigate(R.id.createOrderFragment)
+            if (currentNavController?.value?.currentDestination?.id == R.id.homeFragment) {
+                currentNavController?.value?.navigate(R.id.createOrderFragment)
+            } else {
+                currentNavController?.value?.navigate(R.id.requestMoneyFragment)
+            }
         }
     }
 
@@ -41,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         val navGraphIds = listOf(
             R.navigation.home,
             R.navigation.orders,
-            R.navigation.profile
+            R.navigation.money
         )
 
         val controller = bottomNavigationView.setupWithNavController(
@@ -57,11 +61,11 @@ class MainActivity : AppCompatActivity() {
 
                 setupActionBarWithNavController(controller)
                 when (destination.id) {
-                    R.id.homeFragment -> {
+                    R.id.homeFragment, R.id.profileFragment -> {
                         fab.show()
                         bottom_nav.show()
                     }
-                    R.id.createOrderFragment, R.id.addItemFragment -> {
+                    R.id.createOrderFragment, R.id.addItemFragment, R.id.requestMoneyFragment -> {
                         bottom_nav.hide()
                         fab.hide()
                     }

@@ -140,6 +140,20 @@ class AppDataManager @Inject constructor(
         )
     }
 
+    fun moneyRequest(
+        from: String,
+        amount: Int,
+        type: String,
+        payment_key: String? = null
+    ): Single<BaseResource<String>> {
+        return wrapWithResourceObject(
+            webservices.moneyRequest(from, amount, type, payment_key)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+
     fun getUser(): Single<BaseResource<ProfileResponse>> {
         return wrapWithResourceObject(
             webservices.getUser()
@@ -149,11 +163,11 @@ class AppDataManager @Inject constructor(
     }
 
 
-    fun insertItem(item: Item){
+    fun insertItem(item: Item) {
         database.itemDao().insert(item)
     }
 
-    fun deleteItem(item: Item){
+    fun deleteItem(item: Item) {
         database.itemDao().delete(item)
     }
 
