@@ -84,6 +84,7 @@ class CreateOrderViewModel @ViewModelInject constructor(
 
         result.data?.let {
             checkoutResponse.postValue(result)
+            dataManager.deleteItems()
         }
 
     }

@@ -2,6 +2,7 @@ package com.spain_cargo.cargo.data.db
 
 import androidx.room.*
 import com.spain_cargo.cargo.data.model.Item
+import io.reactivex.Completable
 import io.reactivex.Single
 
 @Dao
@@ -17,5 +18,7 @@ interface ItemDao {
     @Delete
     fun delete(item: Item)
 
+    @Query("DELETE FROM Item")
+    fun nukeTable(): Completable
 
 }
