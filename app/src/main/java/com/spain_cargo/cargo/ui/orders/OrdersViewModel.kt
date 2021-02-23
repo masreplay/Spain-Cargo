@@ -48,7 +48,8 @@ class OrdersViewModel @ViewModelInject constructor(
     }
 
     private fun onOrderDeleteSuccess(result: BaseResource<Order>) {
-        result.data?.let { orderDeleteResponse.postValue(result) }
+        result.data?.let { orderDeleteResponse.postValue(result)
+            getOrders("pending")}
     }
 
 
@@ -63,7 +64,8 @@ class OrdersViewModel @ViewModelInject constructor(
     }
 
     private fun onMarkOrderAsRefundSuccess(result: BaseResource<Order>) {
-        result.data?.let { orderRefundResponse.postValue(result) }
+        result.data?.let { orderRefundResponse.postValue(result)
+            getOrders("completed")}
     }
 
 
@@ -78,6 +80,7 @@ class OrdersViewModel @ViewModelInject constructor(
     }
 
     private fun onMarkOrderAsCompleteSuccess(result: BaseResource<Order>) {
-        result.data?.let { orderCompleteResponse.postValue(result) }
+        result.data?.let { orderCompleteResponse.postValue(result)
+            getOrders("pending")}
     }
 }
