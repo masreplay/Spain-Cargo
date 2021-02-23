@@ -9,8 +9,8 @@
     <fragment
         android:label="@string/label_profile"
         android:id="@+id/profileFragment"
-        tools:layout="@layout/fragment_profile"
-        android:name="com.spain_cargo.cargo.ui.money.ProfileFragment" />
+        tools:layout="@layout/fragment_money_requests"
+        android:name="com.spain_cargo.cargo.ui.moneyRequests.MoneyRequestsFragment" />
     <fragment
         android:id="@+id/requestMoneyFragment"
         android:name="com.spain_cargo.cargo.ui.requestMoney.RequestMoneyFragment"

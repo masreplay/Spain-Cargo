@@ -9,6 +9,8 @@ import com.spain_cargo.cargo.data.model.login.MainResponse
 import com.spain_cargo.cargo.data.model.orders.Order
 import com.spain_cargo.cargo.data.model.orders.OrdersResponse
 import com.spain_cargo.cargo.data.model.profile.ProfileResponse
+import com.spain_cargo.cargo.data.model.requestMoney.RequestMoneyResponse
+import com.spain_cargo.cargo.data.model.moneyRequests.MoneyRequests
 import io.reactivex.Single
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -70,5 +72,14 @@ interface Webservices {
         @Field("amount") amount: Int,
         @Field("type") type: String,
         @Field("payment_key") payment_key: String?
-    ): Single<Response<String>>
+    ): Single<Response<RequestMoneyResponse>>
+
+    @GET("api/money-requests")
+    fun getMoneyRequests(): Single<Response<MoneyRequests>>
+
+    @PATCH("api/money-requests/accept/{id}")
+    fun acceptMoneyRequest(@Path("id")id:String): Single<Response<Void>>
+
+    @PATCH("api/money-requests/reject/{id}")
+    fun rejectMoneyRequest(@Path("id")id:String): Single<Response<Void>>
 }

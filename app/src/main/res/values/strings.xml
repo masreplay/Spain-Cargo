@@ -64,4 +64,7 @@
     <string name="request_money">Request Money</string>
     <string name="money">Money</string>
     <string name="pick_an_item">Pick a value</string>
+    <string name="money_success">Money Request Successded</string>
+    <string name="transaction_amount">Transaction Amount</string>
+    <string name="taxes">Taxes</string>
 </resources>

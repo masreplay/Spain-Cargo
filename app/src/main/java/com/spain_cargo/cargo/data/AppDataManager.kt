@@ -15,6 +15,8 @@ import com.spain_cargo.cargo.data.model.login.MainResponse
 import com.spain_cargo.cargo.data.model.orders.Order
 import com.spain_cargo.cargo.data.model.orders.OrdersResponse
 import com.spain_cargo.cargo.data.model.profile.ProfileResponse
+import com.spain_cargo.cargo.data.model.requestMoney.RequestMoneyResponse
+import com.spain_cargo.cargo.data.model.moneyRequests.MoneyRequests
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -145,7 +147,7 @@ class AppDataManager @Inject constructor(
         amount: Int,
         type: String,
         payment_key: String? = null
-    ): Single<BaseResource<String>> {
+    ): Single<BaseResource<RequestMoneyResponse>> {
         return wrapWithResourceObject(
             webservices.moneyRequest(from, amount, type, payment_key)
                 .subscribeOn(Schedulers.io())
@@ -161,6 +163,32 @@ class AppDataManager @Inject constructor(
                 .observeOn(AndroidSchedulers.mainThread())
         )
     }
+
+    fun getMoneyRequests(): Single<BaseResource<MoneyRequests>> {
+        return wrapWithResourceObject(
+            webservices.getMoneyRequests()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+    fun acceptMoneyRequest(id: String): Single<BaseResource<Void>> {
+        return wrapWithResourceObject(
+            webservices.acceptMoneyRequest(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+    fun rejectMoneyRequest(id: String): Single<BaseResource<Void>> {
+        return wrapWithResourceObject(
+            webservices.rejectMoneyRequest(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+
 
 
     fun insertItem(item: Item) {

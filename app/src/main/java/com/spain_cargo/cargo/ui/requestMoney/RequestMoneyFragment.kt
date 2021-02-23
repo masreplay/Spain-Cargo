@@ -5,13 +5,17 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import com.afollestad.vvalidator.field.FieldError
 import com.afollestad.vvalidator.form
 import com.spain_cargo.cargo.R
+import com.spain_cargo.cargo.data.model.Status
 import com.spain_cargo.cargo.databinding.FragmentRequestMoneyBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
 import com.spain_cargo.cargo.util.print
+import com.spain_cargo.cargo.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_request_money.*
 
@@ -49,6 +53,20 @@ class RequestMoneyFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        getViewModel().requestMoneyResponse.observe(requireActivity()) { resource ->
+            resource?.let {
+                if (it.status == Status.LOADING) {
+                }
+                if (it.status == Status.SUCCESS) {
+                    requireActivity().toast(R.string.money_success)
+                    findNavController().popBackStack()
+                }
+                if (it.status == Status.ERROR) {
+
+                }
+            }
+        }
 
         usersAdapter =
             ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, users)
