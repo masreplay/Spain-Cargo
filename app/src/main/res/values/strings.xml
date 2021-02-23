@@ -76,4 +76,8 @@
     <string name="accept">accept</string>
     <string name="reject">reject</string>
     <string name="status">status</string>
+    <string name="failed_to_checkout">Failed to checkout</string>
+    <string name="money_request">Money Requests</string>
+    <string name="failed_to_request_money">Failed to request money</string>
+    <string name="monet_back_request">Money Back Request</string>
 </resources>

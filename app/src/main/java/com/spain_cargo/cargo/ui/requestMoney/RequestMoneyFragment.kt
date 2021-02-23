@@ -1,5 +1,6 @@
 package com.spain_cargo.cargo.ui.requestMoney
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -9,11 +10,14 @@ import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.afollestad.vvalidator.field.FieldError
 import com.afollestad.vvalidator.form
+import com.afollestad.vvalidator.util.hide
+import com.afollestad.vvalidator.util.show
 import com.spain_cargo.cargo.R
 import com.spain_cargo.cargo.data.model.Status
 import com.spain_cargo.cargo.databinding.FragmentRequestMoneyBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
+import com.spain_cargo.cargo.ui.countries.CountriesActivity
 import com.spain_cargo.cargo.util.print
 import com.spain_cargo.cargo.util.toast
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,16 +51,19 @@ class RequestMoneyFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         getViewModel().requestMoneyResponse.observe(requireActivity()) { resource ->
             resource?.let {
                 if (it.status == Status.LOADING) {
+                    getViewDataBinding().progressCircular.show()
                 }
                 if (it.status == Status.SUCCESS) {
+                    getViewDataBinding().progressCircular.hide()
                     requireActivity().toast(R.string.money_success)
-                    findNavController().popBackStack()
-                }
+                    findNavController().popBackStack()                }
                 if (it.status == Status.ERROR) {
-
+                    getViewDataBinding().progressCircular.hide()
+                    requireActivity().toast(R.string.failed_to_request_money)
                 }
             }
         }

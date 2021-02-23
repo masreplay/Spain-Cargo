@@ -7,7 +7,7 @@
 
 
     <fragment
-        android:label="@string/label_profile"
+        android:label="@string/money_request"
         android:id="@+id/profileFragment"
         tools:layout="@layout/fragment_money_requests"
         android:name="com.spain_cargo.cargo.ui.moneyRequests.MoneyRequestsFragment" />

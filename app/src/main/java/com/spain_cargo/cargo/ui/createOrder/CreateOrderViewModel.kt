@@ -6,6 +6,7 @@ import com.spain_cargo.cargo.data.AppDataManager
 import com.spain_cargo.cargo.data.model.BaseResource
 import com.spain_cargo.cargo.data.model.CreateOrder
 import com.spain_cargo.cargo.data.model.Item
+import com.spain_cargo.cargo.data.model.checkout.CheckoutResponse
 import com.spain_cargo.cargo.data.model.cities.CitiesResponse
 import com.spain_cargo.cargo.data.model.countries.CountriesResponse
 import com.spain_cargo.cargo.ui.base.BaseViewModel
@@ -20,7 +21,7 @@ class CreateOrderViewModel @ViewModelInject constructor(
 
     var citiesResponse: MutableLiveData<BaseResource<CitiesResponse>> = MutableLiveData()
 
-    var checkoutResponse: MutableLiveData<BaseResource<String>> = MutableLiveData()
+    var checkoutResponse: MutableLiveData<BaseResource<CheckoutResponse>> = MutableLiveData()
 
 
     var itemsResponse: MutableLiveData<List<Item>> = MutableLiveData()
@@ -80,7 +81,7 @@ class CreateOrderViewModel @ViewModelInject constructor(
 
     }
 
-    private fun onOrderSuccess(result: BaseResource<String>) {
+    private fun onOrderSuccess(result: BaseResource<CheckoutResponse>) {
 
         result.data?.let {
             checkoutResponse.postValue(result)

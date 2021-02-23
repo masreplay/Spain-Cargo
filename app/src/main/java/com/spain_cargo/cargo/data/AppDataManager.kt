@@ -8,6 +8,7 @@ import com.spain_cargo.cargo.data.model.BaseResource
 import com.spain_cargo.cargo.data.model.CreateOrder
 import com.spain_cargo.cargo.data.model.Item
 import com.spain_cargo.cargo.data.model.brands.BrandsResponse
+import com.spain_cargo.cargo.data.model.checkout.CheckoutResponse
 import com.spain_cargo.cargo.data.model.cities.CitiesResponse
 import com.spain_cargo.cargo.data.model.countries.CountriesResponse
 import com.spain_cargo.cargo.data.model.error.ErrorResponse
@@ -96,7 +97,7 @@ class AppDataManager @Inject constructor(
         )
     }
 
-    fun checkout(order: CreateOrder): Single<BaseResource<String>> {
+    fun checkout(order: CreateOrder): Single<BaseResource<CheckoutResponse>> {
         return wrapWithResourceObject(
             webservices.checkout(order)
                 .subscribeOn(Schedulers.io())

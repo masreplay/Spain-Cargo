@@ -113,6 +113,7 @@
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
+            android:backgroundTint="#4CAF50"
             android:onClick="@{()->clickListener.onItemAcceptClick(item.id)}"
             android:text="@string/accept"
             app:layout_constraintEnd_toStartOf="@id/btn_rejected"

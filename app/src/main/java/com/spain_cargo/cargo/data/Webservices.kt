@@ -3,6 +3,7 @@ package com.spain_cargo.cargo.data
 import com.google.gson.JsonElement
 import com.spain_cargo.cargo.data.model.CreateOrder
 import com.spain_cargo.cargo.data.model.brands.BrandsResponse
+import com.spain_cargo.cargo.data.model.checkout.CheckoutResponse
 import com.spain_cargo.cargo.data.model.cities.CitiesResponse
 import com.spain_cargo.cargo.data.model.countries.CountriesResponse
 import com.spain_cargo.cargo.data.model.login.MainResponse
@@ -46,7 +47,7 @@ interface Webservices {
     fun getCities(): Single<Response<CitiesResponse>>
 
     @POST("api/orders/store")
-    fun checkout(@Body order: CreateOrder): Single<Response<String>>
+    fun checkout(@Body order: CreateOrder): Single<Response<CheckoutResponse>>
 
     @GET("api/user")
     fun getUser(): Single<Response<ProfileResponse>>
@@ -95,6 +96,7 @@ interface Webservices {
         @Field("from_request") from: String,
         @Field("amount") amount: Int
     ): Single<Response<MoneyRBResponse>>
+
 
     @PATCH("api/money-back-requests/accept/{id}")
     fun markMoneyBrAsAccepted(@Path("id") id: Int): Single<Response<String>>

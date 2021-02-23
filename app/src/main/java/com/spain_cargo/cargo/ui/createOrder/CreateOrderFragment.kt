@@ -6,18 +6,23 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.afollestad.vvalidator.field.FieldError
 import com.afollestad.vvalidator.form
+import com.afollestad.vvalidator.util.hide
+import com.afollestad.vvalidator.util.show
 import com.spain_cargo.cargo.R
 import com.spain_cargo.cargo.data.model.CreateOrder
 import com.spain_cargo.cargo.data.model.Item
+import com.spain_cargo.cargo.data.model.Status
 import com.spain_cargo.cargo.databinding.FragmentCreateOrderBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
 import com.spain_cargo.cargo.util.Constants.country_id
 import com.spain_cargo.cargo.util.PrefsManager
 import com.spain_cargo.cargo.util.print
+import com.spain_cargo.cargo.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_create_order.*
 
@@ -63,6 +68,23 @@ class CreateOrderFragment :
 
         getViewDataBinding().btnAddItem.setOnClickListener {
             findNavController().navigate(R.id.addItemFragment)
+        }
+
+        getViewModel().checkoutResponse.observe(requireActivity()) { resource ->
+            resource?.let {
+                it.status.print()
+                if (it.status == Status.LOADING) {
+                    getViewDataBinding().progressCircular.show()
+                }
+                if (it.status == Status.SUCCESS) {
+                    getViewDataBinding().progressCircular.hide()
+                    findNavController().popBackStack()
+                }
+                if (it.status == Status.ERROR) {
+                    getViewDataBinding().progressCircular.hide()
+                    requireActivity().toast(R.string.failed_to_checkout)
+                }
+            }
         }
 
         getViewModel().citiesResponse.observe(requireActivity(), Observer {
@@ -127,7 +149,8 @@ class CreateOrderFragment :
                     getViewDataBinding().etAddress.text.toString(),
                     getViewDataBinding().etPhone.text.toString(),
                     getViewModel().citiesResponse.value?.data?.data?.cities?.get(
-                        spinnerAdapter.getPosition(et_cities.text.toString()))?.id,
+                        spinnerAdapter.getPosition(et_cities.text.toString())
+                    )?.id,
                     country_id,
                     items
                 )

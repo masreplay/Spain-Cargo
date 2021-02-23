@@ -162,6 +162,17 @@
             app:strokeColor="@color/colorPrimary"
             app:strokeWidth="1dp" />
 
+        <ProgressBar
+            android:id="@+id/progress_circular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="3dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_checkout"
+            app:layout_constraintEnd_toEndOf="@+id/btn_checkout"
+            app:layout_constraintTop_toTopOf="@+id/btn_checkout" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
