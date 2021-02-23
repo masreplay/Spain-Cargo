@@ -5,12 +5,14 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import com.spain_cargo.cargo.R
 import com.spain_cargo.cargo.data.model.brands.Brand
 import com.spain_cargo.cargo.databinding.FragmentHomeBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
 import com.spain_cargo.cargo.util.Constants.country_id
+import com.spain_cargo.cargo.util.copyToClipBoard
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -39,8 +41,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, IHomeInteractionListener,
         val brandsAdapter = HomeAdapter(requireContext(), mutableListOf())
         brandsAdapter.setOnItemClickListener(this)
 
-        getViewDataBinding().rvBrands.apply {
-            adapter = brandsAdapter
+        getViewDataBinding().apply {
+            rvBrands.adapter = brandsAdapter
+            cvBalances.setOnClickListener {
+                onBalanceClickListener()
+            }
         }
     }
 
@@ -49,6 +54,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, IHomeInteractionListener,
         startActivity(browserIntent)
     }
 
+    private fun onBalanceClickListener() {
+        getViewModel().usersResponse.observe(viewLifecycleOwner) {
+            copyToClipBoard(it.data?.data?.user?.balance.toString())
+        }
+    }
 }
 
 interface IHomeInteractionListener : BaseNavigator

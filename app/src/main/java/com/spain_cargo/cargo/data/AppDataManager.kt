@@ -15,8 +15,6 @@ import com.spain_cargo.cargo.data.model.login.MainResponse
 import com.spain_cargo.cargo.data.model.orders.Order
 import com.spain_cargo.cargo.data.model.orders.OrdersResponse
 import com.spain_cargo.cargo.data.model.profile.ProfileResponse
-import com.spain_cargo.cargo.data.model.requestMoney.RequestMoneyResponse
-import com.spain_cargo.cargo.data.model.moneyRequests.MoneyRequests
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -150,6 +148,42 @@ class AppDataManager @Inject constructor(
     ): Single<BaseResource<RequestMoneyResponse>> {
         return wrapWithResourceObject(
             webservices.moneyRequest(from, amount, type, payment_key)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+
+    fun getMoneyRB(): Single<BaseResource<MoneyRBResponseArray>> {
+        return wrapWithResourceObject(
+            webservices.getMoneyRB()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+    fun moneyBackRequests(
+        from: String,
+        amount: Int
+    ): Single<BaseResource<MoneyRBResponse>> {
+        return wrapWithResourceObject(
+            webservices.moneyBackRequests(from, amount)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+    fun markMoneyBrAsRejected(id: Int): Single<BaseResource<String>> {
+        return wrapWithResourceObject(
+            webservices.markMoneyBrAsAccepted(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+    fun markMoneyBrAsAccepted(id: Int): Single<BaseResource<String>> {
+        return wrapWithResourceObject(
+            webservices.markMoneyBrAsRejected(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )

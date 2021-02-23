@@ -19,6 +19,12 @@
     <item
         android:id="@+id/profile"
         android:icon="@drawable/ic_baseline_attach_money_24"
+        android:title="@string/money"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/request"
+        android:icon="@drawable/ic_round_request_quote_24"
         app:showAsAction="always"
-        android:title="@string/money" />
+        android:title="@string/request" />
 </menu>

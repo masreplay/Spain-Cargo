@@ -9,8 +9,6 @@ import com.spain_cargo.cargo.data.model.login.MainResponse
 import com.spain_cargo.cargo.data.model.orders.Order
 import com.spain_cargo.cargo.data.model.orders.OrdersResponse
 import com.spain_cargo.cargo.data.model.profile.ProfileResponse
-import com.spain_cargo.cargo.data.model.requestMoney.RequestMoneyResponse
-import com.spain_cargo.cargo.data.model.moneyRequests.MoneyRequests
 import io.reactivex.Single
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -82,4 +80,22 @@ interface Webservices {
 
     @PATCH("api/money-requests/reject/{id}")
     fun rejectMoneyRequest(@Path("id")id:String): Single<Response<Void>>
+
+    // Money request back
+    @GET("api/money-back-requests")
+    fun getMoneyRB(): Single<Response<MoneyRBResponseArray>>
+
+    @FormUrlEncoded
+    @POST("api/money-back-requests/store")
+    fun moneyBackRequests(
+        @Field("from_request") from: String,
+        @Field("amount") amount: Int
+    ): Single<Response<MoneyRBResponse>>
+
+    @PATCH("api/money-back-requests/accept/{id}")
+    fun markMoneyBrAsAccepted(@Path("id") id: Int): Single<Response<String>>
+
+    @PATCH("/api/money-back-requests/reject/{id}")
+    fun markMoneyBrAsRejected(@Path("id") id: Int): Single<Response<String>>
+
 }

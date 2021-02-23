@@ -18,16 +18,19 @@ class OrdersFragment :
     BaseFragment<FragmentOrdersBinding, IOrdersInteractionListener, OrdersViewModel>(),
     IOrdersInteractionListener, IOrderItemActionListener {
 
+    // save the status to refresh recycler view after delete order
+    private var status: String = "pending"
+
     private val ordersViewModel: OrdersViewModel by viewModels()
 
     override fun getLayoutId() = R.layout.fragment_orders
     override fun getViewModel() = ordersViewModel
     override fun getNavigator() = this
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getViewModel().getOrders("pending")
+
+        getViewModel().getOrders(status)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,12 +41,18 @@ class OrdersFragment :
 
         getViewDataBinding().chipGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
-                R.id.chip_pending ->
-                    getViewModel().getOrders("pending")
-                R.id.chip_completed ->
-                    getViewModel().getOrders("completed")
-                else ->
-                    getViewModel().getOrders("pending")
+                R.id.chip_pending -> {
+                    status = "pending"
+                    getViewModel().getOrders(status)
+                }
+                R.id.chip_completed -> {
+                    status = "completed"
+                    getViewModel().getOrders(status)
+                }
+                else -> {
+                    status = "pending"
+                    getViewModel().getOrders(status)
+                }
             }
         }
 
@@ -60,18 +69,16 @@ class OrdersFragment :
             AlertDialog.Builder(requireContext()).apply {
                 setCancelable(true)
 
-                setMessage(getString(R.string.delete_dialog_message))
+                setMessage(getString(R.string.msg_delete))
                 setPositiveButton(getString(R.string.option_yes)) { _, _ ->
                     getViewModel().deleteOrder(item.id)
-                    snackbar(getString(R.string.order_deleted_successfully))
-                    // Todo : update recyclerview
-                    // getViewModel().getOrders("completed")
+                    snackbar(getString(R.string.msg_order_deleted_successfully))
+                    getViewModel().getOrders(status)
                 }
                 setNegativeButton(getString(R.string.option_no)) { _, _ -> }
             }.create().show()
         else
-        // TODO: remove delete icon from order card
-            snackbar(getString(R.string.un_deletable_dialog_message))
+            snackbar(getString(R.string.msg_un_deletable))
     }
 
     override fun onItemCompleteClick(id: String) {

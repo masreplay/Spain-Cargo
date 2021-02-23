@@ -13,6 +13,7 @@
         android:name="com.spain_cargo.cargo.ui.moneyRequests.MoneyRequestsFragment" />
     <fragment
         android:id="@+id/requestMoneyFragment"
+        tools:layout="@layout/fragment_request_money"
         android:name="com.spain_cargo.cargo.ui.requestMoney.RequestMoneyFragment"
         android:label="@string/request_money" />
 

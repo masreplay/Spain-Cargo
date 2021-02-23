@@ -1,5 +1,7 @@
 package com.spain_cargo.cargo.util
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.util.Log
 import android.view.View
@@ -29,6 +31,16 @@ fun Int?.toFormat(): String {
     return DecimalFormat("#,###", DecimalFormatSymbols.getInstance(Locale.US)).format(this) + " د.ع"
 }
 
+fun Fragment.copyToClipBoard(body: String?, label: String = "label") {
+    val cm: ClipboardManager =
+        this.requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    cm.setPrimaryClip(
+        ClipData.newPlainText(
+            label, body ?: ""
+        )
+    )
+    requireContext().toast(R.string.msg_copy_to_clipboard)
+}
 
 fun Fragment.snackbar(
     message: String?,

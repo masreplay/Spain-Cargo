@@ -5,7 +5,6 @@
 
     <data>
 
-
         <variable
             name="viewModel"
             type="com.spain_cargo.cargo.ui.home.HomeViewModel" />
@@ -38,17 +37,6 @@
                 android:background="@drawable/bg_balance"
                 android:padding="5dp">
 
-                <ImageButton
-                    android:id="@+id/ib_balances"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="5dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:src="@drawable/ic_round_more_24"
-                    android:tint="#fff" />
-
                 <TextView
                     android:id="@+id/tv_balances_title"
                     android:layout_width="wrap_content"
@@ -65,25 +53,43 @@
                     android:layout_below="@+id/tv_balances_title"
                     android:layout_centerHorizontal="true"
                     android:layout_margin="5dp"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/tv_balances"
                         android:layout_width="wrap_content"
+                        android:drawableStart="@drawable/ic_coin_iqd"
                         android:layout_height="wrap_content"
                         android:text="@{viewModel.usersResponse.data.data.user.balance.formattedAmount}"
                         android:textColor="#fff"
+                        android:drawablePadding="8dp"
                         android:textSize="40dp"
                         tools:text="1,938,250 IQD" />
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:src="@drawable/ic_coin_iqd" />
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_key"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:drawableStart="@drawable/ic_baseline_vpn_key_24"
+                        android:drawablePadding="8dp"
+                        android:text="@{viewModel.usersResponse.data.data.user.balance.formattedAmount}"
+                        android:textColor="#fff"
+                        android:textSize="20dp"
+                        tools:text="123-111-e33" />
                 </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/ib_balances"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_round_content_copy_24"
+                    android:tint="#fff" />
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>

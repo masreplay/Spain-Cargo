@@ -33,18 +33,11 @@ class RequestMoneyFragment :
     val types = listOf("immediate", "normal")
     private lateinit var typesAdapter: ArrayAdapter<String>
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_request_money
-    }
+    override fun getLayoutId() = R.layout.fragment_request_money
 
-    override fun getViewModel(): RequestMoneyViewModel {
-        return addItemViewModel
-    }
+    override fun getViewModel() = addItemViewModel
 
-
-    override fun getNavigator(): ICreateOrderInteractionListener {
-        return this
-    }
+    override fun getNavigator() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
