@@ -10,10 +10,12 @@ import androidx.navigation.fragment.findNavController
 import com.afollestad.vvalidator.field.FieldError
 import com.afollestad.vvalidator.form
 import com.spain_cargo.cargo.R
+import com.spain_cargo.cargo.data.model.Status
 import com.spain_cargo.cargo.databinding.FragmentMoneyRbCreateBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
 import com.spain_cargo.cargo.util.print
+import com.spain_cargo.cargo.util.toast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_request_money.*
 
@@ -74,8 +76,21 @@ class MoneyRBCreateFragment :
             from = getViewDataBinding().etFrom.text.toString(),
             amount = getViewDataBinding().etAmount.text.toString().toInt()
         )
-//        getViewModel().requestMoneyResponse.observe(viewLifecycleOwner) {
-        findNavController().popBackStack()
+
+        getViewModel().requestMoneyResponse.observe(requireActivity()) { resource ->
+            resource?.let {
+                if (it.status == Status.LOADING) {
+                }
+                if (it.status == Status.SUCCESS) {
+                    findNavController().popBackStack()
+
+                }
+                if (it.status == Status.ERROR) {
+
+                    requireActivity().toast(R.string.msg_err_login)
+                }
+            }
+        }
 
 
     }

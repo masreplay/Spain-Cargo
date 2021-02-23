@@ -6,9 +6,13 @@ import com.spain_cargo.cargo.data.model.brands.BrandsResponse
 import com.spain_cargo.cargo.data.model.cities.CitiesResponse
 import com.spain_cargo.cargo.data.model.countries.CountriesResponse
 import com.spain_cargo.cargo.data.model.login.MainResponse
+import com.spain_cargo.cargo.data.model.moneyRequests.MoneyRequests
 import com.spain_cargo.cargo.data.model.orders.Order
 import com.spain_cargo.cargo.data.model.orders.OrdersResponse
 import com.spain_cargo.cargo.data.model.profile.ProfileResponse
+import com.spain_cargo.cargo.data.model.requestMoney.RequestMoneyResponse
+import com.spain_cargo.cargo.data.model.requests.MoneyRBResponse
+import com.spain_cargo.cargo.data.model.requests.MoneyRBResponseArray
 import io.reactivex.Single
 import okhttp3.MultipartBody
 import okhttp3.RequestBody

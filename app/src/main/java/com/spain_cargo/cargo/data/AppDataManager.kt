@@ -12,9 +12,13 @@ import com.spain_cargo.cargo.data.model.cities.CitiesResponse
 import com.spain_cargo.cargo.data.model.countries.CountriesResponse
 import com.spain_cargo.cargo.data.model.error.ErrorResponse
 import com.spain_cargo.cargo.data.model.login.MainResponse
+import com.spain_cargo.cargo.data.model.moneyRequests.MoneyRequests
 import com.spain_cargo.cargo.data.model.orders.Order
 import com.spain_cargo.cargo.data.model.orders.OrdersResponse
 import com.spain_cargo.cargo.data.model.profile.ProfileResponse
+import com.spain_cargo.cargo.data.model.requestMoney.RequestMoneyResponse
+import com.spain_cargo.cargo.data.model.requests.MoneyRBResponse
+import com.spain_cargo.cargo.data.model.requests.MoneyRBResponseArray
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -175,7 +179,7 @@ class AppDataManager @Inject constructor(
 
     fun markMoneyBrAsRejected(id: Int): Single<BaseResource<String>> {
         return wrapWithResourceObject(
-            webservices.markMoneyBrAsAccepted(id)
+            webservices.markMoneyBrAsRejected(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )
@@ -183,7 +187,7 @@ class AppDataManager @Inject constructor(
 
     fun markMoneyBrAsAccepted(id: Int): Single<BaseResource<String>> {
         return wrapWithResourceObject(
-            webservices.markMoneyBrAsRejected(id)
+            webservices.markMoneyBrAsAccepted(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )
