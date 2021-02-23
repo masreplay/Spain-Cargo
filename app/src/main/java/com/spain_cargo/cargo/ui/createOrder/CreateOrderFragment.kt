@@ -1,6 +1,7 @@
 package com.spain_cargo.cargo.ui.createOrder
 
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
@@ -19,11 +20,13 @@ import com.spain_cargo.cargo.data.model.Status
 import com.spain_cargo.cargo.databinding.FragmentCreateOrderBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
+import com.spain_cargo.cargo.util.Constants.RECEIVED_LINK
 import com.spain_cargo.cargo.util.Constants.country_id
 import com.spain_cargo.cargo.util.PrefsManager
 import com.spain_cargo.cargo.util.print
 import com.spain_cargo.cargo.util.toast
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_create_order.*
 
 
@@ -38,28 +41,28 @@ class CreateOrderFragment :
 
     private lateinit var spinnerAdapter: ArrayAdapter<String>
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_create_order
-    }
+    override fun getLayoutId() = R.layout.fragment_create_order
+    override fun getViewModel() = createOrderViewModel
+    override fun getNavigator() = this
 
-    override fun getViewModel(): CreateOrderViewModel {
-        return createOrderViewModel
-    }
-
-
-    override fun getNavigator(): ICreateOrderInteractionListener {
-        return this
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         locations = mutableListOf()
         items = mutableListOf()
+
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // handel click here cuz the form throw validation error
+        if (!RECEIVED_LINK.isNullOrEmpty()) {
+            Handler().postDelayed({
+                getViewDataBinding().btnAddItem.performClick()
+            }, 2 * 1000)
+        }
 
         getViewModel().getCities()
         getViewModel().getItems()

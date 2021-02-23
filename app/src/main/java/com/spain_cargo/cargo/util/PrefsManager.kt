@@ -41,6 +41,16 @@ class PrefsManager {
         sharedPrefsEditor.apply()
     }
 
+
+    fun setLink(link: String) {
+        sharedPrefsEditor = sharedPref.edit()
+        sharedPrefsEditor.putString("link", link)
+        sharedPrefsEditor.apply()
+    }
+
+    fun getLink() = sharedPref.getString("link", null)
+
+
     companion object {
 
         var instance: PrefsManager? = null

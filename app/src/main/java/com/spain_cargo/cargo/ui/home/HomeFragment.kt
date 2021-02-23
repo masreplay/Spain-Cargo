@@ -14,6 +14,7 @@ import com.spain_cargo.cargo.databinding.FragmentHomeBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
 import com.spain_cargo.cargo.util.Constants.country_id
+import com.spain_cargo.cargo.util.Constants.RECEIVED_LINK
 import com.spain_cargo.cargo.util.PrefsManager
 import com.spain_cargo.cargo.util.copyToClipBoard
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,10 +37,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, IHomeInteractionListener,
         super.onCreate(savedInstanceState)
         getViewModel().getBrands(country_id)
         getViewModel().getUser()
+
+        if (!RECEIVED_LINK.isNullOrEmpty()) {
+            findNavController().navigate(R.id.createOrderFragment)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         val brandsAdapter = HomeAdapter(requireContext(), mutableListOf())
         brandsAdapter.setOnItemClickListener(this)
@@ -50,6 +56,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, IHomeInteractionListener,
                 onBalanceClickListener()
             }
         }
+
         getViewDataBinding().cvRequest.apply {
             if (PrefsManager.instance?.getUser()?.data?.user?.role == USER) {
                 visibility = View.VISIBLE

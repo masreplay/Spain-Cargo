@@ -11,6 +11,7 @@ import com.spain_cargo.cargo.ui.base.BaseActivity
 import com.spain_cargo.cargo.ui.base.BaseNavigator
 import com.spain_cargo.cargo.ui.login.LoginActivity
 import com.spain_cargo.cargo.util.Constants.country_id
+import com.spain_cargo.cargo.util.Constants.RECEIVED_LINK
 import com.spain_cargo.cargo.util.PrefsManager
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,6 +40,22 @@ class CountriesActivity :
 
         getViewDataBinding().rvCountries.apply {
             adapter = countriesAdapter
+        }
+
+        when (intent?.action) {
+            Intent.ACTION_SEND -> {
+
+                if ("text/plain" == intent.type) {
+                    handleSendText(intent)
+                }
+            }
+        }
+    }
+
+    private fun handleSendText(intent: Intent) {
+        intent.getStringExtra(Intent.EXTRA_TEXT)?.let {
+            PrefsManager.instance?.setLink(it)
+            RECEIVED_LINK  = it
         }
     }
 
