@@ -17,4 +17,5 @@
         android:name="com.spain_cargo.cargo.ui.requestMoney.RequestMoneyFragment"
         android:label="@string/request_money" />
 
+
 </navigation>

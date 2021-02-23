@@ -28,4 +28,10 @@ data class User(
     val twoFactorSecret: Any?,
     @SerializedName("updated_at")
     val updatedAt: String?
-)
+) {
+    companion object {
+        const val USER: String = "user"
+        const val DISTRIBUTOR: String = "distributor"
+        const val ADMIN: String = "admin"
+    }
+}

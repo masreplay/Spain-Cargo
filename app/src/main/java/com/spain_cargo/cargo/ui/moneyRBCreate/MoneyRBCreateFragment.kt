@@ -79,15 +79,17 @@ class MoneyRBCreateFragment :
 
         getViewModel().requestMoneyResponse.observe(requireActivity()) { resource ->
             resource?.let {
-                if (it.status == Status.LOADING) {
-                }
-                if (it.status == Status.SUCCESS) {
-                    findNavController().popBackStack()
+                when (it.status) {
+                    Status.SUCCESS -> {
+                        findNavController().popBackStack()
 
-                }
-                if (it.status == Status.ERROR) {
-
-                    requireActivity().toast(R.string.msg_err_login)
+                    }
+                    Status.ERROR -> {
+                        requireActivity().toast(R.string.msg_err_login)
+                    }
+                    else -> {
+                        requireActivity().toast(R.string.msg_err_login)
+                    }
                 }
             }
         }

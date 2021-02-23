@@ -80,4 +80,5 @@
     <string name="money_request">Money Requests</string>
     <string name="failed_to_request_money">Failed to request money</string>
     <string name="monet_back_request">Money Back Request</string>
+    <string name="label_create_many_request">Create Money Request</string>
 </resources>
