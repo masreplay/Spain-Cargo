@@ -24,16 +24,12 @@ class AddItemFragment :
     private val addItemViewModel: AddItemViewModel by viewModels()
 
     override fun getLayoutId() = R.layout.fragment_add_item
-
     override fun getViewModel() = addItemViewModel
-
-
     override fun getNavigator() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -81,10 +77,8 @@ class AddItemFragment :
             }
             submitWith(R.id.btn_add_item) {
                 addItem()
-
             }
         }
-
     }
 
     private fun addItem() {
@@ -100,8 +94,6 @@ class AddItemFragment :
         )
         findNavController().popBackStack()
     }
-
-
 }
 
 interface IAddItemInteractionListener : BaseNavigator

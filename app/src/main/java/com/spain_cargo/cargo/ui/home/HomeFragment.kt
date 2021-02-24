@@ -13,8 +13,8 @@ import com.spain_cargo.cargo.data.model.login.User.Companion.USER
 import com.spain_cargo.cargo.databinding.FragmentHomeBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
-import com.spain_cargo.cargo.util.Constants.country_id
 import com.spain_cargo.cargo.util.Constants.RECEIVED_LINK
+import com.spain_cargo.cargo.util.Constants.country_id
 import com.spain_cargo.cargo.util.PrefsManager
 import com.spain_cargo.cargo.util.copyToClipBoard
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,7 +39,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, IHomeInteractionListener,
         getViewModel().getUser()
 
         if (!RECEIVED_LINK.isNullOrEmpty()) {
-            findNavController().navigate(R.id.createOrderFragment)
+            findNavController().navigate(R.id.addItemFragment)
         }
     }
 

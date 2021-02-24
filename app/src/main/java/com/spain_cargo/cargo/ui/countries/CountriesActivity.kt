@@ -44,7 +44,6 @@ class CountriesActivity :
 
         when (intent?.action) {
             Intent.ACTION_SEND -> {
-
                 if ("text/plain" == intent.type) {
                     handleSendText(intent)
                 }
@@ -54,7 +53,6 @@ class CountriesActivity :
 
     private fun handleSendText(intent: Intent) {
         intent.getStringExtra(Intent.EXTRA_TEXT)?.let {
-            PrefsManager.instance?.setLink(it)
             RECEIVED_LINK  = it
         }
     }

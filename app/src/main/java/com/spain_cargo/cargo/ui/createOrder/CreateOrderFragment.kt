@@ -50,19 +50,10 @@ class CreateOrderFragment :
         super.onCreate(savedInstanceState)
         locations = mutableListOf()
         items = mutableListOf()
-
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // handel click here cuz the form throw validation error
-        if (!RECEIVED_LINK.isNullOrEmpty()) {
-            Handler().postDelayed({
-                getViewDataBinding().btnAddItem.performClick()
-            }, 2 * 1000)
-        }
 
         getViewModel().getCities()
         getViewModel().getItems()
