@@ -28,9 +28,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, IHomeInteractionListener,
 
 
     override fun getLayoutId() = R.layout.fragment_home
-
     override fun getViewModel() = homeViewModel
-
     override fun getNavigator() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
