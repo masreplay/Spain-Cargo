@@ -82,7 +82,6 @@ class MoneyRBCreateFragment :
                 when (it.status) {
                     Status.SUCCESS -> {
                         findNavController().popBackStack()
-
                     }
                     Status.ERROR -> {
                         requireActivity().toast(R.string.msg_err_login)

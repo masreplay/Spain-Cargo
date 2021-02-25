@@ -32,8 +32,6 @@ class LoginActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-
         getViewDataBinding().tvCreateAccount.setOnClickListener {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
@@ -53,7 +51,6 @@ class LoginActivity :
                 }
             }
         }
-
 
         form {
             input(R.id.et_password) {

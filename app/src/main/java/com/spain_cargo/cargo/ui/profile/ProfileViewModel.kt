@@ -14,19 +14,30 @@ class ProfileViewModel @ViewModelInject constructor(
 ) {
     var profileResponse: MutableLiveData<BaseResource<ProfileResponse>> = MutableLiveData()
 
-    fun getUser(
-       ) {
+    fun getUser() {
         profileResponse.value = BaseResource.loading(profileResponse.value?.data)
         dispose(
-            dataManager.getUser(),
-            ::onRequestSuccess,
-            { e ->
-                e.message?.let { profileResponse.postValue(BaseResource.error(it, null)) }
-            })
+            dataManager.getUser(), ::onRequestSuccess,
+            { e -> e.message?.let { profileResponse.postValue(BaseResource.error(it, null)) } }
+        )
     }
 
     private fun onRequestSuccess(result: BaseResource<ProfileResponse>) {
         result.data?.let { profileResponse.postValue(result) }
+    }
+
+    var logoutResponse: MutableLiveData<BaseResource<Void>> = MutableLiveData()
+
+    fun logout() {
+        logoutResponse.value = BaseResource.loading(logoutResponse.value?.data)
+        dispose(
+            dataManager.logout(), ::onLogoutSuccess,
+            { e -> e.message?.let { logoutResponse.postValue(BaseResource.error(it, null)) } }
+        )
+    }
+
+    private fun onLogoutSuccess(result: BaseResource<Void>) {
+        result.data?.let { logoutResponse.postValue(result) }
     }
 
 

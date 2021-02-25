@@ -38,25 +38,15 @@ class CreateOrderFragment :
 
     private lateinit var spinnerAdapter: ArrayAdapter<String>
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_create_order
-    }
-
-    override fun getViewModel(): CreateOrderViewModel {
-        return createOrderViewModel
-    }
-
-
-    override fun getNavigator(): ICreateOrderInteractionListener {
-        return this
-    }
+    override fun getLayoutId() = R.layout.fragment_create_order
+    override fun getViewModel() = createOrderViewModel
+    override fun getNavigator() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         locations = mutableListOf()
         items = mutableListOf()
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

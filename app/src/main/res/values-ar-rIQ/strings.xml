@@ -67,4 +67,9 @@
     <string name="request">طلب</string>
     <string name="marked_as_refunded">تم ارجاعه</string>
     <string name="marked_as_completed">مكتمل</string>
+    <string name="msg_logout">هل انت متأكد من تسجيل الخروج</string>
+    <string name="complete">مكتمل</string>
+    <string name="balance">الميزانية</string>
+    <string name="joined_at">انضم في</string>
+    <string name="logout">تسجيل الخروج</string>
 </resources>

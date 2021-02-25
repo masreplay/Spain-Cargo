@@ -52,6 +52,14 @@ class AppDataManager @Inject constructor(
         )
     }
 
+    fun logout(): Single<BaseResource<Void>> {
+        return wrapWithResourceObject(
+            webservices.logout()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
     fun signUp(
         image: MultipartBody.Part, name: String, email: String, password: String,
         phone_number: String, date_of_birth: String

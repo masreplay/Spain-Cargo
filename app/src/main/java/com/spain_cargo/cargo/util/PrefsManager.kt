@@ -18,11 +18,11 @@ class PrefsManager {
         return getUser() != null
     }
 
-    fun clearPreferences(action: () -> Unit) {
+    fun clearPreferences(action: (() -> Unit)? = null) {
         sharedPrefsEditor = sharedPref.edit()
         sharedPrefsEditor.clear()
         sharedPrefsEditor.apply()
-        action.invoke()
+        action?.invoke()
     }
 
     fun getUser(): MainResponse? {

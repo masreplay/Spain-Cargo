@@ -25,6 +25,9 @@ interface Webservices {
     @POST("api/auth/login")
     fun login(@Body jsonElement: JsonElement): Single<Response<MainResponse>>
 
+    @POST("api/auth/logout")
+    fun logout():Single<Response<Void>>
+
     @Multipart
     @POST("api/auth/register")
     fun signUp(

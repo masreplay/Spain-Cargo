@@ -76,6 +76,7 @@
             android:id="@+id/textView22"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:drawableStart="@drawable/ic_baseline_attach_money_24"
             android:text="@{viewModel.profileResponse.data.data.user.balance.formattedAmount}"
             android:textColor="@android:color/black"
@@ -98,6 +99,8 @@
         <TextView
             android:id="@+id/textView24"
             android:layout_width="wrap_content"
+            android:drawablePadding="8dp"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_baseline_email_24"
             android:text="@{viewModel.profileResponse.data.data.user.date}"
@@ -125,8 +128,9 @@
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_round_content_copy_24"
             android:drawableTint="@android:color/black"
+            android:drawablePadding="8dp"
             android:gravity="center"
-            android:onClick="@{()->viewModel.navigator.copy(viewModel.profileResponse.data.data.user.balance.paymentKey)}"
+            android:onClick="@{()-> viewModel.navigator.copy(viewModel.profileResponse.data.data.user.balance.paymentKey)}"
             android:text="@{viewModel.profileResponse.data.data.user.balance.paymentKey}"
             android:textColor="@android:color/black"
             android:textSize="20sp"
@@ -136,36 +140,21 @@
             app:layout_constraintTop_toBottomOf="@+id/textView25"
             tools:text="123123" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_logout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
             android:layout_margin="16dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            app:cardCornerRadius="10dp"
+            android:drawableEnd="@drawable/ic_round_logout_24"
+            android:gravity="center"
+            android:text="@string/logout"
+            android:textColor="@android:color/white"
+            android:textSize="25dp"
+            app:drawableTint="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintEnd_toEndOf="parent" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="20dp"
-                    android:drawableEnd="@drawable/ic_round_logout_24"
-                    android:drawablePadding="8dp"
-                    android:text="@string/logout"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="30dp"
-                    app:drawableTint="@color/colorPrimary" />
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

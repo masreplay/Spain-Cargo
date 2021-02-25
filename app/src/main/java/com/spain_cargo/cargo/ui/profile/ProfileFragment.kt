@@ -1,18 +1,18 @@
 package com.spain_cargo.cargo.ui.profile
 
-import android.R.attr.label
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
+import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.viewModels
+import com.afollestad.vvalidator.util.show
 import com.spain_cargo.cargo.R
 import com.spain_cargo.cargo.databinding.FragmentProfileBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
-import com.spain_cargo.cargo.util.toast
+import com.spain_cargo.cargo.ui.login.LoginActivity
+import com.spain_cargo.cargo.util.PrefsManager
+import com.spain_cargo.cargo.util.copyToClipBoard
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -25,9 +25,7 @@ class ProfileFragment :
 
 
     override fun getLayoutId() = R.layout.fragment_profile
-
     override fun getViewModel() = addItemViewModel
-
     override fun getNavigator() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,16 +37,28 @@ class ProfileFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        getViewDataBinding().btnLogout.setOnClickListener {
+            logout()
+        }
     }
 
-    override fun copy(key:String) {
-        val clipboard = requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        val clip = ClipData.newPlainText("label",key)
-        clipboard.setPrimaryClip(clip)
-        requireActivity().toast(R.string.copied)
+    override fun copy(key: String) {
+        this.copyToClipBoard(key)
     }
 
+    private fun logout() {
+        AlertDialog.Builder(requireContext()).apply {
+            setCancelable(true)
+            setMessage(getString(R.string.msg_logout))
+            setPositiveButton(getString(R.string.option_yes)) { _, _ ->
+                getViewModel().logout()
+                getViewDataBinding().btnLogout.show()
+                PrefsManager.instance?.clearPreferences()
+                startActivity(Intent(requireActivity(), LoginActivity::class.java))
+            }
+            setNegativeButton(getString(R.string.option_no)) { _, _ -> }
+        }.create().show()
+    }
 
 }
 
