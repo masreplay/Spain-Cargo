@@ -11,6 +11,8 @@ import com.spain_cargo.cargo.data.model.Item
 import com.spain_cargo.cargo.databinding.FragmentAddItemBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
+import com.spain_cargo.cargo.util.Constants.RECEIVED_LINK
+import com.spain_cargo.cargo.util.toEditable
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -21,26 +23,21 @@ class AddItemFragment :
 
     private val addItemViewModel: AddItemViewModel by viewModels()
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_add_item
-    }
-
-    override fun getViewModel(): AddItemViewModel {
-        return addItemViewModel
-    }
-
-
-    override fun getNavigator(): IAddItemInteractionListener {
-        return this
-    }
+    override fun getLayoutId() = R.layout.fragment_add_item
+    override fun getViewModel() = addItemViewModel
+    override fun getNavigator() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (!RECEIVED_LINK.isNullOrEmpty()) {
+            getViewDataBinding().etLink.text = RECEIVED_LINK.toEditable()
+            RECEIVED_LINK = null
+        }
 
         form {
             input(R.id.et_link) {
@@ -80,10 +77,8 @@ class AddItemFragment :
             }
             submitWith(R.id.btn_add_item) {
                 addItem()
-
             }
         }
-
     }
 
     private fun addItem() {
@@ -99,7 +94,6 @@ class AddItemFragment :
         )
         findNavController().popBackStack()
     }
-
 }
 
 interface IAddItemInteractionListener : BaseNavigator

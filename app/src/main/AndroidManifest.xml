@@ -27,10 +27,11 @@
         <activity
             android:name="com.spain_cargo.cargo.ui.countries.CountriesActivity"
             android:noHistory="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
-                <category android:name="android.intent.category.LAUNCHER" />
-                <data android:mimeType="text/plain" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/*" />
             </intent-filter>
 
             <intent-filter>

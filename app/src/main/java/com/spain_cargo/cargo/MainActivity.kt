@@ -1,6 +1,7 @@
 package com.spain_cargo.cargo
 
 import android.os.Bundle
+import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.LiveData
@@ -45,7 +46,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
     }
+
 
     private fun setupBottomNavigationBar() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_nav)
@@ -102,6 +105,8 @@ class MainActivity : AppCompatActivity() {
         })
         currentNavController = controller
     }
+
+
 
     override fun onSupportNavigateUp() = currentNavController?.value?.navigateUp() ?: false
 }

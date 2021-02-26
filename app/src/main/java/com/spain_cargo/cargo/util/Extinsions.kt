@@ -3,6 +3,7 @@ package com.spain_cargo.cargo.util
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.text.Editable
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -21,6 +22,9 @@ fun View.snackbar(snackbarText: String) {
     Snackbar.make(this, snackbarText, Snackbar.LENGTH_LONG).show()
 }
 
+/**
+ * abdalla1997
+* */
 fun Any?.print(tag: String = "abdalla1997") {
     this?.also {
         Log.d(tag, it.toString())
@@ -56,4 +60,8 @@ fun Fragment.snackbar(
             action ?: snackbar.dismiss()
         }
     }.show()
+}
+
+fun String?.toEditable(): Editable? {
+    return Editable.Factory.getInstance().newEditable(this ?: "")
 }

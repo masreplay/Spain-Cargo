@@ -10,9 +10,6 @@
         android:label="@string/brands"
         android:name="com.spain_cargo.cargo.ui.home.HomeFragment"
         tools:layout="@layout/fragment_home">
-        <action
-            android:id="@+id/action_homeFragment_to_moneyRBCreateFragment"
-            app:destination="@id/moneyRBCreateFragment" />
     </fragment>
 
     <fragment
@@ -20,6 +17,7 @@
         android:name="com.spain_cargo.cargo.ui.createOrder.CreateOrderFragment"
         tools:layout="@layout/fragment_create_order"
         android:label="@string/create_order" />
+
     <fragment
         android:id="@+id/addItemFragment"
         android:name="com.spain_cargo.cargo.ui.addItem.AddItemFragment"

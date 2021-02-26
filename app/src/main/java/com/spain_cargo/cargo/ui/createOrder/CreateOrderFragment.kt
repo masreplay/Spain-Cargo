@@ -19,11 +19,13 @@ import com.spain_cargo.cargo.data.model.Status
 import com.spain_cargo.cargo.databinding.FragmentCreateOrderBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
+import com.spain_cargo.cargo.util.Constants.RECEIVED_LINK
 import com.spain_cargo.cargo.util.Constants.country_id
 import com.spain_cargo.cargo.util.PrefsManager
 import com.spain_cargo.cargo.util.print
 import com.spain_cargo.cargo.util.toast
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_create_order.*
 
 
@@ -47,6 +49,7 @@ class CreateOrderFragment :
         locations = mutableListOf()
         items = mutableListOf()
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -41,6 +41,8 @@ class PrefsManager {
         sharedPrefsEditor.apply()
     }
 
+
+
     companion object {
 
         var instance: PrefsManager? = null
