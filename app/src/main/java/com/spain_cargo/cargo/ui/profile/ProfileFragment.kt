@@ -5,8 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.observe
 import com.afollestad.vvalidator.util.show
 import com.spain_cargo.cargo.R
+import com.spain_cargo.cargo.data.model.Status
 import com.spain_cargo.cargo.databinding.FragmentProfileBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
@@ -30,7 +32,7 @@ class ProfileFragment :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getViewModel().getUser()
+        getViewModel().getProfile()
     }
 
 

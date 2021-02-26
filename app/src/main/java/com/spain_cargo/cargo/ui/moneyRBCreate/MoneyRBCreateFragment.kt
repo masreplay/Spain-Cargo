@@ -14,10 +14,11 @@ import com.spain_cargo.cargo.data.model.Status
 import com.spain_cargo.cargo.databinding.FragmentMoneyRbCreateBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
+import com.spain_cargo.cargo.util.PrefsManager
 import com.spain_cargo.cargo.util.print
+import com.spain_cargo.cargo.util.toEditable
 import com.spain_cargo.cargo.util.toast
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.fragment_request_money.*
 
 
 @AndroidEntryPoint
@@ -35,21 +36,29 @@ class MoneyRBCreateFragment :
     override fun getViewModel() = addItemViewModel
     override fun getNavigator() = this
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         usersAdapter =
             ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, users)
-        (til_from.editText as? AutoCompleteTextView)?.setAdapter(usersAdapter)
+        (getViewDataBinding().tilFrom.editText as? AutoCompleteTextView)?.setAdapter(usersAdapter)
 
+        getViewDataBinding().apply {
+            btnAllBalance.setOnClickListener {
+                etAmount.text =
+                    PrefsManager.instance?.getProfile()?.data?.user?.balance?.amount.toString()
+                        .toEditable()
+            }
+
+        }
 
         form {
             input(R.id.et_amount) {
                 isNotEmpty().description(getString(R.string.msg_err_field_required))
+                isNumber().atMost(
+                    PrefsManager.instance?.getProfile()?.data?.user?.balance?.amount?.toLong()
+                        ?: 1000000
+                ).atLeast(1)
                 onErrors { _, errors ->
                     val firstError: FieldError? = errors.firstOrNull()
                     getViewDataBinding().tilAmount.error = firstError?.description
@@ -57,21 +66,20 @@ class MoneyRBCreateFragment :
             }
 
             submitWith(R.id.btn_request) {
-                getViewDataBinding().etAmount.text.toString().print("123123")
                 createRequest()
-
             }
         }
     }
 
     private fun createRequest() {
-        et_from.text.toString().print()
-        usersAdapter.getPosition(et_from.text.toString()).print()
+        getViewDataBinding().etFrom.apply {
+            text.toString().print()
+            usersAdapter.getPosition(text.toString()).print()
 
-        if (usersAdapter.getPosition(et_from.text.toString()) + 1 == 0) {
-            getViewDataBinding().tilFrom.error = getString(R.string.pick_an_item)
+            if (usersAdapter.getPosition(text.toString()) + 1 == 0) {
+                getViewDataBinding().tilFrom.error = getString(R.string.pick_an_item)
+            }
         }
-
         getViewModel().moneyBackRequests(
             from = getViewDataBinding().etFrom.text.toString(),
             amount = getViewDataBinding().etAmount.text.toString().toInt()

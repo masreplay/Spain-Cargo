@@ -8,5 +8,5 @@ import android.os.Parcelable
 @Parcelize
 data class ProfileResponse(
     @SerializedName("data")
-    val `data`: Data
+    val data: Data
 ) : Parcelable

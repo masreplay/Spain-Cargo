@@ -203,9 +203,9 @@ class AppDataManager @Inject constructor(
     }
 
 
-    fun getUser(): Single<BaseResource<ProfileResponse>> {
+    fun getProfile(): Single<BaseResource<ProfileResponse>> {
         return wrapWithResourceObject(
-            webservices.getUser()
+            webservices.getProfile()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )

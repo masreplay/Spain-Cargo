@@ -1,7 +1,6 @@
 package com.spain_cargo.cargo
 
 import android.os.Bundle
-import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.LiveData
@@ -92,7 +91,7 @@ class MainActivity : AppCompatActivity() {
                         fab.show()
                         bottom_nav.show()
                     }
-                    R.id.createOrderFragment, R.id.addItemFragment, R.id.requestMoneyFragment, R.id.fragment_rb_create_money -> {
+                    R.id.createOrderFragment, R.id.addItemFragment, R.id.requestMoneyFragment, R.id.fragment_rb_create_money, R.id.home_money_rb_create_fragment -> {
                         bottom_nav.hide()
                         fab.hide()
                     }

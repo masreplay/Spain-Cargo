@@ -18,7 +18,7 @@ class HomeViewModel @ViewModelInject constructor(
 
 
     var brandsResponse: MutableLiveData<BaseResource<BrandsResponse>> = MutableLiveData()
-
+    var usersResponse: MutableLiveData<BaseResource<ProfileResponse>> = MutableLiveData()
 
     fun getBrands(country_id:Int) {
         brandsResponse.value = BaseResource.loading(brandsResponse.value?.data)
@@ -45,22 +45,16 @@ class HomeViewModel @ViewModelInject constructor(
         }
     }
 
-    var usersResponse: MutableLiveData<BaseResource<ProfileResponse>> = MutableLiveData()
-
 
     fun getUser() {
         usersResponse.value = BaseResource.loading(usersResponse.value?.data)
-
         dispose(
-            dataManager.getUser(),
-            ::onUsersSuccess,
+            dataManager.getProfile(), ::onUsersSuccess,
             { e ->
-                //error handling
                 e.message?.let {
                     usersResponse.postValue(BaseResource.error(it, null))
                 }
             })
-
         refreshListener.postValue(View.OnClickListener { getUser() })
 
     }

@@ -75,7 +75,6 @@
                         android:layout_marginTop="10dp"
                         android:drawableStart="@drawable/ic_baseline_vpn_key_24"
                         android:drawablePadding="8dp"
-                        android:text="@{viewModel.usersResponse.data.data.user.balance.formattedAmount}"
                         android:textColor="#fff"
                         android:textSize="20dp"
                         tools:text="123-111-e33" />
@@ -124,7 +123,7 @@
                     android:layout_centerHorizontal="true"
                     android:drawableStart="@drawable/ic_round_request_quote_24"
                     android:drawablePadding="4dp"
-                    android:text="@string/request"
+                    android:text="@string/request_money_back"
                     android:textColor="@android:color/white"
                     android:textSize="20dp"
                     app:drawableTint="@android:color/white" />

@@ -40,7 +40,6 @@ data class User(
         val formatter= SimpleDateFormat("yyyy-MM-dd", Locale.US)
         return formatter.format(createdAt)
     }
-
 }
 
 

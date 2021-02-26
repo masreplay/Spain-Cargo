@@ -7,6 +7,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
+import com.afollestad.vvalidator.util.hide
 import com.spain_cargo.cargo.R
 import com.spain_cargo.cargo.data.model.brands.Brand
 import com.spain_cargo.cargo.data.model.login.User.Companion.USER
@@ -25,7 +26,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, IHomeInteractionListener,
     IHomeInteractionListener, IHomeItemActionListener {
 
     private val homeViewModel: HomeViewModel by viewModels()
-
 
     override fun getLayoutId() = R.layout.fragment_home
     override fun getViewModel() = homeViewModel
@@ -50,6 +50,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, IHomeInteractionListener,
 
         getViewDataBinding().apply {
             rvBrands.adapter = brandsAdapter
+
+            tvKey.text = PrefsManager.instance?.getProfile()?.data?.user?.balance?.paymentKey
+                ?: "".also { tvKey.hide() }
+
             cvBalances.setOnClickListener {
                 onBalanceClickListener()
             }
@@ -59,7 +63,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, IHomeInteractionListener,
             if (PrefsManager.instance?.getUser()?.data?.user?.role == USER) {
                 visibility = View.VISIBLE
                 setOnClickListener {
-                    findNavController().navigate(R.id.moneyRBCreateFragment)
+                    findNavController().navigate(R.id.home_money_rb_create_fragment)
                 }
             }
         }

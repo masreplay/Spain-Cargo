@@ -6,6 +6,7 @@ import com.spain_cargo.cargo.data.AppDataManager
 import com.spain_cargo.cargo.data.model.BaseResource
 import com.spain_cargo.cargo.data.model.profile.ProfileResponse
 import com.spain_cargo.cargo.ui.base.BaseViewModel
+import com.spain_cargo.cargo.util.PrefsManager
 
 class ProfileViewModel @ViewModelInject constructor(
     dataManager: AppDataManager
@@ -13,20 +14,22 @@ class ProfileViewModel @ViewModelInject constructor(
     dataManager
 ) {
     var profileResponse: MutableLiveData<BaseResource<ProfileResponse>> = MutableLiveData()
+    var logoutResponse: MutableLiveData<BaseResource<Void>> = MutableLiveData()
 
-    fun getUser() {
+    fun getProfile() {
         profileResponse.value = BaseResource.loading(profileResponse.value?.data)
         dispose(
-            dataManager.getUser(), ::onRequestSuccess,
+            dataManager.getProfile(), ::onRequestSuccess,
             { e -> e.message?.let { profileResponse.postValue(BaseResource.error(it, null)) } }
         )
     }
 
     private fun onRequestSuccess(result: BaseResource<ProfileResponse>) {
-        result.data?.let { profileResponse.postValue(result) }
+        profileResponse.value = result
+        result.data?.let {
+            PrefsManager.instance?.saveProfile(it)
+        }
     }
-
-    var logoutResponse: MutableLiveData<BaseResource<Void>> = MutableLiveData()
 
     fun logout() {
         logoutResponse.value = BaseResource.loading(logoutResponse.value?.data)

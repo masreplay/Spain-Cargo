@@ -53,7 +53,7 @@ interface Webservices {
     fun checkout(@Body order: CreateOrder): Single<Response<CheckoutResponse>>
 
     @GET("api/user")
-    fun getUser(): Single<Response<ProfileResponse>>
+    fun getProfile(): Single<Response<ProfileResponse>>
 
     // Order
     @GET("api/orders")

@@ -74,6 +74,7 @@
     <string name="transaction_amount">Transaction Amount</string>
     <string name="taxes">Taxes</string>
     <string name="request">Request</string>
+    <string name="request_money_back">Request money back</string>
     <string name="accept">accept</string>
     <string name="reject">reject</string>
     <string name="status">status</string>
@@ -85,4 +86,10 @@
     <string name="balance">Balance</string>
     <string name="joined_at">Joined at</string>
     <string name="logout">logout</string>
+
+
+    <string name="user">User</string>
+    <string name="distributor">Distributor</string>
+    <string name="admin">Admin</string>
+    <string name="all_money">all money</string>
 </resources>

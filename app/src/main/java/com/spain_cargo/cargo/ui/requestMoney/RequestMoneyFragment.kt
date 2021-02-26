@@ -1,6 +1,5 @@
 package com.spain_cargo.cargo.ui.requestMoney
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
@@ -17,7 +16,6 @@ import com.spain_cargo.cargo.data.model.Status
 import com.spain_cargo.cargo.databinding.FragmentRequestMoneyBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
-import com.spain_cargo.cargo.ui.countries.CountriesActivity
 import com.spain_cargo.cargo.util.print
 import com.spain_cargo.cargo.util.toast
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,10 +29,10 @@ class RequestMoneyFragment :
 
     private val addItemViewModel: RequestMoneyViewModel by viewModels()
 
-    val users = listOf("user", "distributor", "admin")
+    private val users = listOf("user", "distributor", "admin")
     private lateinit var usersAdapter: ArrayAdapter<String>
 
-    val types = listOf("immediate", "normal")
+    private val types = listOf("immediate", "normal")
     private lateinit var typesAdapter: ArrayAdapter<String>
 
     override fun getLayoutId() = R.layout.fragment_request_money
