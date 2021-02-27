@@ -189,13 +189,17 @@ class SignUpActivity :
             )
         }
 
-        DatePickerDialog(
+        val maxDate = Calendar.getInstance()
+        maxDate.set(2020, 1, 31)
+        val pickerDialog = DatePickerDialog(
             this,
             timeSetListener,
             cal.get(Calendar.YEAR),
             cal.get(Calendar.MONTH),
             cal.get(Calendar.DAY_OF_MONTH)
-        ).show()
+        )
+        pickerDialog.datePicker.maxDate = maxDate.timeInMillis
+        pickerDialog.show()
 
     }
 

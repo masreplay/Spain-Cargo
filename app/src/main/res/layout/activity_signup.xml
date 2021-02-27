@@ -22,11 +22,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+            <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/imageView"
                 android:layout_width="200dp"
+                app:roundedCornerRadius="100dp"
                 android:layout_height="200dp"
-                android:src="@drawable/ic_baseline_add_photo_alternate_24"
+                app:placeholderImageScaleType="centerCrop"
+                app:placeholderImage="@drawable/ic_baseline_add_photo_alternate_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -134,6 +136,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/phone"
+                    android:maxLength="11"
                     android:imeOptions="actionNext"
                     android:inputType="numberDecimal"
                     android:maxLines="1"
