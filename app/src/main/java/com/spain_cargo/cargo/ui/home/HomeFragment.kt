@@ -60,14 +60,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, IHomeInteractionListener,
             }
         }
 
-        getViewDataBinding().cvRequest.apply {
-            if (PrefsManager.instance?.getUser()?.data?.user?.role == USER) {
-                visibility = View.VISIBLE
-                setOnClickListener {
-                    findNavController().navigate(R.id.home_money_rb_create_fragment)
-                }
-            }
-        }
     }
 
     override fun onItemClick(item: Brand) {

@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.afollestad.vvalidator.util.show
 import com.spain_cargo.cargo.R
+import com.spain_cargo.cargo.data.model.transaction.Link
 import com.spain_cargo.cargo.databinding.FragmentProfileBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
@@ -20,7 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ProfileFragment :
     BaseFragment<FragmentProfileBinding, IProfileInteractionListener, ProfileViewModel>(),
-    IProfileInteractionListener {
+    IProfileInteractionListener, ILinkItemActionListener {
 
     private val addItemViewModel: ProfileViewModel by viewModels()
 
@@ -63,6 +64,10 @@ class ProfileFragment :
             }
             setNegativeButton(getString(R.string.option_no)) { _, _ -> }
         }.create().show()
+    }
+
+    override fun onItemClick(item: Link) {
+        // TODO: open url in chrome
     }
 
 }

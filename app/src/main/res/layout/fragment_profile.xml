@@ -138,13 +138,14 @@
             app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
         <TextView
+            android:id="@+id/textView26"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/ic_round_content_copy_24"
-            android:drawableTint="@android:color/black"
             android:drawablePadding="8dp"
-            android:gravity="center"
+            android:drawableTint="@android:color/black"
 
+            android:gravity="center"
             android:onClick="@{()-> viewModel.navigator.copy(viewModel.profileResponse.data.data.user.balance.paymentKey)}"
             android:text="@{viewModel.profileResponse.data.data.user.balance.paymentKey}"
             android:textColor="@android:color/black"
@@ -154,6 +155,16 @@
             app:layout_constraintStart_toStartOf="@+id/textView25"
             app:layout_constraintTop_toBottomOf="@+id/textView25"
             tools:text="123123" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_countries"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="@+id/status"
+            app:layout_constraintTop_toBottomOf="@+id/textView26"
+            tools:listitem="@layout/item_transaction_link" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_logout"

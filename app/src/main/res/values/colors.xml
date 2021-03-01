@@ -4,7 +4,8 @@
     <color name="colorPrimaryDark">#7A0106</color>
     <color name="colorAccent">#FFC107</color>
 
+    <color name="colorDisable">#BDBDBD</color>
 
-<color name="spanish_red">#C2132D</color>
+    <color name="spanish_red">#C2132D</color>
 
 </resources>

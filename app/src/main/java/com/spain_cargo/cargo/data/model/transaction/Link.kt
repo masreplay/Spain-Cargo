@@ -7,7 +7,7 @@ data class Link(
     @SerializedName("active")
     val active: Boolean,
     @SerializedName("label")
-    val label: Any?,
+    val label: String?,
     @SerializedName("url")
-    val url: Any?
+    val url: String?
 )

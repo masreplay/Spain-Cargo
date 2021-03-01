@@ -5,14 +5,9 @@
 
     <data>
 
-
         <variable
             name="viewModel"
-            type="androidx.lifecycle.ViewModel" />
-
-        <variable
-            name="clickListener"
-            type="com.spain_cargo.cargo.ui.base.BaseDataItemInteractionListener" />
+            type="com.spain_cargo.cargo.ui.main.MainViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -20,14 +15,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".MainActivity">
+        tools:context=".ui.main.MainActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:animateLayoutChanges="true"
-            tools:context=".MainActivity">
+            tools:context=".ui.main.MainActivity">
 
 
             <androidx.appcompat.widget.Toolbar
@@ -60,34 +55,39 @@
                         app:layout_constraintTop_toTopOf="parent"
                         tools:text="spain" />
 
-                    <com.facebook.drawee.view.SimpleDraweeView
-                        android:id="@+id/iv_country"
-                        android:layout_width="40dp"
-                        android:layout_height="0dp"
-                        android:layout_gravity="center"
-                        android:layout_marginHorizontal="4dp"
-                        android:adjustViewBounds="true"
-                        app:actualImageScaleType="centerCrop"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_country"
-                        app:layout_constraintDimensionRatio="1.5:1"
-                        app:layout_constraintEnd_toStartOf="@+id/tv_country"
-                        app:layout_constraintTop_toTopOf="@+id/tv_country"
-                        app:placeholderImage="@drawable/ic_baseline_close_24"
-                        app:placeholderImageScaleType="centerInside"
-                        app:roundedCornerRadius="10dp" />
-
-                    <TextView
-                        android:id="@+id/tv_country"
+                    <LinearLayout
+                        android:id="@+id/ll_country"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="end|center_vertical"
-                        android:layout_marginHorizontal="4dp"
-                        android:text="spain"
-                        android:textColor="@android:color/white"
-                        android:textSize="22sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_label"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:padding="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/tv_label" />
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.facebook.drawee.view.SimpleDraweeView
+                            android:id="@+id/iv_country"
+                            android:layout_width="40dp"
+                            android:layout_height="26dp"
+                            android:layout_gravity="center"
+                            android:layout_marginHorizontal="8dp"
+                            android:adjustViewBounds="true"
+                            app:actualImageScaleType="centerCrop"
+                            app:placeholderImage="@drawable/ic_baseline_close_24"
+                            app:placeholderImageScaleType="centerInside"
+                            app:roundedCornerRadius="4dp" />
+
+                        <TextView
+                            android:id="@+id/tv_country"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end|center_vertical"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp"
+                            tools:text="spain" />
+                    </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.appcompat.widget.Toolbar>
 
@@ -98,10 +98,9 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
-
-
+                app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                app:layout_constraintVertical_bias="1.0"
+                tools:layout_editor_absoluteX="16dp" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab"
@@ -115,6 +114,23 @@
                 app:layout_constraintBottom_toBottomOf="@+id/nav_host_container"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:tint="@android:color/white" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:backgroundTint="@color/colorPrimary"
+                android:src="@drawable/ic_round_request_quote_24"
+                android:visibility="gone"
+                app:borderWidth="0dp"
+                app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+                app:layout_constraintBottom_toTopOf="@+id/fab"
+                app:layout_constraintEnd_toEndOf="@+id/fab"
+                app:layout_constraintStart_toStartOf="@+id/fab"
+                app:tint="@android:color/white"
+                tools:visibility="visible" />
+
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_nav"

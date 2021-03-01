@@ -29,26 +29,19 @@ class RequestMoneyFragment :
 
     private val addItemViewModel: RequestMoneyViewModel by viewModels()
 
-    private val users = listOf("user", "distributor", "admin")
     private lateinit var usersAdapter: ArrayAdapter<String>
-
-    private val types = listOf("immediate", "normal")
     private lateinit var typesAdapter: ArrayAdapter<String>
 
+    private val users = listOf("user", "distributor", "admin")
+    private val types = listOf("immediate", "normal")
+
     override fun getLayoutId() = R.layout.fragment_request_money
-
     override fun getViewModel() = addItemViewModel
-
     override fun getNavigator() = this
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         getViewModel().requestMoneyResponse.observe(requireActivity()) { resource ->
             resource?.let {

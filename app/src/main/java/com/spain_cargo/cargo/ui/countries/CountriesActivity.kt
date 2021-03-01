@@ -3,7 +3,7 @@ package com.spain_cargo.cargo.ui.countries
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.spain_cargo.cargo.MainActivity
+import com.spain_cargo.cargo.ui.main.MainActivity
 import com.spain_cargo.cargo.R
 import com.spain_cargo.cargo.data.model.countries.Country
 import com.spain_cargo.cargo.databinding.ActivityCountiesBinding
@@ -23,6 +23,8 @@ class CountriesActivity :
     private val countriesViewModel: CountriesViewModel by viewModels()
 
     override fun getLayoutId() = R.layout.activity_counties
+    override fun getViewModel() = countriesViewModel
+    override fun getNavigator() = this
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,10 +58,6 @@ class CountriesActivity :
             RECEIVED_LINK  = it
         }
     }
-
-    override fun getNavigator() = this
-
-    override fun getViewModel() = countriesViewModel
 
     override fun onItemClick(item: Country) {
         country = item

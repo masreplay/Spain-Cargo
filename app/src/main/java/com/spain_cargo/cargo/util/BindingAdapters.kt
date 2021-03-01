@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.facebook.drawee.view.SimpleDraweeView
 import com.github.marlonlom.utilities.timeago.TimeAgo
 import com.github.marlonlom.utilities.timeago.TimeAgoMessages
-import com.google.android.material.button.MaterialButton
+import com.google.android.material.card.MaterialCardView
 import com.spain_cargo.cargo.R
 import com.spain_cargo.cargo.ui.base.BaseDataItemsAdapter
 import java.util.*
@@ -44,12 +44,11 @@ fun <T> RecyclerView.setItems(items: MutableList<T>?) {
  * this func for completed and refundable status(false, true)
  * */
 @BindingAdapter(value = ["status"])
-fun MaterialButton.setStatus(is_status: Boolean) {
-
-    if (is_status)
-        this.setIconResource(R.drawable.ic_round_check_24)
-    else
-        this.icon = null
+fun MaterialCardView.setStatus(is_active: Boolean) {
+    if (is_active) {
+        this.setBackgroundColor(context.resources.getColor(R.color.colorDisable))
+        isClickable = false
+    }
 }
 
 

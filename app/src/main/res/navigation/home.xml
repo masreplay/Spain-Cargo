@@ -24,10 +24,4 @@
         tools:layout="@layout/fragment_add_item"
         android:label="@string/add_item" />
 
-    <fragment
-        android:id="@+id/home_money_rb_create_fragment"
-        android:name="com.spain_cargo.cargo.ui.moneyRBCreate.MoneyRBCreateFragment"
-        android:label="@string/label_create_many_request"
-        tools:layout="@layout/fragment_money_rb_create" />
-
 </navigation>
