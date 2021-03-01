@@ -35,6 +35,7 @@
     <string name="brands">Brands</string>
     <string name="label_money_request">Money Requests</string>
     <string name="label_money_request_create">Create Money Requests</string>
+    <string name="label_money_request_create_back">Request Money back</string>
 
     <!-- options -->
     <string name="option_yes">Yes</string>
@@ -97,4 +98,5 @@
     <string name="msg_profile_updated_successfully">profile updated successfully</string>
     <string name="msg_profile_updated_filed">filed to update</string>
     <string name="update">update</string>
+    <string name="create_request">create request</string>
 </resources>

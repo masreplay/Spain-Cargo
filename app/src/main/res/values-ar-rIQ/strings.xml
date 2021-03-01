@@ -31,6 +31,7 @@
     <string name="label_profile">الحساب</string>
     <string name="label_money_request">طلب اموال</string>
     <string name="label_money_request_create">انشاء طلب اموال</string>
+    <string name="label_profile_update">تحديث الملف الشخصي</string>
     <string name="brands">البراندات</string>
     <string name="option_yes">نعم</string>
     <string name="option_no">لا</string>
@@ -79,4 +80,10 @@
     <string name="admin">مسؤول</string>
 
     <string name="all_money">كل ميزانيتك</string>
+    <string name="label_money_request_create_back">اطلب استعادة الاموال</string>
+    <string name="msg_err_update">فشل في التحديث</string>
+    <string name="msg_profile_updated_successfully">تم تحديث الملف الشخصي</string>
+    <string name="msg_profile_updated_filed">فشل في التحديث</string>
+    <string name="update">تحديث</string>
+    <string name="create_request">انشاء طلب</string>
 </resources>

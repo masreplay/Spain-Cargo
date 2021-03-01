@@ -28,31 +28,42 @@
             app:roundedCornerRadius="80dp" />
 
 
-        <ImageButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_update_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:padding="8dp"
-            android:src="@drawable/ic_round_edit_24"
-            app:layout_constraintBottom_toBottomOf="@+id/simpleDraweeView"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_margin="8dp"
+            android:backgroundTint="@android:color/white"
+            android:fontFamily="@font/nunito_regular"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/update"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            app:cornerRadius="4dp"
+            app:icon="@drawable/ic_round_edit_24"
+            app:iconGravity="textStart"
+            app:iconTint="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/simpleDraweeView"
+            app:layout_constraintTop_toBottomOf="@+id/simpleDraweeView"
             app:layout_constraintEnd_toEndOf="@+id/simpleDraweeView"
-            app:layout_constraintStart_toEndOf="@+id/simpleDraweeView"
-            app:layout_constraintTop_toBottomOf="@+id/simpleDraweeView" />
+            app:rippleColor="@color/colorPrimary"
+            app:strokeColor="@color/colorPrimary"
+            app:strokeWidth="1dp" />
 
         <TextView
             android:id="@+id/textView17"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:text="@{viewModel.profileResponse.data.data.user.name}"
             android:textColor="@android:color/black"
+            android:layout_marginTop="10dp"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/simpleDraweeView"
             app:layout_constraintStart_toStartOf="@+id/simpleDraweeView"
-            app:layout_constraintTop_toBottomOf="@+id/simpleDraweeView"
+            app:layout_constraintTop_toBottomOf="@+id/btn_update_profile"
             tools:text="abd" />
 
         <TextView
@@ -156,6 +167,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView25"
             tools:text="123123" />
 
+        <!--Fixme: change the type of data list-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_countries"
             android:layout_width="match_parent"
@@ -166,21 +178,27 @@
             app:layout_constraintTop_toBottomOf="@+id/textView26"
             tools:listitem="@layout/item_transaction_link" />
 
-        <com.google.android.material.button.MaterialButton
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/btn_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
             android:layout_margin="16dp"
-            android:drawableEnd="@drawable/ic_round_logout_24"
-            android:gravity="center"
+            android:backgroundTint="@android:color/white"
+            android:fontFamily="@font/nunito_regular"
+            android:textAllCaps="false"
             android:text="@string/logout"
-            android:textColor="@android:color/white"
-            android:textSize="25dp"
-            app:drawableTint="@android:color/white"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            app:elevation="1dp"
+            app:icon="@drawable/ic_round_logout_24"
+            app:iconGravity="textStart"
+            app:iconTint="@color/colorPrimary"
+            app:rippleColor="@color/colorPrimary"
+            app:strokeColor="@color/colorPrimary"
+            app:strokeWidth="1dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

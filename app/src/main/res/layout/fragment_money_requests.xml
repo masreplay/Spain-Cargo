@@ -20,10 +20,15 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
             items="@{viewModel.moneyRequestResponse.data.data.moneyRequests}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_money_request"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/item_money_request" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

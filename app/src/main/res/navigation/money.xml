@@ -28,7 +28,7 @@
     <fragment
         android:id="@+id/home_money_rb_create_fragment"
         android:name="com.spain_cargo.cargo.ui.moneyRBCreate.MoneyRBCreateFragment"
-        android:label="@string/label_create_many_request"
+        android:label="@string/label_money_request_create_back"
         tools:layout="@layout/fragment_money_rb_create" />
 
 
