@@ -29,6 +29,8 @@
     <string name="added_at">اضيف في</string>
     <string name="my_balance">ميزانيتي</string>
     <string name="label_profile">الحساب</string>
+    <string name="label_money_request">طلب اموال</string>
+    <string name="label_money_request_create">انشاء طلب اموال</string>
     <string name="brands">البراندات</string>
     <string name="option_yes">نعم</string>
     <string name="option_no">لا</string>
@@ -49,7 +51,6 @@
     <string name="type">النوع</string>
     <string name="amount">المبلغ</string>
     <string name="msg_err_field_required">لا يمكن ترك هذا الحقل فارغا</string>
-    <string name="request_money">طلب اموال</string>
     <string name="payment_key">مفتاح الدفع</string>
     <string name="money">اموال</string>
     <string name="pick_an_item">اختر قيمة</string>
@@ -60,7 +61,6 @@
     <string name="accept">قبول</string>
     <string name="status">الحالة</string>
     <string name="failed_to_checkout">فشل الطلب</string>
-    <string name="money_request">طلب اموال</string>
     <string name="failed_to_request_money">فشل طلب الاموال</string>
     <string name="monet_back_request">طلب ارجاع الاموال</string>
     <string name="label_create_many_request">انشاء طلب</string>

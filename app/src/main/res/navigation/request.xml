@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/fragment_rb_money"
         android:name="com.spain_cargo.cargo.ui.moneyRB.MoneyRBFragment"
-        android:label="@string/request_money"
+        android:label="@string/label_money_request_create"
         tools:layout="@layout/fragment_money_rb" />
     <fragment
         android:id="@+id/fragment_rb_create_money"

@@ -7,6 +7,7 @@ import com.spain_cargo.cargo.data.model.BaseResource
 import com.spain_cargo.cargo.data.model.profile.ProfileResponse
 import com.spain_cargo.cargo.ui.base.BaseViewModel
 import com.spain_cargo.cargo.util.PrefsManager
+import okhttp3.MultipartBody
 
 class ProfileViewModel @ViewModelInject constructor(
     dataManager: AppDataManager

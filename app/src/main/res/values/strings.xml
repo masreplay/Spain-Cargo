@@ -31,7 +31,10 @@
 
     <!-- label -->
     <string name="label_profile">Profile</string>
+    <string name="label_profile_update">Update Profile</string>
     <string name="brands">Brands</string>
+    <string name="label_money_request">Money Requests</string>
+    <string name="label_money_request_create">Create Money Requests</string>
 
     <!-- options -->
     <string name="option_yes">Yes</string>
@@ -56,6 +59,7 @@
     <string name="msg_err_email">Enter a valid Email</string>
     <string name="msg_err_password">Password is required</string>
     <string name="msg_err_login">Failed To log in</string>
+    <string name="msg_err_update">Failed To update</string>
     <string name="msg_err_name">Name can\'t be empty</string>
     <string name="msg_err_phone">Phone is required</string>
     <string name="msg_err_date">BirthDate is required</string>
@@ -67,7 +71,6 @@
     <string name="amount">Amount</string>
     <string name="type">Type</string>
     <string name="payment_key">Payment Key</string>
-    <string name="request_money">Request Money</string>
     <string name="money">Money</string>
     <string name="pick_an_item">Pick a value</string>
     <string name="money_success">Money Request Successded</string>
@@ -79,7 +82,6 @@
     <string name="reject">reject</string>
     <string name="status">status</string>
     <string name="failed_to_checkout">Failed to checkout</string>
-    <string name="money_request">Money Requests</string>
     <string name="failed_to_request_money">Failed to request money</string>
     <string name="monet_back_request">Money Back Request</string>
     <string name="label_create_many_request">Create Money Request</string>
@@ -92,4 +94,7 @@
     <string name="distributor">Distributor</string>
     <string name="admin">Admin</string>
     <string name="all_money">all money</string>
+    <string name="msg_profile_updated_successfully">profile updated successfully</string>
+    <string name="msg_profile_updated_filed">filed to update</string>
+    <string name="update">update</string>
 </resources>

@@ -10,7 +10,7 @@ import com.spain_cargo.cargo.databinding.ActivityCountiesBinding
 import com.spain_cargo.cargo.ui.base.BaseActivity
 import com.spain_cargo.cargo.ui.base.BaseNavigator
 import com.spain_cargo.cargo.ui.login.LoginActivity
-import com.spain_cargo.cargo.util.Constants.country_id
+import com.spain_cargo.cargo.util.Constants.country
 import com.spain_cargo.cargo.util.Constants.RECEIVED_LINK
 import com.spain_cargo.cargo.util.PrefsManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -62,7 +62,7 @@ class CountriesActivity :
     override fun getViewModel() = countriesViewModel
 
     override fun onItemClick(item: Country) {
-        country_id = item.id
+        country = item
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }

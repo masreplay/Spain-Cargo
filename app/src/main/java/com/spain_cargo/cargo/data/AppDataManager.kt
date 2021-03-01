@@ -20,6 +20,7 @@ import com.spain_cargo.cargo.data.model.profile.ProfileResponse
 import com.spain_cargo.cargo.data.model.requestMoney.RequestMoneyResponse
 import com.spain_cargo.cargo.data.model.requests.MoneyRBResponse
 import com.spain_cargo.cargo.data.model.requests.MoneyRBResponseArray
+import com.spain_cargo.cargo.data.model.transaction.TransactionResponse
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -68,7 +69,6 @@ class AppDataManager @Inject constructor(
 
         return wrapWithResourceObject(
             webservices.signUp(
-
                 image = image,
                 name = name.toRequestBody(contentType = "multipart/form-data".toMediaTypeOrNull()),
                 email = email.toRequestBody(contentType = "multipart/form-data".toMediaTypeOrNull()),
@@ -211,9 +211,27 @@ class AppDataManager @Inject constructor(
         )
     }
 
+    fun updateProfile(
+        name: String, email: String, phone_number: String, date_of_birth: String
+    ): Single<BaseResource<ProfileResponse>> {
+        return wrapWithResourceObject(
+            webservices.updateProfile(name, email, phone_number, date_of_birth)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
     fun getMoneyRequests(): Single<BaseResource<MoneyRequests>> {
         return wrapWithResourceObject(
             webservices.getMoneyRequests()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+    fun getTransaction(): Single<BaseResource<TransactionResponse>> {
+        return wrapWithResourceObject(
+            webservices.getTransaction()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )

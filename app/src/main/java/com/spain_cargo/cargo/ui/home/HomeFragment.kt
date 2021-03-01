@@ -15,7 +15,7 @@ import com.spain_cargo.cargo.databinding.FragmentHomeBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
 import com.spain_cargo.cargo.util.Constants.RECEIVED_LINK
-import com.spain_cargo.cargo.util.Constants.country_id
+import com.spain_cargo.cargo.util.Constants.country
 import com.spain_cargo.cargo.util.PrefsManager
 import com.spain_cargo.cargo.util.copyToClipBoard
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,8 +33,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, IHomeInteractionListener,
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getViewModel().getBrands(country_id)
+        getViewModel().getBrands(country.id)
         getViewModel().getUser()
+
 
         if (!RECEIVED_LINK.isNullOrEmpty()) {
             findNavController().navigate(R.id.addItemFragment)

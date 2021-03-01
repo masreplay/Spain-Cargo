@@ -5,10 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.observe
+import androidx.navigation.fragment.findNavController
 import com.afollestad.vvalidator.util.show
 import com.spain_cargo.cargo.R
-import com.spain_cargo.cargo.data.model.Status
 import com.spain_cargo.cargo.databinding.FragmentProfileBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
@@ -25,7 +24,6 @@ class ProfileFragment :
 
     private val addItemViewModel: ProfileViewModel by viewModels()
 
-
     override fun getLayoutId() = R.layout.fragment_profile
     override fun getViewModel() = addItemViewModel
     override fun getNavigator() = this
@@ -39,8 +37,13 @@ class ProfileFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getViewDataBinding().btnLogout.setOnClickListener {
-            logout()
+        getViewDataBinding().apply {
+            btnLogout.setOnClickListener {
+                logout()
+            }
+            btnUpdateProfile.setOnClickListener {
+                findNavController().navigate(R.id.profile_update_fragment)
+            }
         }
     }
 

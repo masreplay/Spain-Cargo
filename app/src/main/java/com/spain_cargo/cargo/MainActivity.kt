@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                     currentNavController?.value?.navigate(R.id.fragment_rb_create_money)
                 }
                 else -> {
-                    currentNavController?.value?.navigate(R.id.requestMoneyFragment)
+                    currentNavController?.value?.navigate(R.id.create_request_money_fragment)
                 }
             }
         }
@@ -84,14 +84,18 @@ class MainActivity : AppCompatActivity() {
         controller.observe(this, Observer { navController ->
 
             navController.addOnDestinationChangedListener { controller, destination, _ ->
-
                 setupActionBarWithNavController(controller)
+
+                tv_label.text = navController.currentDestination?.label
+
                 when (destination.id) {
-                    R.id.homeFragment, R.id.moneyRequestFragment, R.id.fragment_rb_money -> {
+                    R.id.homeFragment, R.id.request_money_fragment, R.id.fragment_rb_money -> {
                         fab.show()
                         bottom_nav.show()
+                        supportActionBar?.setDisplayShowTitleEnabled(false)
+
                     }
-                    R.id.createOrderFragment, R.id.addItemFragment, R.id.requestMoneyFragment, R.id.fragment_rb_create_money, R.id.home_money_rb_create_fragment -> {
+                    R.id.createOrderFragment, R.id.addItemFragment, R.id.create_request_money_fragment, R.id.fragment_rb_create_money, R.id.home_money_rb_create_fragment -> {
                         bottom_nav.hide()
                         fab.hide()
                     }

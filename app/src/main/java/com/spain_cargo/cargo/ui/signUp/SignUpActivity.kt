@@ -37,15 +37,12 @@ class SignUpActivity :
 
     private var newImageUri: Uri? = null
 
-    override fun getLayoutId(): Int {
-        return R.layout.activity_signup
-    }
-
+    override fun getLayoutId() = R.layout.activity_signup
+    override fun getNavigator() = this
+    override fun getViewModel() = loginViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
         getViewModel().signupResponse.observe(this, Observer { resource ->
             resource?.let {
                 if (it.status == Status.SUCCESS) {
@@ -139,7 +136,7 @@ class SignUpActivity :
         }
     }
 
-    fun signUp() {
+    private fun signUp() {
 
 
         if (newImageUri != null) {
@@ -152,8 +149,7 @@ class SignUpActivity :
                         "image",
                         "png"
                     )
-                )
-                ,
+                ),
                 getViewDataBinding().etName.text.toString(),
                 getViewDataBinding().etEmail.text.toString(),
                 getViewDataBinding().etPassword.text.toString(),
@@ -165,15 +161,7 @@ class SignUpActivity :
         }
     }
 
-    override fun getNavigator(): ILoginInteractionListener {
-        return this
-    }
-
-    override fun getViewModel(): SignUpViewModel {
-        return loginViewModel
-    }
-
-    fun dialogDatePickerLightStart() {
+    private fun dialogDatePickerLightStart() {
         val cal = Calendar.getInstance()
         val timeSetListener = DatePickerDialog.OnDateSetListener { datePicker, i, i2, i3 ->
 
@@ -200,9 +188,7 @@ class SignUpActivity :
         )
         pickerDialog.datePicker.maxDate = maxDate.timeInMillis
         pickerDialog.show()
-
     }
-
 }
 
 interface ILoginInteractionListener : BaseNavigator

@@ -14,6 +14,7 @@ import com.spain_cargo.cargo.data.model.profile.ProfileResponse
 import com.spain_cargo.cargo.data.model.requestMoney.RequestMoneyResponse
 import com.spain_cargo.cargo.data.model.requests.MoneyRBResponse
 import com.spain_cargo.cargo.data.model.requests.MoneyRBResponseArray
+import com.spain_cargo.cargo.data.model.transaction.TransactionResponse
 import io.reactivex.Single
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -107,4 +108,15 @@ interface Webservices {
     @PATCH("/api/money-back-requests/reject/{id}")
     fun markMoneyBrAsRejected(@Path("id") id: Int): Single<Response<String>>
 
+    @FormUrlEncoded
+    @POST("/api/profile-update")
+    fun updateProfile(
+        @Field("name") name: String,
+        @Field("email") email: String,
+        @Field("phone_number") phone_number: String,
+        @Field("date_of_birth") date_of_birth: String
+    ): Single<Response<ProfileResponse>>
+
+    @GET("/api/transactions")
+    fun  getTransaction():Single<Response<TransactionResponse>>
 }

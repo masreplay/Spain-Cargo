@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/profile"
     app:startDestination="@id/profile_fragment">
 
 
     <fragment
         android:id="@+id/profile_fragment"
+        tools:layout="@layout/fragment_profile"
         android:name="com.spain_cargo.cargo.ui.profile.ProfileFragment"
         android:label="@string/label_profile" />
+
+    <fragment
+        android:id="@+id/profile_update_fragment"
+        android:name="com.spain_cargo.cargo.ui.profile.ProfileUpdateFragment"
+        android:label="@string/label_profile_update"
+        tools:layout="@layout/fragment_profile_update" />
 
 
 </navigation>

@@ -32,7 +32,6 @@ class SignUpViewModel @ViewModelInject constructor(
             ),
             ::onSignUpSuccess,
             { e ->
-                //error handling
                 e.message?.let { signupResponse.postValue(BaseResource.error(it, null)) }
             })
     }

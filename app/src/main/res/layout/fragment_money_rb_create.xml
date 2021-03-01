@@ -85,7 +85,7 @@
             android:fontFamily="@font/nunito_regular"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:text="@string/request_money"
+            android:text="@string/label_money_request_create"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:textStyle="bold"

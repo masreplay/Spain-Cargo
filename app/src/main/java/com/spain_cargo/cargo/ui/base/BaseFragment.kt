@@ -9,8 +9,8 @@ import androidx.appcompat.view.ActionMode
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import com.spain_cargo.cargo.BR
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.spain_cargo.cargo.BR
 
 abstract class BaseFragment<T : ViewDataBinding, N : BaseNavigator, V : BaseViewModel<N>> :
     Fragment() {
@@ -75,9 +75,14 @@ abstract class BaseFragment<T : ViewDataBinding, N : BaseNavigator, V : BaseView
     }
 
 
-    // Getters
+    // java Getters
     protected fun getViewDataBinding(): T = viewDataBinding
 
+//    kotlin Getters
+//    protected val viewDataBinding: T
+//        get() {
+//            return _viewDataBinding
+//        }
 }
 
 
