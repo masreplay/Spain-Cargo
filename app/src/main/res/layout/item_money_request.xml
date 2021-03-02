@@ -21,9 +21,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:elevation="5dp"
+        android:layout_margin="4dp"
         android:background="@drawable/bg_country"
+        android:elevation="1dp"
         android:paddingBottom="8dp">
 
         <ImageView

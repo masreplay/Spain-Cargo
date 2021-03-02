@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.afollestad.vvalidator.util.hide
 import com.afollestad.vvalidator.util.show
 import com.spain_cargo.cargo.R
+import com.spain_cargo.cargo.data.model.login.User.Companion.DISTRIBUTOR
 import com.spain_cargo.cargo.data.model.login.User.Companion.USER
 import com.spain_cargo.cargo.databinding.ActivityMainBinding
 import com.spain_cargo.cargo.ui.base.BaseActivity
@@ -64,7 +65,8 @@ class MainActivity :
 
     private fun setupBottomNavigationBar() {
 
-        val navGraphIds = if (PrefsManager.instance?.getUser()?.data?.user?.role == USER) {
+        val userRole = PrefsManager.instance?.getUser()?.data?.user?.role
+        val navGraphIds = if (userRole == USER) {
             getViewDataBinding().bottomNav.menu.removeItem(R.id.request)
             listOf(
                 R.navigation.home,
@@ -119,11 +121,17 @@ class MainActivity :
                     }
                     R.id.request_money_fragment -> {
                         getViewDataBinding().apply {
-                            fab.show()
-                            fab.setImageDrawable(getDrawable(R.drawable.ic_baseline_attach_money_24))
-                            fab2.show()
-                            bottomNav.show()
-                            llCountry.show()
+                            getViewDataBinding().apply {
+                                fab.show()
+                                fab.setImageDrawable(getDrawable(R.drawable.ic_baseline_attach_money_24))
+                                llCountry.show()
+                                bottomNav.show()
+                            }
+                            if (userRole == DISTRIBUTOR) {
+                                fab2.hide()
+                            } else {
+                                fab2.show()
+                            }
                         }
                     }
                     R.id.ordersFragment, R.id.profile_fragment -> {
@@ -134,7 +142,7 @@ class MainActivity :
                             bottomNav.show()
                         }
                     }
-                    R.id.createOrderFragment, R.id.addItemFragment, R.id.create_request_money_fragment, R.id.fragment_rb_create_money, R.id.home_money_rb_create_fragment, R.id.order_detail_fragment,R.id.profile_update_fragment -> {
+                    R.id.createOrderFragment, R.id.addItemFragment, R.id.fragment_rb_create_money, R.id.home_money_rb_create_fragment, R.id.order_detail_fragment, R.id.profile_update_fragment, R.id.create_request_money_fragment -> {
                         getViewDataBinding().apply {
                             fab.hide()
                             fab2.hide()

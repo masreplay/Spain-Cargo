@@ -36,10 +36,9 @@ data class User(
     @SerializedName("updated_at")
     val updatedAt: String
 ) : Parcelable{
-    fun getDate():String{
-        val formatter= SimpleDateFormat("yyyy-MM-dd", Locale.US)
-        return formatter.format(createdAt)
-    }
+
+    val joinAt: String get() = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(createdAt)
+
 }
 
 

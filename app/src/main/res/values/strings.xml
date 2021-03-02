@@ -80,25 +80,28 @@
     <string name="taxes">Taxes</string>
     <string name="request">Request</string>
     <string name="request_money_back">Request money back</string>
-    <string name="accept">accept</string>
-    <string name="reject">reject</string>
-    <string name="status">status</string>
+    <string name="accept">Accept</string>
+    <string name="reject">Reject</string>
+    <string name="status">Status</string>
     <string name="failed_to_checkout">Failed to checkout</string>
     <string name="failed_to_request_money">Failed to request money</string>
     <string name="monet_back_request">Money Back Request</string>
     <string name="label_create_many_request">Create Money Request</string>
     <string name="balance">Balance</string>
     <string name="joined_at">Joined at</string>
-    <string name="logout">logout</string>
+    <string name="logout">Logout</string>
 
 
     <string name="user">User</string>
     <string name="distributor">Distributor</string>
     <string name="admin">Admin</string>
-    <string name="all_money">all money</string>
-    <string name="msg_profile_updated_successfully">profile updated successfully</string>
-    <string name="msg_profile_updated_filed">filed to update</string>
-    <string name="update">update</string>
-    <string name="create_request">create request</string>
+    <string name="all_money">All money</string>
+    <string name="msg_profile_updated_successfully">Profile updated successfully</string>
+    <string name="msg_profile_updated_filed">Filed to update</string>
+    <string name="update">Update</string>
+    <string name="create_request">Create request</string>
     <string name="order_details">Order details</string>
+    <string name="transaction">Transaction</string>
+    <string name="location">Location</string>
+    <string name="country">Country</string>
 </resources>

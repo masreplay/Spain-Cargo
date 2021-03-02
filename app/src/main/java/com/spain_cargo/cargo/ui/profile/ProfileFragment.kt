@@ -84,7 +84,7 @@ class ProfileFragment :
     }
 
     override fun onItemClick(item: Transaction) {
-        TODO("Not yet implemented")
+        // TODO: make transaction item fragment
     }
 
 }

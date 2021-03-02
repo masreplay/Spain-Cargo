@@ -21,8 +21,8 @@
         android:label="@string/order_details"
         tools:layout="@layout/fragment_order_detail">
         <argument
-            android:name="order"
-            app:argType="com.spain_cargo.cargo.data.model.orders.Order" />
+            android:name="order_id"
+            app:argType="string" />
     </fragment>
 
 </navigation>

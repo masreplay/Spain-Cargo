@@ -26,19 +26,12 @@ class OrderDetailFragment :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        getViewModel().getOrder(args.order_id)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getViewDataBinding().apply {
-            args.order.apply {
-                ivUser.setImageURI(relations.user.imageUrl)
-                tvUserName.text = relations.user.name
-                tvUserEmail.text = relations.user.email
-            }
-        }
     }
 }
 

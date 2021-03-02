@@ -26,7 +26,13 @@ android {
             jvmTarget = JavaVersion.VERSION_1_8.toString()
         }
     }
-    dataBinding { enabled true }
+
+    buildFeatures {
+        dataBinding = true
+    }
+
+    ndkVersion = "21.0.6113669"
+
 
     buildTypes {
         debug {

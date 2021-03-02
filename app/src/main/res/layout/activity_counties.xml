@@ -13,8 +13,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/carbon_grey_100">
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -40,6 +39,7 @@
                 items="@{viewModel.countriesResponse.data.data.countries}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:padding="4dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:listitem="@layout/item_country" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

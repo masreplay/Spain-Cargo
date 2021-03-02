@@ -8,12 +8,12 @@
     <fragment
         android:id="@+id/fragment_rb_money"
         android:name="com.spain_cargo.cargo.ui.moneyRB.MoneyRBFragment"
-        android:label="@string/label_money_request_create"
+        android:label="@string/monet_back_request"
         tools:layout="@layout/fragment_money_rb" />
     <fragment
         android:id="@+id/fragment_rb_create_money"
         android:name="com.spain_cargo.cargo.ui.moneyRBCreate.MoneyRBCreateFragment"
-        android:label="@string/monet_back_request"
+        android:label="@string/label_money_request_create"
         tools:layout="@layout/fragment_money_rb_create" />
 
 </navigation>

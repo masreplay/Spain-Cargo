@@ -27,7 +27,7 @@
         android:foreground="?android:attr/selectableItemBackground"
         android:onClick="@{()->clickListener.onItemClick(item)}"
         app:cardCornerRadius="6dp"
-        app:cardElevation="3dp">
+        app:cardElevation="1dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -63,7 +63,6 @@
                     android:text="@{item.comment}"
                     android:textColor="@android:color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:lines="1"
@@ -75,10 +74,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tv_label"
-                    android:maxLength="20"
                     android:textColor="#106DBD"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:layout_marginTop="2dp"
+                    android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/tv_label"
                     app:layout_constraintTop_toBottomOf="@+id/tv_label"
@@ -95,6 +93,7 @@
                 android:background="@drawable/ic_in_background"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="5dp"
+                android:textStyle="bold"
                 android:textColor="@color/carbon_green_a700"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
