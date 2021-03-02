@@ -32,6 +32,13 @@ class MoneyRequestsFragment : BaseFragment<FragmentMoneyRequestsBinding, IMoneyR
         val moneyRequestsAdapter = MoneyRequestsAdapter(requireContext(), mutableListOf())
         moneyRequestsAdapter.setOnItemClickListener(this)
 
+        getViewDataBinding().srl.apply {
+            setOnRefreshListener {
+                getViewModel().getMoneyRequests()
+                isRefreshing = false
+            }
+        }
+
         getViewDataBinding().rv.apply {
             adapter = moneyRequestsAdapter
         }

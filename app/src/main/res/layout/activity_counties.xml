@@ -27,16 +27,22 @@
             app:title="@string/pick_country"
             app:titleTextColor="@android:color/white" />
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_countries"
-            items="@{viewModel.countriesResponse.data.data.countries}"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/srl"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layout_constraintBottom_toBottomOf="@+id/status"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar"
-            tools:listitem="@layout/item_country" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_countries"
+                items="@{viewModel.countriesResponse.data.data.countries}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_country" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <include
             android:id="@+id/status"

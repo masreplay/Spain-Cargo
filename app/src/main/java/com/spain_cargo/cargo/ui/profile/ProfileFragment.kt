@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.afollestad.vvalidator.util.show
 import com.spain_cargo.cargo.R
-import com.spain_cargo.cargo.data.model.transaction.Link
+import com.spain_cargo.cargo.data.model.transaction.Transaction
 import com.spain_cargo.cargo.databinding.FragmentProfileBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
@@ -32,6 +32,7 @@ class ProfileFragment :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getViewModel().getProfile()
+        getViewModel().getTransaction()
     }
 
 
@@ -45,6 +46,13 @@ class ProfileFragment :
             btnUpdateProfile.setOnClickListener {
                 findNavController().navigate(R.id.profile_update_fragment)
             }
+        }
+
+        val transactionAdapter = TransactionAdapter(requireActivity(), mutableListOf())
+        transactionAdapter.setOnItemClickListener(this)
+
+        getViewDataBinding().rv.apply {
+            adapter = transactionAdapter
         }
     }
 
@@ -61,13 +69,14 @@ class ProfileFragment :
                 getViewDataBinding().btnLogout.show()
                 PrefsManager.instance?.clearPreferences()
                 startActivity(Intent(requireActivity(), LoginActivity::class.java))
+                requireActivity().finish()
             }
             setNegativeButton(getString(R.string.option_no)) { _, _ -> }
         }.create().show()
     }
 
-    override fun onItemClick(item: Link) {
-        // TODO: open url in chrome
+    override fun onItemClick(item: Transaction) {
+        TODO("Not yet implemented")
     }
 
 }

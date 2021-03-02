@@ -7,10 +7,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.spain_cargo.cargo.R
 import com.spain_cargo.cargo.data.model.transaction.Link
+import com.spain_cargo.cargo.data.model.transaction.Transaction
 import com.spain_cargo.cargo.ui.base.BaseDataItemInteractionListener
 import com.spain_cargo.cargo.ui.base.BaseDataItemsAdapter
 
-open class LinkAdapter(
+open class TransactionAdapter(
     protected var context: Context, objects: MutableList<Link>
 ) : BaseDataItemsAdapter<Link>(objects, null) {
 
@@ -22,7 +23,7 @@ open class LinkAdapter(
     ): ViewDataBinding {
         return DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
-            R.layout.item_transaction_link,
+            R.layout.item_transaction,
             parent,
             false
         )
@@ -30,5 +31,5 @@ open class LinkAdapter(
 }
 
 interface ILinkItemActionListener : BaseDataItemInteractionListener {
-    fun onItemClick(item: Link)
+    fun onItemClick(item: Transaction)
 }

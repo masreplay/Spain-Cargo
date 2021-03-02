@@ -7,7 +7,7 @@ data class Transactions(
     @SerializedName("current_page")
     val currentPage: Int,
     @SerializedName("data")
-    val `data`: List<Any>,
+    val data: List<Transaction>,
     @SerializedName("first_page_url")
     val firstPageUrl: String,
     @SerializedName("from")

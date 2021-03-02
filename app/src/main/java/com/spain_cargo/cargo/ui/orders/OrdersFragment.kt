@@ -61,7 +61,9 @@ class OrdersFragment :
         }
     }
 
-    override fun onItemClick(item: Order) {}
+    override fun onItemClick(item: Order) {
+
+    }
 
     override fun onItemDeleteClick(item: Order) {
 

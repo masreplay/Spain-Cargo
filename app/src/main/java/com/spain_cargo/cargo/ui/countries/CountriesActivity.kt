@@ -3,15 +3,15 @@ package com.spain_cargo.cargo.ui.countries
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.spain_cargo.cargo.ui.main.MainActivity
 import com.spain_cargo.cargo.R
 import com.spain_cargo.cargo.data.model.countries.Country
 import com.spain_cargo.cargo.databinding.ActivityCountiesBinding
 import com.spain_cargo.cargo.ui.base.BaseActivity
 import com.spain_cargo.cargo.ui.base.BaseNavigator
 import com.spain_cargo.cargo.ui.login.LoginActivity
-import com.spain_cargo.cargo.util.Constants.country
+import com.spain_cargo.cargo.ui.main.MainActivity
 import com.spain_cargo.cargo.util.Constants.RECEIVED_LINK
+import com.spain_cargo.cargo.util.Constants.country
 import com.spain_cargo.cargo.util.PrefsManager
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,6 +30,14 @@ class CountriesActivity :
         super.onCreate(savedInstanceState)
 
         getViewModel().getCountries()
+
+        getViewDataBinding().srl.apply {
+            setOnRefreshListener {
+                getViewModel().getCountries()
+                isRefreshing = false
+                
+            }
+        }
 
         if (!PrefsManager.instance?.isLoggedIn()!!) {
             val intent = Intent(this, LoginActivity::class.java)
