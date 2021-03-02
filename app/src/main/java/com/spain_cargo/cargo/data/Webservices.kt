@@ -41,6 +41,16 @@ interface Webservices {
         @Part("date_of_birth") date_of_birth: RequestBody
     ): Single<Response<MainResponse>>
 
+    @Multipart
+    @POST("/api/profile-update")
+    fun updateProfile(
+        @Part image: MultipartBody.Part?,
+        @Part("name") name: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part("phone_number") phone_number: RequestBody,
+        @Part("date_of_birth") date_of_birth: RequestBody
+    ): Single<Response<ProfileResponse>>
+
     @GET("api/countries")
     fun getCountries(): Single<Response<CountriesResponse>>
 
@@ -107,15 +117,6 @@ interface Webservices {
 
     @PATCH("/api/money-back-requests/reject/{id}")
     fun markMoneyBrAsRejected(@Path("id") id: Int): Single<Response<String>>
-
-    @FormUrlEncoded
-    @POST("/api/profile-update")
-    fun updateProfile(
-        @Field("name") name: String,
-        @Field("email") email: String,
-        @Field("phone_number") phone_number: String,
-        @Field("date_of_birth") date_of_birth: String
-    ): Single<Response<ProfileResponse>>
 
     @GET("/api/transactions")
     fun  getTransaction():Single<Response<TransactionResponse>>

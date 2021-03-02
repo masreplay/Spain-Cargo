@@ -5,7 +5,6 @@
 
     <data>
 
-
         <variable
             name="viewModel"
             type="com.spain_cargo.cargo.ui.orders.OrdersViewModel" />
@@ -18,57 +17,71 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chip_group"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            app:checkedChip="@+id/chip_pending"
-            app:layout_constraintTop_toTopOf="parent"
-            app:selectionRequired="true"
-            app:singleSelection="true">
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_pending"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@string/pending"
-                android:textColor="@color/chip_text_color"
-                app:chipBackgroundColor="@color/bg_chip_state_list" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_completed"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/completed"
-                android:textColor="@color/chip_text_color"
-                app:chipBackgroundColor="@color/bg_chip_state_list" />
-
-        </com.google.android.material.chip.ChipGroup>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_orders"
-            items="@{viewModel.ordersResponse.data.data.orders}"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/srl"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="@+id/status"
-            app:layout_constraintTop_toBottomOf="@+id/chip_group"
-            tools:listitem="@layout/item_order" />
-
-        <include
-            android:id="@+id/status"
-            layout="@layout/view_status"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:retryListener="@{viewModel.refreshListener}"
-            app:viewStatus="@{viewModel.ordersResponse.status}" />
+            app:layout_constraintTop_toTopOf="parent">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/child"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    app:checkedChip="@+id/chip_pending"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_pending"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@string/pending"
+                        android:textColor="@color/chip_text_color"
+                        app:chipBackgroundColor="@color/bg_chip_state_list" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_completed"
+                        style="@style/Widget.MaterialComponents.Chip.Choice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/completed"
+                        android:textColor="@color/chip_text_color"
+                        app:chipBackgroundColor="@color/bg_chip_state_list" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_orders"
+                    items="@{viewModel.ordersResponse.data.data.orders}"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="@+id/status"
+                    app:layout_constraintTop_toBottomOf="@+id/chip_group"
+                    tools:listitem="@layout/item_order" />
+
+                <include
+                    android:id="@+id/status"
+                    layout="@layout/view_status"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:retryListener="@{viewModel.refreshListener}"
+                    app:viewStatus="@{viewModel.ordersResponse.status}" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -134,7 +134,7 @@ class MainActivity :
                             bottomNav.show()
                         }
                     }
-                    R.id.createOrderFragment, R.id.addItemFragment, R.id.create_request_money_fragment, R.id.fragment_rb_create_money, R.id.home_money_rb_create_fragment -> {
+                    R.id.createOrderFragment, R.id.addItemFragment, R.id.create_request_money_fragment, R.id.fragment_rb_create_money, R.id.home_money_rb_create_fragment, R.id.order_detail_fragment,R.id.profile_update_fragment -> {
                         getViewDataBinding().apply {
                             fab.hide()
                             fab2.hide()
@@ -145,9 +145,9 @@ class MainActivity :
                     else -> {
                         getViewDataBinding().apply {
                             fab.hide()
+                            fab2.hide()
                             llCountry.hide()
                             bottomNav.show()
-                            fab2.hide()
                         }
                     }
                 }

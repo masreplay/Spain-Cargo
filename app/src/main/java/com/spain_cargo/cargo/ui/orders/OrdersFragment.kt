@@ -4,11 +4,13 @@ import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.spain_cargo.cargo.R
 import com.spain_cargo.cargo.data.model.orders.Order
 import com.spain_cargo.cargo.databinding.FragmentOrdersBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
+import com.spain_cargo.cargo.util.PrefsManager
 import com.spain_cargo.cargo.util.snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,6 +41,13 @@ class OrdersFragment :
         val ordersAdapter = OrdersAdapter(requireContext(), mutableListOf())
         ordersAdapter.setOnItemClickListener(this)
 
+        getViewDataBinding().srl.apply {
+            setOnRefreshListener {
+                getViewModel().getOrders(status)
+                isRefreshing = false
+            }
+        }
+
         getViewDataBinding().chipGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.chip_pending -> {
@@ -62,7 +71,12 @@ class OrdersFragment :
     }
 
     override fun onItemClick(item: Order) {
+        if (PrefsManager.instance?.getUser()?.data?.user?.role == "distributor") {
 
+            findNavController().navigate(
+                OrdersFragmentDirections.actionOrdersFragmentToShowOrdersFragment(item)
+            )
+        }
     }
 
     override fun onItemDeleteClick(item: Order) {

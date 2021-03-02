@@ -7,6 +7,7 @@ import com.spain_cargo.cargo.data.model.BaseResource
 import com.spain_cargo.cargo.data.model.profile.ProfileResponse
 import com.spain_cargo.cargo.ui.base.BaseViewModel
 import com.spain_cargo.cargo.util.PrefsManager
+import okhttp3.MultipartBody
 
 class ProfileUpdateViewModel @ViewModelInject constructor(
     dataManager: AppDataManager
@@ -18,11 +19,12 @@ class ProfileUpdateViewModel @ViewModelInject constructor(
 
 
     fun updateProfile(
-        name: String, email: String, phone_number: String, date_of_birth: String
+        image: MultipartBody.Part? = null, name: String, email: String,
+        phone_number: String, date_of_birth: String
     ) {
         updateProfileResponse.value = BaseResource.loading(updateProfileResponse.value?.data)
         dispose(
-            dataManager.updateProfile(name, email, phone_number, date_of_birth),
+            dataManager.updateProfile(image, name, email, phone_number, date_of_birth),
             ::onUpdateProfileSuccess,
             { e ->
                 e.message?.let { updateProfileResponse.postValue(BaseResource.error(it, null)) }

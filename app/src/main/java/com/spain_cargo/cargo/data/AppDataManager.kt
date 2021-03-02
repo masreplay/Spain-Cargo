@@ -81,6 +81,24 @@ class AppDataManager @Inject constructor(
         )
     }
 
+    fun updateProfile(
+        image: MultipartBody.Part? = null, name: String, email: String,
+        phone_number: String, date_of_birth: String
+    ): Single<BaseResource<ProfileResponse>> {
+        return wrapWithResourceObject(
+            webservices.updateProfile(
+                image = image,
+                name = name.toRequestBody(contentType = "multipart/form-data".toMediaTypeOrNull()),
+                email = email.toRequestBody(contentType = "multipart/form-data".toMediaTypeOrNull()),
+                phone_number = phone_number.toRequestBody(contentType = "multipart/form-data".toMediaTypeOrNull()),
+                date_of_birth = date_of_birth.toRequestBody(contentType = "multipart/form-data".toMediaTypeOrNull())
+            )
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+        )
+    }
+
+
     fun getCountries(): Single<BaseResource<CountriesResponse>> {
         return wrapWithResourceObject(
             webservices.getCountries()
@@ -211,15 +229,6 @@ class AppDataManager @Inject constructor(
         )
     }
 
-    fun updateProfile(
-        name: String, email: String, phone_number: String, date_of_birth: String
-    ): Single<BaseResource<ProfileResponse>> {
-        return wrapWithResourceObject(
-            webservices.updateProfile(name, email, phone_number, date_of_birth)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-        )
-    }
 
     fun getMoneyRequests(): Single<BaseResource<MoneyRequests>> {
         return wrapWithResourceObject(

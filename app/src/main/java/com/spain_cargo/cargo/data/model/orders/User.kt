@@ -1,8 +1,12 @@
 package com.spain_cargo.cargo.data.model.orders
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 import java.util.*
+
+@Parcelize
 
 data class User(
     @SerializedName("created_at")
@@ -29,4 +33,4 @@ data class User(
     val twoFactorSecret: String?,
     @SerializedName("updated_at")
     val updatedAt: Date?
-)
+) : Parcelable

@@ -61,6 +61,7 @@
     <string name="msg_err_password">Password is required</string>
     <string name="msg_err_login">Failed To log in</string>
     <string name="msg_err_update">Failed To update</string>
+
     <string name="msg_err_name">Name can\'t be empty</string>
     <string name="msg_err_phone">Phone is required</string>
     <string name="msg_err_date">BirthDate is required</string>
@@ -99,4 +100,5 @@
     <string name="msg_profile_updated_filed">filed to update</string>
     <string name="update">update</string>
     <string name="create_request">create request</string>
+    <string name="order_details">Order details</string>
 </resources>

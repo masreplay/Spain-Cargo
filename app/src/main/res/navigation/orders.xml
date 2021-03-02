@@ -9,6 +9,20 @@
         android:id="@+id/ordersFragment"
         android:label="@string/orders"
         android:name="com.spain_cargo.cargo.ui.orders.OrdersFragment"
-        tools:layout="@layout/fragment_orders"/>
+        tools:layout="@layout/fragment_orders">
+        <action
+            android:id="@+id/action_ordersFragment_to_show_orders_fragment"
+            app:destination="@id/order_detail_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/order_detail_fragment"
+        android:name="com.spain_cargo.cargo.ui.orderDetail.OrderDetailFragment"
+        android:label="@string/order_details"
+        tools:layout="@layout/fragment_order_detail">
+        <argument
+            android:name="order"
+            app:argType="com.spain_cargo.cargo.data.model.orders.Order" />
+    </fragment>
 
 </navigation>

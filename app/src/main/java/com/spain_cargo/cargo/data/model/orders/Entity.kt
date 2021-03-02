@@ -5,6 +5,7 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 import java.util.*
+@Parcelize
 
 data class Entity(
     @SerializedName("address")
@@ -23,4 +24,4 @@ data class Entity(
     val status: String,
     @SerializedName("updated_at")
     val updatedAt: String
-)
+):Parcelable

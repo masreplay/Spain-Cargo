@@ -48,6 +48,14 @@ class ProfileFragment :
             }
         }
 
+        getViewDataBinding().srl.apply {
+            setOnRefreshListener {
+                getViewModel().getProfile()
+                getViewModel().getTransaction()
+                isRefreshing = false
+            }
+        }
+
         val transactionAdapter = TransactionAdapter(requireActivity(), mutableListOf())
         transactionAdapter.setOnItemClickListener(this)
 
