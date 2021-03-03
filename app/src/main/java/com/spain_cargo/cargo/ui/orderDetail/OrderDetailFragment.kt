@@ -6,14 +6,15 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.spain_cargo.cargo.R
 import com.spain_cargo.cargo.databinding.FragmentOrderDetailBinding
-import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
+import com.spain_cargo.cargo.ui.base.BaseSheetFragment
+import com.spain_cargo.cargo.util.print
 import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
 class OrderDetailFragment :
-    BaseFragment<FragmentOrderDetailBinding, IShowOrderInteractionListener, OrderDetailViewModel>(),
+    BaseSheetFragment<FragmentOrderDetailBinding, IShowOrderInteractionListener, OrderDetailViewModel>(),
     IShowOrderInteractionListener {
 
     private val orderDetailViewModel: OrderDetailViewModel by viewModels()
@@ -26,12 +27,14 @@ class OrderDetailFragment :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        getViewModel().getOrder(args.order_id)
+        getViewModel().getOrder(args.orderId)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        getViewDataBinding().apply {
+            tv.text.print()
+        }
     }
 }
 

@@ -15,14 +15,13 @@
             app:destination="@id/order_detail_fragment" />
     </fragment>
 
-    <fragment
+    <dialog
         android:id="@+id/order_detail_fragment"
         android:name="com.spain_cargo.cargo.ui.orderDetail.OrderDetailFragment"
-        android:label="@string/order_details"
         tools:layout="@layout/fragment_order_detail">
         <argument
             android:name="order_id"
             app:argType="string" />
-    </fragment>
+    </dialog>
 
 </navigation>

@@ -34,6 +34,13 @@ class MoneyRBFragment :
             it.setOnItemClickListener(this)
         }
 
+        getViewDataBinding().srl.apply {
+            setOnRefreshListener {
+                getViewModel().getMoneyRB()
+                isRefreshing = false
+            }
+        }
+
         getViewDataBinding().rvMoneyRb.adapter = moneyRbAdapter
     }
 

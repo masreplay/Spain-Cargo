@@ -86,4 +86,8 @@
     <string name="msg_profile_updated_filed">فشل في التحديث</string>
     <string name="update">تحديث</string>
     <string name="create_request">انشاء طلب</string>
+    <string name="order_details">معلومات الطلب</string>
+    <string name="transaction">التحويلات المالية</string>
+    <string name="location">الموقع</string>
+    <string name="country">الدولة</string>
 </resources>

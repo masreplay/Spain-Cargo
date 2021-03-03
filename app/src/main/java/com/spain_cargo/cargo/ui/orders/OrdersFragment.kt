@@ -72,9 +72,8 @@ class OrdersFragment :
 
     override fun onItemClick(item: Order) {
         if (PrefsManager.instance?.getUser()?.data?.user?.role == "distributor") {
-
             findNavController().navigate(
-                OrdersFragmentDirections.actionOrdersFragmentToShowOrdersFragment(item)
+                OrdersFragmentDirections.actionOrdersFragmentToShowOrdersFragment(item.id)
             )
         }
     }

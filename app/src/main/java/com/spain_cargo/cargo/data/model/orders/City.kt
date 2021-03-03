@@ -15,4 +15,6 @@ data class City(
     val name: String
 ) : Parcelable {
 
+    val city get() = "$name : $amount"
+
 }

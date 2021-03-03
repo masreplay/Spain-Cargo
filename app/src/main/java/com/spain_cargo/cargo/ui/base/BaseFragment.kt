@@ -22,23 +22,14 @@ abstract class BaseFragment<T : ViewDataBinding, N : BaseNavigator, V : BaseView
     // Instances that should be provided by successor of this class
     @LayoutRes
     abstract fun getLayoutId(): Int
-
-
     abstract fun getNavigator(): N
-
     abstract fun getViewModel(): V
-
 
     protected fun getBindingVariable(): Int = BR.viewModel
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
         getViewModel().navigator = getNavigator()
-
-
     }
 
     override fun onCreateView(
@@ -86,34 +77,22 @@ abstract class BaseFragment<T : ViewDataBinding, N : BaseNavigator, V : BaseView
 }
 
 
-
 abstract class BaseSheetFragment<T : ViewDataBinding, N : BaseNavigator, V : BaseViewModel<N>> :
     BottomSheetDialogFragment() {
 
     private lateinit var viewDataBinding: T
-
     private var actionMode: ActionMode? = null
 
-    // Instances that should be provided by successor of this class
     @LayoutRes
     abstract fun getLayoutId(): Int
-
-
     abstract fun getNavigator(): N
-
     abstract fun getViewModel(): V
-
 
     protected fun getBindingVariable(): Int = BR.viewModel
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
         getViewModel().navigator = getNavigator()
-
-
     }
 
     override fun onCreateView(
