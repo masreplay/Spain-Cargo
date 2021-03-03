@@ -31,7 +31,6 @@ class OrdersFragment :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         getViewModel().getOrders(status)
     }
 
@@ -73,7 +72,7 @@ class OrdersFragment :
     override fun onItemClick(item: Order) {
         if (PrefsManager.instance?.getUser()?.data?.user?.role == "distributor") {
             findNavController().navigate(
-                OrdersFragmentDirections.actionOrdersFragmentToShowOrdersFragment(item.id)
+                OrdersFragmentDirections.actionOrdersFragmentToShowOrdersFragment(item)
             )
         }
     }

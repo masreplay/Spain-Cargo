@@ -1,4 +1,4 @@
-package com.spain_cargo.cargo.ui.moneyRequests
+package com.spain_cargo.cargo.ui.createOrder
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,14 +6,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.spain_cargo.cargo.R
-import com.spain_cargo.cargo.data.model.moneyRequests.MoneyRequest
+import com.spain_cargo.cargo.data.model.orders.Item
+
 import com.spain_cargo.cargo.ui.base.BaseDataItemInteractionListener
 import com.spain_cargo.cargo.ui.base.BaseDataItemsAdapter
 
-open class MoneyRequestsAdapter(
-    protected var context: Context,
-    protected val objects: MutableList<MoneyRequest>
-) : BaseDataItemsAdapter<MoneyRequest>(objects, null) {
+open class ItemsDetailAdapter(
+    protected var context: Context, objects: MutableList<Item>
+) : BaseDataItemsAdapter<Item>(objects, null) {
 
 
     override fun createViewDataBinding(
@@ -23,19 +23,11 @@ open class MoneyRequestsAdapter(
     ): ViewDataBinding {
         return DataBindingUtil.inflate(
             LayoutInflater.from(parent.context),
-            R.layout.item_money_request,
+            R.layout.item_order_detail,
             parent,
             false
         )
     }
-
-    override fun getItemId(position: Int): Long {
-        return objects[position].id.hashCode().toLong()
-    }
 }
 
-interface IRequestItemActionListener : BaseDataItemInteractionListener {
-    fun onItemClick(item: MoneyRequest)
-    fun onAccept(item: MoneyRequest)
-    fun onDecline(item: MoneyRequest)
-}
+interface IItemDetailActionListener : BaseDataItemInteractionListener

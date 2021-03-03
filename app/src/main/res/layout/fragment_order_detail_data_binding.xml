@@ -14,19 +14,13 @@
         android:id="@+id/parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:orientation="vertical"
         android:padding="8dp">
 
-        <View
-            android:layout_width="50dp"
-            android:layout_height="4dp"
-            android:background="@color/carbon_grey_400" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="none"
             android:background="#00FFFFFF">
 
             <LinearLayout
@@ -58,6 +52,7 @@
 
                         <com.facebook.drawee.view.SimpleDraweeView
                             android:id="@+id/iv_user"
+                            imageUrl="@{viewModel.orderResponse.data.relations.user.imageUrl}"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_centerVertical="true"
@@ -80,6 +75,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:padding="2dp"
+                                android:text="@{viewModel.orderResponse.data.relations.user.name}"
                                 android:textColor="@android:color/black"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
@@ -93,6 +89,7 @@
                                 android:drawableStart="@drawable/ic_baseline_email_24"
                                 android:drawablePadding="8dp"
                                 android:gravity="center"
+                                android:text="@{viewModel.orderResponse.data.relations.user.email}"
                                 android:textSize="14sp"
                                 app:drawableTint="@color/colorPrimary"
                                 tools:text="abdalla@gmail.com" />
@@ -105,7 +102,7 @@
                                 android:drawableStart="@drawable/ic_round_local_phone_24"
                                 android:drawablePadding="8dp"
                                 android:gravity="center"
-
+                                android:text="@{viewModel.orderResponse.data.relations.user.phoneNumber}"
                                 android:textSize="14sp"
                                 app:drawableTint="@color/colorAccent"
                                 tools:text="0770000000" />
@@ -134,7 +131,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="4dp"
-                    app:cardCornerRadius="8dp">
+                    app:cardCornerRadius="10dp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -143,6 +140,7 @@
 
                         <com.facebook.drawee.view.SimpleDraweeView
                             android:id="@+id/iv_country"
+                            imageUrl="@{viewModel.orderResponse.data.relations.country.flagImageUrl}"
                             android:layout_width="64dp"
                             android:layout_height="42.5dp"
                             android:layout_centerVertical="true"
@@ -161,24 +159,25 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/tv_country_name"
+                                android:id="@+id/tv_country"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:padding="2dp"
+                                android:text="@{viewModel.orderResponse.data.relations.country.name}"
                                 android:textColor="@android:color/black"
                                 android:textSize="18sp"
                                 android:textStyle="bold"
                                 tools:text="spain" />
 
                             <TextView
-                                android:id="@+id/tv_country_amount"
+                                android:id="@+id/tv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:drawableStart="@drawable/ic_baseline_attach_money_24"
                                 android:drawablePadding="3dp"
                                 android:gravity="center"
                                 android:padding="4dp"
-
+                                android:text="@{String.valueOf(viewModel.orderResponse.data.relations.country.amount)}"
                                 android:textSize="14sp"
                                 app:drawableTint="@color/colorPrimary"
                                 tools:text="25" />
@@ -199,33 +198,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="4dp"
-                    app:cardCornerRadius="8dp">
+                    app:cardCornerRadius="10dp">
 
                     <TextView
                         android:id="@+id/tv_city"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
+                        android:text="@{viewModel.orderResponse.data.relations.city.city}"
                         android:textColor="@android:color/black"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         tools:text="baghdad : 2000" />
 
                 </com.google.android.material.card.MaterialCardView>
-
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv"
-                    items="@{viewModel.orderResponse.data.items}"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:listitem="@layout/item_order_detail" />
-
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

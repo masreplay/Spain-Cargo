@@ -5,18 +5,18 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import com.spain_cargo.cargo.data.AppDataManager
 import com.spain_cargo.cargo.data.model.BaseResource
-import com.spain_cargo.cargo.data.model.orders.Order
+import com.spain_cargo.cargo.data.model.orders.OrderX
 import com.spain_cargo.cargo.ui.base.BaseViewModel
 
 class OrderDetailViewModel @ViewModelInject constructor(
     dataManager: AppDataManager
-) : BaseViewModel<IShowOrderInteractionListener>(
+) : BaseViewModel<IOrderDetailInteractionListener>(
     dataManager
 ) {
 
-    var orderResponse: MutableLiveData<BaseResource<Order>> = MutableLiveData()
+    var orderResponse: MutableLiveData<BaseResource<OrderX>> = MutableLiveData()
 
-    fun getOrder(id: String) {
+    fun getOrderById(id: String) {
         orderResponse.value = BaseResource.loading(orderResponse.value?.data)
         dispose(
             dataManager.getOrderById(id),
@@ -24,10 +24,10 @@ class OrderDetailViewModel @ViewModelInject constructor(
             { e ->
                 e.message?.let { orderResponse.postValue(BaseResource.error(it, null)) }
             })
-        refreshListener.postValue(View.OnClickListener { dataManager.getOrderById(id) })
+        refreshListener.postValue(View.OnClickListener { getOrderById(id) })
     }
 
-    private fun onOrderSuccess(result: BaseResource<Order>) {
+    private fun onOrderSuccess(result: BaseResource<OrderX>) {
         result.data?.let { orderResponse.postValue(result) }
     }
 }

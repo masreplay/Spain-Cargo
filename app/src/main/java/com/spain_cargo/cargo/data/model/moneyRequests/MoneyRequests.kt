@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 
 data class MoneyRequests(
     @SerializedName("data")
-    val `data`: Data?
+    val data: Data?
 )

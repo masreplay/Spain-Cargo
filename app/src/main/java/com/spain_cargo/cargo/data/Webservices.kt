@@ -9,6 +9,7 @@ import com.spain_cargo.cargo.data.model.countries.CountriesResponse
 import com.spain_cargo.cargo.data.model.login.MainResponse
 import com.spain_cargo.cargo.data.model.moneyRequests.MoneyRequests
 import com.spain_cargo.cargo.data.model.orders.Order
+import com.spain_cargo.cargo.data.model.orders.OrderX
 import com.spain_cargo.cargo.data.model.orders.OrdersResponse
 import com.spain_cargo.cargo.data.model.profile.ProfileResponse
 import com.spain_cargo.cargo.data.model.requestMoney.RequestMoneyResponse
@@ -71,7 +72,7 @@ interface Webservices {
     fun getOrders(@Query("status") status: String): Single<Response<OrdersResponse>>
 
     @GET("api/orders/{id}")
-    fun getOrderById(@Path("id") id: String): Single<Response<Order>>
+    fun getOrderById(@Path("id") id: String): Single<Response<OrderX>>
 
     @DELETE("api/orders/{id}")
     fun deleteOrder(@Path("id") id: String): Single<Response<Order>>
@@ -92,7 +93,9 @@ interface Webservices {
     ): Single<Response<RequestMoneyResponse>>
 
     @GET("api/money-requests")
-    fun getMoneyRequests(): Single<Response<MoneyRequests>>
+    fun getMoneyRequests(
+        @Query("page") page: Int
+    ): Single<Response<MoneyRequests>>
 
     @PATCH("api/money-requests/accept/{id}")
     fun acceptMoneyRequest(@Path("id")id:String): Single<Response<Void>>

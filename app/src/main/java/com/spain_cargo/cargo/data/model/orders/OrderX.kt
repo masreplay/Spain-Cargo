@@ -1,0 +1,20 @@
+package com.spain_cargo.cargo.data.model.orders
+
+
+import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class OrderX(
+    @SerializedName("actions")
+    val actions: Actions,
+    @SerializedName("entity")
+    val entity: Entity,
+    @SerializedName("id")
+    val id: String,
+    @SerializedName("relations")
+    val relations: Relations,
+    @SerializedName("items")
+    val items: List<Item>
+) : Parcelable

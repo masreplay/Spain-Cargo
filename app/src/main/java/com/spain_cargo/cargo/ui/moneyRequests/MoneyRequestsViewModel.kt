@@ -20,11 +20,11 @@ class MoneyRequestsViewModel @ViewModelInject constructor(
     var declineRequestResponse: MutableLiveData<BaseResource<Void>> = MutableLiveData()
 
 
-    fun getMoneyRequests() {
+    fun getMoneyRequests(page: Int) {
         moneyRequestResponse.value = BaseResource.loading(moneyRequestResponse.value?.data)
 
         dispose(
-            dataManager.getMoneyRequests(),
+            dataManager.getMoneyRequests(page),
             ::onRequestsSuccess,
             { e ->
                 //error handling
@@ -33,7 +33,7 @@ class MoneyRequestsViewModel @ViewModelInject constructor(
                 }
             })
 
-        refreshListener.postValue(View.OnClickListener { getMoneyRequests() })
+        refreshListener.postValue(View.OnClickListener { getMoneyRequests(page) })
 
     }
 
@@ -69,15 +69,14 @@ class MoneyRequestsViewModel @ViewModelInject constructor(
     private fun onRequestsSuccess(result: BaseResource<MoneyRequests>) {
         result.data?.let {
             moneyRequestResponse.postValue(result)
+            navigator.onSuccess(result.data)
         }
     }
 
     private fun onRequestsAcceptSuccess(result: BaseResource<Void>) {
-        getMoneyRequests()
     }
 
     private fun onRequestsDeclineSuccess(result: BaseResource<Void>) {
-        getMoneyRequests()
     }
 
 
