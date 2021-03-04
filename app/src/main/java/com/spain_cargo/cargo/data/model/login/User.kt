@@ -30,8 +30,13 @@ data class User(
     val updatedAt: String?
 ) {
     companion object {
+        // user type
         const val USER: String = "user"
         const val DISTRIBUTOR: String = "distributor"
         const val ADMIN: String = "admin"
+
+        // user type
+        const val NORMAL: String = "user"
+        const val IMMEDIATE: String = "distributor"
     }
 }

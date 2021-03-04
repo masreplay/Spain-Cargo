@@ -6,13 +6,17 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
-import androidx.navigation.fragment.findNavController
 import com.afollestad.vvalidator.field.FieldError
 import com.afollestad.vvalidator.form
 import com.afollestad.vvalidator.util.hide
 import com.afollestad.vvalidator.util.show
 import com.spain_cargo.cargo.R
 import com.spain_cargo.cargo.data.model.Status
+import com.spain_cargo.cargo.data.model.login.User.Companion.ADMIN
+import com.spain_cargo.cargo.data.model.login.User.Companion.DISTRIBUTOR
+import com.spain_cargo.cargo.data.model.login.User.Companion.IMMEDIATE
+import com.spain_cargo.cargo.data.model.login.User.Companion.NORMAL
+import com.spain_cargo.cargo.data.model.login.User.Companion.USER
 import com.spain_cargo.cargo.databinding.FragmentRequestMoneyBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
@@ -32,8 +36,8 @@ class RequestMoneyFragment :
     private lateinit var usersAdapter: ArrayAdapter<String>
     private lateinit var typesAdapter: ArrayAdapter<String>
 
-    private val users = listOf("user", "distributor", "admin")
-    private val types = listOf("immediate", "normal")
+    private val users = listOf(USER, DISTRIBUTOR, ADMIN)
+    private val types = listOf(IMMEDIATE, NORMAL)
 
     override fun getLayoutId() = R.layout.fragment_request_money
     override fun getViewModel() = addItemViewModel
@@ -93,9 +97,9 @@ class RequestMoneyFragment :
         } else if (typesAdapter.getPosition(et_type.text.toString()) + 1 == 0) {
             getViewDataBinding().tilType.error = getString(R.string.pick_an_item)
         }
-        if (et_from.text.toString() == "user" && et_key.text.isNullOrEmpty()) {
+        if (et_from.text.toString() == USER && et_key.text.isNullOrEmpty()) {
             getViewDataBinding().tilKey.error = getString(R.string.msg_err_field_required)
-        } else if (et_from.text.toString() != "user") {
+        } else if (et_from.text.toString() != USER) {
             getViewModel().moneyRequest(
                 from = et_from.text.toString(),
                 amount = et_amount.text.toString().toInt(),

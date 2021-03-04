@@ -10,7 +10,6 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import com.afollestad.vvalidator.util.hide
 import com.afollestad.vvalidator.util.show
 import com.spain_cargo.cargo.R
-import com.spain_cargo.cargo.data.model.login.User.Companion.DISTRIBUTOR
 import com.spain_cargo.cargo.data.model.login.User.Companion.USER
 import com.spain_cargo.cargo.databinding.ActivityMainBinding
 import com.spain_cargo.cargo.ui.base.BaseActivity
@@ -127,7 +126,7 @@ class MainActivity :
                                 llCountry.show()
                                 bottomNav.show()
                             }
-                            if (userRole == DISTRIBUTOR) {
+                            if (userRole != USER) {
                                 fab2.hide()
                             } else {
                                 fab2.show()
