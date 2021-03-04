@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Data(
     @SerializedName("File")
-    val `file`: String,
+    val file: String,
     @SerializedName("InvariantSeverity")
     val invariantSeverity: String,
     @SerializedName("Line")

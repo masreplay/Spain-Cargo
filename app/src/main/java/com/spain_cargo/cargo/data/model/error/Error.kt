@@ -7,7 +7,7 @@ data class Error(
     @SerializedName("code")
     val code: Any,
     @SerializedName("data")
-    val `data`: Data,
+    val data: Data,
     @SerializedName("details")
     val details: Any,
     @SerializedName("message")

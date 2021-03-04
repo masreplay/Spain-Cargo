@@ -1,9 +1,9 @@
 package com.spain_cargo.cargo.data.model.orders
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
-import android.os.Parcelable
 
 @Parcelize
 data class Order(
@@ -15,4 +15,4 @@ data class Order(
     val id: String,
     @SerializedName("relations")
     val relations: Relations
-):Parcelable
+) : Parcelable

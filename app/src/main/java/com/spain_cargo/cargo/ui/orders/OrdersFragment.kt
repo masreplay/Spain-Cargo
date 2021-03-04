@@ -7,6 +7,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.spain_cargo.cargo.R
 import com.spain_cargo.cargo.data.model.orders.Order
+import com.spain_cargo.cargo.data.model.orders.OrdersResponse.Companion.COMPLETED
+import com.spain_cargo.cargo.data.model.orders.OrdersResponse.Companion.PENDING
 import com.spain_cargo.cargo.databinding.FragmentOrdersBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
@@ -14,14 +16,13 @@ import com.spain_cargo.cargo.util.PrefsManager
 import com.spain_cargo.cargo.util.snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
-
+// TODO: add pagination
 @AndroidEntryPoint
 class OrdersFragment :
     BaseFragment<FragmentOrdersBinding, IOrdersInteractionListener, OrdersViewModel>(),
     IOrdersInteractionListener, IOrderItemActionListener {
 
-    // save the status to refresh recycler view after delete order
-    private var status: String = "pending"
+    private var status: String = PENDING
 
     private val ordersViewModel: OrdersViewModel by viewModels()
 
@@ -50,15 +51,15 @@ class OrdersFragment :
         getViewDataBinding().chipGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.chip_pending -> {
-                    status = "pending"
+                    status = PENDING
                     getViewModel().getOrders(status)
                 }
                 R.id.chip_completed -> {
-                    status = "completed"
+                    status = COMPLETED
                     getViewModel().getOrders(status)
                 }
                 else -> {
-                    status = "pending"
+                    status = PENDING
                     getViewModel().getOrders(status)
                 }
             }
