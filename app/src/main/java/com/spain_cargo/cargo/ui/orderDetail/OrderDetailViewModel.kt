@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.spain_cargo.cargo.data.AppDataManager
 import com.spain_cargo.cargo.data.model.BaseResource
 import com.spain_cargo.cargo.data.model.orders.OrderX
+import com.spain_cargo.cargo.data.model.orders.OrderXResponse
 import com.spain_cargo.cargo.ui.base.BaseViewModel
 
 class OrderDetailViewModel @ViewModelInject constructor(
@@ -14,7 +15,7 @@ class OrderDetailViewModel @ViewModelInject constructor(
     dataManager
 ) {
 
-    var orderResponse: MutableLiveData<BaseResource<OrderX>> = MutableLiveData()
+    var orderResponse: MutableLiveData<BaseResource<OrderXResponse>> = MutableLiveData()
 
     fun getOrderById(id: String) {
         orderResponse.value = BaseResource.loading(orderResponse.value?.data)
@@ -27,7 +28,7 @@ class OrderDetailViewModel @ViewModelInject constructor(
         refreshListener.postValue(View.OnClickListener { getOrderById(id) })
     }
 
-    private fun onOrderSuccess(result: BaseResource<OrderX>) {
+    private fun onOrderSuccess(result: BaseResource<OrderXResponse>) {
         result.data?.let { orderResponse.postValue(result) }
     }
 }

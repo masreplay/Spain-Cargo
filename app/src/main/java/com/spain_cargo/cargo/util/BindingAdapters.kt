@@ -65,6 +65,7 @@ fun <T> RecyclerView.setItems(items: MutableList<T>?) {
     items?.let {
         (this.adapter as? BaseDataItemsAdapter<T>)?.apply {
             setItems(it)
+            it.print("123123123123123")
         }
     }
 }

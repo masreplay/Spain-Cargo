@@ -51,7 +51,6 @@ class RequestMoneyFragment :
                 if (it.status == Status.SUCCESS) {
                     getViewDataBinding().progressCircular.hide()
                     requireActivity().toast(R.string.money_success)
-                    findNavController().popBackStack()
                 }
                 if (it.status == Status.ERROR) {
                     getViewDataBinding().progressCircular.hide()

@@ -14,7 +14,6 @@ data class OrderX(
     @SerializedName("id")
     val id: String,
     @SerializedName("relations")
-    val relations: Relations,
-    @SerializedName("items")
-    val items: List<Item>
+    val relations: RelationsX
 ) : Parcelable
+

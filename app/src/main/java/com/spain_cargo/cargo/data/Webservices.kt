@@ -10,6 +10,7 @@ import com.spain_cargo.cargo.data.model.login.MainResponse
 import com.spain_cargo.cargo.data.model.moneyRequests.MoneyRequests
 import com.spain_cargo.cargo.data.model.orders.Order
 import com.spain_cargo.cargo.data.model.orders.OrderX
+import com.spain_cargo.cargo.data.model.orders.OrderXResponse
 import com.spain_cargo.cargo.data.model.orders.OrdersResponse
 import com.spain_cargo.cargo.data.model.profile.ProfileResponse
 import com.spain_cargo.cargo.data.model.requestMoney.RequestMoneyResponse
@@ -72,7 +73,7 @@ interface Webservices {
     fun getOrders(@Query("status") status: String): Single<Response<OrdersResponse>>
 
     @GET("api/orders/{id}")
-    fun getOrderById(@Path("id") id: String): Single<Response<OrderX>>
+    fun getOrderById(@Path("id") id: String): Single<Response<OrderXResponse>>
 
     @DELETE("api/orders/{id}")
     fun deleteOrder(@Path("id") id: String): Single<Response<Order>>

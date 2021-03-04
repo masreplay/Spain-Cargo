@@ -15,7 +15,7 @@ import com.spain_cargo.cargo.data.model.error.ErrorResponse
 import com.spain_cargo.cargo.data.model.login.MainResponse
 import com.spain_cargo.cargo.data.model.moneyRequests.MoneyRequests
 import com.spain_cargo.cargo.data.model.orders.Order
-import com.spain_cargo.cargo.data.model.orders.OrderX
+import com.spain_cargo.cargo.data.model.orders.OrderXResponse
 import com.spain_cargo.cargo.data.model.orders.OrdersResponse
 import com.spain_cargo.cargo.data.model.profile.ProfileResponse
 import com.spain_cargo.cargo.data.model.requestMoney.RequestMoneyResponse
@@ -140,7 +140,7 @@ class AppDataManager @Inject constructor(
         )
     }
 
-    fun getOrderById(id: String): Single<BaseResource<OrderX>> {
+    fun getOrderById(id: String): Single<BaseResource<OrderXResponse>> {
         return wrapWithResourceObject(
             webservices.getOrderById(id)
                 .subscribeOn(Schedulers.io())

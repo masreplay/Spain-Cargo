@@ -11,7 +11,6 @@ import com.spain_cargo.cargo.data.model.moneyRequests.MoneyRequests
 import com.spain_cargo.cargo.databinding.FragmentMoneyRequestsBinding
 import com.spain_cargo.cargo.ui.base.BaseFragment
 import com.spain_cargo.cargo.ui.base.BaseNavigator
-import com.spain_cargo.cargo.util.Constants.ITEMS_PER_PAGE
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -21,11 +20,11 @@ class MoneyRequestsFragment : BaseFragment<FragmentMoneyRequestsBinding, IMoneyR
 
     private val moneyRequestsViewModel: MoneyRequestsViewModel by viewModels()
 
-    lateinit var moneyRequestsAdapter: MoneyRequestsAdapter
+    private lateinit var moneyRequestsAdapter: MoneyRequestsAdapter
     var requests = mutableListOf<MoneyRequest>()
 
     private var maxSkip: Int = 0
-    var page: Int = 0
+    var page: Int = 1
     var isLoading = false
 
     override fun getLayoutId() = R.layout.fragment_money_requests
@@ -35,16 +34,15 @@ class MoneyRequestsFragment : BaseFragment<FragmentMoneyRequestsBinding, IMoneyR
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getViewModel().getMoneyRequests(page)
+        moneyRequestsAdapter = MoneyRequestsAdapter(requireContext(), requests)
+        moneyRequestsAdapter.setOnItemClickListener(this)
+        moneyRequestsAdapter.setHasStableIds(true)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        moneyRequestsAdapter = MoneyRequestsAdapter(requireContext(), mutableListOf())
-            .also {
-                it.setOnItemClickListener(this)
-                it.setHasStableIds(true)
-            }
+
 
         getViewDataBinding().srl.apply {
             setOnRefreshListener {
@@ -53,13 +51,15 @@ class MoneyRequestsFragment : BaseFragment<FragmentMoneyRequestsBinding, IMoneyR
             }
         }
 
+        val lm = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+
         getViewDataBinding().rv.apply {
             adapter = moneyRequestsAdapter
+            layoutManager = lm
         }
 
 
         getViewDataBinding().rv.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            var lm = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 // FIXME: change skip to page
