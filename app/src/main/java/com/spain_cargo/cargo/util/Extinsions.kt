@@ -24,12 +24,13 @@ fun View.snackbar(snackbarText: String) {
 
 /**
  * abdalla1997
-* */
+ * */
 fun Any?.print(tag: String = "abdalla1997") {
     this?.also {
         Log.d(tag, it.toString())
     }
 }
+
 
 fun Int?.toFormat(): String {
     return DecimalFormat("#,###", DecimalFormatSymbols.getInstance(Locale.US)).format(this) + " د.ع"

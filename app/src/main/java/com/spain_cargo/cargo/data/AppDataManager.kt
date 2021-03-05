@@ -132,9 +132,9 @@ class AppDataManager @Inject constructor(
         )
     }
 
-    fun getOrders(status: String): Single<BaseResource<OrdersResponse>> {
+    fun getOrders(status: String,page:Int): Single<BaseResource<OrdersResponse>> {
         return wrapWithResourceObject(
-            webservices.getOrders(status)
+            webservices.getOrders(status,page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
         )

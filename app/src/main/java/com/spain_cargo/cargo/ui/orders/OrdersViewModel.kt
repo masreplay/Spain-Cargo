@@ -21,19 +21,22 @@ class OrdersViewModel @ViewModelInject constructor(
     var orderCompleteResponse: MutableLiveData<BaseResource<Order>> = MutableLiveData()
     var orderRefundResponse: MutableLiveData<BaseResource<Order>> = MutableLiveData()
 
-    fun getOrders(status: String) {
+    fun getOrders(status: String, page: Int) {
         ordersResponse.value = BaseResource.loading(ordersResponse.value?.data)
         dispose(
-            dataManager.getOrders(status),
+            dataManager.getOrders(status, page),
             ::onOrdersSuccess,
             { e ->
                 e.message?.let { ordersResponse.postValue(BaseResource.error(it, null)) }
             })
-        refreshListener.postValue(View.OnClickListener { getOrders(status) })
+        refreshListener.postValue(View.OnClickListener { getOrders(status, page) })
     }
 
     private fun onOrdersSuccess(result: BaseResource<OrdersResponse>) {
-        result.data?.let { ordersResponse.postValue(result) }
+        result.data?.let {
+            ordersResponse.postValue(result)
+            navigator.onSuccess(result.data)
+        }
     }
 
 
@@ -48,8 +51,7 @@ class OrdersViewModel @ViewModelInject constructor(
     }
 
     private fun onOrderDeleteSuccess(result: BaseResource<Order>) {
-        result.data?.let { orderDeleteResponse.postValue(result)
-            getOrders("pending")}
+        result.data?.let { orderDeleteResponse.postValue(result) }
     }
 
 
@@ -64,8 +66,7 @@ class OrdersViewModel @ViewModelInject constructor(
     }
 
     private fun onMarkOrderAsRefundSuccess(result: BaseResource<Order>) {
-        result.data?.let { orderRefundResponse.postValue(result)
-            getOrders("completed")}
+        result.data?.let { orderRefundResponse.postValue(result) }
     }
 
 
@@ -80,7 +81,6 @@ class OrdersViewModel @ViewModelInject constructor(
     }
 
     private fun onMarkOrderAsCompleteSuccess(result: BaseResource<Order>) {
-        result.data?.let { orderCompleteResponse.postValue(result)
-            getOrders("pending")}
+        result.data?.let { orderCompleteResponse.postValue(result) }
     }
 }

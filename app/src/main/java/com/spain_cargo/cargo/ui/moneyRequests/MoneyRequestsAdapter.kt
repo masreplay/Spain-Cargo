@@ -12,9 +12,8 @@ import com.spain_cargo.cargo.ui.base.BaseDataItemsAdapter
 
 open class MoneyRequestsAdapter(
     protected var context: Context,
-    protected val objects: MutableList<MoneyRequest>
+    private val objects: MutableList<MoneyRequest>
 ) : BaseDataItemsAdapter<MoneyRequest>(objects, null) {
-
 
     override fun createViewDataBinding(
         inflater: LayoutInflater,
@@ -28,7 +27,6 @@ open class MoneyRequestsAdapter(
             false
         )
     }
-
     override fun getItemId(position: Int): Long {
         return objects[position].id.hashCode().toLong()
     }
